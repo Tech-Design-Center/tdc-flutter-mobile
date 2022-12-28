@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/view/example_screen.dart';
+import 'package:tdc_frontend_mobile/view/google_translator_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
           builder: EasyLoading.init(),
-          title: 'Flutter Demo',
+          title: 'TDC',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const ExampleScreen(),
+          home: ExampleScreen(),
           debugShowCheckedModeBanner: false,
         );
       },
