@@ -33,5 +33,5 @@ class AppTheme {
       systemNavigationBarColor: lightBackgroundColor,
       systemNavigationBarDividerColor: Colors.transparent,
     ));
-  }
+  } 
 }
