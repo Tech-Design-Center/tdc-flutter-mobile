@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:tdc_frontend_mobile/extention/string_extention.dart';
+import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 
-import '../../../component/input_outline_button.dart';
-import '../../../component/input_text_button.dart';
-import '../../../component/input_text_field.dart';
+import '../../../widgets/input_outline_button.dart';
+import '../../../widgets/input_text_button.dart';
+import '../../../widgets/input_text_field.dart';
 import '../../../controller/controllers.dart';
 import 'sign_in_screen.dart';
 

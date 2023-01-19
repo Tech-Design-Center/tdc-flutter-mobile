@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/controllers.dart';
-import 'components/carousel_slider/carousel_slider_view.dart';
+import 'widgets/carousel_slider/carousel_slider_view.dart';
 
-import 'components/carousel_slider/carousel_loading.dart';
-import 'components/section_title.dart';
+import 'widgets/carousel_slider/carousel_loading.dart';
+import 'widgets/section_title.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
