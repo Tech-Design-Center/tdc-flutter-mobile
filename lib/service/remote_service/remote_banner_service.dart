@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import '../../const.dart';
+import '../../core/constants/const.dart';
 
 class RemoteBannerService {
   var client = http.Client();

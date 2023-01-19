@@ -3,9 +3,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:tdc_frontend_mobile/route/app_page.dart';
-import 'package:tdc_frontend_mobile/route/app_route.dart';
-import 'package:tdc_frontend_mobile/theme/app_theme.dart';
+import 'package:tdc_frontend_mobile/routes/app_page.dart';
+import 'package:tdc_frontend_mobile/routes/app_route.dart';
+import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 
 import 'model/ad_banner.dart';
 import 'model/category.dart';

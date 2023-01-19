@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
-import '../../../const.dart';
+import '../../../core/constants/const.dart';
 import '../../../controller/controllers.dart';
 import '../../../model/category.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/theme/app_theme.dart';
+import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 
 import '../../controller/dashboard_controller.dart';
 import '../account/account_screen.dart';
