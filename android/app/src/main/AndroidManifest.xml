@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tdc_frontend_mobile">
    <application
-        android:label="tdc_frontend_mobile"
+        android:label="Tech Design Center"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
