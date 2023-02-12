@@ -21,29 +21,23 @@ class SuccessScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: EdgeInsets
-                              .only(
+                          padding: EdgeInsets.only(
                             left: 60,
                             top: 143,
                             right: 60,
-                          )
-                              .r,
+                          ).r,
                           child: Image(
-                            image: AssetImage(
-                                'assets/images/logo.png'),
+                            image: AssetImage('assets/images/logo.png'),
                             height: ScreenUtil().setHeight(600),
                             width: ScreenUtil().setWidth(600),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets
-                              .only(
-
+                          padding: EdgeInsets.only(
                             left: 60,
                             top: 150,
                             right: 60,
-                          )
-                              .r,
+                          ).r,
                           child: Text(
                             "Congrats!",
                             overflow: TextOverflow.ellipsis,
@@ -61,21 +55,16 @@ class SuccessScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-
-                          margin: EdgeInsets
-                              .only(
-
+                          margin: EdgeInsets.only(
                             left: 0,
                             top: 17,
                             right: 0,
-                          )
-                              .r,
+                          ).r,
                           child: Text(
                             "You have successfully registered\nan account!",
                             maxLines: null,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-
                               fontSize: ScreenUtil().setSp(
                                 70,
                               ),
@@ -89,14 +78,10 @@ class SuccessScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Container(
                             width: double.infinity,
-                            margin: EdgeInsets
-                                .only(
-
+                            margin: EdgeInsets.only(
                               top: 1350,
                               bottom: 20,
-                            )
-                                .r,
-
+                            ).r,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,17 +90,13 @@ class SuccessScreen extends StatelessWidget {
                                 ElevatedButton(
                                   style: ButtonStyle(
                                       shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
+                                              RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(18.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(18.0),
                                               side: BorderSide(
-                                                  color: Colors.blue)
-                                          )
-                                      )
-                                  ),
+                                                  color: Colors.blue)))),
                                   onPressed: () {
-
                                     /*
     Navigator.of(context).pushAndRemoveUntil(
     MaterialPageRoute(
@@ -123,17 +104,21 @@ class SuccessScreen extends StatelessWidget {
     SignInScreen()),
     (Route<dynamic> route) => false);
     */
-                                  }, child: Container(
-
-                                  width: ScreenUtil().setWidth(1100),
-                                  height: ScreenUtil().setHeight(190),
-                                  margin: EdgeInsets
-                                      .only(left: 19, top: 20, right: 19,)
-                                      .r,
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'Home',
-                                    style: TextStyle(fontSize: 65.sp),),),
+                                  },
+                                  child: Container(
+                                    width: ScreenUtil().setWidth(1100),
+                                    height: ScreenUtil().setHeight(190),
+                                    margin: EdgeInsets.only(
+                                      left: 19,
+                                      top: 20,
+                                      right: 19,
+                                    ).r,
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Home',
+                                      style: TextStyle(fontSize: 65.sp),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),

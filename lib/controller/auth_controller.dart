@@ -2,24 +2,23 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/view/screen/home_screen.dart';
 
 import '../model/user.dart';
-import '../service/local_service/local_auth_service.dart';
 import '../service/remote_service/remote_auth_service.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   Rxn<User> user = Rxn<User>();
-  final LocalAuthService _localAuthService = LocalAuthService();
 
   @override
   void onInit() async {
-    await _localAuthService.init();
     super.onInit();
   }
 
   void signUp(
       {required String fullName,
+      required int phoneNumber,
       required String email,
       required String password}) async {
     try {
@@ -33,22 +32,21 @@ class AuthController extends GetxController {
       );
       if (result.statusCode == 200) {
         String token = json.decode(result.body)['jwt'];
-        var userResult = await RemoteAuthService()
-            .createProfile(fullName: fullName, token: token);
+        var userResult = await RemoteAuthService().createProfile(
+            fullName: fullName, phoneNumber: phoneNumber, token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
-          await _localAuthService.addToken(token: token);
-          await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Navigator.of(Get.overlayContext!).pop();
+          Get.to(() => HomeScreen());
         } else {
-          EasyLoading.showError('Something wrong. Try again!');
+          EasyLoading.showError('Something wrong1. Try again!');
         }
       } else {
-        EasyLoading.showError('Something wrong. Try again!');
+        EasyLoading.showError('Something wrong2. Try again!');
       }
     } catch (e) {
-      EasyLoading.showError('Something wrong. Try again!');
+      print(e.toString());
+      EasyLoading.showError('Something wrong3. Try again!');
     } finally {
       EasyLoading.dismiss();
     }
@@ -69,22 +67,20 @@ class AuthController extends GetxController {
         var userResult = await RemoteAuthService().getProfile(token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
-          await _localAuthService.addToken(token: token);
-          await _localAuthService.addUser(user: user.value!);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Navigator.of(Get.overlayContext!).pop();
+          Get.to(() => HomeScreen());
         } else {
-          EasyLoading.showError('Something wrong. Try again!');
+          EasyLoading.showError('Something wrong1. Try again!');
         }
       } else {
-        EasyLoading.showError('Username/password wrong');
+        EasyLoading.showError('Username/password2 wrong');
       }
     } catch (e) {
       print('Sign up');
 
       debugPrint(e.toString());
       print(e.toString());
-      EasyLoading.showError('Something wrong. Try again!');
+      EasyLoading.showError('Something wrong3. Try again!');
     } finally {
       EasyLoading.dismiss();
     }
@@ -92,6 +88,5 @@ class AuthController extends GetxController {
 
   void signOut() async {
     user.value = null;
-    await _localAuthService.clear();
   }
 }

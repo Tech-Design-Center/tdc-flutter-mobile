@@ -47,10 +47,6 @@ dependencies:
   carousel_slider: ^4.1.1
   intl: ^0.17.0
   flutter_easyloading: ^3.0.5
-
-  #local db
-  hive: ^2.2.0
-  hive_flutter: ^1.1.0
   smooth_page_indicator: ^1.0.0+2
   email_validator: ^2.1.17
   flutter_svg: ^1.1.6
@@ -61,7 +57,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  hive_generator: ^1.1.2
   build_runner: ^2.1.11
 
   # The "flutter_lints" package below contains a set of recommended lints to
