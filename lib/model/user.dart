@@ -1,28 +1,20 @@
 import 'dart:convert';
 
-import 'package:hive/hive.dart';
-
-part 'user.g.dart';
-
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
-@HiveType(typeId: 4)
 class User {
-  @HiveField(0)
   String id;
-  @HiveField(1)
   String fullName;
-  @HiveField(2)
   String email;
-  @HiveField(3)
+  int phoneNumber;
   String? image;
-  @HiveField(4)
   DateTime? birthDay;
 
   User(
       {required this.id,
       required this.fullName,
       required this.email,
+      required this.phoneNumber,
       this.image,
       this.birthDay});
 
@@ -30,6 +22,7 @@ class User {
         id: data['id'].toString(),
         fullName: data['fullName'],
         email: data['email'],
+        phoneNumber: data['phoneNumber'],
         image: data['image'] == null ? null : data['image']['url'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
       );
