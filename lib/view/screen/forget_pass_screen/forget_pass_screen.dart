@@ -17,7 +17,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           body: Padding(
             padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 14.w),
             child: Container(
