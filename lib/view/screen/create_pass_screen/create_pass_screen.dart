@@ -25,11 +25,12 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
               child: Scaffold(
                 resizeToAvoidBottomInset: true,
                 body: SingleChildScrollView(
-                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   physics: BouncingScrollPhysics(),
                   child: Padding(
-                    padding:  EdgeInsets.symmetric(
-                        vertical: 20.h, horizontal: 14.w),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 14.w),
                     child: Container(
                       width: ScreenUtil().screenWidth,
                       child: Column(
@@ -38,14 +39,11 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets
-                                .only(
-
+                            padding: EdgeInsets.only(
                               left: 24,
                               top: 70,
                               right: 24,
-                            )
-                                .r,
+                            ).r,
                             child: Image(
                               image: AssetImage('assets/images/logo.png'),
                               height: ScreenUtil().setHeight(600),
@@ -56,20 +54,16 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                             width: ScreenUtil().setWidth(
                               1000.00,
                             ),
-                            margin: EdgeInsets
-                                .only(
-
+                            margin: EdgeInsets.only(
                               left: 24,
                               top: 30,
                               right: 24,
-                            )
-                                .r,
+                            ).r,
                             child: Text(
                               "Create New Password",
                               maxLines: null,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-
                                 fontSize: ScreenUtil().setSp(
                                   90,
                                 ),
@@ -84,14 +78,11 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                             width: ScreenUtil().setWidth(
                               1000.00,
                             ),
-                            margin: EdgeInsets
-                                .only(
-
+                            margin: EdgeInsets.only(
                               left: 24,
                               top: 16,
                               right: 24,
-                            )
-                                .r,
+                            ).r,
                             child: Text(
                               "If continuing, you have agreed to our Terms of service and confirm you have read our Privacy and Cookie Statement",
                               maxLines: null,
@@ -109,28 +100,20 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                           ),
                           //input
                           Container(
-                            padding: EdgeInsets
-                                .only(left: 90, right: 90, top: 50)
-                                .r,
+                            padding:
+                                EdgeInsets.only(left: 90, right: 90, top: 50).r,
                             alignment: Alignment.center,
-
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-
-
-
                                 Container(
                                   width: double.infinity,
-                                  margin: EdgeInsets
-                                      .only(
-
+                                  margin: EdgeInsets.only(
                                     left: 24,
                                     top: 50,
                                     right: 24,
-                                  )
-                                      .r,
+                                  ).r,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
                                       ScreenUtil().setWidth(
@@ -145,33 +128,31 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
-                                          padding: EdgeInsets
-                                              .only(
+                                          padding: EdgeInsets.only(
                                             top: 30,
                                             left: 20,
                                             right: 20,
-                                          )
-                                              .r,
+                                          ).r,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets
-                                                    .only(
-
+                                                padding: EdgeInsets.only(
                                                   top: 2,
-                                                )
-                                                    .r,
+                                                ).r,
                                                 child: Text(
                                                   "Password",
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: ScreenUtil().setSp(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(
                                                       65,
                                                     ),
                                                     fontFamily: 'Poppins',
@@ -181,22 +162,22 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsets
-                                                    .only(
-
+                                                padding: EdgeInsets.only(
                                                   bottom: 3,
-                                                )
-                                                    .r,
+                                                ).r,
                                                 child: Text(
                                                   " *",
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     color: Colors.red,
-                                                    fontSize: ScreenUtil().setSp(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(
                                                       60,
                                                     ),
-                                                    fontFamily: 'Source Sans Pro',
+                                                    fontFamily:
+                                                        'Source Sans Pro',
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
@@ -206,15 +187,16 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 30).r,
+                                        padding:
+                                            const EdgeInsets.only(top: 30).r,
                                         child: TextFormField(
-                                          keyboardType: TextInputType.visiblePassword,
+                                          keyboardType:
+                                              TextInputType.visiblePassword,
                                           textInputAction: TextInputAction.next,
                                           //controller: _userPasswordController,
                                           obscureText: !_passwordVisible,
                                           //This will obscure text dynamically
                                           decoration: InputDecoration(
-
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
@@ -230,14 +212,14 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                                 _passwordVisible
                                                     ? Icons.visibility
                                                     : Icons.visibility_off,
-                                                color: Theme
-                                                    .of(context)
+                                                color: Theme.of(context)
                                                     .primaryColor,
                                               ),
                                               onPressed: () {
                                                 // Update the state i.e. toogle the state of passwordVisible variable
                                                 setState(() {
-                                                  _passwordVisible = !_passwordVisible;
+                                                  _passwordVisible =
+                                                      !_passwordVisible;
                                                 });
                                               },
                                             ),
@@ -249,14 +231,11 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                 ),
                                 Container(
                                   width: double.infinity,
-                                  margin: EdgeInsets
-                                      .only(
-
+                                  margin: EdgeInsets.only(
                                     left: 24,
                                     top: 50,
                                     right: 24,
-                                  )
-                                      .r,
+                                  ).r,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
                                       ScreenUtil().setWidth(
@@ -271,33 +250,31 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
-                                          padding: EdgeInsets
-                                              .only(
+                                          padding: EdgeInsets.only(
                                             top: 30,
                                             left: 20,
                                             right: 20,
-                                          )
-                                              .r,
+                                          ).r,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets
-                                                    .only(
-
+                                                padding: EdgeInsets.only(
                                                   top: 2,
-                                                )
-                                                    .r,
+                                                ).r,
                                                 child: Text(
                                                   "Re-Type Password",
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: ScreenUtil().setSp(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(
                                                       65,
                                                     ),
                                                     fontFamily: 'Poppins',
@@ -307,22 +284,22 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsets
-                                                    .only(
-
+                                                padding: EdgeInsets.only(
                                                   bottom: 3,
-                                                )
-                                                    .r,
+                                                ).r,
                                                 child: Text(
                                                   " *",
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     color: Colors.red,
-                                                    fontSize: ScreenUtil().setSp(
+                                                    fontSize:
+                                                        ScreenUtil().setSp(
                                                       60,
                                                     ),
-                                                    fontFamily: 'Source Sans Pro',
+                                                    fontFamily:
+                                                        'Source Sans Pro',
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
@@ -332,15 +309,16 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 30).r,
+                                        padding:
+                                            const EdgeInsets.only(top: 30).r,
                                         child: TextFormField(
-                                          keyboardType: TextInputType.visiblePassword,
+                                          keyboardType:
+                                              TextInputType.visiblePassword,
                                           textInputAction: TextInputAction.done,
                                           //controller: _userPasswordController,
                                           obscureText: !_passwordVisible,
                                           //This will obscure text dynamically
                                           decoration: InputDecoration(
-
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
@@ -356,14 +334,14 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                                                 _passwordVisible
                                                     ? Icons.visibility
                                                     : Icons.visibility_off,
-                                                color: Theme
-                                                    .of(context)
+                                                color: Theme.of(context)
                                                     .primaryColor,
                                               ),
                                               onPressed: () {
                                                 // Update the state i.e. toogle the state of passwordVisible variable
                                                 setState(() {
-                                                  _passwordVisible = !_passwordVisible;
+                                                  _passwordVisible =
+                                                      !_passwordVisible;
                                                 });
                                               },
                                             ),
@@ -377,34 +355,37 @@ class _CreatePassScreenState extends State<CreatePassScreen> {
                             ),
                           ),
 
-
                           Padding(
-                            padding: EdgeInsets.only(top: 650).r ,
+                            padding: EdgeInsets.only(top: 650).r,
                             child: ElevatedButton(
                               style: ButtonStyle(
                                   shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
+                                          RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(18.0),
-                                          side: BorderSide(color: Colors.blue)
-                                      )
-                                  )
-                              ),
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                          side:
+                                              BorderSide(color: Colors.blue)))),
                               onPressed: () {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            SuccessScreen()),
-                                        (Route<dynamic> route) => false);
-                              }, child: Container(
-
-                              width: ScreenUtil().setWidth(1100),
-                              height: ScreenUtil().setHeight(190),
-                              margin: EdgeInsets
-                                  .only(left: 19, top: 20, right: 19,)
-                                  .r,
-                              alignment: Alignment.center,
-                              child: Text('Login', style: TextStyle(fontSize: 65.sp),),),
+                                        builder: (context) => SuccessScreen()),
+                                    (Route<dynamic> route) => false);
+                              },
+                              child: Container(
+                                width: ScreenUtil().setWidth(1100),
+                                height: ScreenUtil().setHeight(190),
+                                margin: EdgeInsets.only(
+                                  left: 19,
+                                  top: 20,
+                                  right: 19,
+                                ).r,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(fontSize: 65.sp),
+                                ),
+                              ),
                             ),
                           ),
                         ],

@@ -76,8 +76,6 @@ class AuthController extends GetxController {
         EasyLoading.showError('Username/password2 wrong');
       }
     } catch (e) {
-      print('Sign up');
-
       debugPrint(e.toString());
       print(e.toString());
       EasyLoading.showError('Something wrong3. Try again!');
