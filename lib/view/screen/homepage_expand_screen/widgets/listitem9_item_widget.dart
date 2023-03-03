@@ -4,17 +4,15 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
-
 // ignore: must_be_immutable
 class Listitem9ItemWidget extends StatelessWidget {
   Listitem9ItemWidget();
 
   @override
   Widget build(BuildContext context) {
-
     return IntrinsicWidth(
       child: InkWell(
-        onTap: (){
+        onTap: () {
           /*
            Navigator.push(
     context,
@@ -27,7 +25,6 @@ class Listitem9ItemWidget extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: Container(
             margin: EdgeInsets.only(
-                                  
               right: 0,
             ),
             decoration: BoxDecoration(
@@ -61,8 +58,7 @@ class Listitem9ItemWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding:  EdgeInsets.only(
-                                        
+                    padding: EdgeInsets.only(
                       left: 16,
                       top: 16,
                       right: 16,
@@ -74,7 +70,9 @@ class Listitem9ItemWidget extends StatelessWidget {
                         ),
                       ),
                       child: Image(
-                        image: AssetImage(ImageConstant.imgRectangle792,),
+                        image: AssetImage(
+                          ImageConstant.imgRectangle792,
+                        ),
                         height: ScreenUtil().setHeight(600),
                         width: ScreenUtil().setWidth(600),
                       ),
@@ -86,7 +84,6 @@ class Listitem9ItemWidget extends StatelessWidget {
                     227.00,
                   ),
                   margin: EdgeInsets.only(
-                                  
                     left: 16,
                     top: 17,
                     right: 16,
@@ -96,7 +93,6 @@ class Listitem9ItemWidget extends StatelessWidget {
                     maxLines: null,
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                       
                       fontSize: ScreenUtil().setSp(
                         14,
                       ),
@@ -107,8 +103,7 @@ class Listitem9ItemWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(
-                                        
+                  padding: EdgeInsets.only(
                     left: 16,
                     top: 7,
                     right: 16,
@@ -131,8 +126,7 @@ class Listitem9ItemWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding:  EdgeInsets.only(
-                                        
+                    padding: EdgeInsets.only(
                       left: 16,
                       top: 8,
                       right: 16,
@@ -144,8 +138,7 @@ class Listitem9ItemWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(
-                                        
+                          padding: EdgeInsets.only(
                             left: 1,
                             top: 3,
                             bottom: 4,
@@ -155,21 +148,21 @@ class Listitem9ItemWidget extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(
-                                        
+                                padding: EdgeInsets.only(
                                   top: 1,
                                   bottom: 1,
                                 ).r,
                                 child: Image(
-                                  image: AssetImage(ImageConstant.imgStar,),
+                                  image: AssetImage(
+                                    ImageConstant.imgStar,
+                                  ),
                                   height: ScreenUtil().setHeight(600),
                                   width: ScreenUtil().setWidth(600),
                                 ),
                               ),
                               20.horizontalSpace,
                               Padding(
-                                padding:  EdgeInsets.only(
-                                        
+                                padding: EdgeInsets.only(
                                   left: 0,
                                 ).r,
                                 child: Text(
@@ -177,33 +170,31 @@ class Listitem9ItemWidget extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                     
                                     fontSize: ScreenUtil().setSp(
                                       14,
                                     ),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w400,
-                                   
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(
-                                        
+                                padding: EdgeInsets.only(
                                   left: 18,
                                   top: 1,
                                   bottom: 1,
                                 ).r,
                                 child: Image(
-                                  image: AssetImage(ImageConstant.imgUser,),
+                                  image: AssetImage(
+                                    ImageConstant.imgUser,
+                                  ),
                                   height: ScreenUtil().setHeight(600),
                                   width: ScreenUtil().setWidth(600),
                                 ),
                               ),
                               20.horizontalSpace,
                               Padding(
-                                padding:  EdgeInsets.only(
-                                        
+                                padding: EdgeInsets.only(
                                   left: 0,
                                 ).r,
                                 child: Text(
@@ -211,13 +202,11 @@ class Listitem9ItemWidget extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                     
                                     fontSize: ScreenUtil().setSp(
                                       14,
                                     ),
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.w400,
-                                   
                                   ),
                                 ),
                               ),
@@ -225,8 +214,7 @@ class Listitem9ItemWidget extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding:  EdgeInsets.only(
-                                        
+                          padding: EdgeInsets.only(
                             top: 3,
                             bottom: 2,
                           ).r,

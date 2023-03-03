@@ -4,17 +4,15 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
-
 // ignore: must_be_immutable
 class Listitem8ItemWidget extends StatelessWidget {
   Listitem8ItemWidget();
 
   @override
   Widget build(BuildContext context) {
-
     return IntrinsicWidth(
       child: InkWell(
-        onTap: (){
+        onTap: () {
           /*
           Navigator.push(
     context,
@@ -26,10 +24,9 @@ class Listitem8ItemWidget extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerRight,
           child: Container(
-            width:  ScreenUtil().setWidth(850),
+            width: ScreenUtil().setWidth(850),
             height: ScreenUtil().setHeight(1200),
             margin: EdgeInsets.only(
-
               right: 0,
             ).r,
             decoration: BoxDecoration(
@@ -41,7 +38,7 @@ class Listitem8ItemWidget extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color:ColorConstant.black9001e,
+                  color: ColorConstant.black9001e,
                   spreadRadius: ScreenUtil().setWidth(
                     0.00,
                   ),
@@ -63,8 +60,7 @@ class Listitem8ItemWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding:  EdgeInsets.only(
-                                        
+                    padding: EdgeInsets.only(
                       left: 16,
                       top: 16,
                       right: 16,
@@ -76,7 +72,9 @@ class Listitem8ItemWidget extends StatelessWidget {
                         ),
                       ),
                       child: Image(
-                        image: AssetImage(ImageConstant.imgPhoto200X326,),
+                        image: AssetImage(
+                          ImageConstant.imgPhoto200X326,
+                        ),
                         height: ScreenUtil().setHeight(600),
                         width: ScreenUtil().setWidth(1400),
                       ),
@@ -84,9 +82,7 @@ class Listitem8ItemWidget extends StatelessWidget {
                   ),
                 ),
                 Container(
-
                   margin: EdgeInsets.only(
-                                  
                     left: 16,
                     top: 17,
                     right: 16,
@@ -96,7 +92,6 @@ class Listitem8ItemWidget extends StatelessWidget {
                     maxLines: null,
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                       
                       fontSize: ScreenUtil().setSp(
                         60,
                       ),
@@ -107,8 +102,7 @@ class Listitem8ItemWidget extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(
-                                        
+                  padding: EdgeInsets.only(
                     left: 16,
                     top: 13,
                     right: 16,
@@ -131,8 +125,7 @@ class Listitem8ItemWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding:  EdgeInsets.only(
-                                        
+                    padding: EdgeInsets.only(
                       left: 16,
                       top: 40,
                       right: 16,
@@ -144,32 +137,27 @@ class Listitem8ItemWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(
-
+                          padding: EdgeInsets.only(
                             left: 18,
                             top: 20,
                             bottom: 1,
                           ).r,
                           child: Container(
-
                               width: ScreenUtil().setWidth(800),
                               height: ScreenUtil().setHeight(120),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(50)).w  ,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)).w,
                                 color: Colors.grey.shade300,
                               ),
-
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text("View"),
                                 ],
-                              )
-
-                          ),
+                              )),
                         ),
-
                       ],
                     ),
                   ),

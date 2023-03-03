@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/screen/forget_pass_screen/forget_pass_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/otp_verification_code_screen/otp_verification_code_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/sign_up_screen/sign_up_screen.dart';
 
 import '../../../controller/controllers.dart';
+import '../../bottom_sheet_bar.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -380,11 +383,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(color: Colors.blue)))),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            authController.signIn(
-                                email: emailController.text,
-                                password: passwordController.text);
-                          }
+                          // if (_formKey.currentState!.validate()) {
+                          //   authController.signIn(
+                          //       email: emailController.text,
+                          //       password: passwordController.text);
+                          // }
+                          Get.to(() => BottomSheetBar());
                         },
                         child: Container(
                           width: ScreenUtil().setWidth(1100),
