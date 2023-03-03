@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/view/bottom_sheet_bar.dart';
 import 'package:tdc_frontend_mobile/view/screen/home_screen.dart';
 
 import '../model/user.dart';
@@ -37,7 +38,7 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Get.to(() => HomeScreen());
+          Get.to(() => BottomSheetBar());
         } else {
           EasyLoading.showError('Something wrong1. Try again!');
         }
@@ -70,15 +71,15 @@ class AuthController extends GetxController {
           EasyLoading.showSuccess("Welcome to TDC!");
           Get.to(() => HomeScreen());
         } else {
-          EasyLoading.showError('Something wrong1. Try again!');
+          EasyLoading.showError('Something wrong. Try again!');
         }
       } else {
-        EasyLoading.showError('Username/password2 wrong');
+        EasyLoading.showError('Username/password wrong');
       }
     } catch (e) {
       debugPrint(e.toString());
       print(e.toString());
-      EasyLoading.showError('Something wrong3. Try again!');
+      EasyLoading.showError('Something wrong. Try again!');
     } finally {
       EasyLoading.dismiss();
     }

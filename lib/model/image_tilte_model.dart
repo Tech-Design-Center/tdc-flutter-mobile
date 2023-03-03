@@ -1,7 +1,5 @@
 class ImageTitleModel {
-  String img;
-  String title;
-  ImageTitleModel(
-    {required this.img,required this.title}
-  );
+  String image;
+  String name;
+  ImageTitleModel({required this.image, required this.name});
 }
