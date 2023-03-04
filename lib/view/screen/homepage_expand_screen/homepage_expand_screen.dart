@@ -12,6 +12,9 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/c
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/carousel_slider/carousel_slider_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/category/category_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/category/category_list_view.dart';
+import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_list_view.dart';
+import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_list_view.dart';
+import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
 
 import '../../../controller/controllers.dart';
@@ -664,31 +667,18 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 ],
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                height: ScreenUtil().setHeight(
-                                  1050,
-                                ),
-                                child: ListView.separated(
-                                  separatorBuilder: (context, index) =>
-                                      SizedBox(
-                                          width: ScreenUtil().setWidth(24)),
-                                  padding: EdgeInsets.only(
-                                          bottom: 10,
-                                          top: 40,
-                                          left: 20,
-                                          right: 20)
-                                      .r,
-                                  scrollDirection: Axis.horizontal,
-                                  physics: BouncingScrollPhysics(),
-                                  itemCount: 3,
-                                  itemBuilder: (context, index) {
-                                    return Listitem8ItemWidget();
-                                  },
-                                ),
-                              ),
-                            ),
+
+                            //recommend data
+                            Obx(() {
+                              print(homeController.recommendList.length);
+                              if (homeController.recommendList.isNotEmpty) {
+                                return RecommendListView(
+                                    recommendList:
+                                        homeController.recommendList);
+                              } else {
+                                return const RecommendLoading();
+                              }
+                            }),
                             SizedBox(
                               height: ScreenUtil().setHeight(100),
                             ),
@@ -762,31 +752,16 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 ],
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                height: ScreenUtil().setHeight(
-                                  1050,
-                                ),
-                                child: ListView.separated(
-                                  separatorBuilder: (context, index) =>
-                                      SizedBox(
-                                          width: ScreenUtil().setWidth(24)),
-                                  padding: EdgeInsets.only(
-                                          bottom: 10,
-                                          top: 40,
-                                          left: 20,
-                                          right: 20)
-                                      .r,
-                                  scrollDirection: Axis.horizontal,
-                                  physics: BouncingScrollPhysics(),
-                                  itemCount: 3,
-                                  itemBuilder: (context, index) {
-                                    return Listitem8ItemWidget();
-                                  },
-                                ),
-                              ),
-                            ),
+                            //popular data
+                            Obx(() {
+                              print(homeController.popularList.length);
+                              if (homeController.popularList.isNotEmpty) {
+                                return PopularListView(
+                                    popularList: homeController.popularList);
+                              } else {
+                                return const RecommendLoading();
+                              }
+                            }),
                             SizedBox(
                               height: ScreenUtil().setHeight(200),
                             ),
