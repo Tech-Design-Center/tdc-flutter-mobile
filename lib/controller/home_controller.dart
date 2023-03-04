@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/service/remote_service/remote_category_service.dart';
 import 'package:tdc_frontend_mobile/service/remote_service/remote_popular_service.dart';
 import 'package:tdc_frontend_mobile/service/remote_service/remote_recommend_service.dart';
@@ -9,11 +10,10 @@ import '../model/recommend.dart';
 import '../service/remote_service/remote_banner_service.dart';
 
 class HomeController extends GetxController {
-  static HomeController instance = Get.find();
   RxList<AdBanner> bannerList = List<AdBanner>.empty(growable: true).obs;
   RxList<Category> categoryList = List<Category>.empty(growable: true).obs;
   RxList<Recommend> recommendList = List<Recommend>.empty(growable: true).obs;
-  RxList<Recommend> popularList = List<Recommend>.empty(growable: true).obs;
+  RxList<Popular> popularList = List<Popular>.empty(growable: true).obs;
 
   RxBool isBannerLoading = false.obs;
   RxBool isCategoryLoading = false.obs;
@@ -84,7 +84,7 @@ class HomeController extends GetxController {
       var result = await RemotePopularService().get();
       if (result != null) {
         //assign api result
-        popularList.assignAll(recommendListFromJson(result.body));
+        popularList.assignAll(popularListFromJson(result.body));
         //save api result to local db
 
       }

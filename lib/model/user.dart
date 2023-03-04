@@ -23,7 +23,7 @@ class User {
         fullName: data['fullName'],
         email: data['email'],
         phoneNumber: data['phoneNumber'],
-        image: data['image'] == null ? null : data['image']['url'],
+        image: data['image']['url'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
       );
 }

@@ -1,3 +1,21 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/view/bottom_sheet_bar.dart';
 
-class SettingController extends GetxController {}
+import '../model/user.dart';
+import '../service/remote_service/remote_auth_service.dart';
+
+class SettingController extends GetxController {
+  Rxn<User> user = Rxn<User>();
+
+  @override
+  void onInit() async {
+    super.onInit();
+  }
+
+  void signOut() async {
+    user.value = null;
+  }
+}

@@ -13,6 +13,7 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/c
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/category/category_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/category/category_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_list_view.dart';
+import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
@@ -759,7 +760,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 return PopularListView(
                                     popularList: homeController.popularList);
                               } else {
-                                return const RecommendLoading();
+                                return const PopularLoading();
                               }
                             }),
                             SizedBox(

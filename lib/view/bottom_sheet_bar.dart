@@ -5,7 +5,7 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/course_list_screen/course_list_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tdc_frontend_mobile/view/screen/profile_screen/profile_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting_screen/setting_screen.dart';
 
 // ignore: must_be_immutable
 class BottomSheetBar extends StatefulWidget {
@@ -21,7 +21,7 @@ class _BottomSheetBarState extends State<BottomSheetBar>
   List<Widget> screens = [
     HomepageExpandScreen(),
     CourseListScreen(),
-    ProfileScreen(),
+    SettingScreen(),
   ];
 
   final keyThree = GlobalKey();

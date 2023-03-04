@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
+import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/data/coursesList.dart';
@@ -8,14 +11,15 @@ import 'package:tdc_frontend_mobile/main.dart';
 import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/Screen/sign_in_screen/sign_in_screen.dart';
 
+import '../../../core/constants/const.dart';
 import '../homepage_expand_screen/light_settings_language_screen.dart';
 
-class ProfileScreen extends StatefulWidget {
+class SettingScreen extends StatefulWidget {
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>
+class _SettingScreenState extends State<SettingScreen>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
 
@@ -103,6 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      //popular data
                       Padding(
                         padding: EdgeInsets.only(
                           bottom: 0,
@@ -116,8 +121,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                             ),
                           ),
                           child: Image(
-                            image: AssetImage(
-                              ImageConstant.imgEllipse33,
+                            image: NetworkImage(
+                              '$baseUrl${authController.user.value?.image}' ??
+                                  ImageConstant.imgImage1,
                             ),
                             height: ScreenUtil().setHeight(550),
                             width: ScreenUtil().setWidth(550),
@@ -131,7 +137,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                           right: 29,
                         ).r,
                         child: Text(
-                          "Tech Design Center",
+                          authController.user.value?.fullName ??
+                              "Sign in your account",
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.start,
                           style: TextStyle(
@@ -156,7 +163,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                           right: 29,
                         ),
                         child: Text(
-                          "Student ID : #1234",
+                          "Student ID : # ${authController.user.value?.id ?? 0}",
                           maxLines: null,
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -521,12 +528,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SignInScreen()),
-                                        );
+                                        settingController.signOut();
                                       },
                                       child: Container(
                                         height: ScreenUtil().setHeight(200),
