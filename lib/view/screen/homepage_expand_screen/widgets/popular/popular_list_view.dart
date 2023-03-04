@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_card.dart';
 
 import '../../../../../model/category.dart';
@@ -9,7 +10,7 @@ import '../../../../../model/recommend.dart';
 import '../category/category_card.dart';
 
 class PopularListView extends StatefulWidget {
-  final List<Recommend> popularList;
+  final List<Popular> popularList;
   const PopularListView({Key? key, required this.popularList})
       : super(key: key);
 
