@@ -19,6 +19,7 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/r
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
 
 import '../../../controller/controllers.dart';
+import '../../../core/constants/const.dart';
 import '../homepage_expand_screen/widgets/listitem10_item_widget.dart';
 import '../homepage_expand_screen/widgets/listitem8_item_widget.dart';
 import '../homepage_expand_screen/widgets/listitem9_item_widget.dart';
@@ -66,15 +67,17 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(300),
-                        child: Image.asset(
-                          ImageConstant.imgEllipse33,
+                        child: Image.network(
+                          '$baseUrl${authController.user.value?.image}' ??
+                              ImageConstant.imgImage1,
                           width: ScreenUtil().setWidth(200),
                           height: ScreenUtil().setHeight(200),
                         ),
                       ),
                       20.horizontalSpace,
                       Text(
-                        'Tech Design Center',
+                        authController.user.value?.fullName ??
+                            "Sign in your account",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: ScreenUtil().setSp(70),
@@ -334,9 +337,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             child: Row(
                               children: [
                                 Image(
-                                  image: AssetImage(
-                                    ImageConstant.imgEllipse33,
-                                  ),
+                                  image: NetworkImage(
+                                    '$baseUrl${authController.user.value?.image}' ??
+                                        ImageConstant.imgImage1,                                  ),
                                   height: ScreenUtil().setHeight(200),
                                   width: ScreenUtil().setWidth(200),
                                 ),
@@ -379,7 +382,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                           top: 7,
                                         ).r,
                                         child: Text(
-                                          "Tech Design Center",
+                                          authController.user.value?.fullName ??
+                                              "Sign in your account",
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
