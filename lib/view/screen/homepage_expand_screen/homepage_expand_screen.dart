@@ -339,7 +339,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 Image(
                                   image: NetworkImage(
                                     '$baseUrl${authController.user.value?.image}' ??
-                                        ImageConstant.imgImage1,
+                                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                                   ),
                                   height: ScreenUtil().setHeight(200),
                                   width: ScreenUtil().setWidth(200),

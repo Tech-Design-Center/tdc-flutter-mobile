@@ -9,7 +9,7 @@ class AdBanner {
 
   AdBanner({required this.id, required this.image});
 
-  factory AdBanner.fromJson(Map<String, dynamic> data) => AdBanner(
+  factory AdBanner.fromJson(Map<dynamic, dynamic> data) => AdBanner(
       id: data['id'],
       image: data['attributes']['image']['data']['attributes']['url']);
 }
