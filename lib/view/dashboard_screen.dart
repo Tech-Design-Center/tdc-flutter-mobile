@@ -8,15 +8,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/setting_screen.dart';
 
 // ignore: must_be_immutable
-class BottomSheetBar extends StatefulWidget {
+class DashboardScreen extends StatefulWidget {
   int selectedNavBarIndex;
-  BottomSheetBar({this.selectedNavBarIndex = 0});
+  DashboardScreen({this.selectedNavBarIndex = 0});
 
   @override
-  State<BottomSheetBar> createState() => _BottomSheetBarState();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _BottomSheetBarState extends State<BottomSheetBar>
+class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
   List<Widget> screens = [
     HomepageExpandScreen(),
