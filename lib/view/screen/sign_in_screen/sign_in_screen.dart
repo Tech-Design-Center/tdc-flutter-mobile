@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/forget_pass_screen/forget_pass_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/otp_verification_code_screen/otp_verification_code_screen.dart';
@@ -383,14 +384,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                     side: BorderSide(color: Colors.blue)))),
                         onPressed: () {
                           //formal way
-                          if (_formKey.currentState!.validate()) {
-                            authController.signIn(
-                                email: emailController.text,
-                                password: passwordController.text);
-                          }
+                          // if (_formKey.currentState!.validate()) {
+                          //   authController.signIn(
+                          //       email: emailController.text,
+                          //       password: passwordController.text);
+                          // }
 
                           //for testing app
-                          // Get.to(() => BottomSheetBar());
+                          Get.to(() => DashboardScreen());
                         },
                         child: Container(
                           width: ScreenUtil().setWidth(1100),

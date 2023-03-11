@@ -67,11 +67,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(300),
-                        child: Image.network(
-                          '$baseUrl${authController.user.value?.image}' ??
-                              ImageConstant.imgImage1,
-                          width: ScreenUtil().setWidth(200),
-                          height: ScreenUtil().setHeight(200),
+                        child: CircleAvatar(
+                          foregroundImage: NetworkImage(
+                              '$baseUrl${authController.user.value?.image}'),
+                          radius: 100.r,
                         ),
                       ),
                       20.horizontalSpace,
@@ -339,9 +338,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 CircleAvatar(
                                   radius: 100.r,
                                   foregroundImage: NetworkImage(
-                                    '$baseUrl${authController.user.value?.image}' ??
-                                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
-                                  ),
+                                      '$baseUrl${authController.user.value?.image}'),
                                 ),
                                 0.8.horizontalSpace,
                                 Container(
