@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 
 import '../../../../../model/ad_banner.dart';
 import 'banner_card.dart';
@@ -53,7 +54,7 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
-                      ? const Color.fromRGBO(0, 0, 0, 0.9)
+                      ? Colors.indigo
                       : const Color.fromRGBO(0, 0, 0, 0.4)),
             );
           }).toList(),

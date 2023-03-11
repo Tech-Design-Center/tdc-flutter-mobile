@@ -336,13 +336,12 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             ),
                             child: Row(
                               children: [
-                                Image(
-                                  image: NetworkImage(
+                                CircleAvatar(
+                                  radius: 100.r,
+                                  foregroundImage: NetworkImage(
                                     '$baseUrl${authController.user.value?.image}' ??
                                         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                                   ),
-                                  height: ScreenUtil().setHeight(200),
-                                  width: ScreenUtil().setWidth(200),
                                 ),
                                 0.8.horizontalSpace,
                                 Container(

@@ -8,7 +8,6 @@ import 'package:tdc_frontend_mobile/view/screen/otp_verification_code_screen/otp
 import 'package:tdc_frontend_mobile/view/screen/sign_up_screen/sign_up_screen.dart';
 
 import '../../../controller/controllers.dart';
-import '../../bottom_sheet_bar.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
