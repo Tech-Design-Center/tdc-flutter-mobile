@@ -383,15 +383,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(color: Colors.blue)))),
                         onPressed: () {
-                          //formal way
-                          // if (_formKey.currentState!.validate()) {
-                          //   authController.signIn(
-                          //       email: emailController.text,
-                          //       password: passwordController.text);
-                          // }
+
+                          if (_formKey.currentState!.validate()) {
+                            authController.signIn(
+                                email: emailController.text,
+                                password: passwordController.text);
+                          }
 
                           //for testing app
-                          Get.to(() => DashboardScreen());
+                          //Get.to(() => DashboardScreen());
                         },
                         child: Container(
                           width: ScreenUtil().setWidth(1100),

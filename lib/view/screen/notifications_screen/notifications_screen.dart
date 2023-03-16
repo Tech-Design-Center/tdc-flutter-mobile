@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import '../notifications_screen/widgets/listsketchingtran_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,20 +14,32 @@ class NotificationsScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.only(left:120).r,
               height: ScreenUtil().setHeight(300),
               width: double.infinity,
               color: Colors.grey.shade200,
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DashboardScreen()),
+                      );
+                    },
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
+
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
 
-                        left: 24,
+                        left: 310,
                         top: 0,
                         right: 24,
                         bottom: 3,
@@ -83,6 +96,7 @@ class NotificationsScreen extends StatelessWidget {
                                   padding:  EdgeInsets.only(
                                       
                                     right: 10,
+                                    bottom: 20
                                   ).r,
                                   child: Text(
                                     "All",
@@ -107,7 +121,7 @@ class NotificationsScreen extends StatelessWidget {
                                   child: ListView.builder(
                                     physics: BouncingScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: 10,
+                                    itemCount: 1,
                                     itemBuilder: (context, index) {
                                       return ListsketchingtranItemWidget();
                                     },

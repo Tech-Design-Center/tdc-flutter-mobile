@@ -7,6 +7,7 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/service/remote_service/remote_category_service.dart';
 import 'package:tdc_frontend_mobile/view/Screen/sign_in_screen/sign_in_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/categories_screen/categories_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/light_settings_language_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/carousel_slider/carousel_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/carousel_slider/carousel_slider_view.dart';
@@ -16,7 +17,10 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/p
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
+import 'package:tdc_frontend_mobile/view/screen/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/popular_screen/popular_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/recommend_screen/recommend_screen.dart';
 
 import '../../../controller/controllers.dart';
 import '../../../core/constants/const.dart';
@@ -62,7 +66,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 24, left: 20, right: 20).r,
+                  padding: EdgeInsets.only(top: 24, left: 50, right: 20).r,
                   child: Row(
                     children: [
                       ClipRRect(
@@ -74,13 +78,16 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         ),
                       ),
                       20.horizontalSpace,
-                      Text(
-                        authController.user.value?.fullName ??
-                            "Sign in your account",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: ScreenUtil().setSp(70),
-                          fontWeight: FontWeight.w600,
+                      Padding(
+                        padding: EdgeInsets.only(left:30).r,
+                        child: Text(
+                          authController.user.value?.fullName ??
+                              "Sign in your account",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: ScreenUtil().setSp(70),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       )
                     ],
@@ -148,37 +155,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            ImageConstant.security,
-                            width: ScreenUtil().setWidth(100),
-                            height: ScreenUtil().setHeight(100),
-                          ),
-                          20.horizontalSpace,
-                          Text(
-                            'Security Access',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: ScreenUtil().setSp(60),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: ColorConstant.indigoA200,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
+
                 Padding(
                   padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
                   child: Align(
@@ -510,21 +487,36 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             //carousel data
-                            Obx(() {
-                              if (homeController.bannerList.isNotEmpty) {
-                                return CarouselSliderView(
-                                    bannerList: homeController.bannerList);
-                              } else {
-                                return const CarouselLoading();
+                            InkWell(
+
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NewsFeedScreen()),
+                                  );
+                                },
+                                child:
+                                Obx(() {
+                                if (homeController.bannerList.isNotEmpty) {
+                                  return CarouselSliderView(
+                                      bannerList: homeController.bannerList);
+                                } else {
+                                  return const CarouselLoading();
+                                }
                               }
-                            }),
+
+                              )
+
+                            ),
+
 
                             //categories title
                             Padding(
                               padding: EdgeInsets.only(
                                 top: 50,
-                                left: 10,
-                                bottom: 5,
+                                left: 20,
+                                bottom: 10,
                               ).r,
                               child: Row(
                                 mainAxisAlignment:
@@ -553,13 +545,12 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                       top: 13,
-                                      right: 50,
+                                      right: 70,
                                       left: 0,
                                       bottom: 5,
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        /*
                                         Navigator.push(
 
     context,
@@ -567,7 +558,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
 
   );
- */
                                       },
                                       child: Text(
                                         "See all",
@@ -590,21 +580,32 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             ),
 
                             //categories data
-                            Obx(() {
-                              print(homeController.categoryList.length);
-                              if (homeController.categoryList.isNotEmpty) {
-                                return CategoryListView(
-                                    categoryList: homeController.categoryList);
-                              } else {
-                                return const CategoryLoading();
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoriesScreen()),
+                                );
+                              },
+                              child: Obx(() {
+
+                                print(homeController.categoryList.length);
+                                if (homeController.categoryList.isNotEmpty) {
+                                  return CategoryListView(
+                                      categoryList: homeController.categoryList);
+                                } else {
+                                  return const CategoryLoading();
+                                }
                               }
-                            }),
+                              ),
+                            ),
 
                             //recommended
                             Padding(
                               padding: EdgeInsets.only(
                                 top: 0,
-                                left: 10,
+                                left: 20,
                                 bottom: 5,
                               ).r,
                               child: Row(
@@ -634,21 +635,19 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                       top: 13,
-                                      right: 50,
+                                      right: 70,
                                       left: 0,
                                       bottom: 5,
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        /*
                                         Navigator.push(
 
     context,
-    MaterialPageRoute(builder: (context)=>CategoriesScreen()),
+    MaterialPageRoute(builder: (context)=>RecommendScreen()),
 
 
   );
- */
                                       },
                                       child: Text(
                                         "See all",
@@ -689,7 +688,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             Padding(
                               padding: EdgeInsets.only(
                                 top: 0,
-                                left: 10,
+                                left: 20,
                                 bottom: 5,
                               ).r,
                               child: Row(
@@ -719,21 +718,19 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                       top: 13,
-                                      right: 50,
+                                      right: 70,
                                       left: 0,
                                       bottom: 5,
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        /*
                                         Navigator.push(
 
     context,
-    MaterialPageRoute(builder: (context)=>CategoriesScreen()),
+    MaterialPageRoute(builder: (context)=>PopularScreen()),
 
 
   );
- */
                                       },
                                       child: Text(
                                         "See all",

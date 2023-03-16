@@ -1,14 +1,16 @@
- import 'package:mystic_academy/models/image_tilte_model.dart';
 
-import '../core/app_export.dart';
+import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/model/image_tilte_model.dart';
+
+
 
 List<ImageTitleModel> categoryList=[
-    ImageTitleModel(img: ImageConstant.category1, title: "IT & Software"),
-    ImageTitleModel(img: ImageConstant.category2, title: "UIUX Design"),
-    ImageTitleModel(img: ImageConstant.category3, title: "Graphic"),
-    ImageTitleModel(img: ImageConstant.category4, title: "Marketing"),
-    ImageTitleModel(img: ImageConstant.category5, title: "Fashion"),
-    ImageTitleModel(img: ImageConstant.category6, title: "Photography"),
-    ImageTitleModel(img: ImageConstant.category7, title: "Art"),
+    ImageTitleModel(image: ImageConstant.category1, name: "IT & Software"),
+    ImageTitleModel(image: ImageConstant.category2, name: "UIUX Design"),
+    ImageTitleModel(image: ImageConstant.category3, name: "Graphic"),
+    ImageTitleModel(image: ImageConstant.category4, name: "Marketing"),
+    ImageTitleModel(image: ImageConstant.category5, name: "Fashion"),
+    ImageTitleModel(image: ImageConstant.category6, name: "Photography"),
+    ImageTitleModel(image: ImageConstant.category7, name: "Art"),
 
   ];

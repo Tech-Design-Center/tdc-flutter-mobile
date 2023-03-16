@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tdc_frontend_mobile/data/coursesList.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/newsfeed_screen/widgets/newsfeed_item_widget.dart';
+import 'package:tdc_frontend_mobile/view/screen/course_screen/widgets/course_item_widget.dart';
 
-class NewsFeedScreen extends StatefulWidget {
-  const NewsFeedScreen({Key? key}) : super(key: key);
+class CourseScreen extends StatefulWidget {
+  const CourseScreen({Key? key}) : super(key: key);
 
   @override
-  State<NewsFeedScreen> createState() => _NewsFeedScreenState();
+  State<CourseScreen> createState() => _CourseScreenState();
 }
 
-class _NewsFeedScreenState extends State<NewsFeedScreen> {
+class _CourseScreenState extends State<CourseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +44,13 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(
 
-                        left: 340,
+                        left: 360,
                         top: 0,
                         right: 24,
                         bottom: 3,
                       ).r,
                       child: Text(
-                        "Newsfeed",
+                        "Courses",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
                         style: TextStyle(
@@ -78,19 +79,16 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-
-
                         Align(
                           alignment: Alignment.center,
                           child: Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(
 
-                              left: 50,
-                              top: 50,
-                              right: 50,
+                              left: 24,
+                              top: 16,
+                              right: 24,
                             ).r,
-
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,21 +96,20 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                               children: [
 
                                 Padding(
-                                  padding:  EdgeInsets.only(
+                                  padding: EdgeInsets.only(
 
-                                    top: 16,
+                                    top: 24,
                                   ).r,
                                   child: ListView.builder(
                                     physics: BouncingScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: 3,
+                                    itemCount: coursesList.length,
                                     itemBuilder: (context, index) {
-                                      return NewsFeed_Items();
+                                      return CourseItemWidget(
+                                          index: index);
                                     },
                                   ),
                                 ),
-
-
                               ],
                             ),
                           ),
@@ -123,8 +120,6 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

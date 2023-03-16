@@ -5,16 +5,16 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
 
 // ignore: must_be_immutable
-class ListsketchingtranItemWidget extends StatelessWidget {
-  ListsketchingtranItemWidget();
+class NewsFeed_Items extends StatelessWidget {
+  NewsFeed_Items();
 
   @override
   Widget build(BuildContext context) {
 
     return Container(
-      height: ScreenUtil().setHeight(300),
+      height: ScreenUtil().setHeight(2000),
       margin: EdgeInsets.only(
-                                
+
         top: 8.0,
         bottom: 8.0,
       ).r,
@@ -41,138 +41,149 @@ class ListsketchingtranItemWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
+      child: Column(
         children: [
-          Padding(
-            padding:  EdgeInsets.only(
-                                      
-              left: 12,
-              top: 13,
-              bottom: 13,
-            ).r,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                ScreenUtil().setWidth(
-                  80.00,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding:  EdgeInsets.only(
+
+                  left: 35,
+                  top: 13,
+                  bottom: 13,
+                  right: 15,
+                ).r,
+                child: ClipRRect(
+
+                  child: Image.asset(
+                    ImageConstant.imgRectangle792,
+                    height: ScreenUtil().setHeight(
+                      400.00,
+                    ),
+                    width: ScreenUtil().setWidth(
+                      350.00,
+                    ),
+                  ),
                 ),
               ),
-              child: Image.asset(
-                ImageConstant.imgRectangle792,
+              Container(
+                width: ScreenUtil().setWidth(900),
+                margin: EdgeInsets.only(
+
+                  left: 12,
+                  top: 40,
+                  bottom: 12,
+                ).r,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding:  EdgeInsets.only(
+
+                          top: 3,
+                          right: 5,
+                          bottom: 5,
+                        ).r,
+                        child: Text(
+                          "New Class Basic Microsoft Office Start in Next Week!",
+                          overflow: TextOverflow.fade,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+
+                            fontSize: ScreenUtil().setSp(
+                              60,
+                            ),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500,
+                            height: 5.h,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(
+
+                        top: 0,
+                        right: 10,
+                      ).r,
+                      child: Text(
+                        "Register New Class in May 2023 and get 25% discount !",
+                        overflow: TextOverflow.fade,
+
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+
+                          fontSize: ScreenUtil().setSp(
+                            40,
+                          ),
+
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          height: 5.h,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(
+
+                        top: 25,
+                        right: 10,
+                      ).r,
+                      child: Text(
+                        "20 mins ago",
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: ColorConstant.bluegray500,
+                          fontSize: ScreenUtil().setSp(
+                            40,
+                          ),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          height: 1.00,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
                 height: ScreenUtil().setHeight(
-                  500.00,
+                  8.00,
                 ),
                 width: ScreenUtil().setWidth(
-                  350.00,
+                  8.00,
+                ),
+                margin: EdgeInsets.only(
+
+                  left: 12,
+                  top: 12,
+                  right: 12,
+                  bottom: 66,
+                ).r,
+                decoration: BoxDecoration(
+                  color: ColorConstant.indigoA200,
+                  borderRadius: BorderRadius.circular(
+                    ScreenUtil().setWidth(
+                      4.00,
+                    ),
+                  ),
                 ),
               ),
-            ),
+
+
+            ],
           ),
-          Container(
-            width: ScreenUtil().setWidth(900),
-            margin: EdgeInsets.only(
-                                
-              left: 12,
-              top: 40,
-              bottom: 12,
-            ).r,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding:  EdgeInsets.only(
-                                      
-                      top: 3,
-                      right: 5,
-                    ).r,
-                    child: Text(
-                      "New Class Basic Microsoft Office Start in Next Week!",
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                         
-                        fontSize: ScreenUtil().setSp(
-                          60,
-                        ),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        height: 1.00,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(
-                                      
-                    top: 15,
-                    right: 10,
-                  ).r,
-                  child: Text(
-                    "Register New Class in May 2023 and get 25% discount !",
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                       
-                      fontSize: ScreenUtil().setSp(
-                        40,
-                      ),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      height: 1.00,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(
-                                      
-                    top: 25,
-                    right: 10,
-                  ).r,
-                  child: Text(
-                    "20 mins ago",
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: ColorConstant.bluegray500,
-                      fontSize: ScreenUtil().setSp(
-                        40,
-                      ),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      height: 1.00,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: ScreenUtil().setHeight(
-              8.00,
-            ),
-            width: ScreenUtil().setWidth(
-              8.00,
-            ),
-            margin: EdgeInsets.only(
-                                
-              left: 12,
-              top: 12,
-              right: 12,
-              bottom: 66,
-            ).r,
-            decoration: BoxDecoration(
-              color: ColorConstant.indigoA200,
-              borderRadius: BorderRadius.circular(
-                ScreenUtil().setWidth(
-                  4.00,
-                ),
-              ),
-            ),
+          Divider(color: Colors.black,height: 10,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset("assets/images/poster.jpg"),
           ),
         ],
       ),

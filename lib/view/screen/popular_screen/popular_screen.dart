@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/newsfeed_screen/widgets/newsfeed_item_widget.dart';
+import 'package:tdc_frontend_mobile/view/screen/popular_screen/widgets/popular_item_widget.dart';
 
-class NewsFeedScreen extends StatefulWidget {
-  const NewsFeedScreen({Key? key}) : super(key: key);
+class PopularScreen extends StatefulWidget {
+  const PopularScreen({Key? key}) : super(key: key);
 
   @override
-  State<NewsFeedScreen> createState() => _NewsFeedScreenState();
+  State<PopularScreen> createState() => _PopularScreenState();
 }
 
-class _NewsFeedScreenState extends State<NewsFeedScreen> {
+class _PopularScreenState extends State<PopularScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,13 +43,13 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(
 
-                        left: 340,
+                        left: 310,
                         top: 0,
                         right: 24,
                         bottom: 3,
                       ).r,
                       child: Text(
-                        "Newsfeed",
+                        "Popular",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
                         style: TextStyle(
@@ -96,7 +96,27 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                Padding(
+                                  padding:  EdgeInsets.only(
+                                      left: 20,
+                                      right: 10,
+                                      bottom: 20
+                                  ).r,
+                                  child: Text(
+                                    "All",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
 
+                                      fontSize: ScreenUtil().setSp(
+                                        70,
+                                      ),
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.00,
+                                    ),
+                                  ),
+                                ),
                                 Padding(
                                   padding:  EdgeInsets.only(
 
@@ -105,9 +125,9 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                                   child: ListView.builder(
                                     physics: BouncingScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: 3,
+                                    itemCount: 6,
                                     itemBuilder: (context, index) {
-                                      return NewsFeed_Items();
+                                      return PopularItemsWidget(index: index,);
                                     },
                                   ),
                                 ),
