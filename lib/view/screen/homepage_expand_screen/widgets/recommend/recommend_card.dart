@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:tdc_frontend_mobile/model/popular.dart';
 
 import '../../../../../core/constants/color_constant.dart';
 import '../../../../../core/constants/const.dart';
@@ -21,6 +22,7 @@ class RecommendCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Popular popular;
     return IntrinsicWidth(
       child: InkWell(
         onTap: () {
@@ -84,9 +86,7 @@ class RecommendCard extends StatelessWidget {
                           ),
                         ),
                         child: Image(
-                          image: NetworkImage(
-                            '$baseUrl$imageUrl',
-                          ),
+                          image: NetworkImage('$baseUrl$imageUrl'),
                           height: ScreenUtil().setHeight(600),
                           width: ScreenUtil().setWidth(1400),
                         ),

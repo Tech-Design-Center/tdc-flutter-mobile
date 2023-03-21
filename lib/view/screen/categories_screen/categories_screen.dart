@@ -1,13 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/course_screen/course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/widgets/listsketchingtran_item_widget.dart';
-
 
 class CategoriesScreen extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class CategoriesScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left:120).r,
+              padding: EdgeInsets.only(left: 120).r,
               height: ScreenUtil().setHeight(300),
               width: double.infinity,
               color: Colors.grey.shade200,
@@ -28,20 +28,14 @@ class CategoriesScreen extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardScreen()),
-                      );
+                      Get.back();
                     },
                     child: Icon(Icons.arrow_back_ios),
                   ),
-
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
-
                         left: 310,
                         top: 0,
                         right: 24,
@@ -66,7 +60,6 @@ class CategoriesScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -80,7 +73,8 @@ class CategoriesScreen extends StatelessWidget {
                         ListView.separated(
                           physics: BouncingScrollPhysics(),
                           padding: EdgeInsets.only(
-                              left: 20, right: 20, top: 24, bottom: 24).r,
+                                  left: 20, right: 20, top: 24, bottom: 24)
+                              .r,
                           separatorBuilder: (context, index) {
                             return SizedBox(height: 60.h);
                           },
@@ -89,11 +83,7 @@ class CategoriesScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CourseScreen()),
-                                );
+                                Get.to(() => CourseScreen());
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -121,20 +111,19 @@ class CategoriesScreen extends StatelessWidget {
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(
-
                                         left: 12,
                                         top: 12,
                                         bottom: 12,
                                       ).r,
                                       child: Row(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
@@ -148,13 +137,12 @@ class CategoriesScreen extends StatelessWidget {
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(
-
                                                   10,
                                                 ).w,
                                                 child: Image.asset(
-
                                                   categoryList[index].image,
-                                                  height: ScreenUtil().setHeight(
+                                                  height:
+                                                      ScreenUtil().setHeight(
                                                     250.00,
                                                   ),
                                                   width: ScreenUtil().setWidth(
@@ -166,7 +154,6 @@ class CategoriesScreen extends StatelessWidget {
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
-
                                               left: 30,
                                               top: 16,
                                               bottom: 17,
@@ -190,28 +177,23 @@ class CategoriesScreen extends StatelessWidget {
                                     ),
                                     Padding(
                                         padding: EdgeInsets.only(
-
                                           top: 31,
                                           right: 17,
                                           bottom: 31,
                                         ).r,
-                                        child: Icon(Icons.arrow_forward_ios)
-                                    ),
+                                        child: Icon(Icons.arrow_forward_ios)),
                                   ],
                                 ),
                               ),
                             );
                           },
                         ),
-
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

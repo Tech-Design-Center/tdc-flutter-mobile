@@ -26,9 +26,9 @@ class _PopularListViewState extends State<PopularListView> {
   void initState() {
     _popularList = widget.popularList.map((e) {
       return RecommendCard(
-        imageUrl: e.image,
-        title: e.title,
-        author: e.author,
+        imageUrl: e.image.first,
+        title: e.title.toString(),
+        author: e.author.toString(),
       );
     }).toList();
     super.initState();

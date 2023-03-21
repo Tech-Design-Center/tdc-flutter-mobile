@@ -79,7 +79,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                       ),
                       20.horizontalSpace,
                       Padding(
-                        padding: EdgeInsets.only(left:30).r,
+                        padding: EdgeInsets.only(left: 30).r,
                         child: Text(
                           authController.user.value?.fullName ??
                               "Sign in your account",
@@ -155,7 +155,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ],
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
                   child: Align(
@@ -487,29 +486,20 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             //carousel data
-                            InkWell(
-
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NewsFeedScreen()),
-                                  );
-                                },
-                                child:
-                                Obx(() {
-                                if (homeController.bannerList.isNotEmpty) {
-                                  return CarouselSliderView(
-                                      bannerList: homeController.bannerList);
-                                } else {
-                                  return const CarouselLoading();
-                                }
+                            InkWell(onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewsFeedScreen()),
+                              );
+                            }, child: Obx(() {
+                              if (homeController.bannerList.isNotEmpty) {
+                                return CarouselSliderView(
+                                    bannerList: homeController.bannerList);
+                              } else {
+                                return const CarouselLoading();
                               }
-
-                              )
-
-                            ),
-
+                            })),
 
                             //categories title
                             Padding(
@@ -551,13 +541,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-
-    context,
-    MaterialPageRoute(builder: (context)=>CategoriesScreen()),
-
-
-  );
+                                        Get.to(() => CategoriesScreen());
                                       },
                                       child: Text(
                                         "See all",
@@ -589,16 +573,15 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 );
                               },
                               child: Obx(() {
-
                                 print(homeController.categoryList.length);
                                 if (homeController.categoryList.isNotEmpty) {
                                   return CategoryListView(
-                                      categoryList: homeController.categoryList);
+                                      categoryList:
+                                          homeController.categoryList);
                                 } else {
                                   return const CategoryLoading();
                                 }
-                              }
-                              ),
+                              }),
                             ),
 
                             //recommended
@@ -642,12 +625,11 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-
-    context,
-    MaterialPageRoute(builder: (context)=>RecommendScreen()),
-
-
-  );
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RecommendScreen()),
+                                        );
                                       },
                                       child: Text(
                                         "See all",
@@ -725,12 +707,11 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-
-    context,
-    MaterialPageRoute(builder: (context)=>PopularScreen()),
-
-
-  );
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PopularScreen()),
+                                        );
                                       },
                                       child: Text(
                                         "See all",

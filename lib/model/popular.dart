@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 List<Popular> popularListFromJson(String val) => List<Popular>.from(
-    json.decode(val)['data'].map((recommend) => Popular.fromJson(recommend)));
+    json.decode(val)['data'].map((popular) => Popular.fromJson(popular)));
 
 class Popular {
-  final int id;
-  final String image;
-  final String title;
-  final String author;
+  final List<int> id;
+  final List<String> image;
+  final List<String> title;
+  final List<String> author;
 
   Popular(
       {required this.id,
@@ -16,9 +16,13 @@ class Popular {
       required this.author});
 
   factory Popular.fromJson(Map<String, dynamic> data) => Popular(
-      id: data['id'],
-      title: data['attributes']['course']['data']['attributes']['title'],
-      author: data['attributes']['course']['data']['attributes']['author'],
-      image: data['attributes']['course']['data']['attributes']['image']['data']
-          ['attributes']['url']);
+      id: List<int>.from(
+          data['attributes']['courses']['data'].map((id) => id['id'])),
+      title: List<String>.from(data['attributes']['courses']['data']
+          .map((title) => title['attributes']['title'])),
+      author: List<String>.from(data['attributes']['courses']['data']
+          .map((author) => author['attributes']['author'])),
+      image: List<String>.from(data['attributes']['courses']['data'].map(
+          (image) =>
+              image['attributes']['image']['data']['attributes']['url'])));
 }
