@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/model/popular.dart';
+import 'package:tdc_frontend_mobile/view/screen/categories_screen/category_card.dart';
+import 'package:tdc_frontend_mobile/view/screen/popular_screen/populars_card.dart';
 
 import '../../../model/category.dart';
 import '../course_screen/course_screen.dart';
-import 'category_card.dart';
 
-class CategoriesListView extends StatelessWidget {
-  final List<Category> categories;
-  const CategoriesListView({Key? key, required this.categories})
-      : super(key: key);
+class PopularsListView extends StatelessWidget {
+  final List<Popular> populars;
+  const PopularsListView({Key? key, required this.populars}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +21,14 @@ class CategoriesListView extends StatelessWidget {
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },
-          itemCount: categories.length,
+          itemCount: populars.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
                 Get.to(() => CourseScreen());
               },
-              child: CategoryCard(categories: categories[index]),
+              child: PopularsCard(populars: populars[index]),
             );
           }),
     );
