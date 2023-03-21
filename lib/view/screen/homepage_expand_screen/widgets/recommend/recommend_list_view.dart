@@ -25,9 +25,9 @@ class _RecommendListViewState extends State<RecommendListView> {
   void initState() {
     _recommendList = widget.recommendList.map((e) {
       return RecommendCard(
-        imageUrl: e.image,
-        title: e.title,
-        author: e.author,
+        imageUrl: e.image.first,
+        title: e.title.toString(),
+        author: e.author.toString(),
       );
     }).toList();
     super.initState();
@@ -35,7 +35,7 @@ class _RecommendListViewState extends State<RecommendListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: ScreenUtil().setHeight(1050),
       child: ListView(
         shrinkWrap: true,

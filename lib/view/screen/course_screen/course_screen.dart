@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/data/coursesList.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/course_screen/widgets/course_item_widget.dart';
@@ -19,7 +20,7 @@ class _CourseScreenState extends State<CourseScreen> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left:120).r,
+              padding: EdgeInsets.only(left: 120).r,
               height: ScreenUtil().setHeight(300),
               width: double.infinity,
               color: Colors.grey.shade200,
@@ -30,20 +31,14 @@ class _CourseScreenState extends State<CourseScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardScreen()),
-                      );
+                      Get.back();
                     },
                     child: Icon(Icons.arrow_back_ios),
                   ),
-
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
-
                         left: 360,
                         top: 0,
                         right: 24,
@@ -68,7 +63,6 @@ class _CourseScreenState extends State<CourseScreen> {
                 ],
               ),
             ),
-
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -84,7 +78,6 @@ class _CourseScreenState extends State<CourseScreen> {
                           child: Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(
-
                               left: 24,
                               top: 16,
                               right: 24,
@@ -94,10 +87,8 @@ class _CourseScreenState extends State<CourseScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-
                                 Padding(
                                   padding: EdgeInsets.only(
-
                                     top: 24,
                                   ).r,
                                   child: ListView.builder(
@@ -105,8 +96,7 @@ class _CourseScreenState extends State<CourseScreen> {
                                     shrinkWrap: true,
                                     itemCount: coursesList.length,
                                     itemBuilder: (context, index) {
-                                      return CourseItemWidget(
-                                          index: index);
+                                      return CourseItemWidget(index: index);
                                     },
                                   ),
                                 ),
