@@ -564,25 +564,15 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             ),
 
                             //categories data
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CategoriesScreen()),
-                                );
-                              },
-                              child: Obx(() {
-                                print(homeController.categoryList.length);
-                                if (homeController.categoryList.isNotEmpty) {
-                                  return CategoryListView(
-                                      categoryList:
-                                          homeController.categoryList);
-                                } else {
-                                  return const CategoryLoading();
-                                }
-                              }),
-                            ),
+                            Obx(() {
+                              print(homeController.categoryList.length);
+                              if (homeController.categoryList.isNotEmpty) {
+                                return CategoryListView(
+                                    categoryList: homeController.categoryList);
+                              } else {
+                                return const CategoryLoading();
+                              }
+                            }),
 
                             //recommended
                             Padding(
