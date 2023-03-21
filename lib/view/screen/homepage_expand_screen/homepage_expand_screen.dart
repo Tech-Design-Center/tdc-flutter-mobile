@@ -19,9 +19,8 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/r
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/popular_screen/popular_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/recommend_screen/recommend_screen.dart';
-
+import 'package:tdc_frontend_mobile/view/screen/popular_screen/populars_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/recommend_screen/recommends_screen.dart';
 import '../../../controller/controllers.dart';
 import '../../../core/constants/const.dart';
 import '../homepage_expand_screen/widgets/listitem10_item_widget.dart';
@@ -618,7 +617,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  RecommendScreen()),
+                                                  RecommendsScreen()),
                                         );
                                       },
                                       child: Text(
@@ -696,12 +695,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PopularScreen()),
-                                        );
+                                        Get.to(() => PopularsScreen());
                                       },
                                       child: Text(
                                         "See all",

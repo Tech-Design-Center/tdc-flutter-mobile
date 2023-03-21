@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/model/recommend.dart';
 
-import '../../../model/category.dart';
 import '../course_screen/course_screen.dart';
-import 'category_card.dart';
+import 'recommends_card.dart';
 
-class CategoriesListView extends StatelessWidget {
-  final List<Category> categories;
-  const CategoriesListView({Key? key, required this.categories})
+class RecommendsListView extends StatelessWidget {
+  final List<Recommend> recommends;
+  const RecommendsListView({Key? key, required this.recommends})
       : super(key: key);
 
   @override
@@ -20,14 +20,14 @@ class CategoriesListView extends StatelessWidget {
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },
-          itemCount: categories.length,
+          itemCount: recommends.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
                 Get.to(() => CourseScreen());
               },
-              child: CategoryCard(categories: categories[index]),
+              child: RecommendsCard(recommends: recommends[index]),
             );
           }),
     );
