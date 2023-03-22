@@ -7,7 +7,6 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/categories_screen/categories_loading.dart';
-import 'package:tdc_frontend_mobile/view/screen/course_screen/course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/widgets/listsketchingtran_item_widget.dart';

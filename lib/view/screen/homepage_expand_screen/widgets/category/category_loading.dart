@@ -38,17 +38,12 @@ class CategoryLoading extends StatelessWidget {
                         height: ScreenUtil().setHeight(200),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 20).r,
-                        child: Text(
-                          'Loading ...',
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: ScreenUtil().setSp(47),
-                          ),
-                        ),
-                      )
+                          padding: EdgeInsets.only(top: 20).r,
+                          child: Container(
+                            width: 200.w,
+                            height: 50.h,
+                            decoration: BoxDecoration(color: Colors.black),
+                          ))
                     ],
                   ),
                 );

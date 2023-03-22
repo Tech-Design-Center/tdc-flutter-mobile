@@ -5,14 +5,13 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
 // ignore: must_be_immutable
-class ListphotoTwoItemWidget extends StatelessWidget {
-  ListphotoTwoItemWidget();
+class MyCourseCard extends StatelessWidget {
+  MyCourseCard();
 
   @override
   Widget build(BuildContext context) {
-
     return InkWell(
-      onTap: (){
+      onTap: () {
         /*
         Navigator.push(
     context,
@@ -30,7 +29,7 @@ class ListphotoTwoItemWidget extends StatelessWidget {
           bottom: 12.0,
         ).r,
         decoration: BoxDecoration(
-          color:ColorConstant.whiteA700,
+          color: ColorConstant.whiteA700,
           borderRadius: BorderRadius.circular(
             ScreenUtil().setWidth(
               16.00,
@@ -57,8 +56,7 @@ class ListphotoTwoItemWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding:  EdgeInsets.only(
-                                         
+              padding: EdgeInsets.only(
                 left: 16,
                 top: 16,
                 bottom: 16,
@@ -82,7 +80,6 @@ class ListphotoTwoItemWidget extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(
-                                   
                 left: 12,
                 top: 21,
                 right: 25,
@@ -98,7 +95,7 @@ class ListphotoTwoItemWidget extends StatelessWidget {
                       800.00,
                     ),
                     margin: EdgeInsets.only(
-                           left: 20,
+                      left: 20,
                       right: 8,
                     ).r,
                     child: Text(
@@ -106,7 +103,6 @@ class ListphotoTwoItemWidget extends StatelessWidget {
                       maxLines: null,
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                         
                         fontSize: ScreenUtil().setSp(
                           60,
                         ),
@@ -117,8 +113,8 @@ class ListphotoTwoItemWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(
-                             left: 20,
+                    padding: EdgeInsets.only(
+                      left: 20,
                       top: 20,
                     ).r,
                     child: Text(
@@ -136,7 +132,6 @@ class ListphotoTwoItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),

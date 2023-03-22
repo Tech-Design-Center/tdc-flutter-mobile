@@ -1,8 +1,10 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 import '../notifications_screen/widgets/listsketchingtran_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,57 +15,7 @@ class NotificationsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.only(left:120).r,
-              height: ScreenUtil().setHeight(300),
-              width: double.infinity,
-              color: Colors.grey.shade200,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardScreen()),
-                      );
-                    },
-                    child: Icon(Icons.arrow_back_ios),
-                  ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-
-                        left: 310,
-                        top: 0,
-                        right: 24,
-                        bottom: 3,
-                      ).r,
-                      child: Text(
-                        "Notification",
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: ScreenUtil().setSp(
-                            100,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.36,
-                          height: 1.00,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-                      
+            SectionTitleScreen(name: 'Notification'),
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -74,36 +26,28 @@ class NotificationsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                      
-                      
                         Align(
                           alignment: Alignment.center,
                           child: Container(
                             width: double.infinity,
                             margin: EdgeInsets.only(
-                                
                               left: 50,
                               top: 50,
                               right: 50,
                             ).r,
-                           
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding:  EdgeInsets.only(
-                                      
-                                    right: 10,
-                                    bottom: 20
-                                  ).r,
+                                  padding:
+                                      EdgeInsets.only(right: 10, bottom: 20).r,
                                   child: Text(
                                     "All",
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
-                                       
                                       fontSize: ScreenUtil().setSp(
                                         70,
                                       ),
@@ -114,8 +58,7 @@ class NotificationsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(
-                                      
+                                  padding: EdgeInsets.only(
                                     top: 16,
                                   ).r,
                                   child: ListView.builder(
@@ -127,8 +70,6 @@ class NotificationsScreen extends StatelessWidget {
                                     },
                                   ),
                                 ),
-
-
                               ],
                             ),
                           ),
@@ -139,8 +80,6 @@ class NotificationsScreen extends StatelessWidget {
                 ),
               ),
             ),
-          
-         
           ],
         ),
       ),
