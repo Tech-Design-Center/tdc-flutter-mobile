@@ -8,40 +8,30 @@ import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/widgets/r
 import '../../../../../model/category.dart';
 import '../../../../../model/recommend.dart';
 import '../category/category_card.dart';
+import '../popular/popular_card.dart';
 
-class PopularListView extends StatefulWidget {
+class PopularListView extends StatelessWidget {
   final List<Popular> popularList;
   const PopularListView({Key? key, required this.popularList})
       : super(key: key);
 
   @override
-  State<PopularListView> createState() => _PopularListViewState();
-}
-
-class _PopularListViewState extends State<PopularListView> {
-  late List<Widget> _popularList;
-
-  @override
-  void initState() {
-    _popularList = widget.popularList.map((e) {
-      return RecommendCard(
-        imageUrl: e.image.first,
-        title: e.title.toString(),
-        author: e.author.toString(),
-      );
-    }).toList();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: ScreenUtil().setHeight(1050),
-      child: ListView(
+      child: ListView.separated(
+        itemCount: popularList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(top: 40, left: 20, right: 20).r,
-        children: _popularList,
+        padding: const EdgeInsets.only(top: 40, left: 20, right: 20).r,
+        itemBuilder: (context, index) {
+          return PopularCard(popular: popularList[index]);
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(
+            width: 60.h,
+          );
+        },
       ),
     );
   }
