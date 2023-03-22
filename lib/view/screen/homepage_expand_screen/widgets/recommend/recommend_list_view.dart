@@ -18,7 +18,6 @@ class RecommendListView extends StatefulWidget {
 }
 
 class _RecommendListViewState extends State<RecommendListView> {
-  int _currentIndex = 0;
   late List<Widget> _recommendList;
 
   @override

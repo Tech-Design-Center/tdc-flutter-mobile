@@ -6,8 +6,8 @@ class RemoteCategoryService {
   var remoteUrl = '$baseUrl/api/categories';
 
   Future<dynamic> get() async {
-    var response =
-        await client.get(Uri.parse('$remoteUrl?fields=name&populate=image'));
+    var response = await client.get(Uri.parse(
+        '$remoteUrl?fields=name&populate=image,courses,courses.image'));
 
     return response;
   }

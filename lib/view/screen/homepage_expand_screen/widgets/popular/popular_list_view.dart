@@ -19,7 +19,6 @@ class PopularListView extends StatefulWidget {
 }
 
 class _PopularListViewState extends State<PopularListView> {
-  int _currentIndex = 0;
   late List<Widget> _popularList;
 
   @override

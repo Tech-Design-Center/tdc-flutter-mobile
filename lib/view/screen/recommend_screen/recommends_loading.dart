@@ -7,7 +7,6 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/course_screen/course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/widgets/listsketchingtran_item_widget.dart';
 
 class RecommendsLoading extends StatelessWidget {
@@ -87,7 +86,7 @@ class RecommendsLoading extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return InkWell(
                                 onTap: () {
-                                  Get.to(() => CourseScreen());
+                                  // Get.to(() => CourseListScreen());
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

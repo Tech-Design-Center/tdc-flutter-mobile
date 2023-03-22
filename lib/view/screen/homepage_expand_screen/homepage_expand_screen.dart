@@ -380,11 +380,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NotificationsScreen()),
-                        );
+                        Get.to(() => NotificationsScreen());
                       },
                       child: Container(
                         height: ScreenUtil().setHeight(
@@ -540,7 +536,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        Get.to(() => CategoriesScreen());
+                                        Get.to(() => const CategoriesScreen());
                                       },
                                       child: Text(
                                         "See all",
@@ -564,10 +560,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                             //categories data
                             Obx(() {
-                              print(homeController.categoryList.length);
                               if (homeController.categoryList.isNotEmpty) {
                                 return CategoryListView(
-                                    categoryList: homeController.categoryList);
+                                    categories: homeController.categoryList);
                               } else {
                                 return const CategoryLoading();
                               }
@@ -613,12 +608,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     ).r,
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  RecommendsScreen()),
-                                        );
+                                        Get.to(() => RecommendsScreen());
                                       },
                                       child: Text(
                                         "See all",

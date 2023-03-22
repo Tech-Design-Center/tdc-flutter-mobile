@@ -6,7 +6,6 @@ import 'package:tdc_frontend_mobile/view/screen/categories_screen/category_card.
 import 'package:tdc_frontend_mobile/view/screen/popular_screen/populars_card.dart';
 
 import '../../../model/category.dart';
-import '../course_screen/course_screen.dart';
 
 class PopularsListView extends StatelessWidget {
   final List<Popular> populars;
@@ -26,7 +25,7 @@ class PopularsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Get.to(() => CourseScreen());
+                // Get.to(() => CourseListScreen());
               },
               child: PopularsCard(populars: populars[index]),
             );

@@ -38,7 +38,6 @@ class HomeController extends GetxController {
         //assign api result
         bannerList.assignAll(adBannerListFromJson(result.body));
         //save api result to local db
-
       }
     } finally {
       isBannerLoading(false);
@@ -46,7 +45,7 @@ class HomeController extends GetxController {
   }
 
   void getCategories() async {
-    // print('controller category $categoryList.length');
+    print('controller category $categoryList.length');
 
     try {
       isCategoryLoading(true);
@@ -70,7 +69,6 @@ class HomeController extends GetxController {
         //assign api result
         recommendList.assignAll(recommendListFromJson(result.body));
         //save api result to local db
-
       }
     } finally {
       isRecommendLoading(false);
@@ -86,7 +84,6 @@ class HomeController extends GetxController {
         //assign api result
         popularList.assignAll(popularListFromJson(result.body));
         //save api result to local db
-
       }
     } finally {
       isPopularLoading(false);

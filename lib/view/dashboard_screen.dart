@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/course_list_screen/course_list_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_course/my_course_list_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/setting_screen.dart';
@@ -20,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     with SingleTickerProviderStateMixin {
   List<Widget> screens = [
     HomepageExpandScreen(),
-    CourseListScreen(),
+    MyCourseListScreen(),
     SettingScreen(),
   ];
 

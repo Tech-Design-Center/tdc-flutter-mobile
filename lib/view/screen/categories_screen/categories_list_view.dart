@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../model/category.dart';
-import '../course_screen/course_screen.dart';
 import 'category_card.dart';
 
 class CategoriesListView extends StatelessWidget {
@@ -23,12 +22,7 @@ class CategoriesListView extends StatelessWidget {
           itemCount: categories.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Get.to(() => CourseScreen());
-              },
-              child: CategoryCard(categories: categories[index]),
-            );
+            return CategoryCard(categories: categories[index]);
           }),
     );
   }

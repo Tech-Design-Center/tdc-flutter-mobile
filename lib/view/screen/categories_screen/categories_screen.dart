@@ -7,7 +7,6 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/categories_screen/categories_list_view.dart';
-import 'package:tdc_frontend_mobile/view/screen/course_screen/course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/notifications_screen/widgets/listsketchingtran_item_widget.dart';
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 
@@ -23,12 +22,11 @@ class CategoriesScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(
+            const SectionTitleScreen(
               name: 'Categories',
             ),
             //categories data
             Obx(() {
-              print(homeController.categoryList.length);
               if (homeController.categoryList.isNotEmpty) {
                 return CategoriesListView(
                     categories: homeController.categoryList);
