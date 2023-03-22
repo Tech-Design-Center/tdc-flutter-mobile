@@ -64,7 +64,7 @@ class PopularsCard extends StatelessWidget {
                           10,
                         ).w,
                         child: Image.network(
-                          baseUrl + populars.image.first.toString(),
+                          baseUrl + populars.image,
                         )),
                   ),
                 ),
@@ -75,7 +75,7 @@ class PopularsCard extends StatelessWidget {
                     bottom: 17,
                   ).r,
                   child: Text(
-                    populars.title.toString(),
+                    populars.title,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.start,
                     style: TextStyle(

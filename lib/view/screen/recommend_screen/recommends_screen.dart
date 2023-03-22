@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:tdc_frontend_mobile/view/screen/recommend_screen/recommends_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 
 import '../../../controller/controllers.dart';
@@ -17,7 +16,7 @@ class RecommendsScreen extends StatelessWidget {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Populars',
+              name: 'Recommend',
             ),
             //categories data
             Obx(() {
@@ -26,7 +25,7 @@ class RecommendsScreen extends StatelessWidget {
                 return RecommendsListView(
                     recommends: homeController.recommendList);
               } else {
-                return RecommendsLoading();
+                return CircularProgressIndicator();
               }
             }),
           ],

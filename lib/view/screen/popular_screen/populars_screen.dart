@@ -24,7 +24,7 @@ class PopularsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(
+            const SectionTitleScreen(
               name: 'Populars',
             ),
             //categories data
@@ -33,7 +33,7 @@ class PopularsScreen extends StatelessWidget {
               if (homeController.popularList.isNotEmpty) {
                 return PopularsListView(populars: homeController.popularList);
               } else {
-                return PopularLoading();
+                return CircularProgressIndicator();
               }
             }),
           ],

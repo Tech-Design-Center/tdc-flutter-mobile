@@ -65,7 +65,7 @@ class RecommendsCard extends StatelessWidget {
                           10,
                         ).w,
                         child: Image.network(
-                          baseUrl + recommends.image.first.toString(),
+                          baseUrl + recommends.image.toString(),
                         )),
                   ),
                 ),

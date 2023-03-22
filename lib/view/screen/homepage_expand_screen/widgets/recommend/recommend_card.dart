@@ -7,22 +7,15 @@ import 'package:tdc_frontend_mobile/model/popular.dart';
 import '../../../../../core/constants/color_constant.dart';
 import '../../../../../core/constants/const.dart';
 import '../../../../../core/constants/image_constant.dart';
+import '../../../../../model/recommend.dart';
 
 class RecommendCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String author;
+  final Recommend recommend;
 
-  const RecommendCard(
-      {Key? key,
-      required this.imageUrl,
-      required this.title,
-      required this.author})
-      : super(key: key);
+  RecommendCard({required this.recommend});
 
   @override
   Widget build(BuildContext context) {
-    Popular popular;
     return IntrinsicWidth(
       child: InkWell(
         onTap: () {
@@ -86,7 +79,7 @@ class RecommendCard extends StatelessWidget {
                           ),
                         ),
                         child: Image(
-                          image: NetworkImage('$baseUrl$imageUrl'),
+                          image: NetworkImage(baseUrl + recommend.image),
                           height: ScreenUtil().setHeight(600),
                           width: ScreenUtil().setWidth(1400),
                         ),
@@ -100,7 +93,7 @@ class RecommendCard extends StatelessWidget {
                       right: 16,
                     ).r,
                     child: Text(
-                      "$title",
+                      recommend.title,
                       maxLines: null,
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -120,7 +113,7 @@ class RecommendCard extends StatelessWidget {
                       right: 16,
                     ).r,
                     child: Text(
-                      "$author",
+                      recommend.author,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(

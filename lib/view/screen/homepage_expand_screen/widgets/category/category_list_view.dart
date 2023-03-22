@@ -9,17 +9,10 @@ import '../../../../../model/category.dart';
 import '../../../categories_screen/category_course_screen/category_course_list_screen.dart';
 import 'category_card.dart';
 
-class CategoryListView extends StatefulWidget {
+class CategoryListView extends StatelessWidget {
   final List<Category> categories;
   const CategoryListView({Key? key, required this.categories})
       : super(key: key);
-
-  @override
-  State<CategoryListView> createState() => _CategoryListViewState();
-}
-
-class _CategoryListViewState extends State<CategoryListView> {
-  late List<Category> _categoryList;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +27,7 @@ class _CategoryListViewState extends State<CategoryListView> {
           padding: const EdgeInsets.only(top: 40).r,
           itemBuilder: (context, index) {
             return CategoryCard(
-              category: widget.categories[index],
+              category: categories[index],
             );
           },
         ),

@@ -8,7 +8,7 @@ class RemotePopularService {
 
   Future<dynamic> get() async {
     var response = await client
-        .get(Uri.parse('$remoteUrl?populate=courses,courses.image'));
+        .get(Uri.parse('$remoteUrl?populate=course.contents,course.image'));
     return response;
   }
 }

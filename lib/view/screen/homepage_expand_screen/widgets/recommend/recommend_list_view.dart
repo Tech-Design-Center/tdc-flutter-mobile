@@ -8,39 +8,29 @@ import '../../../../../model/category.dart';
 import '../../../../../model/recommend.dart';
 import '../category/category_card.dart';
 
-class RecommendListView extends StatefulWidget {
+class RecommendListView extends StatelessWidget {
   final List<Recommend> recommendList;
   const RecommendListView({Key? key, required this.recommendList})
       : super(key: key);
-
-  @override
-  State<RecommendListView> createState() => _RecommendListViewState();
-}
-
-class _RecommendListViewState extends State<RecommendListView> {
-  late List<Widget> _recommendList;
-
-  @override
-  void initState() {
-    _recommendList = widget.recommendList.map((e) {
-      return RecommendCard(
-        imageUrl: e.image.first,
-        title: e.title.toString(),
-        author: e.author.toString(),
-      );
-    }).toList();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: ScreenUtil().setHeight(1050),
-      child: ListView(
+      child: ListView.separated(
+        itemCount: recommendList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.only(top: 40, left: 20, right: 20).r,
-        children: _recommendList,
+        itemBuilder: (context, index) {
+          return RecommendCard(
+            recommend: recommendList[index],
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(
+            width: 60.h,
+          );
+        },
       ),
     );
   }
