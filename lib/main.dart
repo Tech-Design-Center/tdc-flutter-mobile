@@ -36,6 +36,8 @@ void main() async {
   runApp(const MyApp());
 }
 
+RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
           home: SplashScreen(),
+          navigatorObservers: [routeObserver],
           initialRoute: AppRoute.dashboard,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,

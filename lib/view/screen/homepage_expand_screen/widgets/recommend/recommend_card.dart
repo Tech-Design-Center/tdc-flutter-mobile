@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 
 import '../../../../../core/constants/color_constant.dart';
 import '../../../../../core/constants/const.dart';
@@ -147,21 +149,31 @@ class RecommendCard extends StatelessWidget {
                               top: 20,
                               bottom: 1,
                             ).r,
-                            child: Container(
-                                width: ScreenUtil().setWidth(800),
-                                height: ScreenUtil().setHeight(120),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50)).w,
-                                  color: Colors.grey.shade300,
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("View"),
-                                  ],
-                                )),
+                            child: InkWell(
+                                onTap: () {
+
+                                  Get.to(CourseDetailsScreen(
+                                    isEnrolled: false,
+                                    url: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/aaaa.mp4?alt=media&token=da00496c-e501-4f20-a59c-2eb88dc6ed77',));
+
+
+                                  },
+                              child: Container(
+                                  width: ScreenUtil().setWidth(800),
+                                  height: ScreenUtil().setHeight(120),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)).w,
+                                    color: Colors.grey.shade300,
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("View"),
+                                    ],
+                                  )),
+                            ),
                           ),
                         ],
                       ),

@@ -23,6 +23,7 @@ import 'package:tdc_frontend_mobile/view/screen/popular_screen/populars_screen.d
 import 'package:tdc_frontend_mobile/view/screen/recommend_screen/recommends_screen.dart';
 import '../../../controller/controllers.dart';
 import '../../../core/constants/const.dart';
+
 import '../homepage_expand_screen/widgets/listitem10_item_widget.dart';
 import '../homepage_expand_screen/widgets/listitem8_item_widget.dart';
 import '../homepage_expand_screen/widgets/listitem9_item_widget.dart';
@@ -461,91 +462,65 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               ),
             ),
 
-            //carousel
-            Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.only(
-                    left: 0,
-                    top: 8,
-                  ).r,
-                  child: Container(
-                    width: ScreenUtil().setWidth(1400),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            //carousel data
-                            InkWell(onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NewsFeedScreen()),
-                              );
-                            }, child: Obx(() {
-                              if (homeController.bannerList.isNotEmpty) {
-                                return CarouselSliderView(
-                                    bannerList: homeController.bannerList);
-                              } else {
-                                return const CarouselLoading();
-                              }
-                            })),
+              //carousel
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.only(
+                      left: 0,
+                      top: 8,
+                    ).r,
+                    child: Container(
+                      width: ScreenUtil().setWidth(1400),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              //carousel data
+                              InkWell(onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewsFeedScreen()),
+                                );
+                              }, child: Obx(() {
+                                if (homeController.bannerList.isNotEmpty) {
+                                  return CarouselSliderView(
+                                      bannerList: homeController.bannerList);
+                                } else {
+                                  return const CarouselLoading();
+                                }
+                              })),
 
-                            //categories title
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: 50,
-                                left: 20,
-                                bottom: 10,
-                              ).r,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 1,
-                                    ).r,
-                                    child: Text(
-                                      "Categories",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil().setSp(
-                                          65,
-                                        ),
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.00,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 13,
-                                      right: 70,
-                                      left: 0,
-                                      bottom: 5,
-                                    ).r,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(() => const CategoriesScreen());
-                                      },
+                              //categories title
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 50,
+                                  left: 20,
+                                  bottom: 10,
+                                ).r,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 1,
+                                      ).r,
                                       child: Text(
-                                        "See all",
+                                        "Categories",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
-                                          color: ColorConstant.indigoA200,
                                           fontSize: ScreenUtil().setSp(
-                                            60,
+                                            65,
                                           ),
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w600,
@@ -553,71 +528,71 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            //categories data
-                            Obx(() {
-                              if (homeController.categoryList.isNotEmpty) {
-                                return CategoryListView(
-                                    categories: homeController.categoryList);
-                              } else {
-                                return const CategoryLoading();
-                              }
-                            }),
-
-                            //recommended
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: 0,
-                                left: 20,
-                                bottom: 5,
-                              ).r,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 1,
-                                    ).r,
-                                    child: Text(
-                                      "Recommended",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil().setSp(
-                                          65,
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 13,
+                                        right: 70,
+                                        left: 0,
+                                        bottom: 5,
+                                      ).r,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Get.to(() => const CategoriesScreen());
+                                        },
+                                        child: Text(
+                                          "See all",
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: ColorConstant.indigoA200,
+                                            fontSize: ScreenUtil().setSp(
+                                              60,
+                                            ),
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.00,
+                                          ),
                                         ),
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.00,
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 13,
-                                      right: 70,
-                                      left: 0,
-                                      bottom: 5,
-                                    ).r,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(() => RecommendsScreen());
-                                      },
+                                  ],
+                                ),
+                              ),
+
+                              //categories data
+                              Obx(() {
+                                if (homeController.categoryList.isNotEmpty) {
+                                  return CategoryListView(
+                                      categories: homeController.categoryList);
+                                } else {
+                                  return const CategoryLoading();
+                                }
+                              }),
+
+                              //recommended
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 0,
+                                  left: 20,
+                                  bottom: 5,
+                                ).r,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 1,
+                                      ).r,
                                       child: Text(
-                                        "See all",
+                                        "Recommended",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
-                                          color: ColorConstant.indigoA200,
                                           fontSize: ScreenUtil().setSp(
-                                            60,
+                                            65,
                                           ),
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w600,
@@ -625,76 +600,76 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            //recommend data
-                            Obx(() {
-                              print(homeController.recommendList.length);
-                              if (homeController.recommendList.isNotEmpty) {
-                                return RecommendListView(
-                                    recommendList:
-                                        homeController.recommendList);
-                              } else {
-                                return const RecommendLoading();
-                              }
-                            }),
-                            SizedBox(
-                              height: ScreenUtil().setHeight(100),
-                            ),
-
-                            //Popular
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: 0,
-                                left: 20,
-                                bottom: 5,
-                              ).r,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 1,
-                                    ).r,
-                                    child: Text(
-                                      "Popular",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil().setSp(
-                                          65,
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 13,
+                                        right: 70,
+                                        left: 0,
+                                        bottom: 5,
+                                      ).r,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Get.to(() => RecommendsScreen());
+                                        },
+                                        child: Text(
+                                          "See all",
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: ColorConstant.indigoA200,
+                                            fontSize: ScreenUtil().setSp(
+                                              60,
+                                            ),
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.00,
+                                          ),
                                         ),
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.00,
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 13,
-                                      right: 70,
-                                      left: 0,
-                                      bottom: 5,
-                                    ).r,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Get.to(() => PopularsScreen());
-                                      },
+                                  ],
+                                ),
+                              ),
+
+                              //recommend data
+                              Obx(() {
+                                print(homeController.recommendList.length);
+                                if (homeController.recommendList.isNotEmpty) {
+                                  return RecommendListView(
+                                      recommendList:
+                                          homeController.recommendList);
+                                } else {
+                                  return const RecommendLoading();
+                                }
+                              }),
+                              SizedBox(
+                                height: ScreenUtil().setHeight(100),
+                              ),
+
+                              //Popular
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 0,
+                                  left: 20,
+                                  bottom: 5,
+                                ).r,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 1,
+                                      ).r,
                                       child: Text(
-                                        "See all",
+                                        "Popular",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
-                                          color: ColorConstant.indigoA200,
                                           fontSize: ScreenUtil().setSp(
-                                            60,
+                                            65,
                                           ),
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w600,
@@ -702,34 +677,60 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 13,
+                                        right: 70,
+                                        left: 0,
+                                        bottom: 5,
+                                      ).r,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Get.to(() => PopularsScreen());
+                                        },
+                                        child: Text(
+                                          "See all",
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            color: ColorConstant.indigoA200,
+                                            fontSize: ScreenUtil().setSp(
+                                              60,
+                                            ),
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.00,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            //popular data
-                            Obx(() {
-                              print(homeController.popularList.length);
-                              if (homeController.popularList.isNotEmpty) {
-                                return PopularListView(
-                                    popularList: homeController.popularList);
-                              } else {
-                                return const PopularLoading();
-                              }
-                            }),
-                            SizedBox(
-                              height: ScreenUtil().setHeight(200),
-                            ),
-                          ],
+                              //popular data
+                              Obx(() {
+                                print(homeController.popularList.length);
+                                if (homeController.popularList.isNotEmpty) {
+                                  return PopularListView(
+                                      popularList: homeController.popularList);
+                                } else {
+                                  return const PopularLoading();
+                                }
+                              }),
+                              SizedBox(
+                                height: ScreenUtil().setHeight(200),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
   }
 }
