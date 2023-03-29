@@ -15,12 +15,12 @@ class RecommendListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ScreenUtil().setHeight(1050),
+      height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
         itemCount: recommendList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(top: 40, left: 20, right: 20).r,
+        padding: EdgeInsets.only(top: 40, left: 20, right: 20,bottom: 20).r,
         itemBuilder: (context, index) {
           return RecommendCard(
             recommend: recommendList[index],

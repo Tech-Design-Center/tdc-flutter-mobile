@@ -18,12 +18,12 @@ class PopularListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ScreenUtil().setHeight(1050),
+      height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
         itemCount: popularList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(top: 40, left: 20, right: 20).r,
+        padding: const EdgeInsets.only(top: 40, left: 20, right: 20,bottom: 20).r,
         itemBuilder: (context, index) {
           return PopularCard(popular: popularList[index]);
         },

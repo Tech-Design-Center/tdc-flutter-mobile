@@ -85,7 +85,7 @@ class PopularCard extends StatelessWidget {
                 ),
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
-                height: 1.57,
+                height: 5.h,
               ),
             ),
           ),

@@ -6,22 +6,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/model/video_list.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/course_details_content_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
-import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'widgets/list2friends_one_item_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/video_playlist.dart';
 
 
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
   bool isEnrolled;
-
-
-  CourseDetailsScreen({super.key, required this.isEnrolled});
+  var id;
+  CourseDetailsScreen({super.key, required this.isEnrolled,required this.id });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
 }
@@ -39,15 +37,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool _muted = false;
   bool _isPlayerReady = false;
 
-  final List<String> _ids = [
-    'laj2gxGPnfA',
-  ];
+   late var _ids = widget.id;
 
   @override
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: _ids.first,
+      initialVideoId: _ids,
       flags: const YoutubePlayerFlags(
         mute: false,
         autoPlay: true,
@@ -75,6 +71,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   }
 
   @override
+  @mustCallSuper
   void deactivate() {
     // Pauses video while navigating to next page.
     _controller.pause();
@@ -125,16 +122,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                         maxLines: 1,
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.settings,
-                        color: Colors.white,
-                        size: 25.0,
-                      ),
-                      onPressed: () {
-                        log('Settings Tapped!');
-                      },
-                    ),
+
                   ],
                   onReady: () {
                     _isPlayerReady = true;
@@ -151,7 +139,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                   body: ListView(
                     children: [
                       player,
-                      
                     ],
                   ),
                 ),
@@ -389,6 +376,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
                             Container(
                               child: widget.isEnrolled ?
+
                               Container(
                                 height: ScreenUtil().setHeight(1450),
                                 child: TabBarView(
@@ -401,6 +389,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         child: Column(
                                           children: [
                                             InkWell(
+                                              onTap:  (){
+                                                deactivate();
+                                                Get.to(VideoPlayList());
+                                              },
+
                                             child: CourseLessonVideo(),
                                             ),
 
@@ -502,7 +495,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       top: 5,
                                                     ).r,
                                                     child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.center,
                                                       mainAxisSize: MainAxisSize.max,
                                                       children: [
@@ -676,7 +669,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                   ],
                                 ),
                               )
+
                                   :
+
                               Container(
                                 height: ScreenUtil().setHeight(1450),
                                 child: TabBarView(
@@ -774,7 +769,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                               },
                                             ),
                                           ),
-
                                           Padding(
                                             padding: EdgeInsets.only(
 
@@ -885,10 +879,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                               Get.to(EnrollCourseScreen());
                             });
                           },
-
-
                           child: Container(
-
                             alignment: Alignment.center,
                             height: 220.h,
                             margin: EdgeInsets.only(
@@ -914,33 +905,12 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
               ),
             ),
 
-
           ],
         ),
       ),
     );
   }
 
-  Widget _text(String title, String value) {
-    return RichText(
-      text: TextSpan(
-        text: '$title : ',
-        style: const TextStyle(
-          color: Colors.blueAccent,
-          fontWeight: FontWeight.bold,
-        ),
-        children: [
-          TextSpan(
-            text: value,
-            style: const TextStyle(
-              color: Colors.blueAccent,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(

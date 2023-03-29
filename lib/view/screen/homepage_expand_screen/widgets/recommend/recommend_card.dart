@@ -24,15 +24,15 @@ class RecommendCard extends StatelessWidget {
           Navigator.push(
     context,
     MaterialPageRoute(builder: (context)
- =>CourseDetailsScreen(isEnrolled: false,)),
-  );
+ =>CourseDetailsScreen(isEnrolled: false, id: 'PEM0Vs8jf1w',)),
+  ); 
         },
         child: Container(
           child: Align(
             alignment: Alignment.centerRight,
             child: Container(
               width: ScreenUtil().setWidth(850),
-              height: ScreenUtil().setHeight(1200),
+              height: ScreenUtil().setHeight(1400),
               margin: EdgeInsets.only(
                 right: 0,
               ).r,
@@ -123,7 +123,7 @@ class RecommendCard extends StatelessWidget {
                         ),
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
-                        height: 1.00,
+                        height: 4.h,
                       ),
                     ),
                   ),
@@ -132,7 +132,7 @@ class RecommendCard extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(
                         left: 16,
-                        top: 40,
+                        top: 5,
                         right: 16,
                         bottom: 16,
                       ).r,
@@ -144,13 +144,13 @@ class RecommendCard extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(
                               left: 18,
-                              top: 20,
+                              top: 50,
                               bottom: 1,
                             ).r,
                             child: InkWell(
                                 onTap: () {
 
-                                  Get.to(CourseDetailsScreen(isEnrolled: true,));
+                                  Get.to(CourseDetailsScreen(isEnrolled: true, id: 'PEM0Vs8jf1w',));
                                       },
                               child: Container(
                                   width: ScreenUtil().setWidth(800),

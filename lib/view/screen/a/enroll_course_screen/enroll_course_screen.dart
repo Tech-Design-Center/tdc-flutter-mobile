@@ -28,7 +28,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
         child: Column(
           children:  
               [
-            SectionTitleScreen(name: 'Enroll Course', widget: CourseDetailsScreen(isEnrolled: false,),),
+            SectionTitleScreen(name: 'Enroll Course', widget: CourseDetailsScreen(isEnrolled: false, id: 'PEM0Vs8jf1w',),),
                         
             Expanded(
               child: SingleChildScrollView(
