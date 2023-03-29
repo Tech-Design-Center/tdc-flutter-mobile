@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/model/recommend.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 
 import 'recommends_card.dart';
 
@@ -24,7 +25,7 @@ class RecommendsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                // Get.to(() => CourseListScreen());
+                //Get.to(() => CourseDetailsScreen(isEnrolled: true));
               },
               child: RecommendsCard(recommends: recommends[index]),
             );

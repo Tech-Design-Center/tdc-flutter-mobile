@@ -7,6 +7,7 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/bank_payment_screen/bank_payment_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 class EnrollCourseScreen extends StatefulWidget {
   @override
@@ -25,9 +26,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            SectionTitleScreen(name: 'Enroll Course'),
-                       
+          children:  
+              [
+            SectionTitleScreen(name: 'Enroll Course', widget: CourseDetailsScreen(isEnrolled: false,),),
+                        
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

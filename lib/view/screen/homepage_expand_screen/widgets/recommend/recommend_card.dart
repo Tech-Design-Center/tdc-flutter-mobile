@@ -21,13 +21,11 @@ class RecommendCard extends StatelessWidget {
     return IntrinsicWidth(
       child: InkWell(
         onTap: () {
-          /*
           Navigator.push(
     context,
     MaterialPageRoute(builder: (context)
  =>CourseDetailsScreen(isEnrolled: false,)),
   );
-       */
         },
         child: Container(
           child: Align(
@@ -152,12 +150,8 @@ class RecommendCard extends StatelessWidget {
                             child: InkWell(
                                 onTap: () {
 
-                                  Get.to(CourseDetailsScreen(
-                                    isEnrolled: false,
-                                    url: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/aaaa.mp4?alt=media&token=da00496c-e501-4f20-a59c-2eb88dc6ed77',));
-
-
-                                  },
+                                  Get.to(CourseDetailsScreen(isEnrolled: true,));
+                                      },
                               child: Container(
                                   width: ScreenUtil().setWidth(800),
                                   height: ScreenUtil().setHeight(120),

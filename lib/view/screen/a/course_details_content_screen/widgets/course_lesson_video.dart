@@ -1,24 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
-import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/widgets/video_player.dart';
-import 'package:video_player/video_player.dart';
 
-// ignore: must_be_immutable
-class Listitem4ItemWidget extends StatefulWidget {
-
-  Listitem4ItemWidget();
+class CourseLessonVideo extends StatefulWidget {
+  const CourseLessonVideo({Key? key}) : super(key: key);
 
   @override
-  State<Listitem4ItemWidget> createState() => _Listitem4ItemWidgetState();
+  State<CourseLessonVideo> createState() => _CourseLessonVideoState();
 }
 
-class _Listitem4ItemWidgetState extends State<Listitem4ItemWidget> {
-
+class _CourseLessonVideoState extends State<CourseLessonVideo> {
   @override
   Widget build(BuildContext context) {
 
@@ -26,9 +18,8 @@ class _Listitem4ItemWidgetState extends State<Listitem4ItemWidget> {
       alignment: Alignment.topCenter,
       child: InkWell(
         onTap:  (){
-          Get.to(CourseDetailsScreen(isEnrolled: true,url: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/1.mp4?alt=media&token=7986dc33-0148-4921-9ef5-bd387797c043',)
-          );
-                  },
+
+        },
         child: Container(
           margin: EdgeInsets.only(
 

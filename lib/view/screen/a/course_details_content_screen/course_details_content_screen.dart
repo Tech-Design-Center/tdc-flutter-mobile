@@ -3,12 +3,10 @@ import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/listitem4_item_widget.dart';
-
-
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
 // ignore: must_be_immutable
 class CourseDetailsContentScreen extends StatelessWidget {
-bool isEnrolled = true;
+bool isEnrolled ;
 CourseDetailsContentScreen(
   {required this.isEnrolled}
 );
@@ -25,15 +23,7 @@ CourseDetailsContentScreen(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
-            Listitem4ItemWidget(),
+            CourseLessonVideo(),
           ],
         ),
           ),

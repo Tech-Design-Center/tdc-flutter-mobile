@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 
 class SectionTitleScreen extends StatelessWidget {
   final String name;
+  final Widget widget;
   const SectionTitleScreen({
     super.key,
-    required this.name,
+    required this.name, required this.widget,
   });
 
   @override
@@ -22,7 +23,7 @@ class SectionTitleScreen extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  Get.back();
+                  Get.to(widget);
                 },
                 child: const Icon(Icons.arrow_back_ios)),
             Text(

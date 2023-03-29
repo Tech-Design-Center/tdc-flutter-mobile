@@ -22,8 +22,8 @@ class CategoriesScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SectionTitleScreen(
-              name: 'Categories',
+             SectionTitleScreen(
+              name: 'Categories', widget: DashboardScreen(),
             ),
             //categories data
             Obx(() {

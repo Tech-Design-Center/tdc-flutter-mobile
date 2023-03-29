@@ -1,11 +1,17 @@
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/model/video_list.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/course_details_content_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/widgets/video_player.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
 import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'widgets/list2friends_one_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,40 +19,76 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
   bool isEnrolled;
-  var url;
 
-  CourseDetailsScreen({super.key, required this.isEnrolled,required this.url});
+
+  CourseDetailsScreen({super.key, required this.isEnrolled});
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
 }
 
 class _CourseDetailsScreenState extends State<CourseDetailsScreen>
     with SingleTickerProviderStateMixin {
-       TabController? tabController;
-       VideoPlayerController? videoPlayerController;
+  late YoutubePlayerController _controller;
+  late TextEditingController _idController;
+  late TextEditingController _seekToController;
+  TabController? tabController;
+
+  late PlayerState _playerState;
+  late YoutubeMetaData _videoMetaData;
+  double _volume = 100;
+  bool _muted = false;
+  bool _isPlayerReady = false;
+
+  final List<String> _ids = [
+    'laj2gxGPnfA',
+  ];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    videoPlayerController = VideoPlayerController.network(widget.url)
-      ..addListener(() {
-        setState(() {});
-      })
-      ..setLooping(false)
-      ..initialize().then((value) => videoPlayerController!.play());
+    _controller = YoutubePlayerController(
+      initialVideoId: _ids.first,
+      flags: const YoutubePlayerFlags(
+        mute: false,
+        autoPlay: true,
+        disableDragSeek: false,
+        loop: false,
+        isLive: false,
+        forceHD: false,
+        enableCaption: true,
+      ),
+    )..addListener(listener);
+    _idController = TextEditingController();
+    _seekToController = TextEditingController();
+    _videoMetaData = const YoutubeMetaData();
+    _playerState = PlayerState.unknown;
     tabController = tabController = TabController(length: 3, vsync: this);
   }
 
+  void listener() {
+    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
+      setState(() {
+        _playerState = _controller.value.playerState;
+        _videoMetaData = _controller.metadata;
+      });
+    }
+  }
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _controller.pause();
+    super.deactivate();
+  }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    videoPlayerController!.dispose();
+    _controller.dispose();
+    _idController.dispose();
+    _seekToController.dispose();
     tabController!.dispose();
+    super.dispose();
   }
-
 
 
   @override
@@ -60,16 +102,64 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              height: ScreenUtil().setHeight(
-                860.00,
+              height: ScreenUtil().setHeight(860),
+              child: YoutubePlayerBuilder(
+                onExitFullScreen: () {
+                  // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
+                  SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+                },
+                player: YoutubePlayer(
+                  controller: _controller,
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.blueAccent,
+                  topActions: <Widget>[
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: Text(
+                        _controller.metadata.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 25.0,
+                      ),
+                      onPressed: () {
+                        log('Settings Tapped!');
+                      },
+                    ),
+                  ],
+                  onReady: () {
+                    _isPlayerReady = true;
+                  },
+                  onEnded: (data) {
+                    _controller
+                        .load(_ids[(_ids.indexOf(data.videoId) + 1) % _ids.length]);
+                    _showSnackBar('Next Video Started!');
+                  },
+                ),
+
+                builder: (context, player) => Scaffold(
+
+                  body: ListView(
+                    children: [
+                      player,
+                      
+                    ],
+                  ),
+                ),
               ),
-              width: ScreenUtil().screenWidth,
-              child: VideoPlayerWidget(controller: videoPlayerController!,
-              isFullScreen: false),
             ),
+
             Expanded(
               child: Container(
-
                 width: ScreenUtil().screenWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -85,7 +175,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                       margin: EdgeInsets.only(
                         bottom: 10,
                       ).r,
-                      padding: EdgeInsets.only(top: 20).r,
+                      //padding: EdgeInsets.only(top: 20).r,
                       decoration: BoxDecoration(
                         color: ColorConstant.gray50,
                         borderRadius: BorderRadius.only(
@@ -110,9 +200,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
                             Padding(
                               padding: EdgeInsets.only(
-
+                                bottom: 40,
                                 left: 24,
-                                top: 12,
+                                top: 0,
                                 right: 24,
                               ).r,
                               child: Row(
@@ -139,9 +229,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                   Container(
                                     margin: EdgeInsets.only(
 
-                                      left: 9,
+                                      left: 50,
                                       top: 5,
-                                      bottom: 3,
+
                                     ).r,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -232,9 +322,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                               child: Container(
                                   margin: EdgeInsets.only(
 
-                                      top: 24,
+                                      top: 0,
                                       right: 20,
-                                      left: 20).r,
+                                      left: 20,
+                                      bottom: 20
+                                  ).r,
                                   decoration: BoxDecoration(
                                     color:ColorConstant.gray100,
                                     borderRadius: BorderRadius.circular(
@@ -302,7 +394,23 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                 child: TabBarView(
                                   controller: tabController,
                                   children: [
-                                    CourseDetailsContentScreen(isEnrolled: widget.isEnrolled),
+
+                                      Padding(
+                                      padding:EdgeInsets.only(left: 14,right: 14,top: 50).r,
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            InkWell(
+                                            child: CourseLessonVideo(),
+                                            ),
+
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+
                                     SingleChildScrollView(
                                       padding: EdgeInsets.only(left: 20,right: 20).r,
                                       child: Column(
@@ -380,19 +488,104 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                               300.00,
                                             ),
                                             width: ScreenUtil().screenWidth,
-                                            child: ListView.builder(
-                                              padding: EdgeInsets.only(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                Align(
+                                                  alignment: Alignment.center,
+                                                  child: Padding(
+                                                    padding:  EdgeInsets.only(
 
-                                                left: 24,
-                                                top: 12,
-                                                right: 24,
-                                              ).r,
-                                              scrollDirection: Axis.horizontal,
-                                              physics: BouncingScrollPhysics(),
-                                              itemCount: 1,
-                                              itemBuilder: (context, index) {
-                                                return List2friendsOneItemWidget();
-                                              },
+                                                      left: 1,
+                                                      top: 5,
+                                                    ).r,
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      mainAxisSize: MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:  EdgeInsets.only(
+                                                            left: 50,
+                                                            top: 12,
+                                                            right: 10,
+                                                            bottom: 20,
+                                                          ).r,
+                                                          child: Icon(Icons.person,color: Colors.blueAccent,),
+                                                        ),
+                                                        Padding(
+                                                          padding:  EdgeInsets.only(
+
+                                                            left: 5,
+                                                            right: 5,
+                                                            top: 1,
+                                                          ).r,
+                                                          child: Text(
+                                                            "Beginner",
+                                                            overflow: TextOverflow.ellipsis,
+                                                            textAlign: TextAlign.start,
+                                                            style: TextStyle(
+
+                                                              fontSize: ScreenUtil().setSp(
+                                                                60,
+                                                              ),
+                                                              fontFamily: 'Poppins',
+                                                              fontWeight: FontWeight.w500,
+                                                              height: 1.00,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:  EdgeInsets.only(
+
+                                                    left: 50,
+                                                    top: 12,
+                                                    right: 10,
+                                                  ).r,
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:  EdgeInsets.only(
+
+                                                          bottom: 4,
+                                                        ).r,
+                                                        child: Icon(Icons.mic,color: Colors.blueAccent,),
+                                                      ),
+                                                      Padding(
+                                                        padding:  EdgeInsets.only(
+
+                                                          left: 10,
+                                                          right: 6,
+                                                          top: 1,
+                                                        ).r,
+                                                        child: Text(
+                                                          "Khmer",
+                                                          overflow: TextOverflow.ellipsis,
+                                                          textAlign: TextAlign.start,
+                                                          style: TextStyle(
+
+                                                            fontSize: ScreenUtil().setSp(
+                                                              60,
+                                                            ),
+                                                            fontFamily: 'Poppins',
+                                                            fontWeight: FontWeight.w500,
+                                                            height: 1.00,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
 
@@ -677,6 +870,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                         ),
                       ),
                     ),
+
+
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: widget.isEnrolled ?
@@ -687,7 +882,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                         child: InkWell(
                           onTap:() {
                             setState(() {
-                              videoPlayerController!.pause();
                               Get.to(EnrollCourseScreen());
                             });
                           },
@@ -719,9 +913,74 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                 ),
               ),
             ),
+
+
           ],
         ),
       ),
     );
+  }
+
+  Widget _text(String title, String value) {
+    return RichText(
+      text: TextSpan(
+        text: '$title : ',
+        style: const TextStyle(
+          color: Colors.blueAccent,
+          fontWeight: FontWeight.bold,
+        ),
+        children: [
+          TextSpan(
+            text: value,
+            style: const TextStyle(
+              color: Colors.blueAccent,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontWeight: FontWeight.w300,
+            fontSize: 16.0,
+          ),
+        ),
+        backgroundColor: Colors.blueAccent,
+        behavior: SnackBarBehavior.floating,
+        elevation: 1.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50.0),
+        ),
+      ),
+    );
+  }
+
+  Color _getStateColor(PlayerState state) {
+    switch (state) {
+      case PlayerState.unknown:
+        return Colors.grey[700]!;
+      case PlayerState.unStarted:
+        return Colors.pink;
+      case PlayerState.ended:
+        return Colors.red;
+      case PlayerState.playing:
+        return Colors.blueAccent;
+      case PlayerState.paused:
+        return Colors.orange;
+      case PlayerState.buffering:
+        return Colors.yellow;
+      case PlayerState.cued:
+        return Colors.blue[900]!;
+      default:
+        return Colors.blue;
+    }
   }
 }

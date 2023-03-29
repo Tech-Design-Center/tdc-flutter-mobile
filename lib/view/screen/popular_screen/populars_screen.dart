@@ -24,8 +24,8 @@ class PopularsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SectionTitleScreen(
-              name: 'Populars',
+             SectionTitleScreen(
+              name: 'Populars', widget: DashboardScreen(),
             ),
             //categories data
             Obx(() {

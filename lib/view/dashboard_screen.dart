@@ -122,14 +122,14 @@ class _DashboardScreenState extends State<DashboardScreen>
                     context: context,
                     builder: (context) => AlertDialog(
                           content: Text(
-                            "Are you sure",
+                            "Are you sure ?",
                             style:
-                                TextStyle(fontSize: 13, fontFamily: "Poppins"),
+                                TextStyle(fontSize: 50.sp, fontFamily: "Poppins"),
                           ),
                           title: Text(
                             "Do you want to exit the app?",
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 60.sp,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -141,7 +141,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                               child: Text(
                                 "No",
                                 style: TextStyle(
-                                    fontSize: 13, fontFamily: "Poppins"),
+                                    color: Colors.blue,
+                                    fontSize: 50.sp, fontFamily: "Poppins"),
                               ),
                             ),
                             TextButton(
@@ -152,7 +153,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                                 "Yes",
                                 style: TextStyle(
                                     color: Colors.red,
-                                    fontSize: 13,
+                                    fontSize: 50.sp,
                                     fontFamily: "Poppins"),
                               ),
                             ),

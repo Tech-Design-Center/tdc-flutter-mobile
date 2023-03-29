@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/data/category_list.dart';
 
 import 'package:tdc_frontend_mobile/model/category.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import '../../section_title_screen.dart';
 import 'category_course_card.dart';
 
@@ -27,7 +28,7 @@ class _CategoryCourseListScreenState extends State<CategoryCourseListScreen> {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: widget.name,
+              name: widget.name, widget: DashboardScreen(),
             ),
             CategoryCourseCard(
               categories: widget.categories,

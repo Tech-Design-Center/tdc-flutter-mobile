@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 
@@ -16,7 +17,7 @@ class RecommendsScreen extends StatelessWidget {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Recommend',
+              name: 'Recommend', widget: DashboardScreen(),
             ),
             //categories data
             Obx(() {

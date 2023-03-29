@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 class BankPaymentScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _BankPaymentScreenState extends State<BankPaymentScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'ABA Bank Payment'),
+            SectionTitleScreen(name: 'ABA Bank Payment', widget: DashboardScreen(),),
 
             Expanded(
               child: SingleChildScrollView(

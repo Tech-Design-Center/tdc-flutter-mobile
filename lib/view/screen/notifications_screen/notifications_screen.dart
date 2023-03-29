@@ -15,7 +15,7 @@ class NotificationsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'Notification'),
+            SectionTitleScreen(name: 'Notification', widget: DashboardScreen(),),
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
