@@ -6,6 +6,7 @@ import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import '../model/user.dart';
 import '../service/remote_service/remote_auth_service.dart';
+import '../view/screen/authentication/sign_in_screen/sign_in_screen.dart';
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();
@@ -81,5 +82,10 @@ class AuthController extends GetxController {
     } finally {
       EasyLoading.dismiss();
     }
+  }
+
+  void signOut() async {
+    user.value = null;
+    Get.offAll(() => SignInScreen());
   }
 }
