@@ -69,7 +69,7 @@ class NewsFeed_Items extends StatelessWidget {
                 ),
               ),
               Container(
-                width: ScreenUtil().setWidth(900),
+                width: ScreenUtil().setWidth(800),
                 margin: EdgeInsets.only(
 
                   left: 12,

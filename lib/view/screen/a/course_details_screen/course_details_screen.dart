@@ -46,7 +46,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
       initialVideoId: _ids,
       flags: const YoutubePlayerFlags(
         mute: false,
-        autoPlay: true,
+        autoPlay: false,
         disableDragSeek: false,
         loop: false,
         isLive: false,
@@ -876,6 +876,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                         child: InkWell(
                           onTap:() {
                             setState(() {
+                              deactivate();
                               Get.to(EnrollCourseScreen());
                             });
                           },

@@ -23,7 +23,7 @@ class SectionTitleScreen extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  Get.to(widget);
+                  Get.back();
                 },
                 child: const Icon(Icons.arrow_back_ios)),
             Text(

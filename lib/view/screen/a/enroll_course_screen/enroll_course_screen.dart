@@ -3,10 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
-import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
-import 'package:tdc_frontend_mobile/core/constants/constants.dart';
-import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/bank_payment_screen/bank_payment_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/confirm_payment_screen/confirm_payment_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
 class EnrollCourseScreen extends StatefulWidget {
@@ -42,7 +39,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       child: Text("Microsoft Office 2019",style: TextStyle(fontSize: 80.sp,fontWeight: FontWeight.bold),),
                     ),
                     Container(
-                      height: ScreenUtil().setHeight(1330),
+                      height: ScreenUtil().setHeight(1400),
                       width: ScreenUtil().setWidth(1200),
 
                       decoration: BoxDecoration(
@@ -139,7 +136,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                           onTap:() {
                             setState(() {
 
-                                Get.to(BankPaymentScreen());
+                                Get.to(ConfirmPaymentScreen());
 
                             });
                           },
