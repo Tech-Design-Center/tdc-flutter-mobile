@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/my_course/my_course_list_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/homepage_expand_screen/homepage_expand_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/my_course/my_course_list_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/setting_screen.dart';
 
@@ -123,8 +123,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                     builder: (context) => AlertDialog(
                           content: Text(
                             "Are you sure ?",
-                            style:
-                                TextStyle(fontSize: 50.sp, fontFamily: "Poppins"),
+                            style: TextStyle(
+                                fontSize: 50.sp, fontFamily: "Poppins"),
                           ),
                           title: Text(
                             "Do you want to exit the app?",
@@ -142,7 +142,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                                 "No",
                                 style: TextStyle(
                                     color: Colors.blue,
-                                    fontSize: 50.sp, fontFamily: "Poppins"),
+                                    fontSize: 50.sp,
+                                    fontFamily: "Poppins"),
                               ),
                             ),
                             TextButton(

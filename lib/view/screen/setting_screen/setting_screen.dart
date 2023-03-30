@@ -6,15 +6,13 @@ import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/data/coursesList.dart';
+import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
 import 'package:tdc_frontend_mobile/main.dart';
 import 'package:flutter/material.dart';
-import 'package:tdc_frontend_mobile/view/Screen/sign_in_screen/sign_in_screen.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
 
 import '../../../core/constants/const.dart';
-import '../homepage_expand_screen/light_settings_language_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -204,7 +202,7 @@ class _SettingScreenState extends State<SettingScreen>
                             children: [
                               InkWell(
                                 onTap: () {
-                                  settingController.signOut();
+                                  authController.signOut();
                                 },
                                 child: Container(
                                   height: ScreenUtil().setHeight(200),
