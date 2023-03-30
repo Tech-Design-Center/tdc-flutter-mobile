@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 /// Creates list of video players
@@ -18,30 +18,30 @@ class _VideoListState extends State<VideoPlayList> {
     'GilzbcZOcHU',
     'C9vAUfSEh8Q',
     'JRipNfX7ahQ',
-
   ]
       .map<YoutubePlayerController>(
         (videoId) => YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,
-      ),
-    ),
-  )
+          initialVideoId: videoId,
+          flags: const YoutubePlayerFlags(
+            autoPlay: false,
+          ),
+        ),
+      )
       .toList();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black,),
-
-          titleTextStyle: TextStyle(color: Colors.black,fontSize: 70.sp),
-          centerTitle: true,
-          title: Text("Introduction"),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black,
         ),
-        body: ListView.separated(
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 70.sp),
+        centerTitle: true,
+        title: Text("Introduction"),
+      ),
+      body: ListView.separated(
         itemBuilder: (context, index) {
           return YoutubePlayer(
             key: ObjectKey(_controllers[index]),

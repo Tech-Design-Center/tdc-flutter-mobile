@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/sign_in_screen/sign_in_screen.dart';
 
 import '../model/user.dart';
 import '../service/remote_service/remote_auth_service.dart';
@@ -14,10 +13,5 @@ class SettingController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-  }
-
-  void signOut() async {
-    user.value = null;
-    Get.offAll(() => SignInScreen());
   }
 }

@@ -5,7 +5,8 @@ import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/confirm_payment_screen/confirm_payment_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+
 class EnrollCourseScreen extends StatefulWidget {
   @override
   State<EnrollCourseScreen> createState() => _EnrollCourseScreenState();
@@ -23,10 +24,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children:  
-              [
-            SectionTitleScreen(name: 'Enroll Course', widget: CourseDetailsScreen(isEnrolled: false, id: 'PEM0Vs8jf1w',),),
-                        
+          children: [
+            SectionTitleScreen(
+              name: 'Enroll Course',
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -35,13 +36,16 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 50,bottom: 80).r,
-                      child: Text("Microsoft Office 2019",style: TextStyle(fontSize: 80.sp,fontWeight: FontWeight.bold),),
+                      padding: EdgeInsets.only(top: 50, bottom: 80).r,
+                      child: Text(
+                        "Microsoft Office 2019",
+                        style: TextStyle(
+                            fontSize: 80.sp, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
                       height: ScreenUtil().setHeight(1400),
                       width: ScreenUtil().setWidth(1200),
-
                       decoration: BoxDecoration(
                         border: Border.all(width: 0.8, color: Colors.grey),
                         borderRadius: BorderRadius.all(Radius.circular(30).w),
@@ -57,52 +61,86 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               child: Text("Students Name"),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 60,bottom: 40).r,
-                              child: Text("Tech Design Center",style: TextStyle(fontSize: 65.sp,fontWeight: FontWeight.bold),),
+                              padding:
+                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              child: Text(
+                                "Tech Design Center",
+                                style: TextStyle(
+                                    fontSize: 65.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                            Divider(height: 20.h,color: Colors.black,),
+                            Divider(
+                              height: 20.h,
+                              color: Colors.black,
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(top: 60).r,
                               child: Text("Student ID"),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 60,bottom: 40).r,
-                              child: Text("# 1111",style: TextStyle(fontSize: 65.sp,fontWeight: FontWeight.bold),),
+                              padding:
+                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              child: Text(
+                                "# 1111",
+                                style: TextStyle(
+                                    fontSize: 65.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                            Divider(height: 20.h,color: Colors.black,),
+                            Divider(
+                              height: 20.h,
+                              color: Colors.black,
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(top: 60).r,
                               child: Text("Price"),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 60,bottom: 40).r,
-                              child: Text("30 \$",style: TextStyle(fontSize: 65.sp,fontWeight: FontWeight.bold),),
+                              padding:
+                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              child: Text(
+                                "30 \$",
+                                style: TextStyle(
+                                    fontSize: 65.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                            Divider(height: 20.h,color: Colors.black,),
-
+                            Divider(
+                              height: 20.h,
+                              color: Colors.black,
+                            ),
                             Padding(
                               padding: const EdgeInsets.only(top: 60).r,
                               child: Text("Enroll Date & Time"),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 60,bottom: 40).r,
-                              child:
-                              Text(date,style: TextStyle(fontSize: 65.sp,fontWeight: FontWeight.bold),),
+                              padding:
+                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              child: Text(
+                                date,
+                                style: TextStyle(
+                                    fontSize: 65.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ),
-
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(top: 50,bottom: 80,left: 130).r,
-                      child: Text("Payment Method",style: TextStyle(fontSize: 60.sp,fontWeight: FontWeight.bold),),
+                      padding:
+                          EdgeInsets.only(top: 50, bottom: 80, left: 130).r,
+                      child: Text(
+                        "Payment Method",
+                        style: TextStyle(
+                            fontSize: 60.sp, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
                       height: ScreenUtil().setHeight(380),
                       width: ScreenUtil().setWidth(1200),
-
                       decoration: BoxDecoration(
                         border: Border.all(width: 0.8, color: Colors.grey),
                         borderRadius: BorderRadius.all(Radius.circular(30).w),
@@ -113,7 +151,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                           RadioGroup<String>.builder(
                             groupValue: _verticalGroupValue,
                             onChanged: (value) => setState(() {
-                              _verticalGroupValue = value?? '';
+                              _verticalGroupValue = value ?? '';
                             }),
                             items: _status,
                             itemBuilder: (item) => RadioButtonBuilder(
@@ -123,21 +161,21 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                         ],
                       ),
                     ),
-
                     Padding(
-
-                      
                       padding: EdgeInsets.only(top: 200).r,
-                      child:
-                      Container(
+                      child: Container(
                         width: ScreenUtil().screenWidth,
                         color: Colors.white,
                         child: InkWell(
-                          onTap:() {
+                          onTap: () {
                             setState(() {
+<<<<<<< HEAD
 
                                 Get.to(ConfirmPaymentScreen());
 
+=======
+                              Get.to(BankPaymentScreen());
+>>>>>>> e16ac9de22b8068eaa7947ffc5b5771897aad276
                             });
                           },
                           child: Container(
@@ -150,13 +188,17 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               right: 100,
                             ).r,
                             decoration: BoxDecoration(
-
-                              borderRadius: BorderRadius.all(Radius.circular(50)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50)),
                               color: Colors.blueAccent,
-
                             ),
-                            child: Text("Next",style: TextStyle(color: Colors.white,fontSize: 70.sp,fontWeight: FontWeight.bold),),
-
+                            child: Text(
+                              "Next",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 70.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/view/Screen/splash_screen/splash_screen.dart';
-import 'package:tdc_frontend_mobile/routes/app_route.dart';
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/splash_screen.dart';
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -50,7 +49,6 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           home: SplashScreen(),
           navigatorObservers: [routeObserver],
-          initialRoute: AppRoute.dashboard,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           themeMode: ThemeMode.light,
