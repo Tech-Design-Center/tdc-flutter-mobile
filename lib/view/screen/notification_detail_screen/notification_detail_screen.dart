@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/notifications_screen/notifications_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
 
 class NotificationDetailScreen extends StatefulWidget {
   const NotificationDetailScreen({Key? key}) : super(key: key);
@@ -20,7 +18,7 @@ class _NotificationDetailScreenState extends State<NotificationDetailScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'Notification', widget: NotificationsScreen(),),
+            SectionTitleScreen(name: 'Notification'),
 
             Expanded(
               child: Container(
@@ -244,8 +242,6 @@ class _NotificationDetailScreenState extends State<NotificationDetailScreen> {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

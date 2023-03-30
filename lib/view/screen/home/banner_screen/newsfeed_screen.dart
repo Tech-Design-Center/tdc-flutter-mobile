@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-<<<<<<< HEAD:lib/view/screen/newsfeed_screen/newsfeed_screen.dart
-import 'package:tdc_frontend_mobile/view/screen/newsfeed_screen/widgets/newsfeed_item_widget.dart';
-import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
-=======
 import 'package:tdc_frontend_mobile/view/screen/home/banner_screen/widgets/newsfeed_item_widget.dart';
->>>>>>> e16ac9de22b8068eaa7947ffc5b5771897aad276:lib/view/screen/home/banner_screen/newsfeed_screen.dart
+import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
 
 class NewsFeedScreen extends StatefulWidget {
   const NewsFeedScreen({Key? key}) : super(key: key);
@@ -22,10 +18,9 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       body: SafeArea(
         child: Column(
           children: [
-<<<<<<< HEAD:lib/view/screen/newsfeed_screen/newsfeed_screen.dart
-            SectionTitleScreen(name: 'Newsfeed', widget: DashboardScreen()),
 
-=======
+            SectionTitleScreen(name: 'Newsfeed'),
+
             Container(
               padding: EdgeInsets.only(left: 120).r,
               height: ScreenUtil().setHeight(300),
@@ -74,7 +69,6 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
                 ],
               ),
             ),
->>>>>>> e16ac9de22b8068eaa7947ffc5b5771897aad276:lib/view/screen/home/banner_screen/newsfeed_screen.dart
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,

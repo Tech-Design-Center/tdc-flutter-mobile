@@ -169,13 +169,9 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                         child: InkWell(
                           onTap: () {
                             setState(() {
-<<<<<<< HEAD
 
                                 Get.to(ConfirmPaymentScreen());
 
-=======
-                              Get.to(BankPaymentScreen());
->>>>>>> e16ac9de22b8068eaa7947ffc5b5771897aad276
                             });
                           },
                           child: Container(

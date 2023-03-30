@@ -3,9 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/section_title_screen.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ConfirmPaymentScreen extends StatefulWidget {
@@ -52,7 +53,7 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'Payment Method', widget: EnrollCourseScreen(),),
+            SectionTitleScreen(name: 'Payment Method'),
 
             Expanded(
               child: SingleChildScrollView(
