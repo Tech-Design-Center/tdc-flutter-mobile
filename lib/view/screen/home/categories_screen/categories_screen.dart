@@ -8,7 +8,7 @@ import 'package:tdc_frontend_mobile/local_data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/widgets/listsketchingtran_item_widget.dart';
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 import '../../../../controller/controllers.dart';
 import 'categories_loading.dart';

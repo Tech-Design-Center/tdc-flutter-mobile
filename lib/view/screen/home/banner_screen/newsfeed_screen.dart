@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/banner_screen/widgets/newsfeed_item_widget.dart';
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 class NewsFeedScreen extends StatefulWidget {
   const NewsFeedScreen({Key? key}) : super(key: key);

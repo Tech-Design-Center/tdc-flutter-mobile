@@ -6,7 +6,7 @@ import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_co
 
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ConfirmPaymentScreen extends StatefulWidget {

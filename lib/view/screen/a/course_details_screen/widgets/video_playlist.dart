@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 /// Creates list of video players

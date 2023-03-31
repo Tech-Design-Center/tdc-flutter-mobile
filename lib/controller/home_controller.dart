@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
-import 'package:tdc_frontend_mobile/service/remote_service/remote_category_service.dart';
-import 'package:tdc_frontend_mobile/service/remote_service/remote_popular_service.dart';
-import 'package:tdc_frontend_mobile/service/remote_service/remote_recommend_service.dart';
+import 'package:tdc_frontend_mobile/service/category_service.dart';
+import 'package:tdc_frontend_mobile/service/popular_service.dart';
+import 'package:tdc_frontend_mobile/service/recommend_service.dart';
 
 import '../model/ad_banner.dart';
 import '../model/category.dart';
 import '../model/recommend.dart';
-import '../service/remote_service/remote_banner_service.dart';
+import '../service/banner_service.dart';
 
 class HomeController extends GetxController {
   RxList<AdBanner> bannerList = List<AdBanner>.empty(growable: true).obs;

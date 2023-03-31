@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/splash_screen.dart';
+import 'package:tdc_frontend_mobile/service/auth_service.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/authentication/sign_in_screen/sign_in_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+
+import 'model/user.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
@@ -16,8 +23,13 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("Handling a background message: ${message.messageId}");
 }
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+var token;
+Rxn<User> user = Rxn<User>();
+
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -32,7 +44,11 @@ void main() async {
       print('Message also contained a notification: ${message.notification}');
     }
   });
-  runApp(const MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  token = prefs.getString('token');
+  print('Token: ${token}');
+
+  runApp(MyApp());
 }
 
 RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
@@ -47,7 +63,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
-          home: SplashScreen(),
+          title: 'Tech Design Center',
+          home: token == null ? OnboardingScreen() : DashboardScreen(),
           navigatorObservers: [routeObserver],
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,

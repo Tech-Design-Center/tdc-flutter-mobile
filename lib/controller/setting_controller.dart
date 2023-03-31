@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import '../model/user.dart';
-import '../service/remote_service/remote_auth_service.dart';
+import '../service/auth_service.dart';
 
 class SettingController extends GetxController {
   Rxn<User> user = Rxn<User>();

@@ -11,7 +11,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widg
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/widgets/listsketchingtran_item_widget.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/popular_screen/populars_list_view.dart';
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 import '../../../../controller/controllers.dart';
 

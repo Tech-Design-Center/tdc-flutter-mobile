@@ -5,7 +5,7 @@ import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
 
 import '../../../../model/category.dart';
 import '../../../../core/constants/color_constant.dart';
-import '../../../../service/remote_service/remote_category_service.dart';
+import '../../../../service/category_service.dart';
 import 'category_course_screen/category_course_list_screen.dart';
 
 class CategoryCard extends StatelessWidget {
