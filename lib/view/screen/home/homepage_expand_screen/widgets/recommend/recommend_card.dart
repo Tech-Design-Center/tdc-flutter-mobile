@@ -7,7 +7,7 @@ import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 
 import '../../../../../../core/constants/color_constant.dart';
-import '../../../../../../core/constants/const.dart';
+import '../../../../../../core/constants/base_url.dart';
 import '../../../../../../core/constants/image_constant.dart';
 import '../../../../../../model/recommend.dart';
 

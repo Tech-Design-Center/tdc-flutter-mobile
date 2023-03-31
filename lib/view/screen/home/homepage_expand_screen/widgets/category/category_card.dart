@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/category.dart';
 
-import '../../../../../../core/constants/const.dart';
+import '../../../../../../core/constants/base_url.dart';
 import '../../../categories_screen/category_course_screen/category_course_list_screen.dart';
 
 class CategoryCard extends StatelessWidget {

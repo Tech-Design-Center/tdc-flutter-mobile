@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../../core/constants/const.dart';
+import '../../../../../../core/constants/base_url.dart';
 
 class BannerCard extends StatelessWidget {
   final String imageUrl;
