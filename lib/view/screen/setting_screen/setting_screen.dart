@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
 
-import '../../../core/constants/const.dart';
+import '../../../core/constants/base_url.dart';
 
 class SettingScreen extends StatefulWidget {
   @override

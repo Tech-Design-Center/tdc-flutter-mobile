@@ -5,6 +5,7 @@ import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/homepage_expand_screen.dart';
 
+import '../../../../controller/controllers.dart';
 import '../forget_pass_screen/forget_pass_screen.dart';
 import '../sign_up_screen/sign_up_screen.dart';
 
@@ -381,14 +382,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(color: Colors.blue)))),
                         onPressed: () {
-                          // if (_formKey.currentState!.validate()) {
-                          //   authController.signIn(
-                          //       email: emailController.text,
-                          //       password: passwordController.text);
-                          // }
+                          if (_formKey.currentState!.validate()) {
+                            authController.signIn(
+                                email: emailController.text,
+                                password: passwordController.text);
+                          }
 
                           //for testing app
-                          Get.to(() => DashboardScreen());
+                          // Get.to(() => DashboardScreen());
                         },
                         child: Container(
                           width: ScreenUtil().setWidth(1100),

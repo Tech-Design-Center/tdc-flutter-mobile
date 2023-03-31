@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 
 import '../../../../../../core/constants/color_constant.dart';
-import '../../../../../../core/constants/const.dart';
+import '../../../../../../core/constants/base_url.dart';
 import '../../../../../../core/constants/image_constant.dart';
 
 class PopularCard extends StatelessWidget {

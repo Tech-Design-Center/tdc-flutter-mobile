@@ -19,7 +19,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/banner_screen/newsfeed_scre
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifications_screen.dart';
 
 import '../../../../controller/controllers.dart';
-import '../../../../core/constants/const.dart';
+import '../../../../core/constants/base_url.dart';
 
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';

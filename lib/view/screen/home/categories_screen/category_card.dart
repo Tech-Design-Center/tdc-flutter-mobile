@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/core/constants/const.dart';
+import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
 
 import '../../../../model/category.dart';
 import '../../../../core/constants/color_constant.dart';
