@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/confirm_payment_screen/confirm_payment_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen/course_details_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 class EnrollCourseScreen extends StatefulWidget {
@@ -169,9 +169,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                         child: InkWell(
                           onTap: () {
                             setState(() {
-
-                                Get.to(ConfirmPaymentScreen());
-
+                              Get.to(ConfirmPaymentScreen());
                             });
                           },
                           child: Container(

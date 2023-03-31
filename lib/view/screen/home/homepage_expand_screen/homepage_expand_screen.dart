@@ -633,7 +633,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                             //recommend data
                             Obx(() {
-                              print(homeController.recommendList.length);
                               if (homeController.recommendList.isNotEmpty) {
                                 return RecommendListView(
                                     recommendList:
@@ -709,7 +708,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             ),
                             //popular data
                             Obx(() {
-                              print(homeController.popularList.length);
                               if (homeController.popularList.isNotEmpty) {
                                 return PopularListView(
                                     popularList: homeController.popularList);

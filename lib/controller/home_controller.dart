@@ -45,8 +45,6 @@ class HomeController extends GetxController {
   }
 
   void getCategories() async {
-    print('controller category $categoryList.length');
-
     try {
       isCategoryLoading(true);
       //call api
