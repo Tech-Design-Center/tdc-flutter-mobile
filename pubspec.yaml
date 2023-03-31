@@ -65,6 +65,8 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   url_launcher: ^6.1.10
   flutter_phone_direct_caller: ^2.1.1
+  shared_preferences: ^2.0.20
+  flutter_native_splash: ^2.2.19
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import '../../core/constants/base_url.dart';
+import '../core/constants/base_url.dart';
 
 class RemoteCategoryService {
   var client = http.Client();

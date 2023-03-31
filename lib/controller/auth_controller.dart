@@ -2,18 +2,29 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import '../model/user.dart';
-import '../service/remote_service/remote_auth_service.dart';
+import '../service/auth_service.dart';
 import '../view/screen/authentication/sign_in_screen/sign_in_screen.dart';
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();
+  var token;
 
   @override
   void onInit() async {
     super.onInit();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token');
+    var userResult = await RemoteAuthService().getProfile(token: token);
+    if (userResult.statusCode == 200) {
+      user.value = userFromJson(userResult.body);
+      Get.offAll(() => DashboardScreen());
+    } else {
+      EasyLoading.showError('Something wrong. Try again!');
+    }
   }
 
   void signUp(
@@ -26,18 +37,24 @@ class AuthController extends GetxController {
         status: 'Loading...',
         dismissOnTap: false,
       );
+
       var result = await RemoteAuthService().signUp(
         email: email,
         password: password,
       );
       if (result.statusCode == 200) {
         String token = json.decode(result.body)['jwt'];
+
+        //after the login REST api call && response code ==200
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', token);
+
         var userResult = await RemoteAuthService().createProfile(
             fullName: fullName, phoneNumber: phoneNumber, token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Get.to(() => DashboardScreen());
+          Get.offAll(() => DashboardScreen());
         } else {
           EasyLoading.showError('Something wrong1. Try again!');
         }
@@ -58,6 +75,7 @@ class AuthController extends GetxController {
         status: 'Loading...',
         dismissOnTap: false,
       );
+
       var result = await RemoteAuthService().signIn(
         email: email,
         password: password,
@@ -65,12 +83,17 @@ class AuthController extends GetxController {
       if (result.statusCode == 200) {
         String token = json.decode(result.body)['jwt'];
         var userResult = await RemoteAuthService().getProfile(token: token);
+
+        //after the login REST api call && response code ==200
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', token);
+
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Get.to(() => DashboardScreen());
+          Get.offAll(() => DashboardScreen());
         } else {
-          EasyLoading.showError('Something wrong1. Try again!');
+          EasyLoading.showError('Something wrong. Try again!');
         }
       } else {
         EasyLoading.showError('Username/password wrong');
@@ -85,6 +108,8 @@ class AuthController extends GetxController {
   }
 
   void signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('token');
     user.value = null;
     Get.offAll(() => SignInScreen());
   }

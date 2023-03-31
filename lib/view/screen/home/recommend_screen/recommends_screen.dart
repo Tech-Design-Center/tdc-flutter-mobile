@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
-import 'package:tdc_frontend_mobile/view/screen/widgets/section_title_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 import '../../../../controller/controllers.dart';
 import '../recommend_screen/recommends_list_view.dart';

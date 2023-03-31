@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../core/constants/base_url.dart';
+import '../core/constants/base_url.dart';
 
 class RemoteAuthService {
   var client = http.Client();
