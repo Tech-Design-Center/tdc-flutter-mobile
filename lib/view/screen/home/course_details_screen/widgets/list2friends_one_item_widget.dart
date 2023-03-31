@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
-
 // ignore: must_be_immutable
 class List2friendsOneItemWidget extends StatelessWidget {
   List2friendsOneItemWidget();
 
   @override
   Widget build(BuildContext context) {
-  
     return IntrinsicWidth(
       child: Container(
         margin: EdgeInsets.only(
-                                 
           right: 32,
         ).r,
         child: Column(
@@ -24,8 +21,7 @@ class List2friendsOneItemWidget extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding:  EdgeInsets.only(
-                                       
+                padding: EdgeInsets.only(
                   left: 1,
                   top: 5,
                 ).r,
@@ -35,17 +31,19 @@ class List2friendsOneItemWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         left: 50,
                         top: 12,
                         right: 10,
                         bottom: 20,
                       ).r,
-                      child: Icon(Icons.person,color: Colors.blueAccent,),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.blueAccent,
+                      ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.only(
-                                       
+                      padding: EdgeInsets.only(
                         left: 5,
                         right: 5,
                         top: 1,
@@ -55,7 +53,6 @@ class List2friendsOneItemWidget extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                           
                           fontSize: ScreenUtil().setSp(
                             60,
                           ),
@@ -70,8 +67,7 @@ class List2friendsOneItemWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(
-                                       
+              padding: EdgeInsets.only(
                 left: 50,
                 top: 12,
                 right: 10,
@@ -82,15 +78,16 @@ class List2friendsOneItemWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.only(
-                                       
+                    padding: EdgeInsets.only(
                       bottom: 4,
                     ).r,
-                    child: Icon(Icons.mic,color: Colors.blueAccent,),
+                    child: Icon(
+                      Icons.mic,
+                      color: Colors.blueAccent,
+                    ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(
-                                       
+                    padding: EdgeInsets.only(
                       left: 10,
                       right: 6,
                       top: 1,
@@ -100,7 +97,6 @@ class List2friendsOneItemWidget extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                         
                         fontSize: ScreenUtil().setSp(
                           60,
                         ),

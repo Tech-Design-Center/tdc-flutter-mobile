@@ -62,7 +62,7 @@ class AuthController extends GetxController {
         EasyLoading.showError('Something wrong2. Try again!');
       }
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
       EasyLoading.showError('Something wrong3. Try again!');
     } finally {
       EasyLoading.dismiss();
@@ -100,8 +100,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       debugPrint(e.toString());
-      print(e.toString());
-      EasyLoading.showError('Something wrong2. Try again!');
+      EasyLoading.showError('Something wrong. Try again!');
     } finally {
       EasyLoading.dismiss();
     }
