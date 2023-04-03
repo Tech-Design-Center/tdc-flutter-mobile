@@ -23,12 +23,7 @@ class RecommendsListView extends StatelessWidget {
           itemCount: recommends.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                //Get.to(() => CourseDetailsScreen(isEnrolled: true));
-              },
-              child: RecommendsCard(recommends: recommends[index]),
-            );
+            return RecommendsCard(recommends: recommends[index]);
           }),
     );
   }
