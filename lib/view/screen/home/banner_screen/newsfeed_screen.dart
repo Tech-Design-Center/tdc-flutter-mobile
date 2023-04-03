@@ -18,9 +18,6 @@ class _NewsFeedScreenState extends State<NewsFeedScreen> {
       body: SafeArea(
         child: Column(
           children: [
-
-            SectionTitleScreen(name: 'Newsfeed'),
-
             Container(
               padding: EdgeInsets.only(left: 120).r,
               height: ScreenUtil().setHeight(300),

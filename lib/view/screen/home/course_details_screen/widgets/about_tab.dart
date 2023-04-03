@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 
 // ignore: must_be_immutable
-class List2friendsOneItemWidget extends StatelessWidget {
-  List2friendsOneItemWidget();
+class AboutTab extends StatelessWidget {
+  AboutTab();
 
   @override
   Widget build(BuildContext context) {

@@ -8,18 +8,17 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen/widgets/about_tab.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'widgets/list2friends_one_item_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/video_playlist.dart';
-
 
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
   bool isEnrolled;
   var id;
-  CourseDetailsScreen({super.key, required this.isEnrolled,required this.id });
+  CourseDetailsScreen({super.key, required this.isEnrolled, required this.id});
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
 }
@@ -37,7 +36,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool _muted = false;
   bool _isPlayerReady = false;
 
-   late var _ids = widget.id;
+  late var _ids = widget.id;
 
   @override
   void initState() {
@@ -87,11 +86,18 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstant.indigo100,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -103,7 +109,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
               child: YoutubePlayerBuilder(
                 onExitFullScreen: () {
                   // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
-                  SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+                  SystemChrome.setPreferredOrientations(
+                      DeviceOrientation.values);
                 },
                 player: YoutubePlayer(
                   controller: _controller,
@@ -122,20 +129,17 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                         maxLines: 1,
                       ),
                     ),
-
                   ],
                   onReady: () {
                     _isPlayerReady = true;
                   },
                   onEnded: (data) {
-                    _controller
-                        .load(_ids[(_ids.indexOf(data.videoId) + 1) % _ids.length]);
+                    _controller.load(
+                        _ids[(_ids.indexOf(data.videoId) + 1) % _ids.length]);
                     _showSnackBar('Next Video Started!');
                   },
                 ),
-
                 builder: (context, player) => Scaffold(
-
                   body: ListView(
                     children: [
                       player,
@@ -144,7 +148,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                 ),
               ),
             ),
-
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -152,8 +155,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30)),
-                  color:
-                      ColorConstant.whiteA700,
+                  color: ColorConstant.whiteA700,
                 ),
                 child: Stack(
                   alignment: Alignment.bottomLeft,
@@ -184,7 +186,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-
                             Padding(
                               padding: EdgeInsets.only(
                                 bottom: 40,
@@ -204,7 +205,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       ),
                                     ),
                                     child: Image.asset(
-                                        ImageConstant.video2,
+                                      ImageConstant.video2,
                                       height: ScreenUtil().setHeight(
                                         400.00,
                                       ),
@@ -215,10 +216,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-
                                       left: 50,
                                       top: 5,
-
                                     ).r,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -232,7 +231,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           overflow: TextOverflow.fade,
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
-
                                             fontSize: ScreenUtil().setSp(
                                               80,
                                             ),
@@ -243,7 +241,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(
-
                                             top: 10,
                                             right: 10,
                                           ).r,
@@ -264,7 +261,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(
-
                                             top: 50,
                                             right: 10,
                                           ).r,
@@ -283,19 +279,20 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             ),
                                           ),
                                         ),
-
                                         Padding(
                                           padding: EdgeInsets.only(
-
                                             top: 30,
                                             right: 10,
                                           ).r,
                                           child: Row(
                                             children: [
-                                              Text("35 Hours ",style: TextStyle(fontSize: 60.sp,color: Colors.blueAccent),),
-
+                                              Text(
+                                                "35 Hours ",
+                                                style: TextStyle(
+                                                    fontSize: 60.sp,
+                                                    color: Colors.blueAccent),
+                                              ),
                                             ],
-
                                           ),
                                         ),
                                       ],
@@ -308,610 +305,721 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                               alignment: Alignment.center,
                               child: Container(
                                   margin: EdgeInsets.only(
-
-                                      top: 0,
-                                      right: 20,
-                                      left: 20,
-                                      bottom: 20
-                                  ).r,
+                                          top: 0,
+                                          right: 20,
+                                          left: 20,
+                                          bottom: 20)
+                                      .r,
                                   decoration: BoxDecoration(
-                                    color:ColorConstant.gray100,
+                                    color: ColorConstant.gray100,
                                     borderRadius: BorderRadius.circular(
                                       ScreenUtil().setWidth(
                                         22.00,
                                       ),
                                     ),
                                   ),
-                                  child: widget.isEnrolled ?
-                                  TabBar(
-                                    indicatorPadding: EdgeInsets.all(5).w,
-                                    indicator: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: ColorConstant.indigoA200),
-                                    labelColor: ColorConstant.whiteA700,
-                                    unselectedLabelColor:Colors.black,
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w500),
-                                    unselectedLabelStyle: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400),
-                                    controller: tabController,
-                                    tabs: [
-                                      Tab(
-                                        text: "Videos",
-                                      ),
-                                      Tab(
-                                        text: "About",
-                                      ),
-
-                                    ],
-                                  )
-                                    :
-                                  TabBar(
-                                    indicatorPadding: EdgeInsets.all(5).w,
-                                    indicator: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: ColorConstant.indigoA200),
-                                    labelColor: ColorConstant.whiteA700,
-                                    unselectedLabelColor:Colors.black,
-                                    labelStyle: TextStyle(
-                                        fontSize: 60.sp,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w500),
-                                    unselectedLabelStyle: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w400),
-                                    controller: tabController,
-                                    tabs: [
-                                      Tab(
-                                        text: "30\$",
-                                      ),
-
-
-                                    ],
-                                  )
-                              ),
-                            ),
-
-                            Container(
-                              child: widget.isEnrolled ?
-
-                              Container(
-                                height: ScreenUtil().setHeight(1450),
-                                child: TabBarView(
-                                  controller: tabController,
-                                  children: [
-
-                                      Padding(
-                                      padding:EdgeInsets.only(left: 14,right: 14,top: 50).r,
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          children: [
-                                            InkWell(
-                                              onTap:  (){
-                                                deactivate();
-                                                Get.to(VideoPlayList());
-                                              },
-
-                                            child: CourseLessonVideo(),
+                                  child: widget.isEnrolled
+                                      ? TabBar(
+                                          indicatorPadding: EdgeInsets.all(5).w,
+                                          indicator: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              color: ColorConstant.indigoA200),
+                                          labelColor: ColorConstant.whiteA700,
+                                          unselectedLabelColor: Colors.black,
+                                          labelStyle: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w500),
+                                          unselectedLabelStyle: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w400),
+                                          controller: tabController,
+                                          tabs: [
+                                            Tab(
+                                              text: "Videos",
                                             ),
-
-
+                                            Tab(
+                                              text: "About",
+                                            ),
                                           ],
-                                        ),
-                                      ),
-                                    ),
-
-
-                                    SingleChildScrollView(
-                                      padding: EdgeInsets.only(left: 20,right: 20).r,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                                left: 35,
-                                                top: 60,
-                                                right: 35,
-                                                bottom: 40
-                                            ).r,
-                                            child: Text(
-                                              "Introduction",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
+                                        )
+                                      : TabBar(
+                                          indicatorPadding: EdgeInsets.all(5).w,
+                                          indicator: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              color: ColorConstant.indigoA200),
+                                          labelColor: ColorConstant.whiteA700,
+                                          unselectedLabelColor: Colors.black,
+                                          labelStyle: TextStyle(
+                                              fontSize: 60.sp,
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w500),
+                                          unselectedLabelStyle: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w400),
+                                          controller: tabController,
+                                          tabs: [
+                                            Tab(
+                                              text: "30\$",
+                                            ),
+                                          ],
+                                        )),
+                            ),
+                            Container(
+                                child: widget.isEnrolled
+                                    ? Container(
+                                        height: ScreenUtil().setHeight(1450),
+                                        child: TabBarView(
+                                          controller: tabController,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                      left: 14,
+                                                      right: 14,
+                                                      top: 50)
+                                                  .r,
+                                              child: SingleChildScrollView(
+                                                child: Column(
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () {
+                                                        deactivate();
+                                                        Get.to(VideoPlayList());
+                                                      },
+                                                      child:
+                                                          CourseLessonVideo(),
+                                                    ),
+                                                  ],
                                                 ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: Container(
-                                                margin: EdgeInsets.only(
-
-                                                    left: 35,
-                                                    right: 35,
-                                                    top: 20).r,
-                                                width: ScreenUtil().screenWidth,
-                                                child: Text(
-                                                  "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
-                                                  style:
-                                                  TextStyle(
-                                                      fontSize: 50.sp,
-                                                      color: ColorConstant
-                                                          .gray600,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                      FontWeight.normal),
-
-                                                )),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                                left: 24,
-                                                top: 80,
-                                                right: 24,
-                                                bottom: 40
-                                            ).r,
-                                            child: Text(
-                                              "Details",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
-                                                ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: ScreenUtil().setHeight(
-                                              300.00,
-                                            ),
-                                            width: ScreenUtil().screenWidth,
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.center,
-                                                  child: Padding(
-                                                    padding:  EdgeInsets.only(
-
-                                                      left: 1,
-                                                      top: 5,
-                                                    ).r,
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      mainAxisSize: MainAxisSize.max,
+                                            SingleChildScrollView(
+                                              padding: EdgeInsets.only(
+                                                      left: 20, right: 20)
+                                                  .r,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                            left: 35,
+                                                            top: 60,
+                                                            right: 35,
+                                                            bottom: 40)
+                                                        .r,
+                                                    child: Text(
+                                                      "Introduction",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
+                                                        ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment.center,
+                                                    child: Container(
+                                                        margin: EdgeInsets.only(
+                                                                left: 35,
+                                                                right: 35,
+                                                                top: 20)
+                                                            .r,
+                                                        width: ScreenUtil()
+                                                            .screenWidth,
+                                                        child: Text(
+                                                          "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
+                                                          style: TextStyle(
+                                                              fontSize: 50.sp,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .gray600,
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
+                                                        )),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                            left: 24,
+                                                            top: 80,
+                                                            right: 24,
+                                                            bottom: 40)
+                                                        .r,
+                                                    child: Text(
+                                                      "Details",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
+                                                        ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        ScreenUtil().setHeight(
+                                                      300.00,
+                                                    ),
+                                                    width: ScreenUtil()
+                                                        .screenWidth,
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
                                                       children: [
+                                                        Align(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                              left: 1,
+                                                              top: 5,
+                                                            ).r,
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .only(
+                                                                    left: 50,
+                                                                    top: 12,
+                                                                    right: 10,
+                                                                    bottom: 20,
+                                                                  ).r,
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .person,
+                                                                    color: Colors
+                                                                        .blueAccent,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .only(
+                                                                    left: 5,
+                                                                    right: 5,
+                                                                    top: 1,
+                                                                  ).r,
+                                                                  child: Text(
+                                                                    "Beginner",
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          ScreenUtil()
+                                                                              .setSp(
+                                                                        60,
+                                                                      ),
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      height:
+                                                                          1.00,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
                                                         Padding(
-                                                          padding:  EdgeInsets.only(
+                                                          padding:
+                                                              EdgeInsets.only(
                                                             left: 50,
                                                             top: 12,
                                                             right: 10,
-                                                            bottom: 20,
                                                           ).r,
-                                                          child: Icon(Icons.person,color: Colors.blueAccent,),
-                                                        ),
-                                                        Padding(
-                                                          padding:  EdgeInsets.only(
-
-                                                            left: 5,
-                                                            right: 5,
-                                                            top: 1,
-                                                          ).r,
-                                                          child: Text(
-                                                            "Beginner",
-                                                            overflow: TextOverflow.ellipsis,
-                                                            textAlign: TextAlign.start,
-                                                            style: TextStyle(
-
-                                                              fontSize: ScreenUtil().setSp(
-                                                                60,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .only(
+                                                                  bottom: 4,
+                                                                ).r,
+                                                                child: Icon(
+                                                                  Icons.mic,
+                                                                  color: Colors
+                                                                      .blueAccent,
+                                                                ),
                                                               ),
-                                                              fontFamily: 'Poppins',
-                                                              fontWeight: FontWeight.w500,
-                                                              height: 1.00,
-                                                            ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .only(
+                                                                  left: 10,
+                                                                  right: 6,
+                                                                  top: 1,
+                                                                ).r,
+                                                                child: Text(
+                                                                  "Khmer",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        ScreenUtil()
+                                                                            .setSp(
+                                                                      60,
+                                                                    ),
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.00,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(
-
-                                                    left: 50,
-                                                    top: 12,
-                                                    right: 10,
-                                                  ).r,
-                                                  child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisSize: MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:  EdgeInsets.only(
-
-                                                          bottom: 4,
-                                                        ).r,
-                                                        child: Icon(Icons.mic,color: Colors.blueAccent,),
-                                                      ),
-                                                      Padding(
-                                                        padding:  EdgeInsets.only(
-
-                                                          left: 10,
-                                                          right: 6,
-                                                          top: 1,
-                                                        ).r,
-                                                        child: Text(
-                                                          "Khmer",
-                                                          overflow: TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.start,
-                                                          style: TextStyle(
-
-                                                            fontSize: ScreenUtil().setSp(
-                                                              60,
-                                                            ),
-                                                            fontFamily: 'Poppins',
-                                                            fontWeight: FontWeight.w500,
-                                                            height: 1.00,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                              left: 24,
-                                              top: 32,
-                                              right: 24,
-                                            ).r,
-                                            child: Text(
-                                              "Tools you need",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
-                                                ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
-                                              ),
-                                            ),
-                                          ),
-                                          ListView.builder(
-                                              physics: BouncingScrollPhysics(),
-                                              padding: EdgeInsets.only(bottom: 70),
-                                              shrinkWrap: true,
-                                              itemCount: 1,
-                                              itemBuilder: ((context, index) {
-                                                return Padding(
-                                                  padding: EdgeInsets.only(
-
-                                                    left: 90,
-                                                    top: 60,
-                                                    right: 24,
-                                                    bottom: 8,
-                                                  ).r,
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                    mainAxisSize:
-                                                    MainAxisSize.min,
-                                                    children: [
-                                                      ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                            ScreenUtil().setWidth(
-                                                              16.00,
-                                                            ),
-                                                          ),
-                                                          child: Icon(Icons.computer,color: Colors.blueAccent,)
-                                                      ),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(
-
-                                                          left: 30,
-                                                          right: 8,
-                                                          top: 9,
-                                                          bottom: 8,
-                                                        ).r,
-                                                        child: Text(
-                                                          "Computer",
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          textAlign:
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 24,
+                                                      top: 32,
+                                                      right: 24,
+                                                    ).r,
+                                                    child: Text(
+                                                      "Tools you need",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
                                                           TextAlign.start,
-                                                          style: TextStyle(
-                                                            fontSize: ScreenUtil().setSp(
-                                                              60,
-                                                            ),
-                                                            fontFamily: 'Poppins',
-                                                            fontWeight:
-                                                            FontWeight.w500,
-                                                            height: 1.00,
-                                                          ),
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
                                                         ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
                                                       ),
-                                                    ],
+                                                    ),
                                                   ),
-                                                );
-                                              })),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-
-                                  :
-
-                              Container(
-                                height: ScreenUtil().setHeight(1450),
-                                child: TabBarView(
-                                  controller: tabController,
-                                  children: [
-                                    SingleChildScrollView(
-                                      padding: EdgeInsets.only(left: 20,right: 20).r,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                                left: 35,
-                                                top: 60,
-                                                right: 35,
-                                                bottom: 40
-                                            ).r,
-                                            child: Text(
-                                              "Introduction",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
-                                                ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
+                                                  ListView.builder(
+                                                      physics:
+                                                          BouncingScrollPhysics(),
+                                                      padding: EdgeInsets.only(
+                                                          bottom: 70),
+                                                      shrinkWrap: true,
+                                                      itemCount: 1,
+                                                      itemBuilder:
+                                                          ((context, index) {
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            left: 90,
+                                                            top: 60,
+                                                            right: 24,
+                                                            bottom: 8,
+                                                          ).r,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    ScreenUtil()
+                                                                        .setWidth(
+                                                                      16.00,
+                                                                    ),
+                                                                  ),
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .computer,
+                                                                    color: Colors
+                                                                        .blueAccent,
+                                                                  )),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .only(
+                                                                  left: 30,
+                                                                  right: 8,
+                                                                  top: 9,
+                                                                  bottom: 8,
+                                                                ).r,
+                                                                child: Text(
+                                                                  "Computer",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        ScreenUtil()
+                                                                            .setSp(
+                                                                      60,
+                                                                    ),
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.00,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      })),
+                                                ],
                                               ),
                                             ),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: Container(
-                                                margin: EdgeInsets.only(
-
-                                                    left: 35,
-                                                    right: 35,
-                                                    top: 20).r,
-                                                width: ScreenUtil().screenWidth,
-                                                child: Text(
-                                                  "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
-                                                  style:
-                                                  TextStyle(
-                                                      fontSize: 50.sp,
-                                                      color: ColorConstant
-                                                          .gray600,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                      FontWeight.normal),
-
-                                                )),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                                left: 24,
-                                                top: 80,
-                                                right: 24,
-                                                bottom: 40
-                                            ).r,
-                                            child: Text(
-                                              "Details",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
-                                                ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: ScreenUtil().setHeight(
-                                              300.00,
-                                            ),
-                                            width: ScreenUtil().screenWidth,
-                                            child: ListView.builder(
+                                          ],
+                                        ),
+                                      )
+                                    : Container(
+                                        height: ScreenUtil().setHeight(1450),
+                                        child: TabBarView(
+                                          controller: tabController,
+                                          children: [
+                                            SingleChildScrollView(
                                               padding: EdgeInsets.only(
-
-                                                left: 24,
-                                                top: 12,
-                                                right: 24,
-                                              ).r,
-                                              scrollDirection: Axis.horizontal,
-                                              physics: BouncingScrollPhysics(),
-                                              itemCount: 1,
-                                              itemBuilder: (context, index) {
-                                                return List2friendsOneItemWidget();
-                                              },
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-
-                                              left: 24,
-                                              top: 32,
-                                              right: 24,
-                                            ).r,
-                                            child: Text(
-                                              "Tools you need",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(
-                                                  80,
-                                                ),
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w600,
-                                                height: 1.00,
+                                                      left: 20, right: 20)
+                                                  .r,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                            left: 35,
+                                                            top: 60,
+                                                            right: 35,
+                                                            bottom: 40)
+                                                        .r,
+                                                    child: Text(
+                                                      "Introduction",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
+                                                        ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment.center,
+                                                    child: Container(
+                                                        margin: EdgeInsets.only(
+                                                                left: 35,
+                                                                right: 35,
+                                                                top: 20)
+                                                            .r,
+                                                        width: ScreenUtil()
+                                                            .screenWidth,
+                                                        child: Text(
+                                                          "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
+                                                          style: TextStyle(
+                                                              fontSize: 50.sp,
+                                                              color:
+                                                                  ColorConstant
+                                                                      .gray600,
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
+                                                        )),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                            left: 24,
+                                                            top: 80,
+                                                            right: 24,
+                                                            bottom: 40)
+                                                        .r,
+                                                    child: Text(
+                                                      "Details",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
+                                                        ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        ScreenUtil().setHeight(
+                                                      300.00,
+                                                    ),
+                                                    width: ScreenUtil()
+                                                        .screenWidth,
+                                                    child: ListView.builder(
+                                                      padding: EdgeInsets.only(
+                                                        left: 24,
+                                                        top: 12,
+                                                        right: 24,
+                                                      ).r,
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      physics:
+                                                          BouncingScrollPhysics(),
+                                                      itemCount: 1,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return AboutTab();
+                                                      },
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 24,
+                                                      top: 32,
+                                                      right: 24,
+                                                    ).r,
+                                                    child: Text(
+                                                      "Tools you need",
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            ScreenUtil().setSp(
+                                                          80,
+                                                        ),
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.00,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListView.builder(
+                                                      physics:
+                                                          BouncingScrollPhysics(),
+                                                      padding: EdgeInsets.only(
+                                                          bottom: 70),
+                                                      shrinkWrap: true,
+                                                      itemCount: 1,
+                                                      itemBuilder:
+                                                          ((context, index) {
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            left: 90,
+                                                            top: 60,
+                                                            right: 24,
+                                                            bottom: 8,
+                                                          ).r,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    ScreenUtil()
+                                                                        .setWidth(
+                                                                      16.00,
+                                                                    ),
+                                                                  ),
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .computer,
+                                                                    color: Colors
+                                                                        .blueAccent,
+                                                                  )),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .only(
+                                                                  left: 30,
+                                                                  right: 8,
+                                                                  top: 9,
+                                                                  bottom: 8,
+                                                                ).r,
+                                                                child: Text(
+                                                                  "Computer",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        ScreenUtil()
+                                                                            .setSp(
+                                                                      60,
+                                                                    ),
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    height:
+                                                                        1.00,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      })),
+                                                ],
                                               ),
                                             ),
-                                          ),
-                                          ListView.builder(
-                                              physics: BouncingScrollPhysics(),
-                                              padding: EdgeInsets.only(bottom: 70),
-                                              shrinkWrap: true,
-                                              itemCount: 1,
-                                              itemBuilder: ((context, index) {
-                                                return Padding(
-                                                  padding: EdgeInsets.only(
-
-                                                    left: 90,
-                                                    top: 60,
-                                                    right: 24,
-                                                    bottom: 8,
-                                                  ).r,
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                    mainAxisSize:
-                                                    MainAxisSize.min,
-                                                    children: [
-                                                      ClipRRect(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                            ScreenUtil().setWidth(
-                                                              16.00,
-                                                            ),
-                                                          ),
-                                                          child: Icon(Icons.computer,color: Colors.blueAccent,)
-                                                      ),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(
-
-                                                          left: 30,
-                                                          right: 8,
-                                                          top: 9,
-                                                          bottom: 8,
-                                                        ).r,
-                                                        child: Text(
-                                                          "Computer",
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          textAlign:
-                                                          TextAlign.start,
-                                                          style: TextStyle(
-                                                            fontSize: ScreenUtil().setSp(
-                                                              60,
-                                                            ),
-                                                            fontFamily: 'Poppins',
-                                                            fontWeight:
-                                                            FontWeight.w500,
-                                                            height: 1.00,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              })),
-                                        ],
-                                      ),
-                                    ),
-
-                                  ],
-                                ),
-                              )
-
-
-                            )
+                                          ],
+                                        ),
+                                      ))
                           ],
                         ),
                       ),
                     ),
-
-
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: widget.isEnrolled ?
-                      Container () :
-                      Container(
-                        width: ScreenUtil().screenWidth,
-                        color: Colors.white,
-                        child: InkWell(
-                          onTap:() {
-                            setState(() {
-                              deactivate();
-                              Get.to(EnrollCourseScreen());
-                            });
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 220.h,
-                            margin: EdgeInsets.only(
-                              top: 10,
-                              bottom: 60,
-                              left: 100,
-                              right: 100,
-                            ).r,
-                            decoration: BoxDecoration(
-
-                                borderRadius: BorderRadius.all(Radius.circular(50)),
-                                color: Colors.blueAccent,
-
+                      child: widget.isEnrolled
+                          ? Container()
+                          : Container(
+                              width: ScreenUtil().screenWidth,
+                              color: Colors.white,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    deactivate();
+                                    Get.to(EnrollCourseScreen());
+                                  });
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 220.h,
+                                  margin: EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 60,
+                                    left: 100,
+                                    right: 100,
+                                  ).r,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(50)),
+                                    color: Colors.blueAccent,
+                                  ),
+                                  child: Text(
+                                    "Enroll Now!",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 70.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
                             ),
-                            child: Text("Enroll Now!",style: TextStyle(color: Colors.white,fontSize: 70.sp,fontWeight: FontWeight.bold),),
-
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
               ),
             ),
-
           ],
         ),
       ),
     );
   }
-
 
   void _showSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(

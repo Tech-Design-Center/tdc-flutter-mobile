@@ -12,8 +12,7 @@ class Popular {
   final String about;
   final int duration;
   final int price;
-  final List<String> nameVideo;
-  final List<String> videoURL;
+  final String videoTrailerId;
 
   Popular({
     required this.id,
@@ -24,8 +23,7 @@ class Popular {
     required this.about,
     required this.duration,
     required this.price,
-    required this.nameVideo,
-    required this.videoURL,
+    required this.videoTrailerId,
   });
 
   factory Popular.fromJson(Map<String, dynamic> data) => Popular(
@@ -40,11 +38,7 @@ class Popular {
         duration: data['attributes']['course']['data']['attributes']
             ['duration'],
         price: data['attributes']['course']['data']['attributes']['price'],
-        nameVideo: List<String>.from(data['attributes']['course']['data']
-                ['attributes']['contents']['data']
-            .map((nameVideo) => nameVideo['attributes']['name'])),
-        videoURL: List<String>.from(data['attributes']['course']['data']
-                ['attributes']['contents']['data']
-            .map((nameVideo) => nameVideo['attributes']['videoURL'])),
+        videoTrailerId: data['attributes']['course']['data']['attributes']
+            ['videoTrailerId'],
       );
 }
