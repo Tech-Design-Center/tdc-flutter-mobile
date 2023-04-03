@@ -23,7 +23,14 @@ class RecommendCard extends StatelessWidget {
         onTap: () {
           Get.to(() => CourseDetailsScreen(
                 isEnrolled: false,
-                id: 'PEM0Vs8jf1w',
+                videoTrailerId: recommend.videoTrailerId,
+                about: recommend.about,
+                author: recommend.author,
+                description: recommend.description,
+                duration: recommend.duration,
+                image: recommend.image,
+                price: recommend.price,
+                title: recommend.title,
               ));
         },
         child: Container(
@@ -150,7 +157,14 @@ class RecommendCard extends StatelessWidget {
                               onTap: () {
                                 Get.to(CourseDetailsScreen(
                                   isEnrolled: true,
-                                  id: 'PEM0Vs8jf1w',
+                                  videoTrailerId: recommend.videoTrailerId,
+                                  about: recommend.about,
+                                  author: recommend.author,
+                                  description: recommend.description,
+                                  duration: recommend.duration,
+                                  image: recommend.image,
+                                  price: recommend.price,
+                                  title: recommend.title,
                                 ));
                               },
                               child: Container(

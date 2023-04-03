@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
@@ -17,8 +18,27 @@ import 'widgets/video_playlist.dart';
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
   bool isEnrolled;
-  var id;
-  CourseDetailsScreen({super.key, required this.isEnrolled, required this.id});
+  final String videoTrailerId;
+  final String image;
+  final String title;
+  final String author;
+  final String description;
+  final String about;
+  final int duration;
+  final int price;
+
+  CourseDetailsScreen({
+    super.key,
+    required this.isEnrolled,
+    required this.videoTrailerId,
+    required this.image,
+    required this.title,
+    required this.author,
+    required this.description,
+    required this.about,
+    required this.duration,
+    required this.price,
+  });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
 }
@@ -36,7 +56,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool _muted = false;
   bool _isPlayerReady = false;
 
-  late var _ids = widget.id;
+  late var _ids = widget.videoTrailerId;
 
   @override
   void initState() {
@@ -190,7 +210,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                               padding: EdgeInsets.only(
                                 bottom: 40,
                                 left: 24,
-                                top: 0,
+                                top: 24,
                                 right: 24,
                               ).r,
                               child: Row(
@@ -204,8 +224,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         20.00,
                                       ),
                                     ),
-                                    child: Image.asset(
-                                      ImageConstant.video2,
+                                    child: Image.network(
+                                      baseUrl + widget.image,
                                       height: ScreenUtil().setHeight(
                                         400.00,
                                       ),
@@ -227,7 +247,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          "Microsoft Office 2019",
+                                          widget.title,
                                           overflow: TextOverflow.fade,
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
@@ -240,32 +260,41 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: REdgeInsets.only(
                                             top: 10,
                                             right: 10,
-                                          ).r,
-                                          child: Text(
-                                            "Learn how to use computer, \ntyping, and office work",
-                                            overflow: TextOverflow.fade,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              color: ColorConstant.bluegray500,
-                                              fontSize: ScreenUtil().setSp(
-                                                50,
+                                          ),
+                                          child: SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.65,
+                                            child: Text(
+                                              widget.description,
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              softWrap: false,
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                color:
+                                                    ColorConstant.bluegray500,
+                                                fontSize: ScreenUtil().setSp(
+                                                  50,
+                                                ),
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.00,
                                               ),
-                                              fontFamily: 'Poppins',
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.00,
                                             ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                            top: 50,
+                                          padding: REdgeInsets.only(
+                                            top: 30,
                                             right: 10,
-                                          ).r,
+                                          ),
                                           child: Text(
-                                            "Teach by : Mekmun Sopheaktra",
+                                            "Teach by : ${widget.author}",
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
@@ -287,7 +316,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           child: Row(
                                             children: [
                                               Text(
-                                                "35 Hours ",
+                                                "${widget.duration} Hours ",
                                                 style: TextStyle(
                                                     fontSize: 60.sp,
                                                     color: Colors.blueAccent),
@@ -361,7 +390,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           controller: tabController,
                                           tabs: [
                                             Tab(
-                                              text: "30\$",
+                                              text: "${widget.price}\$",
                                             ),
                                           ],
                                         )),
