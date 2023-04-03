@@ -21,14 +21,10 @@ class RecommendCard extends StatelessWidget {
     return IntrinsicWidth(
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CourseDetailsScreen(
-                      isEnrolled: false,
-                      id: 'PEM0Vs8jf1w',
-                    )),
-          );
+          Get.to(() => CourseDetailsScreen(
+                isEnrolled: false,
+                id: 'PEM0Vs8jf1w',
+              ));
         },
         child: Container(
           child: Align(

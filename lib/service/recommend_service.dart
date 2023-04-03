@@ -8,7 +8,7 @@ class RemoteRecommendService {
 
   Future<dynamic> get() async {
     var response = await client
-        .get(Uri.parse('$remoteUrl?populate=course.image,course.contents'));
+        .get(Uri.parse('$remoteUrl?populate=course.image,course.content'));
     return response;
   }
 }
