@@ -13,6 +13,7 @@ import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.da
 import 'firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import 'model/category.dart';
 import 'model/user.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {

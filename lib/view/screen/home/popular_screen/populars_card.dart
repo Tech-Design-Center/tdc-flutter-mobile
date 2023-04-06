@@ -80,7 +80,7 @@ class PopularsCard extends StatelessWidget {
                             10,
                           ).w,
                           child: Image.network(
-                            baseUrl + populars.image,
+                            populars.image,
                           )),
                     ),
                   ),

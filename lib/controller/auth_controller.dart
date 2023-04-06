@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
+import '../model/category.dart';
 import '../model/user.dart';
 import '../service/auth_service.dart';
 import '../view/screen/authentication/sign_in_screen/sign_in_screen.dart';
@@ -16,6 +17,10 @@ class AuthController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    checkToken();
+  }
+
+  void checkToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token = prefs.getString('token');
     var userResult = await RemoteAuthService().getProfile(token: token);
