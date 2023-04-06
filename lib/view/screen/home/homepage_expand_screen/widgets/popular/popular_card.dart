@@ -6,7 +6,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 
 import '../../../../../../core/constants/color_constant.dart';
-import '../../../../../../core/constants/base_url.dart';
 import '../../../../../../core/constants/image_constant.dart';
 import '../../../course_details_screen/course_details_screen.dart';
 
@@ -77,7 +76,7 @@ class PopularCard extends StatelessWidget {
                   ),
                   child: Image(
                     image: NetworkImage(
-                      baseUrl + popular.image,
+                      popular.image,
                     ),
                     height: ScreenUtil().setHeight(600),
                     width: ScreenUtil().setWidth(1400),

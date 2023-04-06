@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
@@ -225,7 +224,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       ),
                                     ),
                                     child: Image.network(
-                                      baseUrl + widget.image,
+                                      widget.image,
                                       height: ScreenUtil().setHeight(
                                         400.00,
                                       ),

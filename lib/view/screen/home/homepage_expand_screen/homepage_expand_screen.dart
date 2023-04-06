@@ -5,6 +5,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/model/category.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/service/category_service.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_screen.dart';
@@ -21,7 +22,6 @@ import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widg
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifications_screen.dart';
 
 import '../../../../controller/controllers.dart';
-import '../../../../core/constants/base_url.dart';
 
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
@@ -38,6 +38,8 @@ class HomepageExpandScreen extends StatefulWidget {
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  Category? category;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +77,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         borderRadius: BorderRadius.circular(300),
                         child: CircleAvatar(
                           foregroundImage: NetworkImage(
-                              '$baseUrl${authController.user.value?.image}'),
+                              '${authController.user.value?.image}'),
                           radius: 100.r,
                         ),
                       ),
@@ -280,244 +282,253 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               ],
             )),
       ),
-      body: Padding(
-        padding: REdgeInsets.all(60),
-        child: Column(
-          children: [
-            //profile and notification
-            Padding(
-              padding: REdgeInsets.all(30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          _scaffoldKey.currentState!.openDrawer();
-                        },
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 100.r,
-                              foregroundImage: NetworkImage(
-                                  '$baseUrl${authController.user.value?.image}'),
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: REdgeInsets.only(
-                                    left: 30,
-                                    right: 0,
-                                  ),
-                                  child: Text(
-                                    "Welcome Back!",
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      color: ColorConstant.gray600,
-                                      fontSize: ScreenUtil().setSp(
-                                        50,
+      body: SafeArea(
+        child: Padding(
+          padding: REdgeInsets.all(60),
+          child: Column(
+            children: [
+              //profile and notification
+              Padding(
+                padding: REdgeInsets.all(30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            _scaffoldKey.currentState!.openDrawer();
+                          },
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 100.r,
+                                foregroundImage: NetworkImage(
+                                    '${authController.user.value?.image}'),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: REdgeInsets.only(
+                                      left: 30,
+                                      right: 0,
+                                    ),
+                                    child: Text(
+                                      "Welcome Back!",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        color: ColorConstant.gray600,
+                                        fontSize: ScreenUtil().setSp(
+                                          50,
+                                        ),
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w500,
+                                        height: 1.00,
                                       ),
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.00,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: REdgeInsets.only(
-                                    left: 30,
-                                    top: 7,
-                                  ),
-                                  child: Text(
-                                    authController.user.value?.fullName ??
-                                        "Sign in your account",
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(
-                                        60,
+                                  Padding(
+                                    padding: REdgeInsets.only(
+                                      left: 30,
+                                      top: 7,
+                                    ),
+                                    child: Text(
+                                      authController.user.value?.fullName ??
+                                          "Sign in your account",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: ScreenUtil().setSp(
+                                          60,
+                                        ),
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 0.36,
+                                        height: 1.00,
                                       ),
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 0.36,
-                                      height: 1.00,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  //notification
-                  InkWell(
-                    onTap: () {
-                      Get.to(() => NotificationsScreen());
-                    },
-                    child: Container(
-                      height: ScreenUtil().setHeight(
-                        120.00,
-                      ),
-                      width: ScreenUtil().setWidth(
-                        120.00,
-                      ),
-                      margin: EdgeInsets.only(
-                        top: 4,
-                        bottom: 4,
-                      ).r,
-                      child: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 0,
-                        margin: EdgeInsets.all(0),
-                        color: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            ScreenUtil().setWidth(
-                              8.00,
-                            ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                        child: Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  left: 11,
-                                  top: 10,
-                                  right: 11,
-                                  bottom: 10,
-                                ).r,
-                                child: Image(
-                                  image: AssetImage(
-                                    ImageConstant.imgNotification,
-                                  ),
-                                  height: ScreenUtil().setHeight(400),
-                                  width: ScreenUtil().setWidth(400),
-                                ),
+                      ],
+                    ),
+                    //notification
+                    InkWell(
+                      onTap: () {
+                        Get.to(() => NotificationsScreen());
+                      },
+                      child: Container(
+                        height: ScreenUtil().setHeight(
+                          120.00,
+                        ),
+                        width: ScreenUtil().setWidth(
+                          120.00,
+                        ),
+                        margin: EdgeInsets.only(
+                          top: 4,
+                          bottom: 4,
+                        ).r,
+                        child: Card(
+                          clipBehavior: Clip.antiAlias,
+                          elevation: 0,
+                          margin: EdgeInsets.all(0),
+                          color: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              ScreenUtil().setWidth(
+                                8.00,
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Container(
-                                height: ScreenUtil().setHeight(
-                                  40.00,
+                          ),
+                          child: Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 11,
+                                    top: 10,
+                                    right: 11,
+                                    bottom: 10,
+                                  ).r,
+                                  child: Image(
+                                    image: AssetImage(
+                                      ImageConstant.imgNotification,
+                                    ),
+                                    height: ScreenUtil().setHeight(400),
+                                    width: ScreenUtil().setWidth(400),
+                                  ),
                                 ),
-                                width: ScreenUtil().setWidth(
-                                  40.00,
-                                ),
-                                margin: EdgeInsets.only(
-                                  left: 10,
-                                  top: 9,
-                                  right: 9,
-                                  bottom: 10,
-                                ).r,
-                                decoration: BoxDecoration(
-                                  color: ColorConstant.deepOrange400,
-                                  borderRadius: BorderRadius.circular(
-                                    ScreenUtil().setWidth(
-                                      30.00,
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                  height: ScreenUtil().setHeight(
+                                    40.00,
+                                  ),
+                                  width: ScreenUtil().setWidth(
+                                    40.00,
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    top: 9,
+                                    right: 9,
+                                    bottom: 10,
+                                  ).r,
+                                  decoration: BoxDecoration(
+                                    color: ColorConstant.deepOrange400,
+                                    borderRadius: BorderRadius.circular(
+                                      ScreenUtil().setWidth(
+                                        30.00,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    //carousel data
-                    InkWell(onTap: () {
-                      Get.to(() => NewsFeedScreen());
-                    }, child: Obx(() {
-                      if (homeController.bannerList.isNotEmpty) {
-                        return CarouselSliderView(
-                            bannerList: homeController.bannerList);
-                      } else {
-                        return const CarouselLoading();
-                      }
-                    })),
-
-                    //categories title
-                    textTitleHomeScreen(
-                      name: 'Categories',
-                      screen: CategoriesScreen(),
-                    ),
-
-                    //categories data
-                    Obx(() {
-                      if (homeController.categoryList.isNotEmpty) {
-                        return CategoryListView(
-                            categories: homeController.categoryList);
-                      } else {
-                        return const CategoryLoading();
-                      }
-                    }),
-
-                    //recommended
-                    textTitleHomeScreen(
-                      name: 'Recommends',
-                      screen: RecommendsScreen(),
-                    ),
-
-                    //recommend data
-                    Obx(() {
-                      print(
-                          'recommendList: ${homeController.recommendList.length}');
-                      if (homeController.recommendList.isNotEmpty) {
-                        return RecommendListView(
-                            recommendList: homeController.recommendList);
-                      } else {
-                        return const RecommendLoading();
-                      }
-                    }),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(100),
-                    ),
-
-                    //Popular
-                    textTitleHomeScreen(
-                      name: 'Populars',
-                      screen: PopularsScreen(),
-                    ),
-
-                    //popular data
-                    Obx(() {
-                      if (homeController.popularList.isNotEmpty) {
-                        return PopularListView(
-                            popularList: homeController.popularList);
-                      } else {
-                        return const PopularLoading();
-                      }
-                    }),
-                    SizedBox(
-                      height: ScreenUtil().setHeight(200),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //carousel data
+                      InkWell(onTap: () {
+                        Get.to(() => NewsFeedScreen());
+                      }, child: Obx(() {
+                        if (homeController.bannerList.isNotEmpty) {
+                          return CarouselSliderView(
+                              bannerList: homeController.bannerList);
+                        } else {
+                          return const CarouselLoading();
+                        }
+                      })),
+
+                      //categories title
+                      textTitleHomeScreen(
+                        name: 'Categories',
+                        screen: CategoriesScreen(),
+                      ),
+
+                      //categories data
+                      Obx(() {
+                        try {
+                          print('category.name: ${category}');
+                        } catch (e) {
+                          print(e);
+                        }
+                        print(
+                            'homeController.categoryList.length: ${homeController.categoryList.length}');
+                        if (homeController.categoryList.isNotEmpty) {
+                          return CategoryListView(
+                              categories: homeController.categoryList);
+                        } else {
+                          return const CategoryLoading();
+                        }
+                      }),
+
+                      //recommended
+                      textTitleHomeScreen(
+                        name: 'Recommends',
+                        screen: RecommendsScreen(),
+                      ),
+
+                      //recommend data
+                      Obx(() {
+                        print(
+                            'recommendList: ${homeController.recommendList.length}');
+                        if (homeController.recommendList.isNotEmpty) {
+                          return RecommendListView(
+                              recommendList: homeController.recommendList);
+                        } else {
+                          return const RecommendLoading();
+                        }
+                      }),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(100),
+                      ),
+
+                      //Popular
+                      textTitleHomeScreen(
+                        name: 'Populars',
+                        screen: PopularsScreen(),
+                      ),
+
+                      //popular data
+                      Obx(() {
+                        if (homeController.popularList.isNotEmpty) {
+                          return PopularListView(
+                              popularList: homeController.popularList);
+                        } else {
+                          return const PopularLoading();
+                        }
+                      }),
+                      SizedBox(
+                        height: ScreenUtil().setHeight(200),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

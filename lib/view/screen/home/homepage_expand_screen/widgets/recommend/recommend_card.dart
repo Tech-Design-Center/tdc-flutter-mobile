@@ -7,7 +7,6 @@ import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen/course_details_screen.dart';
 
 import '../../../../../../core/constants/color_constant.dart';
-import '../../../../../../core/constants/base_url.dart';
 import '../../../../../../core/constants/image_constant.dart';
 import '../../../../../../model/recommend.dart';
 
@@ -85,7 +84,7 @@ class RecommendCard extends StatelessWidget {
                           ),
                         ),
                         child: Image(
-                          image: NetworkImage(baseUrl + recommend.image),
+                          image: NetworkImage(recommend.image),
                           height: ScreenUtil().setHeight(600),
                           width: ScreenUtil().setWidth(1400),
                         ),
