@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 
 import '../../../../../../model/ad_banner.dart';
 import 'banner_card.dart';
@@ -31,18 +33,23 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CarouselSlider(
-            items: _bannerList,
-            options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 16 / 9,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                })),
+        GestureDetector(
+          onTap: () {
+            Get.to(() => NewsFeedScreen());
+          },
+          child: CarouselSlider(
+              items: _bannerList,
+              options: CarouselOptions(
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 16 / 9,
+                  viewportFraction: 1,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  })),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: widget.bannerList.map((e) {

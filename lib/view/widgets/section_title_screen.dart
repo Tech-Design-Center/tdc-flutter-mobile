@@ -16,15 +16,15 @@ class SectionTitleScreen extends StatelessWidget {
       width: double.infinity,
       color: Colors.grey.shade200,
       child: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30),
+        padding: const EdgeInsets.only(left: 15, right: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(
-                onTap: () {
+            IconButton(
+                onPressed: () {
                   Get.back();
                 },
-                child: const Icon(Icons.arrow_back_ios)),
+                icon: Icon(Icons.arrow_back_ios)),
             Text(
               name,
               style: TextStyle(
@@ -35,9 +35,7 @@ class SectionTitleScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(
-              width: 10.w,
-            ),
+            IconButton(onPressed: () {}, icon: Icon(Icons.help_outline)),
           ],
         ),
       ),

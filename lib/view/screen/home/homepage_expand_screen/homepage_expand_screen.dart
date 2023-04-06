@@ -17,7 +17,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widg
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/banner_screen/newsfeed_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/text_title_home_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifications_screen.dart';
 
@@ -450,16 +450,14 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       //carousel data
-                      InkWell(onTap: () {
-                        Get.to(() => NewsFeedScreen());
-                      }, child: Obx(() {
+                      Obx(() {
                         if (homeController.bannerList.isNotEmpty) {
                           return CarouselSliderView(
                               bannerList: homeController.bannerList);
                         } else {
                           return const CarouselLoading();
                         }
-                      })),
+                      }),
 
                       //categories title
                       textTitleHomeScreen(
