@@ -15,85 +15,90 @@ class NewsFeedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: REdgeInsets.all(60),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: REdgeInsets.only(right: 30),
-                child: Image.network(
-                  newsFeed.image,
-                  height: ScreenUtil().setHeight(
-                    400.00,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.r),
+          //set border radius more than 50% of height and width to make circle
+        ),
+        elevation: 5,
+        child: Column(
+          children: [
+            Padding(
+              padding: REdgeInsets.all(30),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    foregroundImage: NetworkImage(newsFeed.image),
+                    radius: 120.r,
                   ),
-                  width: ScreenUtil().setWidth(
-                    350.00,
+                  SizedBox(
+                    width: 40.w,
                   ),
-                ),
+                  SizedBox(
+                    width: ScreenUtil().setWidth(850),
+                    child: Padding(
+                      padding: REdgeInsets.all(30.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            newsFeed.title,
+                            overflow: TextOverflow.fade,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                60,
+                              ),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                              height: 5.h,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Text(
+                            newsFeed.description,
+                            overflow: TextOverflow.fade,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                40,
+                              ),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              height: 5.h,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Text(
+                            timeago.format(newsFeed.publishedAt),
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: ColorConstant.bluegray500,
+                              fontSize: ScreenUtil().setSp(
+                                40,
+                              ),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              height: 1.00,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(
-                width: ScreenUtil().setWidth(850),
-                child: Padding(
-                  padding: REdgeInsets.all(30.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        newsFeed.title,
-                        overflow: TextOverflow.fade,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: ScreenUtil().setSp(
-                            60,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
-                          height: 5.h,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      Text(
-                        newsFeed.description,
-                        overflow: TextOverflow.fade,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: ScreenUtil().setSp(
-                            40,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          height: 5.h,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Text(
-                        timeago.format(newsFeed.publishedAt),
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: ColorConstant.bluegray500,
-                          fontSize: ScreenUtil().setSp(
-                            40,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          height: 1.00,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Image.network(newsFeed.poster),
-        ],
+            ),
+            Image.network(newsFeed.poster),
+          ],
+        ),
       ),
     );
   }
