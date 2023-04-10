@@ -11,10 +11,6 @@ CourseDetailsContentScreen(
   {required this.isEnrolled}
 );
 
-
-  final _headerStyle =  TextStyle(
-      fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'poppins');
-
   @override
   Widget build(BuildContext context) {
   

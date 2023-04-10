@@ -7,6 +7,7 @@ import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_co
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class ConfirmPaymentScreen extends StatefulWidget {
@@ -88,7 +89,15 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.all(60).w,
-                          child: Text("Tel : +855 10 407 799",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(Icons.call,size: 80.h,color: Colors.blueAccent,),
+                              SizedBox(width: 50.h,),
+                              Text("Tel : +855 10 407 799",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -108,7 +117,15 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.all(60).w,
-                          child: Text("FB Page : Tech Design Center",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(Icons.facebook,size: 80.h,color: Colors.blueAccent,),
+                              SizedBox(width: 50.h,),
+                              Text("FB Page : Tech Design Center",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -135,7 +152,15 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.all(60).w,
-                          child: Text("Telegram : @Techdesigncenter ",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(Icons.telegram,size: 80.h,color: Colors.blueAccent,),
+                              SizedBox(width: 50.h,),
+                              Text("Telegram : @Techdesigncenter ",style: TextStyle(fontSize: 60.sp,color: Colors.black.withOpacity(0.7)),),
+                            ],
+                          ),
                         ),
                       ),
                     ),

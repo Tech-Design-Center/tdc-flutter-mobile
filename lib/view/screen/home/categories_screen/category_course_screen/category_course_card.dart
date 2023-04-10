@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
 import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 
 import '../../../../../model/category.dart';
-import '../../course_details_screen/course_details_screen.dart';
 
 class CategoryCourseCard extends StatelessWidget {
   final Category categories;
@@ -26,17 +26,7 @@ class CategoryCourseCard extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.to(CourseDetailsScreen(
-                  isEnrolled: true,
-                  videoTrailerId: categories.videoTrailerId[index],
-                  about: categories.about[index],
-                  author: categories.author[index],
-                  description: categories.description[index],
-                  duration: categories.duration[index],
-                  image: categories.imageCourse[index],
-                  price: categories.price[index],
-                  title: categories.title[index],
-                ));
+                Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
               },
               child: Container(
                 width: ScreenUtil().screenWidth,

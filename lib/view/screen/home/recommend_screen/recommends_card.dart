@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
 import 'package:tdc_frontend_mobile/model/recommend.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
 
 import '../../../../core/constants/color_constant.dart';
-import '../course_details_screen/course_details_screen.dart';
+
 
 class RecommendsCard extends StatelessWidget {
   final Recommend recommends;
@@ -15,17 +16,7 @@ class RecommendsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(CourseDetailsScreen(
-          isEnrolled: true,
-          videoTrailerId: recommends.videoTrailerId,
-          about: recommends.about,
-          author: recommends.author,
-          description: recommends.description,
-          duration: recommends.duration,
-          image: recommends.image,
-          price: recommends.price,
-          title: recommends.title,
-        ));
+        Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
       },
       child: Container(
         decoration: BoxDecoration(

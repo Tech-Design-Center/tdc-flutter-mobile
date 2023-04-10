@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen/course_details_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
+
 
 import '../../../../../../core/constants/color_constant.dart';
 import '../../../../../../core/constants/image_constant.dart';
@@ -20,17 +21,7 @@ class RecommendCard extends StatelessWidget {
     return IntrinsicWidth(
       child: InkWell(
         onTap: () {
-          Get.to(() => CourseDetailsScreen(
-                isEnrolled: false,
-                videoTrailerId: recommend.videoTrailerId,
-                about: recommend.about,
-                author: recommend.author,
-                description: recommend.description,
-                duration: recommend.duration,
-                image: recommend.image,
-                price: recommend.price,
-                title: recommend.title,
-              ));
+          Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
         },
         child: Container(
           child: Align(
@@ -154,17 +145,7 @@ class RecommendCard extends StatelessWidget {
                             ).r,
                             child: InkWell(
                               onTap: () {
-                                Get.to(CourseDetailsScreen(
-                                  isEnrolled: true,
-                                  videoTrailerId: recommend.videoTrailerId,
-                                  about: recommend.about,
-                                  author: recommend.author,
-                                  description: recommend.description,
-                                  duration: recommend.duration,
-                                  image: recommend.image,
-                                  price: recommend.price,
-                                  title: recommend.title,
-                                ));
+                                Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
                               },
                               child: Container(
                                   width: ScreenUtil().setWidth(800),
