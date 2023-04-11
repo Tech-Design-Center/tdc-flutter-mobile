@@ -13,6 +13,7 @@ class Popular {
   final int duration;
   final int price;
   final String videoTrailerId;
+  final bool isEnroll;
 
   Popular({
     required this.id,
@@ -24,6 +25,7 @@ class Popular {
     required this.duration,
     required this.price,
     required this.videoTrailerId,
+    required this.isEnroll,
   });
 
   factory Popular.fromJson(Map<String, dynamic> data) => Popular(
@@ -40,5 +42,7 @@ class Popular {
         price: data['attributes']['course']['data']['attributes']['price'],
         videoTrailerId: data['attributes']['course']['data']['attributes']
             ['videoTrailerURL'],
+        isEnroll: data['attributes']['course']['data']['attributes']
+            ['isEnroll'],
       );
 }

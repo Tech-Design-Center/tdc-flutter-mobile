@@ -13,8 +13,7 @@ class Recommend {
   final int duration;
   final int price;
   final String videoTrailerURL;
-  final List<String> playlistTitle;
-  final List<String> playlistName;
+  final bool isEnroll;
 
   Recommend({
     required this.id,
@@ -26,8 +25,7 @@ class Recommend {
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
-    required this.playlistTitle,
-    required this.playlistName,
+    required this.isEnroll,
   });
 
   factory Recommend.fromJson(Map<String, dynamic> data) => Recommend(
@@ -44,11 +42,7 @@ class Recommend {
         price: data['attributes']['course']['data']['attributes']['price'],
         videoTrailerURL: data['attributes']['course']['data']['attributes']
             ['videoTrailerURL'],
-        playlistTitle: List<String>.from(data['attributes']['course']['data']
-                ['attributes']['playlist_video_urls']['data']
-            .map((playlistTitle) => playlistTitle['attributes']['title'])),
-        playlistName: List<String>.from(data['attributes']['course']['data']
-                ['attributes']['playlist_video_urls']['data']
-            .map((playlistTitle) => playlistTitle['attributes']['name'])),
+        isEnroll: data['attributes']['course']['data']['attributes']
+            ['isEnroll'],
       );
 }
