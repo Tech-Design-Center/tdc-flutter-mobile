@@ -12,7 +12,9 @@ class Recommend {
   final String about;
   final int duration;
   final int price;
-  final String videoTrailerId;
+  final String videoTrailerURL;
+  final List<String> playlistTitle;
+  final List<String> playlistName;
 
   Recommend({
     required this.id,
@@ -23,7 +25,9 @@ class Recommend {
     required this.about,
     required this.duration,
     required this.price,
-    required this.videoTrailerId,
+    required this.videoTrailerURL,
+    required this.playlistTitle,
+    required this.playlistName,
   });
 
   factory Recommend.fromJson(Map<String, dynamic> data) => Recommend(
@@ -38,7 +42,13 @@ class Recommend {
         duration: data['attributes']['course']['data']['attributes']
             ['duration'],
         price: data['attributes']['course']['data']['attributes']['price'],
-        videoTrailerId: data['attributes']['course']['data']['attributes']
-            ['videoTrailerId'],
+        videoTrailerURL: data['attributes']['course']['data']['attributes']
+            ['videoTrailerURL'],
+        playlistTitle: List<String>.from(data['attributes']['course']['data']
+                ['attributes']['playlist_video_urls']['data']
+            .map((playlistTitle) => playlistTitle['attributes']['title'])),
+        playlistName: List<String>.from(data['attributes']['course']['data']
+                ['attributes']['playlist_video_urls']['data']
+            .map((playlistTitle) => playlistTitle['attributes']['name'])),
       );
 }

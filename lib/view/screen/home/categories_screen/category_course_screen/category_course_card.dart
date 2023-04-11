@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
 import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
 import '../../../../../model/category.dart';
 
@@ -26,7 +26,10 @@ class CategoryCourseCard extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
+                // Get.to(CourseDetailsScreen(
+                //   isEnrolled: true,
+                //   initURL: 'https://youtu.be/A3ltMaM6noM',
+                // ));
               },
               child: Container(
                 width: ScreenUtil().screenWidth,

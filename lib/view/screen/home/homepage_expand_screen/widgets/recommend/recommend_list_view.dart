@@ -10,8 +10,11 @@ import '../category/category_card.dart';
 
 class RecommendListView extends StatelessWidget {
   final List<Recommend> recommendList;
-  const RecommendListView({Key? key, required this.recommendList})
-      : super(key: key);
+
+  const RecommendListView({
+    Key? key,
+    required this.recommendList,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(

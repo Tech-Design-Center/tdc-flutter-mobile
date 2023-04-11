@@ -23,6 +23,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifi
 
 import '../../../../controller/controllers.dart';
 
+import '../../../../model/recommend.dart';
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
 
@@ -38,7 +39,7 @@ class HomepageExpandScreen extends StatefulWidget {
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  Category? category;
+  Recommend? recommend;
 
   @override
   Widget build(BuildContext context) {
@@ -467,11 +468,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                       //categories data
                       Obx(() {
-                        try {
-                          print('category.name: ${category}');
-                        } catch (e) {
-                          print(e);
-                        }
                         print(
                             'homeController.categoryList.length: ${homeController.categoryList.length}');
                         if (homeController.categoryList.isNotEmpty) {
@@ -490,11 +486,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                       //recommend data
                       Obx(() {
-                        print(
-                            'recommendList: ${homeController.recommendList.length}');
                         if (homeController.recommendList.isNotEmpty) {
                           return RecommendListView(
-                              recommendList: homeController.recommendList);
+                            recommendList: homeController.recommendList,
+                          );
                         } else {
                           return const RecommendLoading();
                         }

@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
 // ignore: must_be_immutable
 class MyCourseCard extends StatelessWidget {
@@ -14,7 +14,10 @@ class MyCourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
+        // Get.to(CourseDetailsScreen(
+        //   isEnrolled: true,
+        //   initURL: 'https://youtu.be/A3ltMaM6noM',
+        // ));
       },
       child: Container(
         height: ScreenUtil().setHeight(600),

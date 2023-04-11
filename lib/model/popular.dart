@@ -39,6 +39,6 @@ class Popular {
             ['duration'],
         price: data['attributes']['course']['data']['attributes']['price'],
         videoTrailerId: data['attributes']['course']['data']['attributes']
-            ['videoTrailerId'],
+            ['videoTrailerURL'],
       );
 }

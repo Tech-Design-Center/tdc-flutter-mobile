@@ -10,6 +10,7 @@ import '../model/category.dart';
 import '../model/news_feed.dart';
 import '../model/recommend.dart';
 import '../service/banner_service.dart';
+import '../service/playlist_video_url_service.dart';
 
 class HomeController extends GetxController {
   RxList<AdBanner> bannerList = List<AdBanner>.empty(growable: true).obs;
@@ -23,6 +24,7 @@ class HomeController extends GetxController {
   RxBool isRecommendLoading = false.obs;
   RxBool isPopularLoading = false.obs;
   RxBool isNewsFeedLoading = false.obs;
+  RxBool isPlaylistVideoURLLoading = false.obs;
 
   @override
   void onInit() async {
