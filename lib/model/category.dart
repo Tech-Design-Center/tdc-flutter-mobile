@@ -16,19 +16,22 @@ class Category {
   final List<int> price;
   final List<String> imageCourse;
   final List<String> videoTrailerURL;
+  final List<bool> isEnroll;
 
-  Category(
-      {required this.id,
-      required this.name,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.author,
-      required this.about,
-      required this.duration,
-      required this.price,
-      required this.imageCourse,
-      required this.videoTrailerURL});
+  Category({
+    required this.id,
+    required this.name,
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.author,
+    required this.about,
+    required this.duration,
+    required this.price,
+    required this.imageCourse,
+    required this.videoTrailerURL,
+    required this.isEnroll,
+  });
 
   factory Category.categoryFromJson(Map<String, dynamic> data) => Category(
         id: data['id'],
@@ -52,5 +55,7 @@ class Category {
         videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
             .map((videoTrailerURL) =>
                 videoTrailerURL['attributes']['videoTrailerURL'])),
+        isEnroll: List<bool>.from(data['attributes']['courses']['data'].map(
+            (videoTrailerURL) => videoTrailerURL['attributes']['isEnroll'])),
       );
 }
