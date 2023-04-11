@@ -15,7 +15,7 @@ class Category {
   final List<int> duration;
   final List<int> price;
   final List<String> imageCourse;
-  final List<String> videoTrailerId;
+  final List<String> videoTrailerURL;
 
   Category(
       {required this.id,
@@ -28,7 +28,7 @@ class Category {
       required this.duration,
       required this.price,
       required this.imageCourse,
-      required this.videoTrailerId});
+      required this.videoTrailerURL});
 
   factory Category.categoryFromJson(Map<String, dynamic> data) => Category(
         id: data['id'],
@@ -49,8 +49,8 @@ class Category {
         imageCourse: List<String>.from(data['attributes']['courses']['data']
             .map((imageCourse) => imageCourse['attributes']['image']['data']
                 ['attributes']['url'])),
-        videoTrailerId: List<String>.from(data['attributes']['courses']['data']
-            .map((videoTrailerId) =>
-                videoTrailerId['attributes']['videoTrailerId'])),
+        videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
+            .map((videoTrailerURL) =>
+                videoTrailerURL['attributes']['videoTrailerURL'])),
       );
 }

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/base_url.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_screen/course_details_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
 import '../../../../core/constants/color_constant.dart';
 import '../../../../model/popular.dart';
-
 
 class PopularsCard extends StatelessWidget {
   final Popular populars;
@@ -16,7 +15,10 @@ class PopularsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
+        // Get.to(CourseDetailsScreen(
+        //   isEnrolled: true,
+        //   initURL: 'https://youtu.be/A3ltMaM6noM',
+        // ));
       },
       child: Container(
         decoration: BoxDecoration(
