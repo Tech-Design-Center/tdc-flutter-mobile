@@ -22,12 +22,32 @@ import '../../../model/recommend.dart';
 
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
-  final Recommend recommend;
-  bool isEnrolled;
+  final String image;
+  final String title;
+  final String author;
+  final String description;
+  final String about;
+  final int duration;
+  final int price;
+  final String videoTrailerURL;
+  final bool isEnroll;
+  final List<String> playlistTitle;
+  final List<List<String>> videoTitle;
+  final List<List<String>> videoUrl;
   CourseDetailsScreen({
     super.key,
-    required this.isEnrolled,
-    required this.recommend,
+    required this.image,
+    required this.title,
+    required this.author,
+    required this.description,
+    required this.about,
+    required this.duration,
+    required this.price,
+    required this.videoTrailerURL,
+    required this.isEnroll,
+    required this.playlistTitle,
+    required this.videoTitle,
+    required this.videoUrl,
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -57,7 +77,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
     try {
       EasyLoading.show(status: 'Loading...', dismissOnTap: false);
       final urls = await PodPlayerController.getYoutubeUrls(
-        widget.recommend.videoTrailerURL,
+        widget.videoTrailerURL,
       );
 
       setState(() => isLoading = false);
@@ -126,7 +146,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           },
                           icon: Icon(Icons.arrow_back_ios)),
                       Text(
-                        widget.recommend.title,
+                        widget.title,
                         style: TextStyle(
                           fontSize: ScreenUtil().setSp(
                             100,
@@ -156,7 +176,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           controller: _controller,
                           videoThumbnail: DecorationImage(
                             image: NetworkImage(
-                              widget.recommend.image,
+                              widget.image,
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -220,7 +240,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         ),
                                       ),
                                       child: Image.network(
-                                        widget.recommend.image,
+                                        widget.image,
                                         height: ScreenUtil().setHeight(
                                           400.00,
                                         ),
@@ -236,7 +256,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          widget.recommend.title,
+                                          widget.title,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             fontSize: ScreenUtil().setSp(
@@ -255,7 +275,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           child: SizedBox(
                                             width: MediaQuery.of(context).size.width * 0.6,
                                             child: Text(
-                                              widget.recommend.description,
+                                              widget.description,
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
@@ -276,7 +296,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             right: 10,
                                           ),
                                           child: Text(
-                                            "Teach by : ${widget.recommend.author}",
+                                            "Teach by : ${widget.author}",
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
@@ -298,7 +318,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           child: Row(
                                             children: [
                                               Text(
-                                                "${widget.recommend.duration} Hours ",
+                                                "${widget.duration} Hours ",
                                                 style: TextStyle(
                                                     fontSize: 60.sp, color: Colors.blueAccent),
                                               ),
@@ -323,7 +343,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         ),
                                       ),
                                     ),
-                                    child: widget.isEnrolled
+                                    child: widget.isEnroll
                                         ? TabBar(
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
@@ -361,13 +381,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             controller: tabController,
                                             tabs: [
                                               Tab(
-                                                text: "${widget.recommend.price}\$",
+                                                text: "${widget.price}\$",
                                               ),
                                             ],
                                           )),
                               ),
                               Container(
-                                  child: widget.isEnrolled
+                                  child: widget.isEnroll
                                       ? Container(
                                           height: ScreenUtil().setHeight(1450),
                                           child: TabBarView(
@@ -383,8 +403,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       //playlist card
                                                       ListView.separated(
                                                         physics: BouncingScrollPhysics(),
-                                                        itemCount:
-                                                            widget.recommend.playlistTitle.length,
+                                                        itemCount: widget.playlistTitle.length,
                                                         shrinkWrap: true,
                                                         scrollDirection: Axis.vertical,
                                                         padding: EdgeInsets.only(
@@ -427,8 +446,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               ],
                                                             ),
                                                             child: ExpansionTile(
-                                                              title: Text(widget
-                                                                  .recommend.playlistTitle[index]),
+                                                              title:
+                                                                  Text(widget.playlistTitle[index]),
                                                               children: [
                                                                 Container(
                                                                   decoration: BoxDecoration(
@@ -464,47 +483,47 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                   padding: const EdgeInsets.only(
                                                                           left: 100)
                                                                       .r,
-                                                                  child: ListView.separated(
-                                                                      physics:
-                                                                          NeverScrollableScrollPhysics(),
-                                                                      itemCount: widget.recommend
-                                                                          .videoTitle[index].length,
-                                                                      shrinkWrap: true,
-                                                                      scrollDirection:
-                                                                          Axis.vertical,
-                                                                      padding: EdgeInsets.only(
-                                                                              top: 40,
-                                                                              left: 20,
-                                                                              right: 20,
-                                                                              bottom: 20)
-                                                                          .r,
-                                                                      itemBuilder:
-                                                                          (context, index1) {
-                                                                        return GestureDetector(
-                                                                          onTap: () {
-                                                                            deactivate();
-                                                                            Get.to(VideoPlayerScreen(
-                                                                                recommend: widget
-                                                                                    .recommend,
-                                                                                videoURL: widget
-                                                                                        .recommend
-                                                                                        .videoUrl[
-                                                                                    index][index1]));
-                                                                          },
-                                                                          child: ListTile(
-                                                                              title: Text(widget
-                                                                                      .recommend
-                                                                                      .videoTitle[
-                                                                                  index][index1])),
-                                                                        );
-                                                                      },
-                                                                      separatorBuilder:
-                                                                          (BuildContext context,
-                                                                              int index) {
-                                                                        return SizedBox(
-                                                                          width: 15.h,
-                                                                        );
-                                                                      }),
+                                                                  child: ListView.builder(
+                                                                    physics:
+                                                                        NeverScrollableScrollPhysics(),
+                                                                    itemCount: widget
+                                                                        .videoTitle[index].length,
+                                                                    shrinkWrap: true,
+                                                                    scrollDirection: Axis.vertical,
+                                                                    padding: EdgeInsets.only(
+                                                                            top: 40,
+                                                                            left: 20,
+                                                                            right: 20,
+                                                                            bottom: 20)
+                                                                        .r,
+                                                                    itemBuilder: (context, index1) {
+                                                                      return GestureDetector(
+                                                                        onTap: () {
+                                                                          deactivate();
+                                                                          Get.to(VideoPlayerScreen(
+                                                                            videoUrl: widget
+                                                                                    .videoUrl[index]
+                                                                                [index1],
+                                                                            about: widget.about,
+                                                                            author: widget.author,
+                                                                            description:
+                                                                                widget.description,
+                                                                            duration:
+                                                                                widget.duration,
+                                                                            image: widget.image,
+                                                                            title: widget.title,
+                                                                            videoTitle:
+                                                                                widget.videoTitle[
+                                                                                    index][index1],
+                                                                          ));
+                                                                        },
+                                                                        child: ListTile(
+                                                                            title: Text(widget
+                                                                                    .videoTitle[
+                                                                                index][index1])),
+                                                                      );
+                                                                    },
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),
@@ -555,7 +574,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               .r,
                                                           width: ScreenUtil().screenWidth,
                                                           child: Text(
-                                                            widget.recommend.description,
+                                                            widget.description,
                                                             maxLines: 2,
                                                             style: TextStyle(
                                                                 fontSize: 50.sp,
@@ -1071,7 +1090,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                       ),
                       Align(
                         alignment: Alignment.bottomCenter,
-                        child: widget.isEnrolled
+                        child: widget.isEnroll
                             ? Container()
                             : Container(
                                 width: ScreenUtil().screenWidth,

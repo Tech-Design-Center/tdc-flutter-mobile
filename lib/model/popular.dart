@@ -12,7 +12,7 @@ class Popular {
   final String about;
   final int duration;
   final int price;
-  final String videoTrailerId;
+  final String videoTrailerURL;
   final bool isEnroll;
   final List<String> playlistTitle;
   final List<List<String>> videoTitle;
@@ -26,7 +26,7 @@ class Popular {
     required this.about,
     required this.duration,
     required this.price,
-    required this.videoTrailerId,
+    required this.videoTrailerURL,
     required this.isEnroll,
     required this.playlistTitle,
     required this.videoTitle,
@@ -54,7 +54,7 @@ class Popular {
       about: data['attributes']['course']['data']['attributes']['about'],
       duration: data['attributes']['course']['data']['attributes']['duration'],
       price: data['attributes']['course']['data']['attributes']['price'],
-      videoTrailerId: data['attributes']['course']['data']['attributes']['videoTrailerURL'],
+      videoTrailerURL: data['attributes']['course']['data']['attributes']['videoTrailerURL'],
       isEnroll: data['attributes']['course']['data']['attributes']['isEnroll'],
       playlistTitle: List<String>.from(data['attributes']['course']['data']['attributes']
               ['playlist_video_urls']['data']
