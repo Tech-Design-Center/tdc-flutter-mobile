@@ -9,10 +9,25 @@ import '../../../model/recommend.dart';
 import '../../dashboard_screen.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
-  final Recommend recommend;
-  var videoURL;
+  final String image;
+  final String title;
+  final String author;
+  final String description;
+  final String about;
+  final int duration;
+  final String videoTitle;
+  final String videoUrl;
 
-  VideoPlayerScreen({super.key, required this.videoURL, required this.recommend});
+  VideoPlayerScreen(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.author,
+      required this.description,
+      required this.about,
+      required this.duration,
+      required this.videoTitle,
+      required this.videoUrl});
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -20,7 +35,7 @@ class VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTickerProviderStateMixin {
   TabController? tabController;
-  late var _URL = widget.videoURL;
+  late var _URL = widget.videoUrl;
   late final PodPlayerController _controller;
   bool isLoading = true;
   bool? isVideoPlaying;
@@ -40,7 +55,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
 
   void loadVideo() async {
     final urls = await PodPlayerController.getYoutubeUrls(
-      widget.videoURL,
+      widget.videoUrl,
     );
     setState(() => isLoading = false);
     _controller = PodPlayerController(
@@ -54,7 +69,6 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
         });
       });
     _controller.addListener(_listner);
-    ;
   }
 
   ///Listnes to changes in video
@@ -100,7 +114,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                           },
                           icon: Icon(Icons.arrow_back_ios)),
                       Text(
-                        widget.recommend.title,
+                        widget.videoTitle,
                         style: TextStyle(
                           fontSize: ScreenUtil().setSp(
                             100,
@@ -130,7 +144,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                           controller: _controller,
                           videoThumbnail: DecorationImage(
                             image: NetworkImage(
-                              widget.recommend.image,
+                              widget.image,
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -141,7 +155,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                 child: Container(
                   width: ScreenUtil().screenWidth,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                     color: ColorConstant.whiteA700,
                   ),
                   child: Stack(
@@ -193,7 +208,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                         ),
                                       ),
                                       child: Image.network(
-                                        widget.recommend.image,
+                                        widget.image,
                                         height: ScreenUtil().setHeight(
                                           400.00,
                                         ),
@@ -213,7 +228,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            widget.recommend.title,
+                                            widget.title,
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
@@ -233,7 +248,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: SizedBox(
                                               width: MediaQuery.of(context).size.width * 0.6,
                                               child: Text(
-                                                widget.recommend.description,
+                                                widget.description,
                                                 maxLines: 2,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
@@ -254,7 +269,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                               right: 10,
                                             ).r,
                                             child: Text(
-                                              "Teach by : ${widget.recommend.author}",
+                                              "Teach by : ${widget.author}",
                                               overflow: TextOverflow.fade,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -276,8 +291,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "${widget.recommend.duration} Hours ",
-                                                  style: TextStyle(fontSize: 60.sp, color: Colors.blueAccent),
+                                                  "${widget.duration} Hours ",
+                                                  style: TextStyle(
+                                                      fontSize: 60.sp, color: Colors.blueAccent),
                                                 ),
                                               ],
                                             ),
@@ -291,7 +307,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                    margin: EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20).r,
+                                    margin:
+                                        EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20).r,
                                     decoration: BoxDecoration(
                                       color: ColorConstant.gray100,
                                       borderRadius: BorderRadius.circular(
@@ -303,12 +320,14 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                     child: TabBar(
                                       indicatorPadding: EdgeInsets.all(5).w,
                                       indicator: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50), color: ColorConstant.indigoA200),
+                                          borderRadius: BorderRadius.circular(50),
+                                          color: ColorConstant.indigoA200),
                                       labelColor: ColorConstant.whiteA700,
                                       unselectedLabelColor: Colors.black,
-                                      labelStyle: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w500),
-                                      unselectedLabelStyle:
-                                          TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w400),
+                                      labelStyle: TextStyle(
+                                          fontFamily: 'Poppins', fontWeight: FontWeight.w500),
+                                      unselectedLabelStyle: TextStyle(
+                                          fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                       controller: tabController,
                                       tabs: [
                                         Tab(
@@ -329,7 +348,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(left: 35, top: 60, right: 35, bottom: 40).r,
+                                            padding: EdgeInsets.only(
+                                                    left: 35, top: 60, right: 35, bottom: 40)
+                                                .r,
                                             child: Text(
                                               "Description",
                                               overflow: TextOverflow.ellipsis,
@@ -347,10 +368,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                           Align(
                                             alignment: Alignment.center,
                                             child: Container(
-                                                margin: EdgeInsets.only(left: 35, right: 35, top: 20).r,
+                                                margin:
+                                                    EdgeInsets.only(left: 35, right: 35, top: 20).r,
                                                 width: ScreenUtil().screenWidth,
                                                 child: Text(
-                                                  widget.recommend.description,
+                                                  widget.description,
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       fontSize: 50.sp,
@@ -360,7 +382,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 )),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(left: 24, top: 80, right: 24, bottom: 40).r,
+                                            padding: EdgeInsets.only(
+                                                    left: 24, top: 80, right: 24, bottom: 40)
+                                                .r,
                                             child: Text(
                                               "Details",
                                               overflow: TextOverflow.ellipsis,

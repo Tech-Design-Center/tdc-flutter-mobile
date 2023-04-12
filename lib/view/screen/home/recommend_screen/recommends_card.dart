@@ -15,10 +15,10 @@ class RecommendsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(CourseDetailsScreen(
-          isEnrolled: recommend.isEnroll,
-          recommend: recommend,
-        ));
+        // Get.to(CourseDetailsScreen(
+        //   isEnrolled: recommend.isEnroll,
+        //   recommend: recommend,
+        // ));
       },
       child: Container(
         decoration: BoxDecoration(
