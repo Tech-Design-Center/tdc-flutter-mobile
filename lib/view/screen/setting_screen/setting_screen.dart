@@ -92,7 +92,7 @@ class _SettingScreenState extends State<SettingScreen>
                             ),
                             child: CircleAvatar(
                               foregroundImage: NetworkImage(
-                                '$baseUrl${authController.user.value?.image}' ??
+                                '${authController.user.value?.image}' ??
                                     ImageConstant.imgImage1,
                               ),
                               radius: 225.r,
