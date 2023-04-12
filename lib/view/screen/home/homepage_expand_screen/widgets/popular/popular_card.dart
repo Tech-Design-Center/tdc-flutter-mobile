@@ -16,7 +16,10 @@ class PopularCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
+        // Get.to(CourseDetailsScreen(
+        //   isEnrolled: popular.isEnroll,
+        //   recommend: popular,
+        // ));
       },
       child: Container(
         width: ScreenUtil().setWidth(850),
@@ -138,8 +141,7 @@ class PopularCard extends StatelessWidget {
                           width: ScreenUtil().setWidth(800),
                           height: ScreenUtil().setHeight(120),
                           decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50)).w,
+                            borderRadius: BorderRadius.all(Radius.circular(50)).w,
                             color: Colors.grey.shade300,
                           ),
                           child: Row(

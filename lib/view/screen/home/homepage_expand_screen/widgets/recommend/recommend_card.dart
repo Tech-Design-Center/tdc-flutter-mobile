@@ -22,7 +22,7 @@ class RecommendCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.to(CourseDetailsScreen(
-            isEnrolled: true,
+            isEnrolled: recommend.isEnroll,
             recommend: recommend,
           ));
         },
@@ -154,8 +154,7 @@ class RecommendCard extends StatelessWidget {
                                 width: ScreenUtil().setWidth(800),
                                 height: ScreenUtil().setHeight(120),
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50)).w,
+                                  borderRadius: BorderRadius.all(Radius.circular(50)).w,
                                   color: Colors.grey.shade300,
                                 ),
                                 child: Row(

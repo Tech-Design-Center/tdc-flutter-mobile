@@ -13,7 +13,7 @@ import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
 
 import 'package:flutter/material.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/videoplayerscreen/videoplayerscreen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/video_player_screen.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -57,7 +57,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
     try {
       EasyLoading.show(status: 'Loading...', dismissOnTap: false);
       final urls = await PodPlayerController.getYoutubeUrls(
-        'https://www.youtube.com/watch?v=PEM0Vs8jf1w&list=RDDCtouot15cA&index=5',
+        widget.recommend.videoTrailerURL,
       );
 
       setState(() => isLoading = false);
@@ -119,13 +119,12 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                          onTap: () {
+                      IconButton(
+                          onPressed: () {
                             deactivate();
-
                             Get.back();
                           },
-                          child: const Icon(Icons.arrow_back_ios)),
+                          icon: Icon(Icons.arrow_back_ios)),
                       Text(
                         widget.recommend.title,
                         style: TextStyle(
@@ -136,9 +135,12 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
+                      IconButton(
+                          onPressed: () {
+                            deactivate();
+                            Get.offAll(() => DashboardScreen());
+                          },
+                          icon: Icon(Icons.home_filled)),
                     ],
                   ),
                 ),
@@ -166,8 +168,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                   width: ScreenUtil().screenWidth,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
+                        topLeft: Radius.circular(30), topRight: Radius.circular(30)),
                     color: ColorConstant.whiteA700,
                   ),
                   child: Stack(
@@ -232,8 +233,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       width: 40.w,
                                     ),
                                     Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           widget.recommend.title,
@@ -253,17 +253,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             right: 10,
                                           ),
                                           child: SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
+                                            width: MediaQuery.of(context).size.width * 0.6,
                                             child: Text(
                                               widget.recommend.description,
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
-                                                color:
-                                                    ColorConstant.bluegray500,
+                                                color: ColorConstant.bluegray500,
                                                 fontSize: ScreenUtil().setSp(
                                                   50,
                                                 ),
@@ -304,8 +300,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                               Text(
                                                 "${widget.recommend.duration} Hours ",
                                                 style: TextStyle(
-                                                    fontSize: 60.sp,
-                                                    color: Colors.blueAccent),
+                                                    fontSize: 60.sp, color: Colors.blueAccent),
                                               ),
                                             ],
                                           ),
@@ -318,12 +313,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
-                                    margin: EdgeInsets.only(
-                                            top: 0,
-                                            right: 20,
-                                            left: 20,
-                                            bottom: 20)
-                                        .r,
+                                    margin:
+                                        EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20).r,
                                     decoration: BoxDecoration(
                                       color: ColorConstant.gray100,
                                       borderRadius: BorderRadius.circular(
@@ -334,21 +325,16 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                     ),
                                     child: widget.isEnrolled
                                         ? TabBar(
-                                            indicatorPadding:
-                                                EdgeInsets.all(5).w,
+                                            indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color:
-                                                    ColorConstant.indigoA200),
+                                                borderRadius: BorderRadius.circular(50),
+                                                color: ColorConstant.indigoA200),
                                             labelColor: ColorConstant.whiteA700,
                                             unselectedLabelColor: Colors.black,
                                             labelStyle: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w500),
+                                                fontFamily: 'Poppins', fontWeight: FontWeight.w500),
                                             unselectedLabelStyle: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w400),
+                                                fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                             controller: tabController,
                                             tabs: [
                                               Tab(
@@ -360,13 +346,10 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             ],
                                           )
                                         : TabBar(
-                                            indicatorPadding:
-                                                EdgeInsets.all(5).w,
+                                            indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color:
-                                                    ColorConstant.indigoA200),
+                                                borderRadius: BorderRadius.circular(50),
+                                                color: ColorConstant.indigoA200),
                                             labelColor: ColorConstant.whiteA700,
                                             unselectedLabelColor: Colors.black,
                                             labelStyle: TextStyle(
@@ -374,13 +357,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500),
                                             unselectedLabelStyle: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w400),
+                                                fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                             controller: tabController,
                                             tabs: [
                                               Tab(
-                                                text:
-                                                    "${widget.recommend.price}\$",
+                                                text: "${widget.recommend.price}\$",
                                               ),
                                             ],
                                           )),
@@ -393,359 +374,157 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             controller: tabController,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(
-                                                        left: 14,
-                                                        right: 14,
-                                                        top: 50)
-                                                    .r,
+                                                padding:
+                                                    EdgeInsets.only(left: 14, right: 14, top: 50).r,
                                                 child: SingleChildScrollView(
+                                                  physics: NeverScrollableScrollPhysics(),
                                                   child: Column(
                                                     children: [
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                          top: 12.0,
-                                                          bottom: 12.0,
-                                                        ).r,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          border: Border.all(
-                                                              width: 0.8,
-                                                              color:
-                                                                  Colors.grey),
-                                                          color: ColorConstant
-                                                              .gray50,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            ScreenUtil()
-                                                                .setWidth(
-                                                              60.00,
-                                                            ),
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: ColorConstant
-                                                                  .bluegray90011,
-                                                              spreadRadius:
-                                                                  ScreenUtil()
-                                                                      .setWidth(
-                                                                2.00,
-                                                              ),
-                                                              blurRadius:
-                                                                  ScreenUtil()
-                                                                      .setWidth(
-                                                                2.00,
-                                                              ),
-                                                              offset: Offset(
-                                                                3,
-                                                                3,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        child: ExpansionTile(
-                                                          title: Text(
-                                                              '1. Introduction'),
-                                                          children: <Widget>[
-                                                            InkWell(
-                                                              onTap: () {
-                                                                deactivate();
-                                                                Get.to(VideoPlayerScreen(
-                                                                    URL:
-                                                                        'https://youtu.be/A3ltMaM6noM'));
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border.all(
-                                                                      width:
-                                                                          0.4,
-                                                                      color: Colors
-                                                                          .grey),
-                                                                  color:
-                                                                      ColorConstant
-                                                                          .gray50,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                    ScreenUtil()
-                                                                        .setWidth(
-                                                                      20.00,
-                                                                    ),
-                                                                  ),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: ColorConstant
-                                                                          .bluegray90011,
-                                                                      spreadRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      blurRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      offset:
-                                                                          Offset(
-                                                                        3,
-                                                                        3,
-                                                                      ),
-                                                                    ),
-                                                                  ],
+                                                      //playlist card
+                                                      ListView.separated(
+                                                        physics: BouncingScrollPhysics(),
+                                                        itemCount:
+                                                            widget.recommend.playlistTitle.length,
+                                                        shrinkWrap: true,
+                                                        scrollDirection: Axis.vertical,
+                                                        padding: EdgeInsets.only(
+                                                                top: 40,
+                                                                left: 20,
+                                                                right: 20,
+                                                                bottom: 20)
+                                                            .r,
+                                                        itemBuilder: (context, index) {
+                                                          return Container(
+                                                            margin: EdgeInsets.only(
+                                                              top: 12.0,
+                                                              bottom: 12.0,
+                                                            ).r,
+                                                            decoration: BoxDecoration(
+                                                              border: Border.all(
+                                                                  width: 0.8, color: Colors.grey),
+                                                              color: ColorConstant.gray50,
+                                                              borderRadius: BorderRadius.circular(
+                                                                ScreenUtil().setWidth(
+                                                                  60.00,
                                                                 ),
-                                                                padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            100)
-                                                                    .r,
-                                                                child: ListTile(
-                                                                    title: Text(
-                                                                        'A. Lession 1')),
                                                               ),
-                                                            ),
-                                                            InkWell(
-                                                              onTap: () {
-                                                                deactivate();
-                                                                Get.to(VideoPlayerScreen(
-                                                                    URL:
-                                                                        'https://youtu.be/A3ltMaM6noM'));
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border.all(
-                                                                      width:
-                                                                          0.4,
-                                                                      color: Colors
-                                                                          .grey),
+                                                              boxShadow: [
+                                                                BoxShadow(
                                                                   color:
-                                                                      ColorConstant
-                                                                          .gray50,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                    ScreenUtil()
-                                                                        .setWidth(
-                                                                      20.00,
-                                                                    ),
+                                                                      ColorConstant.bluegray90011,
+                                                                  spreadRadius:
+                                                                      ScreenUtil().setWidth(
+                                                                    2.00,
                                                                   ),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: ColorConstant
-                                                                          .bluegray90011,
-                                                                      spreadRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      blurRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      offset:
-                                                                          Offset(
-                                                                        3,
-                                                                        3,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            100)
-                                                                    .r,
-                                                                child: ListTile(
-                                                                    title: Text(
-                                                                        'A. Lession 1')),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                          top: 12.0,
-                                                          bottom: 12.0,
-                                                        ).r,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          border: Border.all(
-                                                              width: 0.8,
-                                                              color:
-                                                                  Colors.grey),
-                                                          color: ColorConstant
-                                                              .gray50,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            ScreenUtil()
-                                                                .setWidth(
-                                                              60.00,
-                                                            ),
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: ColorConstant
-                                                                  .bluegray90011,
-                                                              spreadRadius:
-                                                                  ScreenUtil()
-                                                                      .setWidth(
-                                                                2.00,
-                                                              ),
-                                                              blurRadius:
-                                                                  ScreenUtil()
-                                                                      .setWidth(
-                                                                2.00,
-                                                              ),
-                                                              offset: Offset(
-                                                                3,
-                                                                3,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        child: ExpansionTile(
-                                                          title: Text(
-                                                              '1. Introduction'),
-                                                          children: <Widget>[
-                                                            InkWell(
-                                                              onTap: () {
-                                                                deactivate();
-                                                                Get.to(
-                                                                    VideoPlayerScreen(
-                                                                  URL:
-                                                                      'https://youtu.be/A3ltMaM6noM',
-                                                                ));
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border.all(
-                                                                      width:
-                                                                          0.4,
-                                                                      color: Colors
-                                                                          .grey),
-                                                                  color:
-                                                                      ColorConstant
-                                                                          .gray50,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                    ScreenUtil()
-                                                                        .setWidth(
-                                                                      20.00,
-                                                                    ),
+                                                                  blurRadius: ScreenUtil().setWidth(
+                                                                    2.00,
                                                                   ),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: ColorConstant
-                                                                          .bluegray90011,
-                                                                      spreadRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      blurRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      offset:
-                                                                          Offset(
-                                                                        3,
-                                                                        3,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            100)
-                                                                    .r,
-                                                                child: ListTile(
-                                                                    title: Text(
-                                                                        'A. Lession 1')),
-                                                              ),
-                                                            ),
-                                                            InkWell(
-                                                              onTap: () {
-                                                                deactivate();
-                                                                Get.to(
-                                                                    VideoPlayerScreen(
-                                                                  URL:
-                                                                      'https://youtu.be/A3ltMaM6noM',
-                                                                ));
-                                                              },
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border.all(
-                                                                      width:
-                                                                          0.4,
-                                                                      color: Colors
-                                                                          .grey),
-                                                                  color:
-                                                                      ColorConstant
-                                                                          .gray50,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                    ScreenUtil()
-                                                                        .setWidth(
-                                                                      20.00,
-                                                                    ),
+                                                                  offset: Offset(
+                                                                    3,
+                                                                    3,
                                                                   ),
-                                                                  boxShadow: [
-                                                                    BoxShadow(
-                                                                      color: ColorConstant
-                                                                          .bluegray90011,
-                                                                      spreadRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      blurRadius:
-                                                                          ScreenUtil()
-                                                                              .setWidth(
-                                                                        2.00,
-                                                                      ),
-                                                                      offset:
-                                                                          Offset(
-                                                                        3,
-                                                                        3,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            child: ExpansionTile(
+                                                              title: Text(widget
+                                                                  .recommend.playlistTitle[index]),
+                                                              children: [
+                                                                Container(
+                                                                  decoration: BoxDecoration(
+                                                                    border: Border.all(
+                                                                        width: 0.4,
+                                                                        color: Colors.grey),
+                                                                    color: ColorConstant.gray50,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                      ScreenUtil().setWidth(
+                                                                        20.00,
                                                                       ),
                                                                     ),
-                                                                  ],
+                                                                    boxShadow: [
+                                                                      BoxShadow(
+                                                                        color: ColorConstant
+                                                                            .bluegray90011,
+                                                                        spreadRadius:
+                                                                            ScreenUtil().setWidth(
+                                                                          2.00,
+                                                                        ),
+                                                                        blurRadius:
+                                                                            ScreenUtil().setWidth(
+                                                                          2.00,
+                                                                        ),
+                                                                        offset: Offset(
+                                                                          3.r,
+                                                                          3.r,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  padding: const EdgeInsets.only(
+                                                                          left: 100)
+                                                                      .r,
+                                                                  child: ListView.separated(
+                                                                      physics:
+                                                                          NeverScrollableScrollPhysics(),
+                                                                      itemCount: widget.recommend
+                                                                          .videoTitle[index].length,
+                                                                      shrinkWrap: true,
+                                                                      scrollDirection:
+                                                                          Axis.vertical,
+                                                                      padding: EdgeInsets.only(
+                                                                              top: 40,
+                                                                              left: 20,
+                                                                              right: 20,
+                                                                              bottom: 20)
+                                                                          .r,
+                                                                      itemBuilder:
+                                                                          (context, index1) {
+                                                                        return GestureDetector(
+                                                                          onTap: () {
+                                                                            deactivate();
+                                                                            Get.to(VideoPlayerScreen(
+                                                                                recommend: widget
+                                                                                    .recommend,
+                                                                                videoURL: widget
+                                                                                        .recommend
+                                                                                        .videoUrl[
+                                                                                    index][index1]));
+                                                                          },
+                                                                          child: ListTile(
+                                                                              title: Text(widget
+                                                                                      .recommend
+                                                                                      .videoTitle[
+                                                                                  index][index1])),
+                                                                        );
+                                                                      },
+                                                                      separatorBuilder:
+                                                                          (BuildContext context,
+                                                                              int index) {
+                                                                        return SizedBox(
+                                                                          width: 15.h,
+                                                                        );
+                                                                      }),
                                                                 ),
-                                                                padding: const EdgeInsets
-                                                                            .only(
-                                                                        left:
-                                                                            100)
-                                                                    .r,
-                                                                child: ListTile(
-                                                                    title: Text(
-                                                                        'A. Lession 1')),
-                                                              ),
+                                                              ],
                                                             ),
-                                                          ],
-                                                        ),
+                                                          );
+                                                        },
+                                                        separatorBuilder:
+                                                            (BuildContext context, int index) {
+                                                          return SizedBox(
+                                                            width: 60.h,
+                                                          );
+                                                        },
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
                                               SingleChildScrollView(
-                                                padding: EdgeInsets.only(
-                                                        left: 20, right: 20)
-                                                    .r,
+                                                padding: EdgeInsets.only(left: 20, right: 20).r,
                                                 child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -755,47 +534,34 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               bottom: 40)
                                                           .r,
                                                       child: Text(
-                                                        "Introduction",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        'Description',
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     Align(
-                                                      alignment:
-                                                          Alignment.center,
+                                                      alignment: Alignment.center,
                                                       child: Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                      left: 35,
-                                                                      right: 35,
-                                                                      top: 20)
-                                                                  .r,
-                                                          width: ScreenUtil()
-                                                              .screenWidth,
+                                                          margin: EdgeInsets.only(
+                                                                  left: 35, right: 35, top: 20)
+                                                              .r,
+                                                          width: ScreenUtil().screenWidth,
                                                           child: Text(
-                                                            "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
+                                                            widget.recommend.description,
+                                                            maxLines: 2,
                                                             style: TextStyle(
                                                                 fontSize: 50.sp,
-                                                                color:
-                                                                    ColorConstant
-                                                                        .gray600,
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal),
+                                                                color: ColorConstant.gray600,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.normal),
                                                           )),
                                                     ),
                                                     Padding(
@@ -806,82 +572,58 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               bottom: 40)
                                                           .r,
                                                       child: Text(
-                                                        "Details",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        "Information",
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     Container(
-                                                      height: ScreenUtil()
-                                                          .setHeight(
+                                                      height: ScreenUtil().setHeight(
                                                         300.00,
                                                       ),
-                                                      width: ScreenUtil()
-                                                          .screenWidth,
+                                                      width: ScreenUtil().screenWidth,
                                                       child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
+                                                        mainAxisSize: MainAxisSize.min,
                                                         crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
+                                                            CrossAxisAlignment.start,
+                                                        mainAxisAlignment: MainAxisAlignment.start,
                                                         children: [
                                                           Align(
-                                                            alignment: Alignment
-                                                                .center,
+                                                            alignment: Alignment.center,
                                                             child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .only(
+                                                              padding: EdgeInsets.only(
                                                                 left: 1,
                                                                 top: 5,
                                                               ).r,
                                                               child: Row(
                                                                 mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .start,
+                                                                    MainAxisAlignment.start,
                                                                 crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
+                                                                    CrossAxisAlignment.center,
+                                                                mainAxisSize: MainAxisSize.max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding:
-                                                                        EdgeInsets
-                                                                            .only(
+                                                                    padding: EdgeInsets.only(
                                                                       left: 50,
                                                                       top: 12,
                                                                       right: 10,
-                                                                      bottom:
-                                                                          20,
+                                                                      bottom: 20,
                                                                     ).r,
                                                                     child: Icon(
-                                                                      Icons
-                                                                          .person,
-                                                                      color: Colors
-                                                                          .blueAccent,
+                                                                      Icons.person,
+                                                                      color: Colors.blueAccent,
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding:
-                                                                        EdgeInsets
-                                                                            .only(
+                                                                    padding: EdgeInsets.only(
                                                                       left: 5,
                                                                       right: 5,
                                                                       top: 1,
@@ -889,23 +631,16 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                     child: Text(
                                                                       "Beginner",
                                                                       overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .start,
-                                                                      style:
-                                                                          TextStyle(
+                                                                          TextOverflow.ellipsis,
+                                                                      textAlign: TextAlign.start,
+                                                                      style: TextStyle(
                                                                         fontSize:
                                                                             ScreenUtil().setSp(
                                                                           60,
                                                                         ),
-                                                                        fontFamily:
-                                                                            'Poppins',
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                        height:
-                                                                            1.00,
+                                                                        fontFamily: 'Poppins',
+                                                                        fontWeight: FontWeight.w500,
+                                                                        height: 1.00,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -914,65 +649,44 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
+                                                            padding: EdgeInsets.only(
                                                               left: 50,
                                                               top: 12,
                                                               right: 10,
                                                             ).r,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
+                                                                  MainAxisAlignment.start,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
+                                                                  CrossAxisAlignment.center,
+                                                              mainAxisSize: MainAxisSize.max,
                                                               children: [
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
+                                                                  padding: EdgeInsets.only(
                                                                     bottom: 4,
                                                                   ).r,
                                                                   child: Icon(
                                                                     Icons.mic,
-                                                                    color: Colors
-                                                                        .blueAccent,
+                                                                    color: Colors.blueAccent,
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
+                                                                  padding: EdgeInsets.only(
                                                                     left: 10,
                                                                     right: 6,
                                                                     top: 1,
                                                                   ).r,
                                                                   child: Text(
                                                                     "Khmer",
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          ScreenUtil()
-                                                                              .setSp(
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    textAlign: TextAlign.start,
+                                                                    style: TextStyle(
+                                                                      fontSize: ScreenUtil().setSp(
                                                                         60,
                                                                       ),
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      height:
-                                                                          1.00,
+                                                                      fontFamily: 'Poppins',
+                                                                      fontWeight: FontWeight.w500,
+                                                                      height: 1.00,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -990,35 +704,26 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       ).r,
                                                       child: Text(
                                                         "Tools you need",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     ListView.builder(
-                                                        physics:
-                                                            BouncingScrollPhysics(),
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                bottom: 70),
+                                                        physics: BouncingScrollPhysics(),
+                                                        padding: EdgeInsets.only(bottom: 70),
                                                         shrinkWrap: true,
                                                         itemCount: 1,
-                                                        itemBuilder:
-                                                            ((context, index) {
+                                                        itemBuilder: ((context, index) {
                                                           return Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
+                                                            padding: EdgeInsets.only(
                                                               left: 90,
                                                               top: 60,
                                                               right: 24,
@@ -1026,34 +731,24 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ).r,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
+                                                                  MainAxisAlignment.start,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                                  CrossAxisAlignment.center,
+                                                              mainAxisSize: MainAxisSize.min,
                                                               children: [
                                                                 ClipRRect(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                      ScreenUtil()
-                                                                          .setWidth(
+                                                                        BorderRadius.circular(
+                                                                      ScreenUtil().setWidth(
                                                                         16.00,
                                                                       ),
                                                                     ),
                                                                     child: Icon(
-                                                                      Icons
-                                                                          .computer,
-                                                                      color: Colors
-                                                                          .blueAccent,
+                                                                      Icons.computer,
+                                                                      color: Colors.blueAccent,
                                                                     )),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
+                                                                  padding: EdgeInsets.only(
                                                                     left: 30,
                                                                     right: 8,
                                                                     top: 9,
@@ -1061,26 +756,15 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                   ).r,
                                                                   child: Text(
                                                                     "Computer",
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          ScreenUtil()
-                                                                              .setSp(
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    textAlign: TextAlign.start,
+                                                                    style: TextStyle(
+                                                                      fontSize: ScreenUtil().setSp(
                                                                         60,
                                                                       ),
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      height:
-                                                                          1.00,
+                                                                      fontFamily: 'Poppins',
+                                                                      fontWeight: FontWeight.w500,
+                                                                      height: 1.00,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1100,12 +784,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             controller: tabController,
                                             children: [
                                               SingleChildScrollView(
-                                                padding: EdgeInsets.only(
-                                                        left: 20, right: 20)
-                                                    .r,
+                                                padding: EdgeInsets.only(left: 20, right: 20).r,
                                                 child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -1116,46 +797,32 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           .r,
                                                       child: Text(
                                                         "Introduction",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     Align(
-                                                      alignment:
-                                                          Alignment.center,
+                                                      alignment: Alignment.center,
                                                       child: Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                      left: 35,
-                                                                      right: 35,
-                                                                      top: 20)
-                                                                  .r,
-                                                          width: ScreenUtil()
-                                                              .screenWidth,
+                                                          margin: EdgeInsets.only(
+                                                                  left: 35, right: 35, top: 20)
+                                                              .r,
+                                                          width: ScreenUtil().screenWidth,
                                                           child: Text(
                                                             "Learn the fundamentals of children’s book illustration to create a playful portfolio ready to share with editors and art directors...",
                                                             style: TextStyle(
                                                                 fontSize: 50.sp,
-                                                                color:
-                                                                    ColorConstant
-                                                                        .gray600,
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal),
+                                                                color: ColorConstant.gray600,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.normal),
                                                           )),
                                                     ),
                                                     Padding(
@@ -1167,125 +834,92 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           .r,
                                                       child: Text(
                                                         "Details",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     Container(
-                                                      height: ScreenUtil()
-                                                          .setHeight(
+                                                      height: ScreenUtil().setHeight(
                                                         300.00,
                                                       ),
-                                                      width: ScreenUtil()
-                                                          .screenWidth,
+                                                      width: ScreenUtil().screenWidth,
                                                       child: ListView.builder(
-                                                        padding:
-                                                            EdgeInsets.only(
+                                                        padding: EdgeInsets.only(
                                                           left: 24,
                                                           top: 12,
                                                           right: 24,
                                                         ).r,
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        physics:
-                                                            BouncingScrollPhysics(),
+                                                        scrollDirection: Axis.horizontal,
+                                                        physics: BouncingScrollPhysics(),
                                                         itemCount: 1,
-                                                        itemBuilder:
-                                                            (context, index) {
+                                                        itemBuilder: (context, index) {
                                                           return Container(
-                                                            margin:
-                                                                EdgeInsets.only(
+                                                            margin: EdgeInsets.only(
                                                               right: 32,
                                                             ).r,
                                                             child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                              mainAxisSize: MainAxisSize.min,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
+                                                                  CrossAxisAlignment.start,
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
+                                                                  MainAxisAlignment.start,
                                                               children: [
                                                                 Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .center,
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        EdgeInsets
-                                                                            .only(
+                                                                  alignment: Alignment.center,
+                                                                  child: Padding(
+                                                                    padding: EdgeInsets.only(
                                                                       left: 1,
                                                                       top: 5,
                                                                     ).r,
                                                                     child: Row(
                                                                       mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
+                                                                          MainAxisAlignment.center,
                                                                       crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .center,
+                                                                          CrossAxisAlignment.center,
                                                                       mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
+                                                                          MainAxisSize.max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding:
-                                                                              EdgeInsets.only(
-                                                                            left:
-                                                                                50,
-                                                                            top:
-                                                                                12,
-                                                                            right:
-                                                                                10,
-                                                                            bottom:
-                                                                                20,
+                                                                          padding: EdgeInsets.only(
+                                                                            left: 50,
+                                                                            top: 12,
+                                                                            right: 10,
+                                                                            bottom: 20,
                                                                           ).r,
-                                                                          child:
-                                                                              Icon(
+                                                                          child: Icon(
                                                                             Icons.person,
                                                                             color:
                                                                                 Colors.blueAccent,
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding:
-                                                                              EdgeInsets.only(
-                                                                            left:
-                                                                                5,
-                                                                            right:
-                                                                                5,
-                                                                            top:
-                                                                                1,
+                                                                          padding: EdgeInsets.only(
+                                                                            left: 5,
+                                                                            right: 5,
+                                                                            top: 1,
                                                                           ).r,
-                                                                          child:
-                                                                              Text(
+                                                                          child: Text(
                                                                             "Beginner",
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
+                                                                            overflow: TextOverflow
+                                                                                .ellipsis,
                                                                             textAlign:
                                                                                 TextAlign.start,
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: ScreenUtil().setSp(
+                                                                            style: TextStyle(
+                                                                              fontSize: ScreenUtil()
+                                                                                  .setSp(
                                                                                 60,
                                                                               ),
                                                                               fontFamily: 'Poppins',
-                                                                              fontWeight: FontWeight.w500,
+                                                                              fontWeight:
+                                                                                  FontWeight.w500,
                                                                               height: 1.00,
                                                                             ),
                                                                           ),
@@ -1295,67 +929,48 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
+                                                                  padding: EdgeInsets.only(
                                                                     left: 50,
                                                                     top: 12,
                                                                     right: 10,
                                                                   ).r,
                                                                   child: Row(
                                                                     mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .start,
+                                                                        MainAxisAlignment.start,
                                                                     crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .center,
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
+                                                                        CrossAxisAlignment.center,
+                                                                    mainAxisSize: MainAxisSize.max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(
-                                                                          bottom:
-                                                                              4,
+                                                                        padding: EdgeInsets.only(
+                                                                          bottom: 4,
                                                                         ).r,
-                                                                        child:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .mic,
-                                                                          color:
-                                                                              Colors.blueAccent,
+                                                                        child: Icon(
+                                                                          Icons.mic,
+                                                                          color: Colors.blueAccent,
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(
-                                                                          left:
-                                                                              10,
-                                                                          right:
-                                                                              6,
-                                                                          top:
-                                                                              1,
+                                                                        padding: EdgeInsets.only(
+                                                                          left: 10,
+                                                                          right: 6,
+                                                                          top: 1,
                                                                         ).r,
-                                                                        child:
-                                                                            Text(
+                                                                        child: Text(
                                                                           "Khmer",
                                                                           overflow:
                                                                               TextOverflow.ellipsis,
                                                                           textAlign:
                                                                               TextAlign.start,
-                                                                          style:
-                                                                              TextStyle(
+                                                                          style: TextStyle(
                                                                             fontSize:
                                                                                 ScreenUtil().setSp(
                                                                               60,
                                                                             ),
-                                                                            fontFamily:
-                                                                                'Poppins',
+                                                                            fontFamily: 'Poppins',
                                                                             fontWeight:
                                                                                 FontWeight.w500,
-                                                                            height:
-                                                                                1.00,
+                                                                            height: 1.00,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1376,35 +991,26 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       ).r,
                                                       child: Text(
                                                         "Tools you need",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.start,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                         style: TextStyle(
-                                                          fontSize: ScreenUtil()
-                                                              .setSp(
+                                                          fontSize: ScreenUtil().setSp(
                                                             80,
                                                           ),
                                                           fontFamily: 'Poppins',
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                                          fontWeight: FontWeight.w600,
                                                           height: 1.00,
                                                         ),
                                                       ),
                                                     ),
                                                     ListView.builder(
-                                                        physics:
-                                                            BouncingScrollPhysics(),
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                bottom: 70),
+                                                        physics: BouncingScrollPhysics(),
+                                                        padding: EdgeInsets.only(bottom: 70),
                                                         shrinkWrap: true,
                                                         itemCount: 1,
-                                                        itemBuilder:
-                                                            ((context, index) {
+                                                        itemBuilder: ((context, index) {
                                                           return Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
+                                                            padding: EdgeInsets.only(
                                                               left: 90,
                                                               top: 60,
                                                               right: 24,
@@ -1412,34 +1018,24 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ).r,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
+                                                                  MainAxisAlignment.start,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                                  CrossAxisAlignment.center,
+                                                              mainAxisSize: MainAxisSize.min,
                                                               children: [
                                                                 ClipRRect(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                      ScreenUtil()
-                                                                          .setWidth(
+                                                                        BorderRadius.circular(
+                                                                      ScreenUtil().setWidth(
                                                                         16.00,
                                                                       ),
                                                                     ),
                                                                     child: Icon(
-                                                                      Icons
-                                                                          .computer,
-                                                                      color: Colors
-                                                                          .blueAccent,
+                                                                      Icons.computer,
+                                                                      color: Colors.blueAccent,
                                                                     )),
                                                                 Padding(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .only(
+                                                                  padding: EdgeInsets.only(
                                                                     left: 30,
                                                                     right: 8,
                                                                     top: 9,
@@ -1447,26 +1043,15 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                   ).r,
                                                                   child: Text(
                                                                     "Computer",
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .ellipsis,
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .start,
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          ScreenUtil()
-                                                                              .setSp(
+                                                                    overflow: TextOverflow.ellipsis,
+                                                                    textAlign: TextAlign.start,
+                                                                    style: TextStyle(
+                                                                      fontSize: ScreenUtil().setSp(
                                                                         60,
                                                                       ),
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      height:
-                                                                          1.00,
+                                                                      fontFamily: 'Poppins',
+                                                                      fontWeight: FontWeight.w500,
+                                                                      height: 1.00,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1507,8 +1092,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       right: 100,
                                     ).r,
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(50)),
+                                      borderRadius: BorderRadius.all(Radius.circular(50)),
                                       color: Colors.blueAccent,
                                     ),
                                     child: Text(
