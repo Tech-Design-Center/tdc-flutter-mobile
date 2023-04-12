@@ -7,16 +7,18 @@ import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart'
 
 import '../../../../core/constants/color_constant.dart';
 
-
 class RecommendsCard extends StatelessWidget {
-  final Recommend recommends;
+  final Recommend recommend;
 
-  const RecommendsCard({required this.recommends});
+  const RecommendsCard({required this.recommend});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(CourseDetailsScreen(isEnrolled: true, initURL: 'https://youtu.be/A3ltMaM6noM',));
+        Get.to(CourseDetailsScreen(
+          isEnrolled: recommend.isEnroll,
+          recommend: recommend,
+        ));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -71,7 +73,7 @@ class RecommendsCard extends StatelessWidget {
                             10,
                           ).w,
                           child: Image.network(
-                            recommends.image.toString(),
+                            recommend.image.toString(),
                           )),
                     ),
                   ),
@@ -82,7 +84,7 @@ class RecommendsCard extends StatelessWidget {
                       bottom: 17,
                     ).r,
                     child: Text(
-                      recommends.title.toString(),
+                      recommend.title.toString(),
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(
