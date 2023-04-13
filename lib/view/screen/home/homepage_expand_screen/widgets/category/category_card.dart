@@ -18,14 +18,13 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => CategoryCourseListScreen(
-            categories: category, name: category.name));
+        Get.to(() => CategoryCourseListScreen(categories: category, name: category.name));
       },
       child: Column(
         children: [
           Image.network(
             category.image,
-            width: ScreenUtil().setWidth(350),
+            width: ScreenUtil().setWidth(340),
             height: ScreenUtil().setHeight(200),
           ),
           Padding(

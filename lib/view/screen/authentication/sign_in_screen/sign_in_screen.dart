@@ -111,8 +111,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       //input
                       Container(
-                        padding:
-                            EdgeInsets.only(left: 90, right: 90, top: 50).r,
+                        padding: EdgeInsets.only(left: 90, right: 90, top: 50).r,
                         alignment: Alignment.center,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -144,10 +143,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                         right: 20,
                                       ).r,
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -212,10 +209,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                           filled: true,
                                           border: OutlineInputBorder(),
                                           focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                              borderSide: BorderSide(
-                                                  color: Colors.grey)),
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
                                           hintText: 'Email'),
                                     ),
                                   ),
@@ -249,10 +244,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                         right: 20,
                                       ).r,
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -300,8 +293,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     padding: const EdgeInsets.only(top: 30).r,
                                     child: TextFormField(
                                       controller: passwordController,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
+                                      keyboardType: TextInputType.visiblePassword,
                                       textInputAction: TextInputAction.done,
                                       obscureText: !_passwordVisible,
                                       validator: (String? value) {
@@ -314,10 +306,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(),
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.grey)),
+                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                            borderSide: BorderSide(color: Colors.grey)),
 
                                         hintText: 'Enter your password',
                                         // Here is key idea
@@ -327,14 +317,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                             _passwordVisible
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: Theme.of(context).primaryColor,
                                           ),
                                           onPressed: () {
                                             // Update the state i.e. toogle the state of passwordVisible variable
                                             setState(() {
-                                              _passwordVisible =
-                                                  !_passwordVisible;
+                                              _passwordVisible = !_passwordVisible;
                                             });
                                           },
                                         ),
@@ -346,23 +334,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                     child: TextButton(
                                       style: ButtonStyle(
                                         foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.blue),
+                                            MaterialStateProperty.all<Color>(Colors.blue),
                                       ),
                                       onPressed: () {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ForgetPassScreen()),
+                                              builder: (context) => ForgetPassScreen()),
                                         );
                                       },
                                       child: Text(
                                         'Forget Password ?',
                                         style: TextStyle(
                                             fontSize: 15,
-                                            decoration:
-                                                TextDecoration.underline,
+                                            decoration: TextDecoration.underline,
                                             fontFamily: 'PoppinsMedium16'),
                                       ),
                                     ),
@@ -376,20 +361,18 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       ElevatedButton(
                         style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: BorderSide(color: Colors.blue)))),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             authController.signIn(
-                                email: emailController.text,
-                                password: passwordController.text);
+                                email: emailController.text, password: passwordController.text);
                           }
 
                           //for testing app
-                          //  Get.to(() => DashboardScreen());
+                          // Get.to(() => DashboardScreen());
                         },
                         child: Container(
                           width: ScreenUtil().setWidth(1100),
@@ -412,14 +395,13 @@ class _SignInScreenState extends State<SignInScreen> {
                         margin: EdgeInsets.only(top: 13).r,
                         child: TextButton(
                           style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                                Colors.black.withOpacity(0.8)),
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.black.withOpacity(0.8)),
                           ),
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpScreen()),
+                              MaterialPageRoute(builder: (context) => SignUpScreen()),
                             );
                           },
                           child: Padding(

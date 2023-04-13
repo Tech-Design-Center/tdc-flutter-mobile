@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
 import '../model/category.dart';
 import '../model/recommend.dart';
@@ -56,8 +57,8 @@ class AuthController extends GetxController {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', token);
 
-        var userResult = await RemoteAuthService().createProfile(
-            fullName: fullName, phoneNumber: phoneNumber, token: token);
+        var userResult = await RemoteAuthService()
+            .createProfile(fullName: fullName, phoneNumber: phoneNumber, token: token);
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
@@ -117,6 +118,6 @@ class AuthController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('token');
     user.value = null;
-    Get.offAll(() => SignInScreen());
+    Get.offAll(() => OnboardingScreen());
   }
 }
