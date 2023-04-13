@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
+
 class CourseLessonVideo extends StatefulWidget {
   const CourseLessonVideo({Key? key}) : super(key: key);
 
@@ -13,12 +14,10 @@ class CourseLessonVideo extends StatefulWidget {
 class _CourseLessonVideoState extends State<CourseLessonVideo> {
   @override
   Widget build(BuildContext context) {
-
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
         margin: EdgeInsets.only(
-
           top: 12.0,
           bottom: 12.0,
         ).r,
@@ -52,8 +51,7 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding:  EdgeInsets.only(
-
+              padding: EdgeInsets.only(
                 left: 50,
                 top: 16,
                 bottom: 16,
@@ -63,9 +61,7 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-
-                    padding:  EdgeInsets.only(
-
+                    padding: EdgeInsets.only(
                       left: 5,
                       top: 5,
                       right: 5,
@@ -84,7 +80,6 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(
-
                         fontSize: ScreenUtil().setSp(
                           60,
                         ),
@@ -95,8 +90,7 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(
-
+                    padding: EdgeInsets.only(
                       left: 50,
                       top: 3,
                       bottom: 4,
@@ -106,7 +100,6 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(
-
                         fontSize: ScreenUtil().setSp(
                           60,
                         ),
@@ -121,8 +114,7 @@ class _CourseLessonVideoState extends State<CourseLessonVideo> {
             ),
             Spacer(),
             Padding(
-              padding:  EdgeInsets.only(
-
+              padding: EdgeInsets.only(
                 left: 153,
                 top: 25,
                 right: 60,

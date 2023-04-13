@@ -19,7 +19,7 @@ class PopularListView extends StatelessWidget {
     return SizedBox(
       height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
-        itemCount: 5,
+        itemCount: popularList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20).r,

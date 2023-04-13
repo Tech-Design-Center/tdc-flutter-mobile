@@ -1,12 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
 
 import 'package:flutter/material.dart';
-import 'widgets/my_course_card.dart';
+import '../../../../controller/controllers.dart';
+import 'my_course_card.dart';
+import 'my_course_list_view.dart';
 
-class MyCourseListScreen extends StatelessWidget {
+class MyCourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -89,24 +92,14 @@ class MyCourseListScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 24,
-                  top: 35,
-                  right: 24,
-                ).r,
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return MyCourseCard();
-                  },
-                ),
-              ),
-              SizedBox(
-                height: ScreenUtil().setHeight(200),
-              )
+              Obx(() {
+                print(myCourseController.courseList.length);
+                if (myCourseController.courseList.isNotEmpty) {
+                  return MyCourseListView(course: myCourseController.courseList);
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              }),
             ],
           ),
         ),

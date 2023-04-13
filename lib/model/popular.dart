@@ -34,16 +34,6 @@ class Popular {
   });
 
   factory Popular.fromJson(Map<String, dynamic> data) {
-    final videoTitleList = List<List<String>>.from(data['attributes']['course']['data']
-                ['attributes']['playlist_video_urls']['data']
-            .map((e) => List<String>.from(
-                e['attributes']['video_urls']['data'].map((e) => (e['attributes']['title'])))))
-        .toList();
-    final videoUrlList = List<List<String>>.from(data['attributes']['course']['data']['attributes']
-                ['playlist_video_urls']['data']
-            .map((e) => List<String>.from(
-                e['attributes']['video_urls']['data'].map((e) => (e['attributes']['videoURL'])))))
-        .toList();
     return Popular(
       id: data['attributes']['course']['data']['id'],
       image: data['attributes']['course']['data']['attributes']['image']['data']['attributes']
@@ -59,8 +49,14 @@ class Popular {
       playlistTitle: List<String>.from(data['attributes']['course']['data']['attributes']
               ['playlist_video_urls']['data']
           .map((data) => data['attributes']['title'])),
-      videoTitle: videoTitleList,
-      videoUrl: videoUrlList,
+      videoTitle: List<List<String>>.from(data['attributes']['course']['data']['attributes']
+              ['playlist_video_urls']['data']
+          .map((e) => List<String>.from(
+              e['attributes']['video_urls']['data'].map((e) => (e['attributes']['title']))))),
+      videoUrl: List<List<String>>.from(data['attributes']['course']['data']['attributes']
+              ['playlist_video_urls']['data']
+          .map((e) => List<String>.from(
+              e['attributes']['video_urls']['data'].map((e) => (e['attributes']['videoURL']))))),
     );
   }
 }
