@@ -16,10 +16,20 @@ class PopularCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(CourseDetailsScreen(
-        //   isEnrolled: popular.isEnroll,
-        //   recommend: popular,
-        // ));
+        Get.to(CourseDetailsScreen(
+          about: popular.about,
+          author: popular.author,
+          description: popular.description,
+          duration: popular.duration,
+          image: popular.image,
+          isEnroll: popular.isEnroll,
+          playlistTitle: popular.playlistTitle,
+          price: popular.price,
+          title: popular.title,
+          videoTitle: popular.videoTitle,
+          videoTrailerURL: popular.videoTrailerURL,
+          videoUrl: popular.videoUrl,
+        ));
       },
       child: Container(
         width: ScreenUtil().setWidth(850),

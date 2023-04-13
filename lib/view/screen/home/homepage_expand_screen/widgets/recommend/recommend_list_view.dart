@@ -20,7 +20,7 @@ class RecommendListView extends StatelessWidget {
     return SizedBox(
       height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
-        itemCount: recommendList.length,
+        itemCount: 5,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20).r,

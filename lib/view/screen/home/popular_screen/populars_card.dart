@@ -8,17 +8,27 @@ import '../../../../core/constants/color_constant.dart';
 import '../../../../model/popular.dart';
 
 class PopularsCard extends StatelessWidget {
-  final Popular populars;
+  final Popular popular;
 
-  const PopularsCard({required this.populars});
+  const PopularsCard({required this.popular});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(CourseDetailsScreen(
-        //   isEnrolled: true,
-        //   initURL: 'https://youtu.be/A3ltMaM6noM',
-        // ));
+        Get.to(CourseDetailsScreen(
+          about: popular.about,
+          author: popular.author,
+          description: popular.description,
+          duration: popular.duration,
+          image: popular.image,
+          isEnroll: popular.isEnroll,
+          playlistTitle: popular.playlistTitle,
+          price: popular.price,
+          title: popular.title,
+          videoTitle: popular.videoTitle,
+          videoTrailerURL: popular.videoTrailerURL,
+          videoUrl: popular.videoUrl,
+        ));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -73,7 +83,7 @@ class PopularsCard extends StatelessWidget {
                             10,
                           ).w,
                           child: Image.network(
-                            populars.image,
+                            popular.image,
                           )),
                     ),
                   ),
@@ -84,7 +94,7 @@ class PopularsCard extends StatelessWidget {
                       bottom: 17,
                     ).r,
                     child: Text(
-                      populars.title,
+                      popular.title,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(

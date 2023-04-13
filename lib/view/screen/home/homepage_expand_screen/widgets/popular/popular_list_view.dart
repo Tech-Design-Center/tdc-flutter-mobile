@@ -12,19 +12,17 @@ import '../popular/popular_card.dart';
 
 class PopularListView extends StatelessWidget {
   final List<Popular> popularList;
-  const PopularListView({Key? key, required this.popularList})
-      : super(key: key);
+  const PopularListView({Key? key, required this.popularList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
-        itemCount: popularList.length,
+        itemCount: 5,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding:
-            const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20).r,
+        padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20).r,
         itemBuilder: (context, index) {
           return PopularCard(popular: popularList[index]);
         },

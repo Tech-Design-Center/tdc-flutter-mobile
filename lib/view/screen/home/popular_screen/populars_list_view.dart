@@ -13,8 +13,7 @@ class PopularsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-          padding:
-              const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },
@@ -25,7 +24,7 @@ class PopularsListView extends StatelessWidget {
               onTap: () {
                 // Get.to(() => CourseListScreen());
               },
-              child: PopularsCard(populars: populars[index]),
+              child: PopularsCard(popular: populars[index]),
             );
           }),
     );

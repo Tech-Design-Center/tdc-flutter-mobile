@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-List<Category> categoryListFromJson(String val) => List<Category>.from(json
-    .decode(val)['data']
-    .map((category) => Category.categoryFromJson(category)));
+List<Category> categoryListFromJson(String val) => List<Category>.from(
+    json.decode(val)['data'].map((category) => Category.categoryFromJson(category)));
 
 class Category {
   final int id;
@@ -17,7 +16,9 @@ class Category {
   final List<String> imageCourse;
   final List<String> videoTrailerURL;
   final List<bool> isEnroll;
-
+  final List<List<String>> playlistTitle;
+  final List<List<List<String>>> videoTitle;
+  final List<List<List<String>>> videoUrl;
   Category({
     required this.id,
     required this.name,
@@ -31,31 +32,46 @@ class Category {
     required this.imageCourse,
     required this.videoTrailerURL,
     required this.isEnroll,
+    required this.playlistTitle,
+    required this.videoTitle,
+    required this.videoUrl,
   });
 
-  factory Category.categoryFromJson(Map<String, dynamic> data) => Category(
-        id: data['id'],
-        name: data['attributes']['name'],
-        image: data['attributes']['image']['data']['attributes']['url'],
-        title: List<String>.from(data['attributes']['courses']['data']
-            .map((title) => title['attributes']['title'])),
-        description: List<String>.from(data['attributes']['courses']['data']
-            .map((description) => description['attributes']['description'])),
-        author: List<String>.from(data['attributes']['courses']['data']
-            .map((author) => author['attributes']['author'])),
-        about: List<String>.from(data['attributes']['courses']['data']
-            .map((about) => about['attributes']['about'])),
-        duration: List<int>.from(data['attributes']['courses']['data']
-            .map((duration) => duration['attributes']['duration'])),
-        price: List<int>.from(data['attributes']['courses']['data']
-            .map((price) => price['attributes']['price'])),
-        imageCourse: List<String>.from(data['attributes']['courses']['data']
-            .map((imageCourse) => imageCourse['attributes']['image']['data']
-                ['attributes']['url'])),
-        videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
-            .map((videoTrailerURL) =>
-                videoTrailerURL['attributes']['videoTrailerURL'])),
-        isEnroll: List<bool>.from(data['attributes']['courses']['data'].map(
-            (videoTrailerURL) => videoTrailerURL['attributes']['isEnroll'])),
-      );
+  factory Category.categoryFromJson(Map<String, dynamic> data) {
+    print(data);
+    return Category(
+      id: data['id'],
+      name: data['attributes']['name'],
+      image: data['attributes']['image']['data']['attributes']['url'],
+      title: List<String>.from(
+          data['attributes']['courses']['data'].map((title) => title['attributes']['title'])),
+      description: List<String>.from(data['attributes']['courses']['data']
+          .map((description) => description['attributes']['description'])),
+      author: List<String>.from(
+          data['attributes']['courses']['data'].map((author) => author['attributes']['author'])),
+      about: List<String>.from(
+          data['attributes']['courses']['data'].map((about) => about['attributes']['about'])),
+      duration: List<int>.from(data['attributes']['courses']['data']
+          .map((duration) => duration['attributes']['duration'])),
+      price: List<int>.from(
+          data['attributes']['courses']['data'].map((price) => price['attributes']['price'])),
+      imageCourse: List<String>.from(data['attributes']['courses']['data']
+          .map((imageCourse) => imageCourse['attributes']['image']['data']['attributes']['url'])),
+      videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
+          .map((videoTrailerURL) => videoTrailerURL['attributes']['videoTrailerURL'])),
+      isEnroll: List<bool>.from(data['attributes']['courses']['data']
+          .map((videoTrailerURL) => videoTrailerURL['attributes']['isEnroll'])),
+      playlistTitle: List<List<String>>.from(data['attributes']['courses']['data'].map((data) =>
+          List<String>.from(data['attributes']['playlist_video_urls']['data']
+              .map((data) => data['attributes']['title'])))),
+      videoTitle: List<List<List<String>>>.from(data['attributes']['courses']['data'].map((data) =>
+          List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map((data) =>
+              List<String>.from(data['attributes']['video_urls']['data']
+                  .map((data) => data['attributes']['title'])))))),
+      videoUrl: List<List<List<String>>>.from(data['attributes']['courses']['data'].map((data) =>
+          List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map((data) =>
+              List<String>.from(data['attributes']['video_urls']['data']
+                  .map((data) => data['attributes']['videoURL'])))))),
+    );
+  }
 }
