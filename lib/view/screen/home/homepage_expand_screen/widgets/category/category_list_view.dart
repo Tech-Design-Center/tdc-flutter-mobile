@@ -11,8 +11,7 @@ import 'category_card.dart';
 
 class CategoryListView extends StatelessWidget {
   final List<Category> categories;
-  const CategoryListView({Key? key, required this.categories})
-      : super(key: key);
+  const CategoryListView({Key? key, required this.categories}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

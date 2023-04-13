@@ -25,6 +25,7 @@ import '../../../../controller/controllers.dart';
 
 import '../../../../model/recommend.dart';
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
+import '../../welcome/onboarding_one_screen.dart';
 import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -46,9 +47,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: ClipRRect(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(35).w,
-            bottomRight: Radius.circular(35).w),
+        borderRadius:
+            BorderRadius.only(topRight: Radius.circular(35).w, bottomRight: Radius.circular(35).w),
         child: Drawer(
             backgroundColor: ColorConstant.whiteA700,
             child: Column(
@@ -72,30 +72,35 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 24, left: 50, right: 20).r,
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(300),
-                        child: CircleAvatar(
-                          foregroundImage: NetworkImage(
-                              '${authController.user.value?.image}'),
-                          radius: 100.r,
-                        ),
-                      ),
-                      20.horizontalSpace,
-                      Padding(
-                        padding: EdgeInsets.only(left: 30).r,
-                        child: Text(
-                          authController.user.value?.fullName ??
-                              "Sign in your account",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: ScreenUtil().setSp(70),
-                            fontWeight: FontWeight.w600,
+                  child: GestureDetector(
+                    onTap: () {
+                      if (authController.user.value?.fullName == null) {
+                        Get.offAll(() => OnboardingScreen());
+                      }
+                    },
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(300),
+                          child: CircleAvatar(
+                            foregroundImage: NetworkImage('${authController.user.value?.image}'),
+                            radius: 100.r,
                           ),
                         ),
-                      )
-                    ],
+                        20.horizontalSpace,
+                        Padding(
+                          padding: EdgeInsets.only(left: 30).r,
+                          child: Text(
+                            authController.user.value?.fullName ?? "Sign in your account",
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: ScreenUtil().setSp(70),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -249,11 +254,11 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignInScreen()),
-                        );
+                        if (authController.user.value?.fullName == null) {
+                          Get.offAll(() => OnboardingScreen());
+                        } else {
+                          authController.signOut();
+                        }
                       },
                       child: Container(
                         height: ScreenUtil().setHeight(180),
@@ -268,7 +273,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            "Logout",
+                            authController.user.value?.fullName != null ? 'Logout' : 'Login',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Poppins',
@@ -302,10 +307,17 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           },
                           child: Row(
                             children: [
-                              CircleAvatar(
-                                radius: 100.r,
-                                foregroundImage: NetworkImage(
-                                    '${authController.user.value?.image}'),
+                              GestureDetector(
+                                onTap: () {
+                                  if (authController.user.value?.fullName == null) {
+                                    Get.offAll(() => OnboardingScreen());
+                                  }
+                                },
+                                child: CircleAvatar(
+                                  radius: 100.r,
+                                  foregroundImage:
+                                      NetworkImage('${authController.user.value?.image}'),
+                                ),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -337,19 +349,26 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                       left: 30,
                                       top: 7,
                                     ),
-                                    child: Text(
-                                      authController.user.value?.fullName ??
-                                          "Sign in your account",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil().setSp(
-                                          60,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (authController.user.value?.fullName == null) {
+                                          Get.offAll(() => OnboardingScreen());
+                                        }
+                                      },
+                                      child: Text(
+                                        authController.user.value?.fullName ??
+                                            "Sign in your account",
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontSize: ScreenUtil().setSp(
+                                            60,
+                                          ),
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: 0.36,
+                                          height: 1.00,
                                         ),
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.36,
-                                        height: 1.00,
                                       ),
                                     ),
                                   ),
@@ -453,8 +472,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                       //carousel data
                       Obx(() {
                         if (homeController.bannerList.isNotEmpty) {
-                          return CarouselSliderView(
-                              bannerList: homeController.bannerList);
+                          return CarouselSliderView(bannerList: homeController.bannerList);
                         } else {
                           return const CarouselLoading();
                         }
@@ -471,8 +489,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         print(
                             'homeController.categoryList.length: ${homeController.categoryList.length}');
                         if (homeController.categoryList.isNotEmpty) {
-                          return CategoryListView(
-                              categories: homeController.categoryList);
+                          return CategoryListView(categories: homeController.categoryList);
                         } else {
                           return const CategoryLoading();
                         }
@@ -507,8 +524,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                       //popular data
                       Obx(() {
                         if (homeController.popularList.isNotEmpty) {
-                          return PopularListView(
-                              popularList: homeController.popularList);
+                          return PopularListView(popularList: homeController.popularList);
                         } else {
                           return const PopularLoading();
                         }

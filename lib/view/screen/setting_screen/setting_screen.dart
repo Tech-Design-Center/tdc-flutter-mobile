@@ -11,6 +11,7 @@ import 'package:tdc_frontend_mobile/main.dart';
 import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
 import '../../../core/constants/base_url.dart';
 
@@ -19,8 +20,7 @@ class SettingScreen extends StatefulWidget {
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen>
-    with SingleTickerProviderStateMixin {
+class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
   TabController? tabController;
 
   bool status = false;
@@ -64,8 +64,7 @@ class _SettingScreenState extends State<SettingScreen>
                   height: 140,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(ImageConstant.imgRectangle792),
-                        fit: BoxFit.cover),
+                        image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
                   ),
                 ),
               ),
@@ -90,12 +89,18 @@ class _SettingScreenState extends State<SettingScreen>
                                 40.00,
                               ),
                             ),
-                            child: CircleAvatar(
-                              foregroundImage: NetworkImage(
-                                '${authController.user.value?.image}' ??
-                                    ImageConstant.imgImage1,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (authController.user.value?.fullName == null) {
+                                  Get.offAll(() => OnboardingScreen());
+                                }
+                              },
+                              child: CircleAvatar(
+                                foregroundImage: NetworkImage(
+                                  '${authController.user.value?.image}' ?? ImageConstant.imgImage1,
+                                ),
+                                radius: 225.r,
                               ),
-                              radius: 225.r,
                             ),
                           ),
                         ),
@@ -105,19 +110,25 @@ class _SettingScreenState extends State<SettingScreen>
                             top: 19,
                             right: 29,
                           ).r,
-                          child: Text(
-                            authController.user.value?.fullName ??
-                                "Sign in your account",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(
-                                75,
+                          child: GestureDetector(
+                            onTap: () {
+                              if (authController.user.value?.fullName == null) {
+                                Get.offAll(() => OnboardingScreen());
+                              }
+                            },
+                            child: Text(
+                              authController.user.value?.fullName ?? "Sign in your account",
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: ScreenUtil().setSp(
+                                  75,
+                                ),
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.36,
+                                height: 1.00,
                               ),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.36,
-                              height: 1.00,
                             ),
                           ),
                         ),
@@ -167,36 +178,20 @@ class _SettingScreenState extends State<SettingScreen>
                   decoration: BoxDecoration(
                       // color: Colors.blue,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.r),
-                          topRight: Radius.circular(30.r))),
+                          topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         //body
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
-                        SectionSettingCard(
-                            name: 'Update Profile',
-                            screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(top: 100, bottom: 200).r,
+                          padding: const EdgeInsets.only(top: 100, bottom: 200).r,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -216,8 +211,7 @@ class _SettingScreenState extends State<SettingScreen>
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
