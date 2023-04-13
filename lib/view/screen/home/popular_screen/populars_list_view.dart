@@ -20,12 +20,7 @@ class PopularsListView extends StatelessWidget {
           itemCount: populars.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                // Get.to(() => CourseListScreen());
-              },
-              child: PopularsCard(popular: populars[index]),
-            );
+            return PopularsCard(popular: populars[index]);
           }),
     );
   }

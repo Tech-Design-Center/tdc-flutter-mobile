@@ -39,8 +39,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       padding: EdgeInsets.only(top: 50, bottom: 80).r,
                       child: Text(
                         "Microsoft Office 2019",
-                        style: TextStyle(
-                            fontSize: 80.sp, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 80.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
@@ -61,13 +60,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               child: Text("Students Name"),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
                                 "Tech Design Center",
-                                style: TextStyle(
-                                    fontSize: 65.sp,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Divider(
@@ -79,13 +75,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               child: Text("Student ID"),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
                                 "# 1111",
-                                style: TextStyle(
-                                    fontSize: 65.sp,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Divider(
@@ -97,13 +90,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               child: Text("Price"),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
                                 "30 \$",
-                                style: TextStyle(
-                                    fontSize: 65.sp,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Divider(
@@ -115,13 +105,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               child: Text("Enroll Date & Time"),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 60, bottom: 40).r,
+                              padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
                                 date,
-                                style: TextStyle(
-                                    fontSize: 65.sp,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                           ],
@@ -130,12 +117,10 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.only(top: 50, bottom: 80, left: 130).r,
+                      padding: EdgeInsets.only(top: 50, bottom: 80, left: 130).r,
                       child: Text(
                         "Payment Method",
-                        style: TextStyle(
-                            fontSize: 60.sp, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 60.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
@@ -182,8 +167,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                               right: 100,
                             ).r,
                             decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)),
+                              borderRadius: BorderRadius.all(Radius.circular(50)),
                               color: Colors.blueAccent,
                             ),
                             child: Text(

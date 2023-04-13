@@ -6,18 +6,31 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
+import '../../../../model/course.dart';
+
 // ignore: must_be_immutable
 class MyCourseCard extends StatelessWidget {
-  MyCourseCard();
+  final Course course;
+  MyCourseCard({required this.course});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Get.to(CourseDetailsScreen(
-        //   isEnrolled: true,
-        //   initURL: 'https://youtu.be/A3ltMaM6noM',
-        // ));
+        Get.to(CourseDetailsScreen(
+          about: course.about,
+          author: course.author,
+          description: course.description,
+          duration: course.duration,
+          image: course.image,
+          isEnroll: course.isEnroll,
+          playlistTitle: course.playlistTitle,
+          price: course.price,
+          title: course.title,
+          videoTitle: course.videoTitle,
+          videoTrailerURL: course.videoTrailerURL,
+          videoUrl: course.videoUrl,
+        ));
       },
       child: Container(
         height: ScreenUtil().setHeight(600),
@@ -66,8 +79,8 @@ class MyCourseCard extends StatelessWidget {
                     12.00,
                   ),
                 ),
-                child: Image.asset(
-                  ImageConstant.imgPhoto88X96,
+                child: Image.network(
+                  course.image,
                   height: ScreenUtil().setHeight(
                     400.00,
                   ),
@@ -98,7 +111,7 @@ class MyCourseCard extends StatelessWidget {
                       right: 8,
                     ).r,
                     child: Text(
-                      "Microsoft Offices",
+                      course.title,
                       maxLines: null,
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -117,7 +130,7 @@ class MyCourseCard extends StatelessWidget {
                       top: 20,
                     ).r,
                     child: Text(
-                      "Teach by : Tech Design Center",
+                      "Teach by : ${course.author}",
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(
