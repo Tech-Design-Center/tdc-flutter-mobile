@@ -74,8 +74,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   }
 
   void loadVideo() async {
-    try {
-      EasyLoading.show(status: 'Loading...', dismissOnTap: false);
+
       final urls = await PodPlayerController.getYoutubeUrls(
         widget.videoTrailerURL,
       );
@@ -92,17 +91,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
           });
         });
 
-      Future.delayed(const Duration(seconds: 2), () async {
         _controller.addListener(_listener);
-        EasyLoading.dismiss();
-      });
-    } catch (e) {
-      EasyLoading.showError(e.toString());
-      EasyLoading.dismiss();
 
-      print(e);
     }
-  }
 
   ///Listnes to changes in video
   void _listener() {
@@ -130,6 +121,45 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              isLoading? Container(
+              height: ScreenUtil().setHeight(300),
+          width: double.infinity,
+          color: Colors.grey.shade200,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      deactivate();
+                    },
+                    icon: Icon(Icons.arrow_back_ios)),
+                SizedBox(
+                  width: 800.w,
+                  child: Text(
+                    widget.title,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: ScreenUtil().setSp(
+                        100,
+                      ),
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                IconButton(
+                    onPressed: () {
+                      deactivate();
+                      Get.offAll(() => DashboardScreen());
+                    },
+                    icon: Icon(Icons.home_filled)),
+              ],
+            ),
+          ),
+        ):
               Container(
                 height: ScreenUtil().setHeight(300),
                 width: double.infinity,
@@ -170,6 +200,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                   ),
                 ),
               ),
+
               Container(
                 height: ScreenUtil().setHeight(880),
                 child: isLoading
