@@ -145,14 +145,19 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                             Get.back();
                           },
                           icon: Icon(Icons.arrow_back_ios)),
-                      Text(
-                        widget.title,
-                        style: TextStyle(
-                          fontSize: ScreenUtil().setSp(
-                            100,
+                      SizedBox(
+                        width: 800.w,
+                        child: Text(
+                          widget.title,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: ScreenUtil().setSp(
+                              100,
+                            ),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
                           ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       IconButton(

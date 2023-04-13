@@ -16,8 +16,7 @@ class CategoryCourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-          padding:
-              const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },
@@ -26,10 +25,20 @@ class CategoryCourseCard extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // Get.to(CourseDetailsScreen(
-                //   isEnrolled: true,
-                //   initURL: 'https://youtu.be/A3ltMaM6noM',
-                // ));
+                Get.to(CourseDetailsScreen(
+                  about: categories.about[index],
+                  author: categories.author[index],
+                  description: categories.description[index],
+                  duration: categories.duration[index],
+                  image: categories.imageCourse[index],
+                  isEnroll: categories.isEnroll[index],
+                  playlistTitle: categories.playlistTitle[index],
+                  price: categories.price[index],
+                  title: categories.title[index],
+                  videoTitle: categories.videoTitle[index],
+                  videoTrailerURL: categories.videoTrailerURL[index],
+                  videoUrl: categories.videoUrl[index],
+                ));
               },
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -203,8 +212,7 @@ class CategoryCourseCard extends StatelessWidget {
                                     bottom: 2,
                                   ).r,
                                   child: Text(
-                                    "${Constants.currency}" +
-                                        categories.price[index].toString(),
+                                    "${Constants.currency}" + categories.price[index].toString(),
                                     overflow: TextOverflow.fade,
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
