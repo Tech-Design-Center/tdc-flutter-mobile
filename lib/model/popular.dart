@@ -13,7 +13,6 @@ class Popular {
   final int duration;
   final int price;
   final String videoTrailerURL;
-  final bool isEnroll;
   final List<String> playlistTitle;
   final List<List<String>> videoTitle;
   final List<List<String>> videoUrl;
@@ -27,7 +26,6 @@ class Popular {
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
-    required this.isEnroll,
     required this.playlistTitle,
     required this.videoTitle,
     required this.videoUrl,
@@ -45,7 +43,6 @@ class Popular {
       duration: data['attributes']['course']['data']['attributes']['duration'],
       price: data['attributes']['course']['data']['attributes']['price'],
       videoTrailerURL: data['attributes']['course']['data']['attributes']['videoTrailerURL'],
-      isEnroll: data['attributes']['course']['data']['attributes']['isEnroll'],
       playlistTitle: List<String>.from(data['attributes']['course']['data']['attributes']
               ['playlist_video_urls']['data']
           .map((data) => data['attributes']['title'])),

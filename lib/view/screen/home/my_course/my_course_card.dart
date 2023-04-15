@@ -11,145 +11,151 @@ import '../../../../model/course.dart';
 // ignore: must_be_immutable
 class MyCourseCard extends StatelessWidget {
   final Course course;
-  MyCourseCard({required this.course});
+  const MyCourseCard({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.to(CourseDetailsScreen(
-          about: course.about,
-          author: course.author,
-          description: course.description,
-          duration: course.duration,
-          image: course.image,
-          isEnroll: course.isEnroll,
-          playlistTitle: course.playlistTitle,
-          price: course.price,
-          title: course.title,
-          videoTitle: course.videoTitle,
-          videoTrailerURL: course.videoTrailerURL,
-          videoUrl: course.videoUrl,
-        ));
-      },
-      child: Container(
-        height: ScreenUtil().setHeight(600),
-        margin: EdgeInsets.only(
-          left: 50,
-          right: 50,
-          top: 12.0,
-          bottom: 12.0,
-        ).r,
-        decoration: BoxDecoration(
-          color: ColorConstant.whiteA700,
-          borderRadius: BorderRadius.circular(
-            ScreenUtil().setWidth(
-              16.00,
-            ),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: ColorConstant.black9001e,
-              spreadRadius: ScreenUtil().setWidth(
-                0.00,
-              ),
-              blurRadius: ScreenUtil().setWidth(
-                10.00,
-              ),
-              offset: Offset(
-                0,
-                4,
-              ),
-            ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                left: 16,
-                top: 16,
-                bottom: 16,
+    return ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: course.title.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Get.to(CourseDetailsScreen(
+                about: course.about[index],
+                author: course.author[index],
+                description: course.description[index],
+                duration: course.duration[index],
+                image: course.image[index],
+                isEnroll: true,
+                playlistTitle: course.playlistTitle[index],
+                price: course.price[index],
+                title: course.title[index],
+                videoTitle: course.videoTitle[index],
+                videoTrailerURL: course.videoTrailerURL[index],
+                videoUrl: course.videoUrl[index],
+              ));
+            },
+            child: Container(
+              height: ScreenUtil().setHeight(600),
+              margin: REdgeInsets.only(
+                left: 50,
+                right: 50,
+                top: 12.0,
+                bottom: 12.0,
               ).r,
-              child: ClipRRect(
+              decoration: BoxDecoration(
+                color: ColorConstant.whiteA700,
                 borderRadius: BorderRadius.circular(
                   ScreenUtil().setWidth(
-                    12.00,
+                    16.00,
                   ),
                 ),
-                child: Image.network(
-                  course.image,
-                  height: ScreenUtil().setHeight(
-                    400.00,
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorConstant.black9001e,
+                    spreadRadius: ScreenUtil().setWidth(
+                      0.00,
+                    ),
+                    blurRadius: ScreenUtil().setWidth(
+                      10.00,
+                    ),
+                    offset: Offset(
+                      0,
+                      4,
+                    ),
                   ),
-                  width: ScreenUtil().setWidth(
-                    400.00,
-                  ),
-                ),
+                ],
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: 12,
-                top: 21,
-                right: 25,
-                bottom: 19,
-              ).r,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
-                    width: ScreenUtil().setWidth(
-                      800.00,
-                    ),
-                    margin: EdgeInsets.only(
-                      left: 20,
-                      right: 8,
+                  Padding(
+                    padding: REdgeInsets.only(
+                      left: 16,
+                      top: 16,
+                      bottom: 16,
                     ).r,
-                    child: Text(
-                      course.title,
-                      maxLines: null,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: ScreenUtil().setSp(
-                          60,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        ScreenUtil().setWidth(
+                          12.00,
                         ),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        height: 1.57,
+                      ),
+                      child: Image.network(
+                        course.image[index],
+                        height: ScreenUtil().setHeight(
+                          400.00,
+                        ),
+                        width: ScreenUtil().setWidth(
+                          400.00,
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 20,
-                      top: 20,
+                  Container(
+                    margin: REdgeInsets.only(
+                      left: 12,
+                      top: 21,
+                      right: 25,
+                      bottom: 19,
                     ).r,
-                    child: Text(
-                      "Teach by : ${course.author}",
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: ColorConstant.bluegray500,
-                        fontSize: ScreenUtil().setSp(
-                          50,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: ScreenUtil().setWidth(
+                            800.00,
+                          ),
+                          margin: REdgeInsets.only(
+                            left: 20,
+                            right: 8,
+                          ).r,
+                          child: Text(
+                            course.title[index],
+                            maxLines: null,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                60,
+                              ),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w600,
+                              height: 1.57,
+                            ),
+                          ),
                         ),
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                        height: 1.00,
-                      ),
+                        Padding(
+                          padding: REdgeInsets.only(
+                            left: 20,
+                            top: 20,
+                          ).r,
+                          child: Text(
+                            "Teach by : '${course.author[index]}",
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: ColorConstant.bluegray500,
+                              fontSize: ScreenUtil().setSp(
+                                50,
+                              ),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              height: 1.00,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }

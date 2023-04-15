@@ -10,13 +10,14 @@ class User {
   String? image;
   DateTime? birthDay;
 
-  User(
-      {required this.id,
-      required this.fullName,
-      required this.email,
-      required this.phoneNumber,
-      this.image,
-      this.birthDay});
+  User({
+    required this.id,
+    required this.fullName,
+    required this.email,
+    required this.phoneNumber,
+    required this.image,
+    required this.birthDay,
+  });
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
         id: data['id'].toString(),

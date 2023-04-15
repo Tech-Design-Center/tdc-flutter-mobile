@@ -22,7 +22,7 @@ class PopularCard extends StatelessWidget {
           description: popular.description,
           duration: popular.duration,
           image: popular.image,
-          isEnroll: popular.isEnroll,
+          isEnroll: false,
           playlistTitle: popular.playlistTitle,
           price: popular.price,
           title: popular.title,

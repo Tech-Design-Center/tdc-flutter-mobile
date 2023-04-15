@@ -40,7 +40,8 @@ class HomepageExpandScreen extends StatefulWidget {
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  Recommend? recommend;
+  String profileImage =
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +84,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(300),
                           child: CircleAvatar(
-                            foregroundImage: NetworkImage('${authController.user.value?.image}'),
+                            foregroundImage: NetworkImage(profileImage),
                             radius: 100.r,
                           ),
                         ),
@@ -257,6 +258,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         if (authController.user.value?.fullName == null) {
                           Get.offAll(() => OnboardingScreen());
                         } else {
+                          profileImage = '${authController.user.value?.image}';
+
                           authController.signOut();
                         }
                       },
@@ -311,12 +314,13 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 onTap: () {
                                   if (authController.user.value?.fullName == null) {
                                     Get.offAll(() => OnboardingScreen());
+                                  } else {
+                                    _scaffoldKey.currentState!.openDrawer();
                                   }
                                 },
                                 child: CircleAvatar(
                                   radius: 100.r,
-                                  foregroundImage:
-                                      NetworkImage('${authController.user.value?.image}'),
+                                  foregroundImage: NetworkImage(profileImage),
                                 ),
                               ),
                               Column(
@@ -353,6 +357,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                       onTap: () {
                                         if (authController.user.value?.fullName == null) {
                                           Get.offAll(() => OnboardingScreen());
+                                        } else {
+                                          _scaffoldKey.currentState!.openDrawer();
                                         }
                                       },
                                       child: Text(
@@ -486,8 +492,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                       //categories data
                       Obx(() {
-                        print(
-                            'homeController.categoryList.length: ${homeController.categoryList.length}');
                         if (homeController.categoryList.isNotEmpty) {
                           return CategoryListView(categories: homeController.categoryList);
                         } else {

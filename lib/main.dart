@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
 
 void configLoading() {
   EasyLoading.instance
-    ..displayDuration = const Duration(milliseconds: 200000)
+    ..displayDuration = const Duration(milliseconds: 20000)
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
     ..loadingStyle = EasyLoadingStyle.dark
     ..indicatorSize = 45.0

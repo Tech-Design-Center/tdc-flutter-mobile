@@ -23,7 +23,7 @@ class RecommendListView extends StatelessWidget {
         itemCount: recommendList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20).r,
+        padding: REdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
         itemBuilder: (context, index) {
           return RecommendCard(
             recommend: recommendList[index],

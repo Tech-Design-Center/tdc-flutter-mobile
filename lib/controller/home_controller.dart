@@ -10,7 +10,6 @@ import '../model/category.dart';
 import '../model/news_feed.dart';
 import '../model/recommend.dart';
 import '../service/banner_service.dart';
-import '../service/playlist_video_url_service.dart';
 
 class HomeController extends GetxController {
   RxList<AdBanner> bannerList = List<AdBanner>.empty(growable: true).obs;

@@ -21,7 +21,7 @@ class RecommendsCard extends StatelessWidget {
           description: recommend.description,
           duration: recommend.duration,
           image: recommend.image,
-          isEnroll: recommend.isEnroll,
+          isEnroll: false,
           playlistTitle: recommend.playlistTitle,
           price: recommend.price,
           title: recommend.title,
