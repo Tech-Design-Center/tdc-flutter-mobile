@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/main.dart';
+import 'package:tdc_frontend_mobile/model/course.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/my_course/my_course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/setting_screen.dart';
 
+import '../model/user.dart';
+
 // ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
   int selectedNavBarIndex;
-  DashboardScreen({this.selectedNavBarIndex = 0});
+  DashboardScreen({super.key, this.selectedNavBarIndex = 0});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -51,22 +57,21 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       //Init Floating Action Bubble
-      floatingActionButton: Padding(
-          padding: EdgeInsets.only(bottom: 0).r,
-          child: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                widget.selectedNavBarIndex = 1;
-              });
-            },
-            backgroundColor: Colors.indigo,
-            foregroundColor: Colors.white,
-            child: Image(
-              image: AssetImage('assets/images/fab.png'),
-              height: ScreenUtil().setHeight(80),
-              width: ScreenUtil().setWidth(80),
-            ),
-          )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          myCourseController.getByEmail(email: authController.user.value!.email);
+          setState(() {
+            widget.selectedNavBarIndex = 1;
+          });
+        },
+        backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
+        child: Image(
+          image: AssetImage('assets/images/fab.png'),
+          height: ScreenUtil().setHeight(80),
+          width: ScreenUtil().setWidth(80),
+        ),
+      ),
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

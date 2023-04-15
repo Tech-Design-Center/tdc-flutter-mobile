@@ -22,7 +22,8 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
   TabController? tabController;
-
+  String profileImage =
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
   bool status = false;
 
   bool switchval2 = false;
@@ -93,11 +94,13 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                               onTap: () {
                                 if (authController.user.value?.fullName == null) {
                                   Get.offAll(() => OnboardingScreen());
+                                } else {
+                                  profileImage = '${authController.user.value?.image}';
                                 }
                               },
                               child: CircleAvatar(
                                 foregroundImage: NetworkImage(
-                                  '${authController.user.value?.image}' ?? ImageConstant.imgImage1,
+                                  profileImage,
                                 ),
                                 radius: 225.r,
                               ),

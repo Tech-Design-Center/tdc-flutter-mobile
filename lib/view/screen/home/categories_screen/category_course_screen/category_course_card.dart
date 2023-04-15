@@ -31,7 +31,7 @@ class CategoryCourseCard extends StatelessWidget {
                   description: categories.description[index],
                   duration: categories.duration[index],
                   image: categories.imageCourse[index],
-                  isEnroll: categories.isEnroll[index],
+                  isEnroll: false,
                   playlistTitle: categories.playlistTitle[index],
                   price: categories.price[index],
                   title: categories.title[index],

@@ -15,7 +15,6 @@ class Category {
   final List<int> price;
   final List<String> imageCourse;
   final List<String> videoTrailerURL;
-  final List<bool> isEnroll;
   final List<List<String>> playlistTitle;
   final List<List<List<String>>> videoTitle;
   final List<List<List<String>>> videoUrl;
@@ -31,7 +30,6 @@ class Category {
     required this.price,
     required this.imageCourse,
     required this.videoTrailerURL,
-    required this.isEnroll,
     required this.playlistTitle,
     required this.videoTitle,
     required this.videoUrl,
@@ -58,8 +56,6 @@ class Category {
           .map((imageCourse) => imageCourse['attributes']['image']['data']['attributes']['url'])),
       videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
           .map((videoTrailerURL) => videoTrailerURL['attributes']['videoTrailerURL'])),
-      isEnroll: List<bool>.from(data['attributes']['courses']['data']
-          .map((videoTrailerURL) => videoTrailerURL['attributes']['isEnroll'])),
       playlistTitle: List<List<String>>.from(data['attributes']['courses']['data'].map((data) =>
           List<String>.from(data['attributes']['playlist_video_urls']['data']
               .map((data) => data['attributes']['title'])))),
