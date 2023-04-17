@@ -6,11 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
-import '../model/category.dart';
-import '../model/recommend.dart';
+
 import '../model/user.dart';
 import '../service/auth_service.dart';
-import '../view/screen/authentication/sign_in_screen/sign_in_screen.dart';
+
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();

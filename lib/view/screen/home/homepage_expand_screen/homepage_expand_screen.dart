@@ -1,8 +1,12 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/model/category.dart';
@@ -42,6 +46,28 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
+  GlobalKey<LiquidPullToRefreshState>();
+  static int refreshNum = 10; // number that changes when refreshed
+  Stream<int> counterStream =
+  Stream<int>.periodic(const Duration(seconds: 3), (x) => refreshNum);
+
+  Future<void> _handleRefresh() {
+    final Completer<void> completer = Completer<void>();
+    Timer(const Duration(seconds: 3), () {
+      completer.complete();
+    });
+    setState(() {
+      refreshNum = Random().nextInt(100);
+    });
+    return completer.future.then<void>((_) {
+      ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
+        SnackBar(
+          content: const Text('Refresh complete'),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -469,77 +495,81 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               ),
 
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      //carousel data
-                      Obx(() {
-                        if (homeController.bannerList.isNotEmpty) {
-                          return CarouselSliderView(bannerList: homeController.bannerList);
-                        } else {
-                          return const CarouselLoading();
-                        }
-                      }),
+                child: LiquidPullToRefresh(
+                  key: _refreshIndicatorKey,
+                  onRefresh: _handleRefresh,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        //carousel data
+                        Obx(() {
+                          if (homeController.bannerList.isNotEmpty) {
+                            return CarouselSliderView(bannerList: homeController.bannerList);
+                          } else {
+                            return const CarouselLoading();
+                          }
+                        }),
 
-                      //categories title
-                      textTitleHomeScreen(
-                        name: 'Categories',
-                        screen: CategoriesScreen(),
+                          //categories title
+                          textTitleHomeScreen(
+                            name: 'Categories',
+                            screen: CategoriesScreen(),
+                          ),
+
+                          //categories data
+                          Obx(() {
+                            if (homeController.categoryList.isNotEmpty) {
+                              return CategoryListView(categories: homeController.categoryList);
+                            } else {
+                              return const CategoryLoading();
+                            }
+                          }),
+
+                          //recommended
+                          textTitleHomeScreen(
+                            name: 'Recommends',
+                            screen: RecommendsScreen(),
+                          ),
+
+                          //recommend data
+                          Obx(() {
+                            if (homeController.recommendList.isNotEmpty) {
+                              return RecommendListView(
+                                recommendList: homeController.recommendList,
+                              );
+                            } else {
+                              return const RecommendLoading();
+                            }
+                          }),
+                          SizedBox(
+                            height: ScreenUtil().setHeight(100),
+                          ),
+
+                          //Popular
+                          textTitleHomeScreen(
+                            name: 'Populars',
+                            screen: PopularsScreen(),
+                          ),
+
+                          //popular data
+                          Obx(() {
+                            if (homeController.popularList.isNotEmpty) {
+                              return PopularListView(popularList: homeController.popularList);
+                            } else {
+                              return const PopularLoading();
+                            }
+                          }),
+                          SizedBox(
+                            height: ScreenUtil().setHeight(200),
+                          ),
+                        ],
                       ),
-
-                      //categories data
-                      Obx(() {
-                        if (homeController.categoryList.isNotEmpty) {
-                          return CategoryListView(categories: homeController.categoryList);
-                        } else {
-                          return const CategoryLoading();
-                        }
-                      }),
-
-                      //recommended
-                      textTitleHomeScreen(
-                        name: 'Recommends',
-                        screen: RecommendsScreen(),
-                      ),
-
-                      //recommend data
-                      Obx(() {
-                        if (homeController.recommendList.isNotEmpty) {
-                          return RecommendListView(
-                            recommendList: homeController.recommendList,
-                          );
-                        } else {
-                          return const RecommendLoading();
-                        }
-                      }),
-                      SizedBox(
-                        height: ScreenUtil().setHeight(100),
-                      ),
-
-                      //Popular
-                      textTitleHomeScreen(
-                        name: 'Populars',
-                        screen: PopularsScreen(),
-                      ),
-
-                      //popular data
-                      Obx(() {
-                        if (homeController.popularList.isNotEmpty) {
-                          return PopularListView(popularList: homeController.popularList);
-                        } else {
-                          return const PopularLoading();
-                        }
-                      }),
-                      SizedBox(
-                        height: ScreenUtil().setHeight(200),
-                      ),
-                    ],
-                  ),
+                    ),
                 ),
-              ),
+                ),
             ],
           ),
         ),

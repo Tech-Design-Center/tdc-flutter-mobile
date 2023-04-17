@@ -1,19 +1,15 @@
-import 'package:animate_do/animate_do.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/controller/controllers.dart';
-import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
-import 'package:tdc_frontend_mobile/main.dart';
 import 'package:flutter/material.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting_screen/change_password_screen/change_password_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting_screen/update_profile_screen/update_profile_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
-import '../../../core/constants/base_url.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -21,25 +17,9 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
-  TabController? tabController;
+
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  bool status = false;
-
-  bool switchval2 = false;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    tabController = tabController = TabController(length: 2, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    tabController!.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +32,8 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
               //default
               Positioned(
                   child: Container(
-                width: MediaQuery.of(context).size.width * 1,
-                height: 250,
+                width: ScreenUtil().screenWidth,
+                height: 1000.h,
                 // decoration: BoxDecoration(color: Colors.red),
               )),
 
@@ -61,8 +41,8 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
               Positioned(
                 top: 0,
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: 140,
+                  width:ScreenUtil().screenWidth,
+                  height: 500.h,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
@@ -163,21 +143,21 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       ])),
             ],
           ),
-          Spacer(),
+
           Stack(
             alignment: Alignment.center,
             children: [
               Positioned(
                   top: 0,
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 1,
-                    height: MediaQuery.of(context).size.height * 1,
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
                     // decoration: BoxDecoration(color: Colors.yellow),
                   )),
               Positioned(
                 child: Container(
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 0.54,
+                  width: ScreenUtil().screenWidth,
+                  height: ScreenUtil().setHeight(1910),
                   decoration: BoxDecoration(
                       // color: Colors.blue,
                       borderRadius: BorderRadius.only(
@@ -186,13 +166,19 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                     child: Column(
                       children: [
                         //body
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
-                        SectionSettingCard(name: 'Update Profile', screen: 'DashboardScreen()'),
+                        InkWell(
+                            onTap: () {
+                            Get.to(() => UpdateProfileScreen());
+                        }, child: SectionSettingCard(name: 'Update Profile', icon: Icons.person)),
+                        InkWell(
+                            onTap: () {
+                              Get.to(() => ChangePasswordScreen());
+                            }, child: SectionSettingCard(name: 'Change Password', icon: Icons.key)),
+
+                        SizedBox(height: 80.h,),
+                        SectionSettingCard(name: 'Help & Supports', icon:Icons.warning),
+                        SectionSettingCard(name: 'About Us', icon:Icons.people),
+                        SectionSettingCard(name: 'Term & Conditions', icon:Icons.task),
                         Padding(
                           padding: const EdgeInsets.only(top: 100, bottom: 200).r,
                           child: Row(

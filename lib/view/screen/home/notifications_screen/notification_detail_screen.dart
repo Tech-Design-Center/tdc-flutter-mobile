@@ -4,6 +4,7 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifications_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 class NotificationDetailScreen extends StatefulWidget {
   const NotificationDetailScreen({Key? key}) : super(key: key);
@@ -20,54 +21,7 @@ class _NotificationDetailScreenState extends State<NotificationDetailScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.only(left: 120).r,
-              height: ScreenUtil().setHeight(300),
-              width: double.infinity,
-              color: Colors.grey.shade200,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NotificationsScreen()),
-                      );
-                    },
-                    child: Icon(Icons.arrow_back_ios),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: 310,
-                        top: 0,
-                        right: 24,
-                        bottom: 3,
-                      ).r,
-                      child: Text(
-                        "Notification",
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: ScreenUtil().setSp(
-                            100,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.36,
-                          height: 1.00,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            SectionTitleScreen(name: 'Notification Details ',),
             Expanded(
               child: Container(
                 width: ScreenUtil().screenWidth,
@@ -156,7 +110,7 @@ class _NotificationDetailScreenState extends State<NotificationDetailScreen> {
                                               ),
                                               Container(
                                                 width:
-                                                    ScreenUtil().setWidth(900),
+                                                    ScreenUtil().setWidth(850),
                                                 margin: EdgeInsets.only(
                                                   left: 12,
                                                   top: 40,
