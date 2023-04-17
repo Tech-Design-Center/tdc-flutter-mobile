@@ -9,6 +9,7 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
+import 'package:flutter/cupertino.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class UpdateProfileScreen extends StatefulWidget {
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   XFile? image;
-
+  DateTime selectedDate = DateTime.now();
   final ImagePicker picker = ImagePicker();
 
   //we can upload image from camera or from gallery based on parameter
@@ -30,6 +31,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     setState(() {
       image = img;
     });
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
   }
 
   //show popup dialog
@@ -346,15 +360,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
                                   obscureText: false,
+                                  readOnly: true,
+
+
+                                    onTap: () async {
+                                       _selectDate(context);
+                                    },
+
 
                                   decoration: InputDecoration(
+
                                       fillColor: Colors.white,
                                       filled: true,
                                       border: OutlineInputBorder(),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                           borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.birthDay}'),
+                                      hintText: '${authController.user.value?.birthDay}'.split(' ')[0]),
                                 ),
                               ],
                             ),
