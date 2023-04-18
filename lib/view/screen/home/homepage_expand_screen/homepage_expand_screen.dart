@@ -519,7 +519,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //carousel data
                         Obx(() {
                           if (homeController.bannerList.isNotEmpty) {
-                            return CarouselSliderView(bannerList: homeController.bannerList);
+                            return CarouselSliderView(
+                              bannerList: homeController.bannerList,
+                            );
                           } else {
                             return const CarouselLoading();
                           }
@@ -534,7 +536,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //categories data
                         Obx(() {
                           if (homeController.categoryList.isNotEmpty) {
-                            return CategoryListView(categories: homeController.categoryList);
+                            return CategoryListView(
+                              categories: homeController.categoryList,
+                              scrollController: _scrollController,
+                            );
                           } else {
                             return const CategoryLoading();
                           }
@@ -551,6 +556,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           if (homeController.recommendList.isNotEmpty) {
                             return RecommendListView(
                               recommendList: homeController.recommendList,
+                              scrollController: _scrollController,
                             );
                           } else {
                             return const RecommendLoading();
@@ -569,7 +575,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //popular data
                         Obx(() {
                           if (homeController.popularList.isNotEmpty) {
-                            return PopularListView(popularList: homeController.popularList);
+                            return PopularListView(
+                              popularList: homeController.popularList,
+                              scrollController: _scrollController,
+                            );
                           } else {
                             return const PopularLoading();
                           }

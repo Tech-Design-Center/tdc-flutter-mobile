@@ -10,16 +10,18 @@ import '../category/category_card.dart';
 
 class RecommendListView extends StatelessWidget {
   final List<Recommend> recommendList;
-
+  final ScrollController? scrollController;
   const RecommendListView({
     Key? key,
     required this.recommendList,
+    required this.scrollController,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: ScreenUtil().setHeight(1100),
       child: ListView.separated(
+        controller: scrollController,
         itemCount: recommendList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

@@ -10,7 +10,10 @@ import 'banner_card.dart';
 
 class CarouselSliderView extends StatefulWidget {
   final List<AdBanner> bannerList;
-  const CarouselSliderView({Key? key, required this.bannerList}) : super(key: key);
+  const CarouselSliderView({
+    Key? key,
+    required this.bannerList,
+  }) : super(key: key);
 
   @override
   State<CarouselSliderView> createState() => _CarouselSliderViewState();
