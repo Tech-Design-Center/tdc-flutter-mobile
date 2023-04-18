@@ -74,26 +74,24 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   }
 
   void loadVideo() async {
+    final urls = await PodPlayerController.getYoutubeUrls(
+      widget.videoTrailerURL,
+    );
 
-      final urls = await PodPlayerController.getYoutubeUrls(
-        widget.videoTrailerURL,
-      );
-
-      setState(() => isLoading = false);
-      _controller = PodPlayerController(
-        playVideoFrom: PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
-        podPlayerConfig: const PodPlayerConfig(
-          videoQualityPriority: [720, 360],
-        ),
-      )..initialise().then((value) {
-          setState(() {
-            isVideoPlaying = _controller.isVideoPlaying;
-          });
+    setState(() => isLoading = false);
+    _controller = PodPlayerController(
+      playVideoFrom: PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
+      podPlayerConfig: const PodPlayerConfig(
+        videoQualityPriority: [720, 360],
+      ),
+    )..initialise().then((value) {
+        setState(() {
+          isVideoPlaying = _controller.isVideoPlaying;
         });
+      });
 
-        _controller.addListener(_listener);
-
-    }
+    _controller.addListener(_listener);
+  }
 
   ///Listnes to changes in video
   void _listener() {
@@ -121,86 +119,86 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              isLoading? Container(
-              height: ScreenUtil().setHeight(300),
-          width: double.infinity,
-          color: Colors.grey.shade200,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30, right: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                    onPressed: () {
-                      deactivate();
-                    },
-                    icon: Icon(Icons.arrow_back_ios)),
-                SizedBox(
-                  width: 800.w,
-                  child: Text(
-                    widget.title,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: ScreenUtil().setSp(
-                        100,
-                      ),
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                IconButton(
-                    onPressed: () {
-                      deactivate();
-                      Get.offAll(() => DashboardScreen());
-                    },
-                    icon: Icon(Icons.home_filled)),
-              ],
-            ),
-          ),
-        ):
-              Container(
-                height: ScreenUtil().setHeight(300),
-                width: double.infinity,
-                color: Colors.grey.shade200,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                            Get.back();
-                          },
-                          icon: Icon(Icons.arrow_back_ios)),
-                      SizedBox(
-                        width: 800.w,
-                        child: Text(
-                          widget.title,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: ScreenUtil().setSp(
-                              100,
+              isLoading
+                  ? Container(
+                      height: ScreenUtil().setHeight(300),
+                      width: double.infinity,
+                      color: Colors.grey.shade200,
+                      child: Padding(
+                        padding: REdgeInsets.only(left: 30, right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                },
+                                icon: const Icon(Icons.arrow_back_ios)),
+                            SizedBox(
+                              width: 1000.w,
+                              child: Text(
+                                widget.title,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: ScreenUtil().setSp(
+                                    100,
+                                  ),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.offAll(() => DashboardScreen());
+                                },
+                                icon: const Icon(Icons.home_filled)),
+                          ],
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                            Get.offAll(() => DashboardScreen());
-                          },
-                          icon: Icon(Icons.home_filled)),
-                    ],
-                  ),
-                ),
-              ),
-
+                    )
+                  : Container(
+                      height: ScreenUtil().setHeight(300),
+                      width: double.infinity,
+                      color: Colors.grey.shade200,
+                      child: Padding(
+                        padding: REdgeInsets.only(left: 30, right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.back();
+                                },
+                                icon: Icon(Icons.arrow_back_ios)),
+                            SizedBox(
+                              width: 800.w,
+                              child: Text(
+                                widget.title,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: ScreenUtil().setSp(
+                                    100,
+                                  ),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.offAll(() => DashboardScreen());
+                                },
+                                icon: Icon(Icons.home_filled)),
+                          ],
+                        ),
+                      ),
+                    ),
               Container(
                 height: ScreenUtil().setHeight(880),
                 child: isLoading

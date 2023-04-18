@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/constants.dart';
-import 'package:tdc_frontend_mobile/local_data/coursesList.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
 import '../../../../../model/category.dart';

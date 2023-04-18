@@ -1,4 +1,3 @@
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/controller/controllers.dart';
@@ -10,14 +9,12 @@ import 'package:tdc_frontend_mobile/view/screen/setting_screen/update_profile_sc
 import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
-
 class SettingScreen extends StatefulWidget {
   @override
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
-
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
@@ -41,7 +38,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
               Positioned(
                 top: 0,
                 child: Container(
-                  width:ScreenUtil().screenWidth,
+                  width: ScreenUtil().screenWidth,
                   height: 500.h,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -59,11 +56,11 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: REdgeInsets.only(
                             bottom: 0,
                             left: 29,
                             right: 29,
-                          ).r,
+                          ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(
                               ScreenUtil().setWidth(
@@ -88,11 +85,11 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: REdgeInsets.only(
                             left: 29,
                             top: 19,
                             right: 29,
-                          ).r,
+                          ),
                           child: GestureDetector(
                             onTap: () {
                               if (authController.user.value?.fullName == null) {
@@ -119,7 +116,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                           width: ScreenUtil().setWidth(
                             600.00,
                           ),
-                          margin: EdgeInsets.only(
+                          margin: REdgeInsets.only(
                             bottom: 25,
                             left: 29,
                             top: 15,
@@ -143,86 +140,91 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       ])),
             ],
           ),
-
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                  top: 0,
+          Expanded(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                    top: 0,
+                    child: Container(
+                      width: ScreenUtil().screenWidth,
+                      height: ScreenUtil().screenHeight,
+                      // decoration: BoxDecoration(color: Colors.yellow),
+                    )),
+                Positioned(
                   child: Container(
                     width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().screenHeight,
-                    // decoration: BoxDecoration(color: Colors.yellow),
-                  )),
-              Positioned(
-                child: Container(
-                  width: ScreenUtil().screenWidth,
-                  height: ScreenUtil().setHeight(1910),
-                  decoration: BoxDecoration(
-                      // color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        //body
-                        InkWell(
-                            onTap: () {
-                            Get.to(() => UpdateProfileScreen());
-                        }, child: SectionSettingCard(name: 'Update Profile', icon: Icons.person)),
-                        InkWell(
-                            onTap: () {
-                              Get.to(() => ChangePasswordScreen());
-                            }, child: SectionSettingCard(name: 'Change Password', icon: Icons.key)),
+                    decoration: BoxDecoration(
+                        // color: Colors.blue,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          //body
+                          InkWell(
+                              onTap: () {
+                                Get.to(() => UpdateProfileScreen());
+                              },
+                              child:
+                                  SectionSettingCard(name: 'Update Profile', icon: Icons.person)),
+                          InkWell(
+                              onTap: () {
+                                Get.to(() => ChangePasswordScreen());
+                              },
+                              child: SectionSettingCard(name: 'Change Password', icon: Icons.key)),
 
-                        SizedBox(height: 80.h,),
-                        SectionSettingCard(name: 'Help & Supports', icon:Icons.warning),
-                        SectionSettingCard(name: 'About Us', icon:Icons.people),
-                        SectionSettingCard(name: 'Term & Conditions', icon:Icons.task),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 100, bottom: 200).r,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  authController.signOut();
-                                },
-                                child: Container(
-                                  height: ScreenUtil().setHeight(200),
-                                  width: ScreenUtil().setWidth(1000),
-                                  margin: EdgeInsets.only(
-                                    right: 24,
-                                    left: 24,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.redA700A2,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Logout",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      )
-                                    ],
+                          SizedBox(
+                            height: 80.h,
+                          ),
+                          SectionSettingCard(name: 'Help & Supports', icon: Icons.warning),
+                          SectionSettingCard(name: 'About Us', icon: Icons.people),
+                          SectionSettingCard(name: 'Term & Conditions', icon: Icons.task),
+                          Padding(
+                            padding: REdgeInsets.only(top: 200, bottom: 400).r,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    authController.signOut();
+                                  },
+                                  child: Container(
+                                    height: ScreenUtil().setHeight(200),
+                                    width: ScreenUtil().setWidth(1000),
+                                    margin: REdgeInsets.only(
+                                      right: 24,
+                                      left: 24,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstant.redA700A2,
+                                      borderRadius: BorderRadius.circular(30).r,
+                                    ),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Logout",
+                                          style: TextStyle(
+                                              fontSize: 80.sp,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ],
       ),

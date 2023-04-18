@@ -23,7 +23,6 @@ import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widg
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/text_title_home_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/notifications_screen.dart';
 
 import '../../../../controller/controllers.dart';
 
@@ -34,6 +33,7 @@ import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
 
 import 'package:flutter/material.dart';
 
+import '../notification_screen/notification_screen.dart';
 import '../popular_screen/populars_screen.dart';
 import '../recommend_screen/recommends_screen.dart';
 
@@ -47,10 +47,16 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
-  GlobalKey<LiquidPullToRefreshState>();
+      GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
-  Stream<int> counterStream =
-  Stream<int>.periodic(const Duration(seconds: 3), (x) => refreshNum);
+  Stream<int> counterStream = Stream<int>.periodic(const Duration(seconds: 3), (x) => refreshNum);
+  ScrollController? _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
 
   Future<void> _handleRefresh() {
     final Completer<void> completer = Completer<void>();
@@ -64,6 +70,12 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
       ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
         SnackBar(
           content: const Text('Refresh complete'),
+          action: SnackBarAction(
+            label: 'RETRY',
+            onPressed: () {
+              _refreshIndicatorKey.currentState!.show();
+            },
+          ),
         ),
       );
     });
@@ -317,187 +329,187 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               ],
             )),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: REdgeInsets.all(60),
-          child: Column(
-            children: [
-              //profile and notification
-              Padding(
-                padding: REdgeInsets.all(30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _scaffoldKey.currentState!.openDrawer();
-                          },
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  if (authController.user.value?.fullName == null) {
-                                    Get.offAll(() => OnboardingScreen());
-                                  } else {
-                                    _scaffoldKey.currentState!.openDrawer();
-                                  }
-                                },
-                                child: CircleAvatar(
-                                  radius: 100.r,
-                                  foregroundImage: NetworkImage(profileImage),
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: REdgeInsets.only(
-                                      left: 30,
-                                      right: 0,
-                                    ),
-                                    child: Text(
-                                      "Welcome Back!",
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        color: ColorConstant.gray600,
-                                        fontSize: ScreenUtil().setSp(
-                                          50,
-                                        ),
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w500,
-                                        height: 1.00,
-                                      ),
-                                    ),
+      body: LiquidPullToRefresh(
+        key: _refreshIndicatorKey,
+        onRefresh: _handleRefresh,
+        child: SafeArea(
+          child: Padding(
+            padding: REdgeInsets.all(60),
+            child: Column(
+              children: [
+                //profile and notification
+                Padding(
+                  padding: REdgeInsets.all(30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              _scaffoldKey.currentState!.openDrawer();
+                            },
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    if (authController.user.value?.fullName == null) {
+                                      Get.offAll(() => OnboardingScreen());
+                                    } else {
+                                      _scaffoldKey.currentState!.openDrawer();
+                                    }
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 100.r,
+                                    foregroundImage: NetworkImage(profileImage),
                                   ),
-                                  Padding(
-                                    padding: REdgeInsets.only(
-                                      left: 30,
-                                      top: 7,
-                                    ),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        if (authController.user.value?.fullName == null) {
-                                          Get.offAll(() => OnboardingScreen());
-                                        } else {
-                                          _scaffoldKey.currentState!.openDrawer();
-                                        }
-                                      },
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: REdgeInsets.only(
+                                        left: 30,
+                                        right: 0,
+                                      ),
                                       child: Text(
-                                        authController.user.value?.fullName ??
-                                            "Sign in your account",
+                                        "Welcome Back!",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
+                                          color: ColorConstant.gray600,
                                           fontSize: ScreenUtil().setSp(
-                                            60,
+                                            50,
                                           ),
                                           fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.36,
+                                          fontWeight: FontWeight.w500,
                                           height: 1.00,
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    //notification
-                    InkWell(
-                      onTap: () {
-                        Get.to(() => NotificationsScreen());
-                      },
-                      child: Container(
-                        height: ScreenUtil().setHeight(
-                          120.00,
-                        ),
-                        width: ScreenUtil().setWidth(
-                          120.00,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: 4,
-                          bottom: 4,
-                        ).r,
-                        child: Card(
-                          clipBehavior: Clip.antiAlias,
-                          elevation: 0,
-                          margin: EdgeInsets.all(0),
-                          color: Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              ScreenUtil().setWidth(
-                                8.00,
-                              ),
+                                    Padding(
+                                      padding: REdgeInsets.only(
+                                        left: 30,
+                                        top: 7,
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          if (authController.user.value?.fullName == null) {
+                                            Get.offAll(() => OnboardingScreen());
+                                          } else {
+                                            _scaffoldKey.currentState!.openDrawer();
+                                          }
+                                        },
+                                        child: Text(
+                                          authController.user.value?.fullName ??
+                                              "Sign in your account",
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            fontSize: ScreenUtil().setSp(
+                                              60,
+                                            ),
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w700,
+                                            letterSpacing: 0.36,
+                                            height: 1.00,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          child: Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 11,
-                                    top: 10,
-                                    right: 11,
-                                    bottom: 10,
-                                  ).r,
-                                  child: Image(
-                                    image: AssetImage(
-                                      ImageConstant.imgNotification,
-                                    ),
-                                    height: ScreenUtil().setHeight(400),
-                                    width: ScreenUtil().setWidth(400),
-                                  ),
+                        ],
+                      ),
+                      //notification
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => NotificationScreen());
+                        },
+                        child: Container(
+                          height: ScreenUtil().setHeight(
+                            120.00,
+                          ),
+                          width: ScreenUtil().setWidth(
+                            120.00,
+                          ),
+                          margin: REdgeInsets.only(
+                            top: 4,
+                            bottom: 4,
+                          ),
+                          child: Card(
+                            clipBehavior: Clip.antiAlias,
+                            elevation: 0,
+                            margin: REdgeInsets.all(0),
+                            color: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                ScreenUtil().setWidth(
+                                  8.00,
                                 ),
                               ),
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: Container(
-                                  height: ScreenUtil().setHeight(
-                                    40.00,
+                            ),
+                            child: Stack(
+                              alignment: Alignment.topRight,
+                              children: [
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Padding(
+                                    padding: REdgeInsets.only(
+                                      left: 11,
+                                      top: 10,
+                                      right: 11,
+                                      bottom: 10,
+                                    ),
+                                    child: Image(
+                                      image: AssetImage(
+                                        ImageConstant.imgNotification,
+                                      ),
+                                      height: ScreenUtil().setHeight(400),
+                                      width: ScreenUtil().setWidth(400),
+                                    ),
                                   ),
-                                  width: ScreenUtil().setWidth(
-                                    40.00,
-                                  ),
-                                  margin: EdgeInsets.only(
-                                    left: 10,
-                                    top: 9,
-                                    right: 9,
-                                    bottom: 10,
-                                  ).r,
-                                  decoration: BoxDecoration(
-                                    color: ColorConstant.deepOrange400,
-                                    borderRadius: BorderRadius.circular(
-                                      ScreenUtil().setWidth(
-                                        30.00,
+                                ),
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: Container(
+                                    height: ScreenUtil().setHeight(
+                                      40.00,
+                                    ),
+                                    width: ScreenUtil().setWidth(
+                                      40.00,
+                                    ),
+                                    margin: REdgeInsets.only(
+                                      left: 10,
+                                      top: 9,
+                                      right: 9,
+                                      bottom: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: ColorConstant.deepOrange400,
+                                      borderRadius: BorderRadius.circular(
+                                        ScreenUtil().setWidth(
+                                          30.00,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
-              Expanded(
-                child: LiquidPullToRefresh(
-                  key: _refreshIndicatorKey,
-                  onRefresh: _handleRefresh,
+                Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -513,64 +525,64 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           }
                         }),
 
-                          //categories title
-                          textTitleHomeScreen(
-                            name: 'Categories',
-                            screen: CategoriesScreen(),
-                          ),
+                        //categories title
+                        textTitleHomeScreen(
+                          name: 'Categories',
+                          screen: CategoriesScreen(),
+                        ),
 
-                          //categories data
-                          Obx(() {
-                            if (homeController.categoryList.isNotEmpty) {
-                              return CategoryListView(categories: homeController.categoryList);
-                            } else {
-                              return const CategoryLoading();
-                            }
-                          }),
+                        //categories data
+                        Obx(() {
+                          if (homeController.categoryList.isNotEmpty) {
+                            return CategoryListView(categories: homeController.categoryList);
+                          } else {
+                            return const CategoryLoading();
+                          }
+                        }),
 
-                          //recommended
-                          textTitleHomeScreen(
-                            name: 'Recommends',
-                            screen: RecommendsScreen(),
-                          ),
+                        //recommended
+                        textTitleHomeScreen(
+                          name: 'Recommends',
+                          screen: RecommendsScreen(),
+                        ),
 
-                          //recommend data
-                          Obx(() {
-                            if (homeController.recommendList.isNotEmpty) {
-                              return RecommendListView(
-                                recommendList: homeController.recommendList,
-                              );
-                            } else {
-                              return const RecommendLoading();
-                            }
-                          }),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(100),
-                          ),
+                        //recommend data
+                        Obx(() {
+                          if (homeController.recommendList.isNotEmpty) {
+                            return RecommendListView(
+                              recommendList: homeController.recommendList,
+                            );
+                          } else {
+                            return const RecommendLoading();
+                          }
+                        }),
+                        SizedBox(
+                          height: ScreenUtil().setHeight(100),
+                        ),
 
-                          //Popular
-                          textTitleHomeScreen(
-                            name: 'Populars',
-                            screen: PopularsScreen(),
-                          ),
+                        //Popular
+                        textTitleHomeScreen(
+                          name: 'Populars',
+                          screen: PopularsScreen(),
+                        ),
 
-                          //popular data
-                          Obx(() {
-                            if (homeController.popularList.isNotEmpty) {
-                              return PopularListView(popularList: homeController.popularList);
-                            } else {
-                              return const PopularLoading();
-                            }
-                          }),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(200),
-                          ),
-                        ],
-                      ),
+                        //popular data
+                        Obx(() {
+                          if (homeController.popularList.isNotEmpty) {
+                            return PopularListView(popularList: homeController.popularList);
+                          } else {
+                            return const PopularLoading();
+                          }
+                        }),
+                        SizedBox(
+                          height: ScreenUtil().setHeight(200),
+                        ),
+                      ],
                     ),
+                  ),
                 ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

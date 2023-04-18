@@ -7,15 +7,13 @@ import 'category_card.dart';
 
 class CategoriesListView extends StatelessWidget {
   final List<Category> categories;
-  const CategoriesListView({Key? key, required this.categories})
-      : super(key: key);
+  const CategoriesListView({Key? key, required this.categories}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-          padding:
-              const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },

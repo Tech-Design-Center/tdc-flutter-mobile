@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:tdc_frontend_mobile/model/notification.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/service/category_service.dart';
 import 'package:tdc_frontend_mobile/service/news_feed_service.dart';
+import 'package:tdc_frontend_mobile/service/notification_service.dart';
 import 'package:tdc_frontend_mobile/service/popular_service.dart';
 import 'package:tdc_frontend_mobile/service/recommend_service.dart';
 
@@ -17,13 +19,14 @@ class HomeController extends GetxController {
   RxList<Recommend> recommendList = List<Recommend>.empty(growable: true).obs;
   RxList<Popular> popularList = List<Popular>.empty(growable: true).obs;
   RxList<NewsFeed> newsFeedList = List<NewsFeed>.empty(growable: true).obs;
+  RxList<Notifications> notificationList = List<Notifications>.empty(growable: true).obs;
 
   RxBool isBannerLoading = false.obs;
   RxBool isCategoryLoading = false.obs;
   RxBool isRecommendLoading = false.obs;
   RxBool isPopularLoading = false.obs;
   RxBool isNewsFeedLoading = false.obs;
-  RxBool isPlaylistVideoURLLoading = false.obs;
+  RxBool isNotificationLoading = false.obs;
 
   @override
   void onInit() async {
@@ -32,6 +35,7 @@ class HomeController extends GetxController {
     getRecommend();
     getPopular();
     getNewsFeed();
+    getNotification();
     super.onInit();
   }
 
@@ -106,6 +110,21 @@ class HomeController extends GetxController {
       }
     } finally {
       isNewsFeedLoading(false);
+    }
+  }
+
+  void getNotification() async {
+    try {
+      isNotificationLoading(true);
+      //call api
+      var result = await NotificationService().get();
+      if (result != null) {
+        //assign api result
+        notificationList.assignAll(notificationListFromJson(result.body));
+        //save api result to local db
+      }
+    } finally {
+      isNotificationLoading(false);
     }
   }
 }

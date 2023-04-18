@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/local_data/category_list.dart';
 
 import '../../../../../../model/category.dart';
 import '../../../categories_screen/category_course_screen/category_course_list_screen.dart';

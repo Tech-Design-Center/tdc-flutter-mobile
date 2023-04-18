@@ -5,9 +5,7 @@ import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/local_data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/widgets/listsketchingtran_item_widget.dart';
 
 class CategoriesLoading extends StatelessWidget {
   @override
@@ -46,9 +44,7 @@ class CategoriesLoading extends StatelessWidget {
                   highlightColor: Colors.white,
                   baseColor: Colors.grey.shade300,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                            left: 20, right: 20, top: 24, bottom: 24)
-                        .r,
+                    padding: EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 24).r,
                     child: Column(
                       children: [
                         CategoriesLoadingCard(),
