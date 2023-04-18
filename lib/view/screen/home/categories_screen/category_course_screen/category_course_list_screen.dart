@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/local_data/category_list.dart';
 
 import 'package:tdc_frontend_mobile/model/category.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';

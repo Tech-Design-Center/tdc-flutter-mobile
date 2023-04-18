@@ -10,8 +10,7 @@ import 'banner_card.dart';
 
 class CarouselSliderView extends StatefulWidget {
   final List<AdBanner> bannerList;
-  const CarouselSliderView({Key? key, required this.bannerList})
-      : super(key: key);
+  const CarouselSliderView({Key? key, required this.bannerList}) : super(key: key);
 
   @override
   State<CarouselSliderView> createState() => _CarouselSliderViewState();
@@ -35,7 +34,7 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
       children: [
         GestureDetector(
           onTap: () {
-            Get.to(() => NewsFeedScreen());
+            Get.to(() => const NewsFeedScreen());
           },
           child: CarouselSlider(
               items: _bannerList,
@@ -60,9 +59,8 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _currentIndex == index
-                      ? Colors.indigo
-                      : const Color.fromRGBO(0, 0, 0, 0.4)),
+                  color:
+                      _currentIndex == index ? Colors.indigo : const Color.fromRGBO(0, 0, 0, 0.4)),
             );
           }).toList(),
         )

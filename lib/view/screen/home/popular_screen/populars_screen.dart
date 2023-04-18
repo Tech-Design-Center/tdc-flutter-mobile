@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/local_data/category_list.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_loading.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/notifications_screen/widgets/listsketchingtran_item_widget.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/popular_screen/populars_list_view.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 

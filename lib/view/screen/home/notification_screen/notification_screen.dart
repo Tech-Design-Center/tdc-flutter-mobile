@@ -4,12 +4,13 @@ import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/widgets/news_feed_list.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/widgets/news_feed_card.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/notification_screen/widgets/notification_list.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 import '../../../../controller/controllers.dart';
 
-class NewsFeedScreen extends StatelessWidget {
-  const NewsFeedScreen({Key? key}) : super(key: key);
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +18,11 @@ class NewsFeedScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SectionTitleScreen(name: 'News Feed'),
+            const SectionTitleScreen(name: 'Notification'),
             Obx(() {
-              if (homeController.newsFeedList.isNotEmpty) {
-                return NewsFeedList(
-                  newsFeed: homeController.newsFeedList,
+              if (homeController.notificationList.isNotEmpty) {
+                return NotificationList(
+                  notifications: homeController.notificationList,
                 );
               } else {
                 return const CircularProgressIndicator();

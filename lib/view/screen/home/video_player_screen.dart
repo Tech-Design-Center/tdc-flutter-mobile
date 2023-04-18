@@ -103,7 +103,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                 width: double.infinity,
                 color: Colors.grey.shade200,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  padding: REdgeInsets.only(left: 30, right: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -116,7 +116,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                       SizedBox(
                         width: 800.w,
                         child: Text(
-                          widget.title,
+                          widget.videoTitle,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -161,7 +161,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                   width: ScreenUtil().screenWidth,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                        topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r)),
                     color: ColorConstant.whiteA700,
                   ),
                   child: Stack(

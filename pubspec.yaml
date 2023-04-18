@@ -71,6 +71,7 @@ dependencies:
   pod_player: ^0.1.0
   liquid_pull_to_refresh: ^3.0.1
   image_picker: ^0.8.7+3
+  awesome_notifications: ^0.6.19
 dev_dependencies:
   flutter_test:
     sdk: flutter

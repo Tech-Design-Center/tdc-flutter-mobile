@@ -16,7 +16,7 @@ class SectionTitleScreen extends StatelessWidget {
       width: double.infinity,
       color: Colors.grey.shade200,
       child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: REdgeInsets.only(left: 30, right: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -24,7 +24,7 @@ class SectionTitleScreen extends StatelessWidget {
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(Icons.arrow_back_ios)),
+                icon: const Icon(Icons.arrow_back_ios)),
             Text(
               name,
               style: TextStyle(
@@ -35,7 +35,7 @@ class SectionTitleScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            IconButton(onPressed: () {}, icon: Icon(Icons.help_outline)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.help_outline)),
           ],
         ),
       ),
