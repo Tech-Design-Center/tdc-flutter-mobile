@@ -12,7 +12,8 @@ import '../popular/popular_card.dart';
 
 class PopularListView extends StatelessWidget {
   final List<Popular> popularList;
-  const PopularListView({Key? key, required this.popularList}) : super(key: key);
+  final ScrollController? scrollController;
+  const PopularListView({Key? key, required this.popularList, required this.scrollController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

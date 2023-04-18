@@ -10,7 +10,9 @@ import 'category_card.dart';
 
 class CategoryListView extends StatelessWidget {
   final List<Category> categories;
-  const CategoryListView({Key? key, required this.categories}) : super(key: key);
+  final ScrollController? scrollController;
+  const CategoryListView({Key? key, required this.categories, required this.scrollController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
