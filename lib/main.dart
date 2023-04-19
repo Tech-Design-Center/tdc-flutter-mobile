@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           themeMode: ThemeMode.light,
           builder: EasyLoading.init(),
+
         );
       },
     );
