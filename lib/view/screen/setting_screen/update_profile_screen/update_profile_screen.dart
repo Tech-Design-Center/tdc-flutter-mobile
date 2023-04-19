@@ -92,6 +92,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
    Future<void> _selectDate(BuildContext context) async {
      final DateTime? picked = await showDatePicker(
+         builder: (context, child) {
+           return Theme(
+             data: Theme.of(context).copyWith(
+               colorScheme: ColorScheme.light(
+                 primary: Colors.blueAccent, // <-- SEE HERE
+                 //onPrimary: Colors.redAccent, // <-- SEE HERE
+                 onSurface: Colors.blueAccent, // <-- SEE HERE
+               ),
+               textButtonTheme: TextButtonThemeData(
+                 style: TextButton.styleFrom(
+                   primary: Colors.blue, // button text color
+                 ),
+               ),
+             ),
+             child: child!,
+           );},
+
        context: context,
        initialDate: DateTime.now(),
        firstDate: DateTime(1900),
@@ -492,11 +509,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   obscureText: false,
                                   readOnly: true,
 
-
                                     onTap: () async {
                                       _selectDate(context);
+                                      _isTextFieldEmpty = false;
                                     },
-
 
                                   decoration: InputDecoration(
 
@@ -513,7 +529,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
 
                                 ElevatedButton(
-                                  onPressed: () => _selectDate(context),
+                                  onPressed: () {
+                                    _selectDate(context);
+                                    _isTextFieldEmpty = false;
+                                    },
                                   child: Text('Select Date'),
                                 ),
                               ],
