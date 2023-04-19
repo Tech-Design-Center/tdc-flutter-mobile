@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
@@ -10,6 +11,7 @@ import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 import 'package:flutter/cupertino.dart';
+
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
@@ -20,8 +22,60 @@ class UpdateProfileScreen extends StatefulWidget {
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
+   TextEditingController UsernameController = TextEditingController();
+   TextEditingController SurnameController = TextEditingController();
+   TextEditingController NameController = TextEditingController();
+   TextEditingController EmailController = TextEditingController();
+   TextEditingController PhonenumberController = TextEditingController();
+   TextEditingController DateofbirthController = TextEditingController();
+  bool _isTextFieldEmpty = true;
+   @override
+   void initState() {
+     super.initState();
+     UsernameController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = UsernameController.text.isEmpty;
+       });
+     });
+     SurnameController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = SurnameController.text.isEmpty;
+       });
+     });
+     NameController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = NameController.text.isEmpty;
+       });
+     });
+     EmailController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = EmailController.text.isEmpty;
+       });
+     });
+
+     PhonenumberController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = PhonenumberController.text.isEmpty;
+       });
+     });
+
+     DateofbirthController.addListener(() {
+       setState(() {
+         _isTextFieldEmpty = DateofbirthController.text.isEmpty;
+       });
+     });
+
+
+
+
+   }
+
+
+   void _saveData() {
+     // Perform save operation
+   }
+
   XFile? image;
-  DateTime selectedDate = DateTime.now();
   final ImagePicker picker = ImagePicker();
 
   //we can upload image from camera or from gallery based on parameter
@@ -33,18 +87,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     });
   }
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
+    DateTime? _selectedDate ;
+    final DateTime? _userBirthday = authController.user.value?.birthDay;
+
+   Future<void> _selectDate(BuildContext context) async {
+     final DateTime? picked = await showDatePicker(
+       context: context,
+       initialDate: DateTime.now(),
+       firstDate: DateTime(1900),
+       lastDate: DateTime.now(),
+     );
+     if (picked != null && picked != _selectedDate) {
+       setState(() {
+         _selectedDate = picked;
+         print(_selectedDate);
+       });
+     }
+   }
 
   //show popup dialog
   void myAlert() {
@@ -91,13 +150,18 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           );
         });
   }
-
+  @override
+  void dispose() {
+    UsernameController.dispose();
+    SurnameController.dispose();
+    NameController.dispose();
+    EmailController.dispose();
+    PhonenumberController.dispose();
+    DateofbirthController.dispose();
+    super.dispose();
+  }
 
    bool obsecur = true;
-    TextEditingController emailController = TextEditingController();
-
-    TextEditingController nameController = TextEditingController();
-
   
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
@@ -228,10 +292,43 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           Padding(
                             padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Username',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: ScreenUtil().setSp(65),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(height: 40.h,),
+                                TextFormField(
+                                  controller: UsernameController,
+                                  keyboardType: TextInputType.text,
+                                  textInputAction: TextInputAction.done,
+                                  autocorrect: false,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                      border: OutlineInputBorder(),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                          borderSide: BorderSide(color: Colors.grey)),
+                                      hintText: '${authController.user.value?.fullName}'),
+                                ),
+                              ],
+                            ),
+
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
+                            child: Column(
                                mainAxisAlignment: MainAxisAlignment.start,
                                crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Name',
+                                Text('Surname',
                                   style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: ScreenUtil().setSp(65),
@@ -240,7 +337,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                     controller: nameController,
+                                     controller: SurnameController,
                                      keyboardType: TextInputType.text,
                                      textInputAction: TextInputAction.done,
                                      autocorrect: false,
@@ -252,8 +349,40 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           focusedBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
-                                                hintText: '${authController.user.value?.fullName}'),
+                                                hintText: '${authController.user.value?.surname}'),
                                                 ),
+                              ],
+                            ),
+
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Name',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: ScreenUtil().setSp(65),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: NameController,
+                                  keyboardType: TextInputType.text,
+                                  textInputAction: TextInputAction.done,
+                                  autocorrect: false,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                      border: OutlineInputBorder(),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                          borderSide: BorderSide(color: Colors.grey)),
+                                      hintText: '${authController.user.value?.name}'),
+                                ),
                               ],
                             ),
 
@@ -273,7 +402,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                  controller: emailController,
+                                  controller: EmailController,
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -314,7 +443,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                  //controller: emailController,
+                                  controller: PhonenumberController,
                                   keyboardType: TextInputType.number,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -355,7 +484,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                  //controller: emailController,
+
+                                  controller: DateofbirthController,
                                   keyboardType: TextInputType.datetime,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -364,7 +494,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
 
                                     onTap: () async {
-                                       _selectDate(context);
+                                      _selectDate(context);
                                     },
 
 
@@ -376,7 +506,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                           borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.birthDay}'.split(' ')[0]),
+                                      hintText: _selectedDate == null
+                                          ? DateFormat('dd / MMMM / yyyy').format(_userBirthday!)
+                                          : DateFormat('dd / MMMM / yyyy').format(_selectedDate!),
+                                ),
+                                ),
+
+                                ElevatedButton(
+                                  onPressed: () => _selectDate(context),
+                                  child: Text('Select Date'),
                                 ),
                               ],
                             ),
@@ -394,33 +532,54 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                InkWell(
-                                  onTap: () {
+                                _isTextFieldEmpty ?
+                                ElevatedButton(
+                                  style: ButtonStyle(
 
+                                      backgroundColor: MaterialStatePropertyAll<Color>(ColorConstant.blue51),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(18.0),
+                                              side: BorderSide(color: ColorConstant.blue51)))),
+                                  onPressed: () {  },
+                                  child: Container(
+                                    width: ScreenUtil().setWidth(900),
+                                    height: ScreenUtil().setHeight(190),
+                                    margin: EdgeInsets.only(
+                                      left: 19,
+                                      top: 20,
+                                      right: 19,
+                                    ).r,
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Save',
+                                      style: TextStyle(fontSize: 65.sp),
+                                    ),
+                                  ),
+                                ):
+
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(18.0),
+                                              side: BorderSide(color: Colors.blue)))),
+                                  onPressed: () {
+                                    _saveData();
                                   },
                                   child: Container(
-                                    height: ScreenUtil().setHeight(200),
-                                    width: ScreenUtil().setWidth(1000),
+                                    width: ScreenUtil().setWidth(900),
+                                    height: ScreenUtil().setHeight(190),
                                     margin: EdgeInsets.only(
-                                      right: 24,
-                                      left: 24,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: ColorConstant.blueA200,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Save",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        )
-                                      ],
+                                      left: 19,
+                                      top: 20,
+                                      right: 19,
+                                    ).r,
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Save',
+                                      style: TextStyle(fontSize: 65.sp),
                                     ),
                                   ),
                                 ),
@@ -439,5 +598,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       ),
     );
   }
+
 }
 

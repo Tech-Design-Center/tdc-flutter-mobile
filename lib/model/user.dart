@@ -9,6 +9,8 @@ class User {
   int phoneNumber;
   String? image;
   DateTime? birthDay;
+  String surname;
+  String name;
 
   User({
     required this.id,
@@ -17,6 +19,8 @@ class User {
     required this.phoneNumber,
     required this.image,
     required this.birthDay,
+    required this.surname,
+    required this.name,
   });
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
@@ -26,5 +30,8 @@ class User {
         phoneNumber: data['phoneNumber'],
         image: data['image'] == null ? null : data['image']['url'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
+        surname: data['surname'],
+        name: data['name'],
+
       );
 }

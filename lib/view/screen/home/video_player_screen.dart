@@ -38,7 +38,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
   late var _URL = widget.videoUrl;
   late final PodPlayerController _controller;
   bool isLoading = true;
-  bool? isVideoPlaying;
+  bool isVideoPlaying = true;
 
   @override
   void initState() {
@@ -98,7 +98,47 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
+              isVideoPlaying
+                  ? Container(
+                height: ScreenUtil().setHeight(300),
+                width: double.infinity,
+                color: Colors.grey.shade200,
+                child: Padding(
+                  padding: REdgeInsets.only(left: 30, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            deactivate();
+                          },
+                          icon: const Icon(Icons.arrow_back_ios)),
+                      SizedBox(
+                        width: 1000.w,
+                        child: Text(
+                          widget.title,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: ScreenUtil().setSp(
+                              100,
+                            ),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            deactivate();
+                            Get.offAll(() => DashboardScreen());
+                          },
+                          icon: const Icon(Icons.home_filled)),
+                    ],
+                  ),
+                ),
+              )
+                  : Container(
                 height: ScreenUtil().setHeight(300),
                 width: double.infinity,
                 color: Colors.grey.shade200,
@@ -116,7 +156,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                       SizedBox(
                         width: 800.w,
                         child: Text(
-                          widget.videoTitle,
+                          widget.title,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -138,6 +178,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                   ),
                 ),
               ),
+
+
+
               Container(
                 height: ScreenUtil().setHeight(880),
                 child: isLoading

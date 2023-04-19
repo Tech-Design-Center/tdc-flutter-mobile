@@ -57,7 +57,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
     with SingleTickerProviderStateMixin {
   late final PodPlayerController _controller;
   bool isLoading = true;
-  bool? isVideoPlaying;
+  bool isVideoPlaying = true;
   TabController? tabController;
 
   @override
@@ -119,7 +119,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              isLoading
+              isVideoPlaying
                   ? Container(
                       height: ScreenUtil().setHeight(300),
                       width: double.infinity,

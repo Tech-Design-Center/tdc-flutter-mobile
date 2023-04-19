@@ -19,13 +19,52 @@ class ChangePasswordScreen extends StatefulWidget {
 }
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  final _formKey = GlobalKey<FormState>();
   bool obsecur = true;
   bool _passwordVisible = false;
+  TextEditingController OldpasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  TextEditingController RetypepasswordController = TextEditingController();
   String profileImage =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-  TextEditingController password = TextEditingController();
+
+  bool _isTextFieldEmpty = true;
+
+  bool _passwordsMatch = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    passwordController.addListener(() {
+      setState(() {
+        _isTextFieldEmpty = passwordController.text.isEmpty;
+      });
+    });
+
+    RetypepasswordController.addListener(() {
+      setState(() {
+        _isTextFieldEmpty = RetypepasswordController.text.isEmpty;
+      });
+    });
+
+    passwordController.addListener(_verifyPasswords);
+    RetypepasswordController.addListener(_verifyPasswords);
+  }
+
+  void _verifyPasswords() {
+    setState(() {
+      _passwordsMatch =
+          passwordController.text == RetypepasswordController.text;
+    });
+  }
+  void _saveData() {
+    _passwordsMatch;
+    // Perform save operation
+    print('saved');
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,7 +229,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                  controller: passwordController,
+                                  controller: OldpasswordController,
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.done,
                                   obscureText: !_passwordVisible,
@@ -285,6 +324,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             ),
 
                           ),
+
                           Padding(
                             padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
                             child: Column(
@@ -300,15 +340,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 ),
                                 SizedBox(height: 40.h,),
                                 TextFormField(
-                                  controller: passwordController,
+                                  controller: RetypepasswordController,
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.done,
                                   obscureText: !_passwordVisible,
                                   validator: (String? value) {
-                                    if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                    if (_passwordsMatch = true) {
+                                      return "";
                                     }
-                                    return null;
+                                    return "Passwords do not match";
                                   },
                                   //This will obscure text dynamically
                                   decoration: InputDecoration(
@@ -336,6 +376,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     ),
                                   ),
                                 ),
+                                SizedBox(height: 40.h,),
+                                Text(
+                                  _passwordsMatch ? '' : 'Passwords do not match',
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ],
                             ),
 
@@ -352,33 +397,54 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                InkWell(
-                                  onTap: () {
+                                _isTextFieldEmpty ?
+                            ElevatedButton(
+                            style: ButtonStyle(
 
+                                backgroundColor: MaterialStatePropertyAll<Color>(ColorConstant.blue51),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+
+                                RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                              side: BorderSide(color: ColorConstant.blue51)))),
+                            onPressed: () {  },
+                            child: Container(
+                              width: ScreenUtil().setWidth(900),
+                              height: ScreenUtil().setHeight(190),
+                              margin: EdgeInsets.only(
+                                left: 19,
+                                top: 20,
+                                right: 19,
+                              ).r,
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Save',
+                                style: TextStyle(fontSize: 65.sp),
+                              ),
+                            ),
+                          ):
+
+                                ElevatedButton(
+                                  style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(18.0),
+                                              side: BorderSide(color: Colors.blue)))),
+                                  onPressed: () {
+                                    _saveData();
                                   },
                                   child: Container(
-                                    height: ScreenUtil().setHeight(200),
-                                    width: ScreenUtil().setWidth(1000),
+                                    width: ScreenUtil().setWidth(900),
+                                    height: ScreenUtil().setHeight(190),
                                     margin: EdgeInsets.only(
-                                      right: 24,
-                                      left: 24,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: ColorConstant.blueA200,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Save",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        )
-                                      ],
+                                      left: 19,
+                                      top: 20,
+                                      right: 19,
+                                    ).r,
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Save',
+                                      style: TextStyle(fontSize: 65.sp),
                                     ),
                                   ),
                                 ),
