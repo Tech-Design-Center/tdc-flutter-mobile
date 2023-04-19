@@ -30,7 +30,7 @@ class User {
         phoneNumber: data['phoneNumber'],
         image: data['image'] == null ? null : data['image']['url'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
-        surname: data['surname'],
+        surname: data['surName'],
         name: data['name'],
 
       );
