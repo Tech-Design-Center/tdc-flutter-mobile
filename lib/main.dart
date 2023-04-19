@@ -4,56 +4,43 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:tdc_frontend_mobile/service/auth_service.dart';
+import 'package:tdc_frontend_mobile/service/push_notification_service.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/authentication/sign_in_screen/sign_in_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'firebase_options.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'model/category.dart';
-import 'model/user.dart';
-
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in the background, such as Firestore,
-  // make sure you call `initializeApp` before using other Firebase services.
-  await Firebase.initializeApp();
-
-  print("Handling a background message: ${message.messageId}");
-}
-
+///create object
+RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+PushNotificationService pushNotificationService = PushNotificationService();
 var token;
-Rxn<User> user = Rxn<User>();
 
 Future<void> main() async {
+  configLoading();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  ///FlutterNativeSplash
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  ///Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  configLoading();
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
 
-    if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
-    }
-  });
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  token = prefs.getString('token');
-  print('Token: ${token}');
+  ///FirebaseMessaging
+  pushNotificationService.initialize();
 
-  runApp(MyApp());
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  token = pref.getString('token');
+  debugPrint('Token: $token');
+
+  ///run app
+  runApp(const MyApp());
 }
 
-RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-
+///Main widget
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -77,9 +64,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+///configLoading method
 void configLoading() {
   EasyLoading.instance
-    ..displayDuration = const Duration(milliseconds: 20000)
+    ..displayDuration = const Duration(milliseconds: 2000)
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
     ..loadingStyle = EasyLoadingStyle.dark
     ..indicatorSize = 45.0
