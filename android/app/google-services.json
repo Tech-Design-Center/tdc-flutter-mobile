@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "417929578745",
+    "project_id": "techdesigncenter-84455",
+    "storage_bucket": "techdesigncenter-84455.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417929578745:android:a06f3602e07e0f57ea7a28",
+        "android_client_info": {
+          "package_name": "com.example.tdc_frontend_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417929578745-igtvr1at61i7ejbihlpnigcpo4kocj4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCagnZ2dlfT-Iq_OEWSAJ3pj_8aBehoHa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417929578745-igtvr1at61i7ejbihlpnigcpo4kocj4j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "417929578745-coijtok5lng8vau6jrhq1v1g48oegs8s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tdcFrontendMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

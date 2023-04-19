@@ -1,4 +1,4 @@
-# tdc_frontend_mobile
+# tdc_frontend_flutter
 
 A new Flutter project.
 
