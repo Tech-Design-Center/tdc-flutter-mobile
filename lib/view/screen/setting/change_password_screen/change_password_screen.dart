@@ -9,6 +9,8 @@ import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
+import '../../../../controller/setting_controller.dart';
+
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
 
@@ -20,11 +22,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   bool obsecur = true;
   bool _passwordVisible = false;
-  TextEditingController OldpasswordController = TextEditingController();
+  TextEditingController currentPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController RetypepasswordController = TextEditingController();
-  String profileImage =
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  TextEditingController confirmPasswordController = TextEditingController();
+  String? profileImage = authController.user.value?.imageURL;
 
   bool _isTextFieldEmpty = true;
 
@@ -40,19 +41,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       });
     });
 
-    RetypepasswordController.addListener(() {
+    confirmPasswordController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = RetypepasswordController.text.isEmpty;
+        _isTextFieldEmpty = confirmPasswordController.text.isEmpty;
       });
     });
 
     passwordController.addListener(_verifyPasswords);
-    RetypepasswordController.addListener(_verifyPasswords);
+    confirmPasswordController.addListener(_verifyPasswords);
   }
 
   void _verifyPasswords() {
     setState(() {
-      _passwordsMatch = passwordController.text == RetypepasswordController.text;
+      _passwordsMatch = passwordController.text == confirmPasswordController.text;
     });
   }
 
@@ -95,94 +96,41 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                 ),
 
-//Avatar
+                //Avatar
                 Positioned(
-                    bottom: 0,
-                    child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                  bottom: 20,
+                  child: Column(
+                    children: [
+                      //profile image
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 0,
-                              left: 29,
-                              right: 29,
-                            ).r,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                ScreenUtil().setWidth(
-                                  40.00,
-                                ),
-                              ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    if (authController.user.value?.fullName == null) {
-                                      Get.offAll(() => OnboardingScreen());
-                                    } else {
-                                      profileImage = '${authController.user.value?.imageURL}';
-                                    }
-                                  },
-                                  child: CircleAvatar(
-                                    foregroundImage: NetworkImage(profileImage),
-                                    radius: 225.r,
-                                  )),
-                            ),
+                          //avatar
+                          Positioned(
+                              child: CircleAvatar(
+                                  radius: 280.r, foregroundImage: NetworkImage(profileImage!))),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 60.h,
+                      ),
+                      Text(
+                        "Student ID : # ${authController.user.value?.id ?? 0}",
+                        maxLines: null,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: ColorConstant.bluegray700,
+                          fontSize: ScreenUtil().setSp(
+                            50,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 29,
-                              top: 19,
-                              right: 29,
-                            ).r,
-                            child: GestureDetector(
-                              onTap: () {
-                                if (authController.user.value?.fullName == null) {
-                                  Get.offAll(() => OnboardingScreen());
-                                }
-                              },
-                              child: Text(
-                                authController.user.value?.fullName ?? "Sign in your account",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontSize: ScreenUtil().setSp(
-                                    75,
-                                  ),
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                  letterSpacing: 0.36,
-                                  height: 1.00,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: ScreenUtil().setWidth(
-                              600.00,
-                            ),
-                            margin: EdgeInsets.only(
-                              bottom: 25,
-                              left: 29,
-                              top: 15,
-                              right: 29,
-                            ),
-                            child: Text(
-                              "Student ID : # ${authController.user.value?.id ?? 0}",
-                              maxLines: null,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: ColorConstant.bluegray700,
-                                fontSize: ScreenUtil().setSp(
-                                  50,
-                                ),
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                          ),
-                        ])),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          height: 1.50,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             Stack(
@@ -217,7 +165,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Old Password',
+                                  'Current Password',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -228,7 +176,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: OldpasswordController,
+                                  controller: currentPasswordController,
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.done,
                                   obscureText: !_passwordVisible,
@@ -245,7 +193,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                         borderSide: BorderSide(color: Colors.grey)),
 
-                                    hintText: 'Enter your old password',
+                                    hintText: 'Enter your current password',
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
@@ -341,7 +289,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: RetypepasswordController,
+                                  controller: confirmPasswordController,
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.done,
                                   obscureText: !_passwordVisible,
@@ -427,6 +375,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                                         side: BorderSide(color: Colors.blue)))),
                                         onPressed: () {
                                           _saveData();
+                                          authController.changePassword(
+                                              email: authController.user.value!.email!,
+                                              currentPassword: currentPasswordController.text,
+                                              password: passwordController.text,
+                                              passwordConfirmation: confirmPasswordController.text);
                                         },
                                         child: Container(
                                           width: ScreenUtil().setWidth(900),

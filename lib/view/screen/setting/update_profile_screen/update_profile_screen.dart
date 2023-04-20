@@ -320,7 +320,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Username',
+                                  'Full Name',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -332,7 +332,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
                                 TextFormField(
                                   controller: fullNameController,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
                                   obscureText: false,
