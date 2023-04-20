@@ -16,8 +16,7 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
-  String profileImage =
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  String? profileImage = authController.user.value?.imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +72,12 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                 if (authController.user.value?.fullName == null) {
                                   Get.offAll(() => OnboardingScreen());
                                 } else {
-                                  profileImage = '${authController.user.value?.image}';
+                                  profileImage = '${authController.user.value?.imageURL}';
                                 }
                               },
                               child: CircleAvatar(
                                 foregroundImage: NetworkImage(
-                                  profileImage,
+                                  profileImage!,
                                 ),
                                 radius: 225.r,
                               ),

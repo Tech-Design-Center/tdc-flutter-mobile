@@ -44,8 +44,7 @@ class HomepageExpandScreen extends StatefulWidget {
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  String profileImage =
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  String? profileImage = authController.user.value?.imageURL;
   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
       GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
@@ -122,7 +121,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(300),
                           child: CircleAvatar(
-                            foregroundImage: NetworkImage(profileImage),
+                            foregroundImage: NetworkImage(profileImage!),
                             radius: 100.r,
                           ),
                         ),
@@ -296,7 +295,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         if (authController.user.value?.fullName == null) {
                           Get.offAll(() => OnboardingScreen());
                         } else {
-                          profileImage = '${authController.user.value?.image}';
+                          profileImage = '${authController.user.value?.imageURL}';
 
                           authController.signOut();
                         }
@@ -361,7 +360,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                   },
                                   child: CircleAvatar(
                                     radius: 100.r,
-                                    foregroundImage: NetworkImage(profileImage),
+                                    foregroundImage: NetworkImage(profileImage!),
                                   ),
                                 ),
                                 Column(

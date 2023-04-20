@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,7 +8,6 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
-
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
@@ -54,16 +52,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   void _verifyPasswords() {
     setState(() {
-      _passwordsMatch =
-          passwordController.text == RetypepasswordController.text;
+      _passwordsMatch = passwordController.text == RetypepasswordController.text;
     });
   }
+
   void _saveData() {
     _passwordsMatch;
     // Perform save operation
     print('saved');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,23 +68,25 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'Update Profile',),
+            SectionTitleScreen(
+              name: 'Update Profile',
+            ),
             Stack(
               alignment: Alignment.center,
               children: [
                 //default
                 Positioned(
                     child: Container(
-                      width: ScreenUtil().screenWidth,
-                      height: 1000.h,
-                      // decoration: BoxDecoration(color: Colors.red),
-                    )),
+                  width: ScreenUtil().screenWidth,
+                  height: 1000.h,
+                  // decoration: BoxDecoration(color: Colors.red),
+                )),
 
                 //background
                 Positioned(
                   top: 0,
                   child: Container(
-                    width:ScreenUtil().screenWidth,
+                    width: ScreenUtil().screenWidth,
                     height: 500.h,
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -121,16 +120,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     if (authController.user.value?.fullName == null) {
                                       Get.offAll(() => OnboardingScreen());
                                     } else {
-                                      profileImage = '${authController.user.value?.image}';
+                                      profileImage = '${authController.user.value?.imageURL}';
                                     }
                                   },
-                                  child:
-                                  CircleAvatar(
-                                    foregroundImage:
-                                    NetworkImage(profileImage),
+                                  child: CircleAvatar(
+                                    foregroundImage: NetworkImage(profileImage),
                                     radius: 225.r,
-                                  )
-                              ),
+                                  )),
                             ),
                           ),
                           Padding(
@@ -189,7 +185,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         ])),
               ],
             ),
-
             Stack(
               alignment: Alignment.center,
               children: [
@@ -205,7 +200,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     width: ScreenUtil().screenWidth,
                     height: ScreenUtil().setHeight(1700),
                     decoration: BoxDecoration(
-                      // color: Colors.blue,
+                        // color: Colors.blue,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
                     child: SingleChildScrollView(
@@ -215,19 +210,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         children: [
                           //body
                           Padding(
-                            padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
+                            padding:
+                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Old Password',
+                                Text(
+                                  'Old Password',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(height: 40.h,),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 TextFormField(
                                   controller: OldpasswordController,
                                   keyboardType: TextInputType.visiblePassword,
@@ -251,9 +250,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -267,22 +264,25 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 ),
                               ],
                             ),
-
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
+                            padding:
+                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('New Password',
+                                Text(
+                                  'New Password',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(height: 40.h,),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 TextFormField(
                                   controller: passwordController,
                                   keyboardType: TextInputType.visiblePassword,
@@ -306,9 +306,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -322,23 +320,26 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 ),
                               ],
                             ),
-
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.only(top: 40,bottom: 20,left: 150,right:150 ).r,
+                            padding:
+                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Retype Password',
+                                Text(
+                                  'Retype Password',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(height: 40.h,),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 TextFormField(
                                   controller: RetypepasswordController,
                                   keyboardType: TextInputType.visiblePassword,
@@ -362,9 +363,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -376,78 +375,74 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 40.h,),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 Text(
                                   _passwordsMatch ? '' : 'Passwords do not match',
                                   style: TextStyle(color: Colors.red),
                                 ),
                               ],
                             ),
-
                           ),
-
-
-
-
-
-
 
                           Padding(
                             padding: const EdgeInsets.only(top: 100, bottom: 200).r,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                _isTextFieldEmpty ?
-                            ElevatedButton(
-                            style: ButtonStyle(
-
-                                backgroundColor: MaterialStatePropertyAll<Color>(ColorConstant.blue51),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-
-                                RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: ColorConstant.blue51)))),
-                            onPressed: () {  },
-                            child: Container(
-                              width: ScreenUtil().setWidth(900),
-                              height: ScreenUtil().setHeight(190),
-                              margin: EdgeInsets.only(
-                                left: 19,
-                                top: 20,
-                                right: 19,
-                              ).r,
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Save',
-                                style: TextStyle(fontSize: 65.sp),
-                              ),
-                            ),
-                          ):
-
-                                ElevatedButton(
-                                  style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(18.0),
-                                              side: BorderSide(color: Colors.blue)))),
-                                  onPressed: () {
-                                    _saveData();
-                                  },
-                                  child: Container(
-                                    width: ScreenUtil().setWidth(900),
-                                    height: ScreenUtil().setHeight(190),
-                                    margin: EdgeInsets.only(
-                                      left: 19,
-                                      top: 20,
-                                      right: 19,
-                                    ).r,
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Save',
-                                      style: TextStyle(fontSize: 65.sp),
-                                    ),
-                                  ),
-                                ),
+                                _isTextFieldEmpty
+                                    ? ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor: MaterialStatePropertyAll<Color>(
+                                                ColorConstant.blue51),
+                                            shape:
+                                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(18.0),
+                                                        side: BorderSide(
+                                                            color: ColorConstant.blue51)))),
+                                        onPressed: () {},
+                                        child: Container(
+                                          width: ScreenUtil().setWidth(900),
+                                          height: ScreenUtil().setHeight(190),
+                                          margin: EdgeInsets.only(
+                                            left: 19,
+                                            top: 20,
+                                            right: 19,
+                                          ).r,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'Save',
+                                            style: TextStyle(fontSize: 65.sp),
+                                          ),
+                                        ),
+                                      )
+                                    : ElevatedButton(
+                                        style: ButtonStyle(
+                                            shape:
+                                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(18.0),
+                                                        side: BorderSide(color: Colors.blue)))),
+                                        onPressed: () {
+                                          _saveData();
+                                        },
+                                        child: Container(
+                                          width: ScreenUtil().setWidth(900),
+                                          height: ScreenUtil().setHeight(190),
+                                          margin: EdgeInsets.only(
+                                            left: 19,
+                                            top: 20,
+                                            right: 19,
+                                          ).r,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'Save',
+                                            style: TextStyle(fontSize: 65.sp),
+                                          ),
+                                        ),
+                                      ),
                               ],
                             ),
                           ),

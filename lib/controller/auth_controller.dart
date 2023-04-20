@@ -119,8 +119,9 @@ class AuthController extends GetxController {
       required String surName,
       required String name,
       required String phoneNumber,
-      required String image,
+      required String? imageURL,
       required String fullName,
+      required String gender,
       required String birthday}) async {
     try {
       EasyLoading.show(
@@ -139,11 +140,12 @@ class AuthController extends GetxController {
             birthday: birthday,
             phoneNumber: phoneNumber,
             surName: surName,
-            image: image,
+            imageURL: imageURL,
             email: email,
             userName: userName,
             name: name,
-            fullName: fullName);
+            fullName: fullName,
+            gender: gender);
 
         //after the login REST api call && response code ==200
         SharedPreferences prefs = await SharedPreferences.getInstance();
