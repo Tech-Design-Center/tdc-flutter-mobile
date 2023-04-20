@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
@@ -156,8 +157,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   bool obsecur = true;
 
-  String profileImage =
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+  String? profileImage = authController.user.value?.imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -218,10 +218,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           Positioned(
                                             child: CircleAvatar(
                                               radius: 280.r,
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 280.r,
-                                              ),
+                                              foregroundImage: NetworkImage(profileImage!),
                                             ),
                                           ),
 
@@ -657,8 +654,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                                     RoundedRectangleBorder(
                                                         borderRadius: BorderRadius.circular(18.0).r,
                                                         side: BorderSide(color: Colors.blue)))),
-                                        onPressed: () {
+                                        onPressed: () async {
                                           _saveData();
+                                          SharedPreferences prefs =
+                                              await SharedPreferences.getInstance();
+                                          String? imageURL = prefs.getString('imageURL');
                                           authController.updateUser(
                                             email: emailController.text,
                                             password: passwordController.text,
@@ -666,10 +666,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             surName: surNameController.text,
                                             name: nameController!.text,
                                             phoneNumber: phoneNumberController.text,
-                                            image: profileImage,
+                                            imageURL: imageURL,
                                             birthday: birthdayController.text,
                                             oldEmail: authController.user.value!.email,
                                             fullName: fullNameController.text,
+                                            gender: '',
                                           );
                                         },
                                         child: Container(

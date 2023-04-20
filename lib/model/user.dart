@@ -7,22 +7,22 @@ class User {
   String? fullName;
   String? email;
   int? phoneNumber;
-  String? image;
   DateTime? birthDay;
   String? surname;
   String? name;
   String? address;
+  String? imageURL;
 
   User({
     required this.id,
     required this.fullName,
     required this.email,
     required this.phoneNumber,
-    required this.image,
     required this.birthDay,
     required this.surname,
     required this.name,
     required this.address,
+    required this.imageURL,
   });
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
@@ -30,10 +30,11 @@ class User {
         fullName: data['fullName'],
         email: data['email'],
         phoneNumber: data['phoneNumber'],
-        image: data['image'] == null ? null : data['image']['url'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
         surname: data['surName'],
         name: data['name'],
         address: data['address'],
+        imageURL: data['imageURL'] ??
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       );
 }

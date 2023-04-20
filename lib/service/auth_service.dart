@@ -69,7 +69,8 @@ class RemoteAuthService {
     required String? email,
     required String? birthday,
     required String? phoneNumber,
-    required String? image,
+    required String? imageURL,
+    required String? gender,
   }) async {
     var body = {
       "email": email,
@@ -79,7 +80,8 @@ class RemoteAuthService {
       "name": name,
       "birthday": birthday,
       "phoneNumber": phoneNumber,
-      "image": image,
+      "gender": gender,
+      "imageURL": imageURL,
     };
 
     var response = await client.put(
