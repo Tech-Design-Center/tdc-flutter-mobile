@@ -31,18 +31,15 @@ class RemoteAuthService {
     };
     var response = await client.post(
       Uri.parse('$baseUrl/api/profile/me'),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token"
-      },
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
       body: jsonEncode(body),
     );
     return response;
   }
 
   Future<dynamic> signIn({
-    required String email,
-    required String password,
+    required String? email,
+    required String? password,
   }) async {
     var body = {"identifier": email, "password": password};
     var response = await client.post(
@@ -58,10 +55,37 @@ class RemoteAuthService {
   }) async {
     var response = await client.get(
       Uri.parse('$baseUrl/api/profile/me'),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token"
-      },
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
+    );
+    return response;
+  }
+
+  Future<dynamic> updateProfile({
+    required String? token,
+    required String? fullName,
+    required String? userName,
+    required String? surName,
+    required String? name,
+    required String? email,
+    required String? birthday,
+    required String? phoneNumber,
+    required String? image,
+  }) async {
+    var body = {
+      "email": email,
+      "userName": userName,
+      "fullName": fullName,
+      "surName": surName,
+      "name": name,
+      "birthday": birthday,
+      "phoneNumber": phoneNumber,
+      "image": image,
+    };
+
+    var response = await client.put(
+      Uri.parse('$baseUrl/api/profile/me'),
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
+      body: jsonEncode(body),
     );
     return response;
   }

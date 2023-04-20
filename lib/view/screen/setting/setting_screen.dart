@@ -4,9 +4,10 @@ import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:tdc_frontend_mobile/view/screen/setting_screen/change_password_screen/change_password_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/setting_screen/update_profile_screen/update_profile_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/setting_screen/widgets/section_card.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting/change_password_screen/change_password_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting/update_profile_screen/update_profile_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting/widgets/section_card.dart';
+
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
 
 class SettingScreen extends StatefulWidget {

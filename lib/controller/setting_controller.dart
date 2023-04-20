@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -16,5 +17,33 @@ class SettingController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+  }
+
+  void pickImage() async {
+    EasyLoading.show(status: 'loading...');
+
+    final pickImage = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 512,
+      maxHeight: 512,
+      imageQuality: 75,
+    );
+
+    final path = 'profiles/${pickImage!.name}';
+    final file = File(pickImage.path);
+    // FirebaseAuth.instance.currentUser!.uid
+
+    Reference ref = FirebaseStorage.instance.ref().child(path);
+
+    await ref.putFile(file);
+
+    ref.getDownloadURL().then((value) => print(value));
+
+    if (pickImage == null) {
+      return;
+    }
+    profile = File(pickImage.path);
+    update();
+    EasyLoading.dismiss();
   }
 }
