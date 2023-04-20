@@ -89,243 +89,245 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
             BorderRadius.only(topRight: Radius.circular(35).w, bottomRight: Radius.circular(35).w),
         child: Drawer(
             backgroundColor: ColorConstant.whiteA700,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20, top: 200).r,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.close,
-                          color: Colors.black,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 24, left: 50, right: 20).r,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (authController.user.value?.fullName == null) {
-                        Get.offAll(() => OnboardingScreen());
-                      }
-                    },
+            child: SafeArea(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20, top: 200).r,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(300),
-                          child: CircleAvatar(
-                            foregroundImage: NetworkImage(profileImage!),
-                            radius: 100.r,
-                          ),
-                        ),
-                        20.horizontalSpace,
-                        Padding(
-                          padding: EdgeInsets.only(left: 30).r,
-                          child: Text(
-                            authController.user.value?.fullName ?? "Sign in your account",
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: ScreenUtil().setSp(70),
-                              fontWeight: FontWeight.w600,
-                            ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.close,
+                            color: Colors.black,
                           ),
                         )
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            ImageConstant.settings,
-                            width: ScreenUtil().setWidth(100),
-                            height: ScreenUtil().setHeight(100),
-                          ),
-                          20.horizontalSpace,
-                          Text(
-                            'Setting and Privacy',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: ScreenUtil().setSp(60),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: ColorConstant.indigoA200,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            ImageConstant.help,
-                            width: ScreenUtil().setWidth(100),
-                            height: ScreenUtil().setHeight(100),
-                          ),
-                          20.horizontalSpace,
-                          Text(
-                            'Help and Support',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: ScreenUtil().setSp(60),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: ColorConstant.indigoA200,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: InkWell(
+                  Padding(
+                    padding: EdgeInsets.only(top: 24, left: 50, right: 20).r,
+                    child: GestureDetector(
                       onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(10),
-                            )),
-                            builder: (context) {
-                              return LightSettingsLanguageScreen();
-                            });
+                        if (authController.user.value?.fullName == null) {
+                          Get.offAll(() => OnboardingScreen());
+                        }
                       },
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: 0,
-                          top: 0,
-                          bottom: 0,
-                          right: 0,
-                        ).r,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: 1,
-                                    bottom: 1,
-                                  ).r,
-                                  child: Image.asset(
-                                    ImageConstant.settings,
-                                    width: ScreenUtil().setWidth(100),
-                                    height: ScreenUtil().setHeight(100),
-                                  ),
-                                ),
-                                SizedBox(width: ScreenUtil().setWidth(25)),
-                                Text(
-                                  "Language",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(60),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(300),
+                            child: CircleAvatar(
+                              foregroundImage: NetworkImage(profileImage!),
+                              radius: 100.r,
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  "English (US)",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(60),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(width: ScreenUtil().setWidth(10)),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: ColorConstant.indigoA200,
-                                  size: 20,
-                                )
-                              ],
+                          ),
+                          20.horizontalSpace,
+                          Padding(
+                            padding: EdgeInsets.only(left: 30).r,
+                            child: Text(
+                              authController.user.value?.fullName ?? "Sign in your account",
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: ScreenUtil().setSp(70),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              ImageConstant.settings,
+                              width: ScreenUtil().setWidth(100),
+                              height: ScreenUtil().setHeight(100),
+                            ),
+                            20.horizontalSpace,
+                            Text(
+                              'Setting and Privacy',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: ScreenUtil().setSp(60),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: ColorConstant.indigoA200,
+                          size: 20,
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              ImageConstant.help,
+                              width: ScreenUtil().setWidth(100),
+                              height: ScreenUtil().setHeight(100),
+                            ),
+                            20.horizontalSpace,
+                            Text(
+                              'Help and Support',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: ScreenUtil().setSp(60),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: ColorConstant.indigoA200,
+                          size: 20,
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10),
+                              )),
+                              builder: (context) {
+                                return LightSettingsLanguageScreen();
+                              });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: 0,
+                            top: 0,
+                            bottom: 0,
+                            right: 0,
+                          ).r,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 1,
+                                      bottom: 1,
+                                    ).r,
+                                    child: Image.asset(
+                                      ImageConstant.settings,
+                                      width: ScreenUtil().setWidth(100),
+                                      height: ScreenUtil().setHeight(100),
+                                    ),
+                                  ),
+                                  SizedBox(width: ScreenUtil().setWidth(25)),
+                                  Text(
+                                    "Language",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: ScreenUtil().setSp(60),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "English (US)",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.end,
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: ScreenUtil().setSp(60),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  SizedBox(width: ScreenUtil().setWidth(10)),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: ColorConstant.indigoA200,
+                                    size: 20,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: ScreenUtil().setHeight(120),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        if (authController.user.value?.fullName == null) {
-                          Get.offAll(() => OnboardingScreen());
-                        } else {
-                          profileImage = '${authController.user.value?.imageURL}';
+                  SizedBox(
+                    height: ScreenUtil().setHeight(120),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          if (authController.user.value?.fullName == null) {
+                            Get.offAll(() => OnboardingScreen());
+                          } else {
+                            profileImage = '${authController.user.value?.imageURL}';
 
-                          authController.signOut();
-                        }
-                      },
-                      child: Container(
-                        height: ScreenUtil().setHeight(180),
-                        width: ScreenUtil().setWidth(550),
-                        margin: EdgeInsets.only(
-                          left: 24,
-                        ),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.indigoA200,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            authController.user.value?.fullName != null ? 'Logout' : 'Login',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
+                            authController.signOut();
+                          }
+                        },
+                        child: Container(
+                          height: ScreenUtil().setHeight(180),
+                          width: ScreenUtil().setWidth(550),
+                          margin: EdgeInsets.only(
+                            left: 24,
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorConstant.indigoA200,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              authController.user.value?.fullName != null ? 'Logout' : 'Login',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                )
-              ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             )),
       ),
       body: LiquidPullToRefresh(

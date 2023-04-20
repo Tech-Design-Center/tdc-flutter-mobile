@@ -153,17 +153,64 @@ class AuthController extends GetxController {
 
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
-          EasyLoading.showSuccess("Update Success!");
+          EasyLoading.showSuccess("Update Profile Successfully!");
           Get.offAll(() => DashboardScreen());
         } else {
           EasyLoading.showError('Something wrong. Try again!');
         }
       } else {
-        EasyLoading.showError('Username/password wrong');
+        EasyLoading.showError('Password is wrong');
       }
     } catch (e) {
       debugPrint(e.toString());
       EasyLoading.showError('Something wrong. Try again!');
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
+
+  void changePassword({
+    required String email,
+    required String? currentPassword,
+    required String? password,
+    required String? passwordConfirmation,
+  }) async {
+    try {
+      EasyLoading.show(
+        status: 'Loading...',
+        dismissOnTap: false,
+      );
+
+      var result = await RemoteAuthService().signIn(
+        email: email,
+        password: currentPassword,
+      );
+      if (result.statusCode == 200) {
+        String token = json.decode(result.body)['jwt'];
+        var userResult = await RemoteAuthService().changePassword(
+          token: token,
+          currentPassword: currentPassword,
+          password: password,
+          passwordConfirmation: passwordConfirmation,
+        );
+
+        //after the login REST api call && response code ==200
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', token);
+
+        if (userResult.statusCode == 200) {
+          user.value = userFromJson(userResult.body);
+          EasyLoading.showSuccess("Update Password Successfully!");
+          Get.offAll(() => DashboardScreen());
+        } else {
+          EasyLoading.showError('Something wrong1. Try again!');
+        }
+      } else {
+        EasyLoading.showError('Password is wrong');
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      EasyLoading.showError('Something wrong2. Try again!');
     } finally {
       EasyLoading.dismiss();
     }

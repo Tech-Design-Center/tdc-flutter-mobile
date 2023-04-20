@@ -91,4 +91,24 @@ class RemoteAuthService {
     );
     return response;
   }
+
+  Future<dynamic> changePassword({
+    required String? token,
+    required String? currentPassword,
+    required String? password,
+    required String? passwordConfirmation,
+  }) async {
+    var body = {
+      "currentPassword": currentPassword,
+      "password": password,
+      "passwordConfirmation": passwordConfirmation,
+    };
+
+    var response = await client.post(
+      Uri.parse('$baseUrl/api/auth/change-password'),
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer $token"},
+      body: jsonEncode(body),
+    );
+    return response;
+  }
 }
