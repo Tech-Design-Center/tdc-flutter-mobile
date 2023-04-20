@@ -84,7 +84,7 @@ class RecommendCard extends StatelessWidget {
                         ),
                       ),
                       child: Image(
-                        image: NetworkImage(recommend.image),
+                        image: NetworkImage(recommend.image!),
                         height: ScreenUtil().setHeight(600),
                         width: ScreenUtil().setWidth(1400),
                       ),
@@ -98,7 +98,7 @@ class RecommendCard extends StatelessWidget {
                     right: 16,
                   ).r,
                   child: Text(
-                    recommend.title,
+                    recommend.title!,
                     maxLines: null,
                     textAlign: TextAlign.start,
                     style: TextStyle(
@@ -118,7 +118,7 @@ class RecommendCard extends StatelessWidget {
                     right: 16,
                   ).r,
                   child: Text(
-                    recommend.author,
+                    recommend.author!,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: TextStyle(

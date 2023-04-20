@@ -4,12 +4,12 @@ List<Notifications> notificationListFromJson(String val) => List<Notifications>.
     json.decode(val)['data'].map((newsFeed) => Notifications.fromJson(newsFeed)));
 
 class Notifications {
-  final int id;
-  final String image;
-  final String title;
-  final String description;
-  final String poster;
-  final DateTime publishedAt;
+  final int? id;
+  final String? image;
+  final String? title;
+  final String? description;
+  final String? poster;
+  final DateTime? publishedAt;
 
   Notifications({
     required this.id,

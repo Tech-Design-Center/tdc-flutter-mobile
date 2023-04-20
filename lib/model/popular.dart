@@ -4,18 +4,18 @@ List<Popular> popularListFromJson(String val) =>
     List<Popular>.from(json.decode(val)['data'].map((popular) => Popular.fromJson(popular)));
 
 class Popular {
-  final int id;
-  final String image;
-  final String title;
-  final String author;
-  final String description;
-  final String about;
-  final int duration;
-  final int price;
-  final String videoTrailerURL;
-  final List<String> playlistTitle;
-  final List<List<String>> videoTitle;
-  final List<List<String>> videoUrl;
+  final int? id;
+  final String? image;
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? about;
+  final int? duration;
+  final int? price;
+  final String? videoTrailerURL;
+  final List<String>? playlistTitle;
+  final List<List<String>>? videoTitle;
+  final List<List<String>>? videoUrl;
   Popular({
     required this.id,
     required this.image,

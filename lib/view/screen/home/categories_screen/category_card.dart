@@ -15,8 +15,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => CategoryCourseListScreen(
-            categories: categories, name: categories.name));
+        Get.to(() => CategoryCourseListScreen(categories: categories, name: categories.name));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -71,7 +70,7 @@ class CategoryCard extends StatelessWidget {
                             10,
                           ).w,
                           child: Image.network(
-                            categories.image,
+                            categories.image!,
                           )),
                     ),
                   ),
@@ -82,7 +81,7 @@ class CategoryCard extends StatelessWidget {
                       bottom: 17,
                     ).r,
                     child: Text(
-                      categories.name,
+                      categories.name!,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(

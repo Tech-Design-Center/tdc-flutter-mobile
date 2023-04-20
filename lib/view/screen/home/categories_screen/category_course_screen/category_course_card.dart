@@ -19,24 +19,24 @@ class CategoryCourseCard extends StatelessWidget {
           separatorBuilder: (context, index) {
             return SizedBox(height: 60.h);
           },
-          itemCount: categories.title.length,
+          itemCount: categories.title!.length,
           shrinkWrap: false,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
                 Get.to(CourseDetailsScreen(
-                  about: categories.about[index],
-                  author: categories.author[index],
-                  description: categories.description[index],
-                  duration: categories.duration[index],
-                  image: categories.imageCourse[index],
+                  about: categories.about![index],
+                  author: categories.author![index],
+                  description: categories.description![index],
+                  duration: categories.duration![index],
+                  image: categories.imageCourse![index],
                   isEnroll: false,
-                  playlistTitle: categories.playlistTitle[index],
-                  price: categories.price[index],
-                  title: categories.title[index],
-                  videoTitle: categories.videoTitle[index],
-                  videoTrailerURL: categories.videoTrailerURL[index],
-                  videoUrl: categories.videoUrl[index],
+                  playlistTitle: categories.playlistTitle![index],
+                  price: categories.price![index],
+                  title: categories.title![index],
+                  videoTitle: categories.videoTitle![index],
+                  videoTrailerURL: categories.videoTrailerURL![index],
+                  videoUrl: categories.videoUrl![index],
                 ));
               },
               child: Container(
@@ -85,7 +85,7 @@ class CategoryCourseCard extends StatelessWidget {
                           ),
                         ),
                         child: Image.network(
-                          categories.imageCourse[index],
+                          categories.imageCourse![index],
                           height: ScreenUtil().setHeight(
                             400.00,
                           ),
@@ -112,7 +112,7 @@ class CategoryCourseCard extends StatelessWidget {
                               right: 10,
                             ).r,
                             child: Text(
-                              categories.title[index],
+                              categories.title![index],
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.start,
                               style: TextStyle(
@@ -131,7 +131,7 @@ class CategoryCourseCard extends StatelessWidget {
                               right: 10,
                             ).r,
                             child: Text(
-                              categories.author[index],
+                              categories.author![index],
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.start,
                               style: TextStyle(
@@ -211,7 +211,7 @@ class CategoryCourseCard extends StatelessWidget {
                                     bottom: 2,
                                   ).r,
                                   child: Text(
-                                    "${Constants.currency}" + categories.price[index].toString(),
+                                    "${Constants.currency}" + categories.price![index].toString(),
                                     overflow: TextOverflow.fade,
                                     textAlign: TextAlign.start,
                                     style: TextStyle(

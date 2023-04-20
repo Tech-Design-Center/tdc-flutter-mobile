@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SectionTitleScreen extends StatelessWidget {
-  final String name;
+  final String? name;
   const SectionTitleScreen({
     super.key,
     required this.name,
@@ -26,7 +26,7 @@ class SectionTitleScreen extends StatelessWidget {
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
             Text(
-              name,
+              name!,
               style: TextStyle(
                 fontSize: ScreenUtil().setSp(
                   100,

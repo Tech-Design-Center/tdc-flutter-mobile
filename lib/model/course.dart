@@ -4,18 +4,18 @@ List<Course> courseListFromJson(String val) =>
     List<Course>.from(json.decode(val).map((data) => Course.fromJson(data)));
 
 class Course {
-  final String email;
-  final List<String> image;
-  final List<String> title;
-  final List<String> author;
-  final List<String> description;
-  final List<String> about;
-  final List<int> duration;
-  final List<int> price;
-  final List<String> videoTrailerURL;
-  final List<List<String>> playlistTitle;
-  final List<List<List<String>>> videoTitle;
-  final List<List<List<String>>> videoUrl;
+  final String? email;
+  final List<String>? image;
+  final List<String>? title;
+  final List<String>? author;
+  final List<String>? description;
+  final List<String>? about;
+  final List<int>? duration;
+  final List<int>? price;
+  final List<String>? videoTrailerURL;
+  final List<List<String>>? playlistTitle;
+  final List<List<List<String>>>? videoTitle;
+  final List<List<List<String>>>? videoUrl;
 
   Course({
     required this.email,

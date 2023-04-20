@@ -25,7 +25,7 @@ class MyCourseController extends GetxController {
     super.onInit();
   }
 
-  void getByEmail({required String email}) async {
+  void getByEmail({required String? email}) async {
     try {
       isCourseLoading(true);
       //call api

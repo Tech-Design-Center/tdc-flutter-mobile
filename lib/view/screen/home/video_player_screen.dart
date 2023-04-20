@@ -9,14 +9,14 @@ import '../../../model/recommend.dart';
 import '../../dashboard_screen.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
-  final String image;
-  final String title;
-  final String author;
-  final String description;
-  final String about;
-  final int duration;
-  final String videoTitle;
-  final String videoUrl;
+  final String? image;
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? about;
+  final int? duration;
+  final String? videoTitle;
+  final String? videoUrl;
 
   VideoPlayerScreen(
       {super.key,
@@ -55,7 +55,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
 
   void loadVideo() async {
     final urls = await PodPlayerController.getYoutubeUrls(
-      widget.videoUrl,
+      widget.videoUrl!,
     );
     setState(() => isLoading = false);
     _controller = PodPlayerController(
@@ -100,87 +100,84 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
             children: [
               isVideoPlaying
                   ? Container(
-                height: ScreenUtil().setHeight(300),
-                width: double.infinity,
-                color: Colors.grey.shade200,
-                child: Padding(
-                  padding: REdgeInsets.only(left: 30, right: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                          },
-                          icon: const Icon(Icons.arrow_back_ios)),
-                      SizedBox(
-                        width: 1000.w,
-                        child: Text(
-                          widget.title,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: ScreenUtil().setSp(
-                              100,
+                      height: ScreenUtil().setHeight(300),
+                      width: double.infinity,
+                      color: Colors.grey.shade200,
+                      child: Padding(
+                        padding: REdgeInsets.only(left: 30, right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                },
+                                icon: const Icon(Icons.arrow_back_ios)),
+                            SizedBox(
+                              width: 1000.w,
+                              child: Text(
+                                widget.title!,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: ScreenUtil().setSp(
+                                    100,
+                                  ),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.offAll(() => DashboardScreen());
+                                },
+                                icon: const Icon(Icons.home_filled)),
+                          ],
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                            Get.offAll(() => DashboardScreen());
-                          },
-                          icon: const Icon(Icons.home_filled)),
-                    ],
-                  ),
-                ),
-              )
+                    )
                   : Container(
-                height: ScreenUtil().setHeight(300),
-                width: double.infinity,
-                color: Colors.grey.shade200,
-                child: Padding(
-                  padding: REdgeInsets.only(left: 30, right: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                            Get.back();
-                          },
-                          icon: Icon(Icons.arrow_back_ios)),
-                      SizedBox(
-                        width: 800.w,
-                        child: Text(
-                          widget.title,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: ScreenUtil().setSp(
-                              100,
+                      height: ScreenUtil().setHeight(300),
+                      width: double.infinity,
+                      color: Colors.grey.shade200,
+                      child: Padding(
+                        padding: REdgeInsets.only(left: 30, right: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.back();
+                                },
+                                icon: Icon(Icons.arrow_back_ios)),
+                            SizedBox(
+                              width: 800.w,
+                              child: Text(
+                                widget.title!,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: ScreenUtil().setSp(
+                                    100,
+                                  ),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                          ),
+                            IconButton(
+                                onPressed: () {
+                                  deactivate();
+                                  Get.offAll(() => DashboardScreen());
+                                },
+                                icon: Icon(Icons.home_filled)),
+                          ],
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            deactivate();
-                            Get.offAll(() => DashboardScreen());
-                          },
-                          icon: Icon(Icons.home_filled)),
-                    ],
-                  ),
-                ),
-              ),
-
-
-
+                    ),
               Container(
                 height: ScreenUtil().setHeight(880),
                 child: isLoading
@@ -192,7 +189,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                           controller: _controller,
                           videoThumbnail: DecorationImage(
                             image: NetworkImage(
-                              widget.image,
+                              widget.image!,
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -256,7 +253,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                         ),
                                       ),
                                       child: Image.network(
-                                        widget.image,
+                                        widget.image!,
                                         height: ScreenUtil().setHeight(
                                           400.00,
                                         ),
@@ -276,7 +273,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            widget.title,
+                                            widget.title!,
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
@@ -296,7 +293,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: SizedBox(
                                               width: MediaQuery.of(context).size.width * 0.6,
                                               child: Text(
-                                                widget.description,
+                                                widget.description!,
                                                 maxLines: 2,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
@@ -420,7 +417,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                     EdgeInsets.only(left: 35, right: 35, top: 20).r,
                                                 width: ScreenUtil().screenWidth,
                                                 child: Text(
-                                                  widget.description,
+                                                  widget.description!,
                                                   maxLines: 2,
                                                   style: TextStyle(
                                                       fontSize: 50.sp,

@@ -28,7 +28,7 @@ class NewsFeedCard extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    foregroundImage: NetworkImage(newsFeed.image),
+                    foregroundImage: NetworkImage(newsFeed.image!),
                     radius: 120.r,
                   ),
                   SizedBox(
@@ -44,7 +44,7 @@ class NewsFeedCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            newsFeed.title,
+                            newsFeed.title!,
                             overflow: TextOverflow.fade,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -60,7 +60,7 @@ class NewsFeedCard extends StatelessWidget {
                             height: 10.h,
                           ),
                           Text(
-                            newsFeed.description,
+                            newsFeed.description!,
                             overflow: TextOverflow.fade,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -76,7 +76,7 @@ class NewsFeedCard extends StatelessWidget {
                             height: 30.h,
                           ),
                           Text(
-                            timeago.format(newsFeed.publishedAt),
+                            timeago.format(newsFeed.publishedAt!),
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -96,7 +96,7 @@ class NewsFeedCard extends StatelessWidget {
                 ],
               ),
             ),
-            Image.network(newsFeed.poster),
+            Image.network(newsFeed.poster!),
           ],
         ),
       ),

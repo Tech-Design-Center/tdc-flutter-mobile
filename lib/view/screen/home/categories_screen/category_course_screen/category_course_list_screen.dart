@@ -8,7 +8,7 @@ import '../../../../widgets/section_title_screen.dart';
 import 'category_course_card.dart';
 
 class CategoryCourseListScreen extends StatefulWidget {
-  final String name;
+  final String? name;
   final Category categories;
   const CategoryCourseListScreen({Key? key, required this.categories, required this.name})
       : super(key: key);
