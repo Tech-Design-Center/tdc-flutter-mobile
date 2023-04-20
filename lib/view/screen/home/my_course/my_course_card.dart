@@ -18,23 +18,23 @@ class MyCourseCard extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
-      itemCount: course.title.length,
+      itemCount: course.title!.length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
             Get.to(CourseDetailsScreen(
-              about: course.about[index],
-              author: course.author[index],
-              description: course.description[index],
-              duration: course.duration[index],
-              image: course.image[index],
+              about: course.about![index],
+              author: course.author![index],
+              description: course.description![index],
+              duration: course.duration![index],
+              image: course.image![index],
               isEnroll: true,
-              playlistTitle: course.playlistTitle[index],
-              price: course.price[index],
-              title: course.title[index],
-              videoTitle: course.videoTitle[index],
-              videoTrailerURL: course.videoTrailerURL[index],
-              videoUrl: course.videoUrl[index],
+              playlistTitle: course.playlistTitle![index],
+              price: course.price![index],
+              title: course.title![index],
+              videoTitle: course.videoTitle![index],
+              videoTrailerURL: course.videoTrailerURL![index],
+              videoUrl: course.videoUrl![index],
             ));
           },
           child: Container(
@@ -85,7 +85,7 @@ class MyCourseCard extends StatelessWidget {
                       ),
                     ),
                     child: Image.network(
-                      course.image[index],
+                      course.image![index],
                       height: ScreenUtil().setHeight(
                         400.00,
                       ),
@@ -116,7 +116,7 @@ class MyCourseCard extends StatelessWidget {
                           right: 8,
                         ).r,
                         child: Text(
-                          course.title[index],
+                          course.title![index],
                           maxLines: null,
                           textAlign: TextAlign.start,
                           style: TextStyle(
@@ -135,7 +135,7 @@ class MyCourseCard extends StatelessWidget {
                           top: 20,
                         ).r,
                         child: Text(
-                          "Teach by : '${course.author[index]}",
+                          "Teach by : '${course.author![index]}",
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.start,
                           style: TextStyle(

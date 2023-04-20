@@ -23,14 +23,14 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         children: [
           Image.network(
-            category.image,
+            category.image!,
             width: ScreenUtil().setWidth(340),
             height: ScreenUtil().setHeight(200),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20).r,
             child: Text(
-              category.name,
+              category.name!,
               textAlign: TextAlign.center,
               maxLines: 2,
               style: TextStyle(

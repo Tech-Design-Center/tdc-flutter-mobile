@@ -10,17 +10,15 @@ class VideoList extends StatefulWidget {
 class _VideoListState extends State<VideoList> {
   final List<YoutubePlayerController> _controllers = [
     'laj2gxGPnfA',
-
-
   ]
       .map<YoutubePlayerController>(
         (videoId) => YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,
-      ),
-    ),
-  )
+          initialVideoId: videoId,
+          flags: const YoutubePlayerFlags(
+            autoPlay: false,
+          ),
+        ),
+      )
       .toList();
 
   @override

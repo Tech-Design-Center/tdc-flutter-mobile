@@ -29,7 +29,7 @@ class NotificationCard extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    foregroundImage: NetworkImage(notifications.image),
+                    foregroundImage: NetworkImage(notifications.image!),
                     radius: 120.r,
                   ),
                   SizedBox(
@@ -45,7 +45,7 @@ class NotificationCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            notifications.title,
+                            notifications.title!,
                             overflow: TextOverflow.fade,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -61,7 +61,7 @@ class NotificationCard extends StatelessWidget {
                             height: 10.h,
                           ),
                           Text(
-                            notifications.description,
+                            notifications.description!,
                             overflow: TextOverflow.fade,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -77,7 +77,7 @@ class NotificationCard extends StatelessWidget {
                             height: 30.h,
                           ),
                           Text(
-                            timeago.format(notifications.publishedAt),
+                            timeago.format(notifications.publishedAt!),
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -97,7 +97,7 @@ class NotificationCard extends StatelessWidget {
                 ],
               ),
             ),
-            Image.network(notifications.poster),
+            Image.network(notifications.poster!),
           ],
         ),
       ),

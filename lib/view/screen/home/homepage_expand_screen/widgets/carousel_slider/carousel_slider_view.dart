@@ -26,7 +26,7 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
   @override
   void initState() {
     _bannerList = widget.bannerList.map((e) {
-      return BannerCard(imageUrl: e.image);
+      return BannerCard(imageUrl: e.image!);
     }).toList();
     super.initState();
   }

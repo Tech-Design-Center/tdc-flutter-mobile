@@ -83,7 +83,7 @@ class PopularsCard extends StatelessWidget {
                             10,
                           ).w,
                           child: Image.network(
-                            popular.image,
+                            popular.image!,
                           )),
                     ),
                   ),
@@ -94,7 +94,7 @@ class PopularsCard extends StatelessWidget {
                       bottom: 17,
                     ).r,
                     child: Text(
-                      popular.title,
+                      popular.title!,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(

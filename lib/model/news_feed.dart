@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-List<NewsFeed> newsFeedListFromJson(String val) => List<NewsFeed>.from(
-    json.decode(val)['data'].map((newsFeed) => NewsFeed.fromJson(newsFeed)));
+List<NewsFeed> newsFeedListFromJson(String val) =>
+    List<NewsFeed>.from(json.decode(val)['data'].map((newsFeed) => NewsFeed.fromJson(newsFeed)));
 
 class NewsFeed {
-  final int id;
-  final String image;
-  final String title;
-  final String description;
-  final String poster;
-  final DateTime publishedAt;
+  final int? id;
+  final String? image;
+  final String? title;
+  final String? description;
+  final String? poster;
+  final DateTime? publishedAt;
 
   NewsFeed({
     required this.id,
@@ -26,7 +26,6 @@ class NewsFeed {
         title: data['attributes']['title'],
         description: data['attributes']['description'],
         poster: data['attributes']['poster']['data']['attributes']['url'],
-        publishedAt:
-            DateTime.parse(data['attributes']['publishedAt'].toString()),
+        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString()),
       );
 }

@@ -4,20 +4,20 @@ List<Category> categoryListFromJson(String val) => List<Category>.from(
     json.decode(val)['data'].map((category) => Category.categoryFromJson(category)));
 
 class Category {
-  final int id;
-  final String name;
-  final String image;
-  final List<String> title;
-  final List<String> description;
-  final List<String> author;
-  final List<String> about;
-  final List<int> duration;
-  final List<int> price;
-  final List<String> imageCourse;
-  final List<String> videoTrailerURL;
-  final List<List<String>> playlistTitle;
-  final List<List<List<String>>> videoTitle;
-  final List<List<List<String>>> videoUrl;
+  final int? id;
+  final String? name;
+  final String? image;
+  final List<String>? title;
+  final List<String>? description;
+  final List<String>? author;
+  final List<String>? about;
+  final List<int>? duration;
+  final List<int>? price;
+  final List<String>? imageCourse;
+  final List<String>? videoTrailerURL;
+  final List<List<String>>? playlistTitle;
+  final List<List<List<String>>>? videoTitle;
+  final List<List<List<String>>>? videoUrl;
   Category({
     required this.id,
     required this.name,

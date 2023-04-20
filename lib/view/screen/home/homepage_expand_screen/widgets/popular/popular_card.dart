@@ -78,7 +78,7 @@ class PopularCard extends StatelessWidget {
                   ),
                   child: Image(
                     image: NetworkImage(
-                      popular.image,
+                      popular.image!,
                     ),
                     height: ScreenUtil().setHeight(600),
                     width: ScreenUtil().setWidth(1400),
@@ -93,7 +93,7 @@ class PopularCard extends StatelessWidget {
                 right: 16,
               ).r,
               child: Text(
-                popular.title,
+                popular.title!,
                 maxLines: null,
                 textAlign: TextAlign.start,
                 style: TextStyle(
@@ -113,7 +113,7 @@ class PopularCard extends StatelessWidget {
                 right: 16,
               ).r,
               child: Text(
-                popular.author,
+                popular.author!,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 style: TextStyle(

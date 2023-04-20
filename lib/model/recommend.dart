@@ -4,18 +4,18 @@ List<Recommend> recommendListFromJson(String val) => List<Recommend>.from(
     json.decode(val)['data'].map((recommend) => Recommend.fromJson(recommend)));
 
 class Recommend {
-  final int id;
-  final String image;
-  final String title;
-  final String author;
-  final String description;
-  final String about;
-  final int duration;
-  final int price;
-  final String videoTrailerURL;
-  final List<String> playlistTitle;
-  final List<List<String>> videoTitle;
-  final List<List<String>> videoUrl;
+  final int? id;
+  final String? image;
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? about;
+  final int? duration;
+  final int? price;
+  final String? videoTrailerURL;
+  final List<String>? playlistTitle;
+  final List<List<String>>? videoTitle;
+  final List<List<String>>? videoUrl;
 
   Recommend({
     required this.id,
