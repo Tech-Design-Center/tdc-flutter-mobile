@@ -7,7 +7,7 @@ import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/main.dart';
 import 'package:tdc_frontend_mobile/model/course.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/my_course/my_course_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/my_course_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/homepage_expand_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/setting_screen.dart';

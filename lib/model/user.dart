@@ -31,9 +31,9 @@ class User {
         email: data['email'],
         phoneNumber: data['phoneNumber'],
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
-        surname: data['surName'],
-        name: data['name'],
-        address: data['address'],
+        surname: data['surName'] ?? 'Your Surname',
+        name: data['name'] ?? 'Your Name',
+        address: data['address'] ?? 'Your Address',
         imageURL: data['imageURL'] ??
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       );

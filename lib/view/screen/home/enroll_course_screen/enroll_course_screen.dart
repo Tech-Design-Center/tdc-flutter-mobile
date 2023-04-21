@@ -3,11 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/confirm_payment_screen/confirm_payment_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
+import '../../../../controller/controllers.dart';
+import '../../../../model/course.dart';
+import '../../my_learning/confirm_payment_screen/confirm_payment_screen.dart';
+
 class EnrollCourseScreen extends StatefulWidget {
+  final int? price;
+  final String? ABAPaymentURL;
+  final String? title;
+
+  const EnrollCourseScreen(
+      {super.key, required this.price, required this.ABAPaymentURL, required this.title});
+
   @override
   State<EnrollCourseScreen> createState() => _EnrollCourseScreenState();
 }
@@ -18,7 +28,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
   String time = DateFormat("HH:mm:ss").format(DateTime.now());
   String _verticalGroupValue = "ABA BANK";
 
-  final _status = ["ABA BANK", "Direct Payment"];
+  final _status = ["ABA BANK"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +46,14 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 50, bottom: 80).r,
+                      padding: REdgeInsets.only(top: 50, bottom: 80),
                       child: Text(
                         "Microsoft Office 2019",
                         style: TextStyle(fontSize: 80.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
-                      height: ScreenUtil().setHeight(1400),
+                      height: ScreenUtil().setHeight(1500),
                       width: ScreenUtil().setWidth(1200),
                       decoration: BoxDecoration(
                         border: Border.all(width: 0.8, color: Colors.grey),
@@ -56,13 +66,13 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(0),
+                              padding: REdgeInsets.all(0),
                               child: Text("Students Name"),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 60, bottom: 40).r,
+                              padding: REdgeInsets.only(top: 60, bottom: 40),
                               child: Text(
-                                "Tech Design Center",
+                                authController.user.value!.fullName!,
                                 style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -77,7 +87,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
-                                "# 1111",
+                                '# ${authController.user.value!.id!}',
                                 style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -92,7 +102,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 60, bottom: 40).r,
                               child: Text(
-                                "30 \$",
+                                "${widget.price} \$",
                                 style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -117,14 +127,14 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(top: 50, bottom: 80, left: 130).r,
+                      padding: REdgeInsets.only(top: 50, bottom: 80, left: 130),
                       child: Text(
                         "Payment Method",
                         style: TextStyle(fontSize: 60.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
-                      height: ScreenUtil().setHeight(380),
+                      height: ScreenUtil().setHeight(300),
                       width: ScreenUtil().setWidth(1200),
                       decoration: BoxDecoration(
                         border: Border.all(width: 0.8, color: Colors.grey),
@@ -147,14 +157,17 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 200).r,
+                      padding: REdgeInsets.only(top: 200),
                       child: Container(
                         width: ScreenUtil().screenWidth,
                         color: Colors.white,
                         child: InkWell(
                           onTap: () {
                             setState(() {
-                              Get.to(ConfirmPaymentScreen());
+                              Get.to(ConfirmPaymentScreen(
+                                ABAPaymentURL: widget.ABAPaymentURL!,
+                                title: widget.title!,
+                              ));
                             });
                           },
                           child: Container(

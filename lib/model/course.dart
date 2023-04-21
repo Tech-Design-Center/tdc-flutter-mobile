@@ -13,6 +13,8 @@ class Course {
   final List<int>? duration;
   final List<int>? price;
   final List<String>? videoTrailerURL;
+  final List<String>? ABAPaymentURL;
+
   final List<List<String>>? playlistTitle;
   final List<List<List<String>>>? videoTitle;
   final List<List<List<String>>>? videoUrl;
@@ -27,6 +29,7 @@ class Course {
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
+    required this.ABAPaymentURL,
     required this.playlistTitle,
     required this.videoTitle,
     required this.videoUrl,
@@ -43,6 +46,7 @@ class Course {
       duration: List<int>.from(data['courses'].map((data) => data['duration'])),
       price: List<int>.from(data['courses'].map((data) => data['price'])),
       videoTrailerURL: List<String>.from(data['courses'].map((data) => data['videoTrailerURL'])),
+      ABAPaymentURL: List<String>.from(data['courses'].map((data) => data['ABAPaymentURL'])),
       playlistTitle: List<List<String>>.from(data['courses'].map(
           (data) => List<String>.from(data['playlist_video_urls'].map((data) => data['title'])))),
       videoTitle: List<List<List<String>>>.from(data['courses'].map((data) =>

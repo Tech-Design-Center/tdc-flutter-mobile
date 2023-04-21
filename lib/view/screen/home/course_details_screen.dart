@@ -10,7 +10,7 @@ import 'package:pod_player/pod_player.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/enroll_course_screen/enroll_course_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/enroll_course_screen/enroll_course_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/video_player_screen.dart';
@@ -19,6 +19,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../model/category.dart';
 import '../../../model/recommend.dart';
+import '../my_learning/course_details_content_screen/course_details_content_screen.dart';
 
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
@@ -27,6 +28,8 @@ class CourseDetailsScreen extends StatefulWidget {
   final String? author;
   final String? description;
   final String? about;
+  final String? ABAPaymentURL;
+
   final int? duration;
   final int? price;
   final String? videoTrailerURL;
@@ -48,6 +51,7 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.playlistTitle,
     required this.videoTitle,
     required this.videoUrl,
+    required this.ABAPaymentURL,
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -1132,8 +1136,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                 child: InkWell(
                                   onTap: () {
                                     deactivate();
-
-                                    Get.to(EnrollCourseScreen());
+                                    Get.to(EnrollCourseScreen(
+                                      price: widget.price!,
+                                      ABAPaymentURL: widget.ABAPaymentURL!,
+                                      title: widget.title!,
+                                    ));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
