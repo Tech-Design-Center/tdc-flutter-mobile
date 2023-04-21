@@ -3,7 +3,7 @@ import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
-import 'package:tdc_frontend_mobile/view/screen/a/course_details_content_screen/widgets/course_lesson_video.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/course_details_content_screen/widgets/course_lesson_video.dart';
 
 // ignore: must_be_immutable
 class CourseDetailsContentScreen extends StatelessWidget {

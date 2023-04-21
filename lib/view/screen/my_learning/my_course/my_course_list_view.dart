@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/model/course.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/category_card.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/my_course/my_course_card.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/my_course_card.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/popular_screen/populars_card.dart';
 
 import '../../../../controller/controllers.dart';
