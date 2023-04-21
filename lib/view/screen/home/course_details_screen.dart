@@ -19,7 +19,6 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../model/category.dart';
 import '../../../model/recommend.dart';
-import '../my_learning/course_details_content_screen/course_details_content_screen.dart';
 
 // ignore: must_be_immutable
 class CourseDetailsScreen extends StatefulWidget {
