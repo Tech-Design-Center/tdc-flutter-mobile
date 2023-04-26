@@ -45,7 +45,7 @@ class MyCourseCard extends StatelessWidget {
               right: 50,
               top: 12.0,
               bottom: 12.0,
-            ).r,
+            ),
             decoration: BoxDecoration(
               color: ColorConstant.whiteA700,
               borderRadius: BorderRadius.circular(
@@ -78,7 +78,7 @@ class MyCourseCard extends StatelessWidget {
                     left: 16,
                     top: 16,
                     bottom: 16,
-                  ).r,
+                  ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(
                       ScreenUtil().setWidth(
@@ -102,7 +102,7 @@ class MyCourseCard extends StatelessWidget {
                     top: 21,
                     right: 25,
                     bottom: 19,
-                  ).r,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +115,7 @@ class MyCourseCard extends StatelessWidget {
                         margin: REdgeInsets.only(
                           left: 20,
                           right: 8,
-                        ).r,
+                        ),
                         child: Text(
                           course.title![index],
                           maxLines: null,
@@ -134,7 +134,7 @@ class MyCourseCard extends StatelessWidget {
                         padding: REdgeInsets.only(
                           left: 20,
                           top: 20,
-                        ).r,
+                        ),
                         child: Text(
                           "Teach by : '${course.author![index]}",
                           overflow: TextOverflow.ellipsis,

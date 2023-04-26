@@ -32,7 +32,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                     child: Container(
                   width: ScreenUtil().screenWidth,
                   height: 1000.h,
-                  // decoration: BoxDecoration(color: Colors.red),
+                  // decoration: BoxDecoration(color: Colors ed),
                 )),
 
                 //background
@@ -58,7 +58,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                         children: [
                           Padding(
                             padding: REdgeInsets.only(
-                              bottom: 0,
+                              bottom: 15,
                               left: 29,
                               right: 29,
                             ),
@@ -80,7 +80,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                   foregroundImage: NetworkImage(
                                     profileImage!,
                                   ),
-                                  radius: 225.r,
+                                  radius: 70,
                                 ),
                               ),
                             ),
@@ -158,7 +158,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       decoration: BoxDecoration(
                           // color: Colors.blue,
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
+                              topLeft: Radius.circular(30 ), topRight: Radius.circular(30 ))),
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -183,7 +183,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                             SectionSettingCard(name: 'About Us', icon: Icons.people),
                             SectionSettingCard(name: 'Term & Conditions', icon: Icons.task),
                             Padding(
-                              padding: REdgeInsets.only(top: 200, bottom: 400).r,
+                              padding: REdgeInsets.only(top: 200, bottom: 400) ,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -200,7 +200,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                       ),
                                       decoration: BoxDecoration(
                                         color: ColorConstant.redA700A2,
-                                        borderRadius: BorderRadius.circular(30).r,
+                                        borderRadius: BorderRadius.circular(30) ,
                                       ),
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,

@@ -19,7 +19,7 @@ class MyCourseListView extends StatelessWidget {
         left: 24,
         top: 35,
         right: 24,
-      ).r,
+      ),
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,

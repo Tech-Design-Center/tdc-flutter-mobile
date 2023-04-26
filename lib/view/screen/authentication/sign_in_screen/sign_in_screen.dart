@@ -50,11 +50,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: REdgeInsets.only(
                           left: 24,
                           top: 70,
                           right: 24,
-                        ).r,
+                        ),
                         child: Image(
                           image: AssetImage('assets/images/logo.png'),
                           height: ScreenUtil().setHeight(600),
@@ -65,11 +65,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: ScreenUtil().setWidth(
                           1000.00,
                         ),
-                        margin: EdgeInsets.only(
+                        margin: REdgeInsets.only(
                           left: 24,
                           top: 30,
                           right: 24,
-                        ).r,
+                        ),
                         child: Text(
                           "Login to access\n your course",
                           maxLines: null,
@@ -89,11 +89,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: ScreenUtil().setWidth(
                           1000.00,
                         ),
-                        margin: EdgeInsets.only(
+                        margin: REdgeInsets.only(
                           left: 24,
                           top: 16,
                           right: 24,
-                        ).r,
+                        ),
                         child: Text(
                           "If continuing, you have agreed to our Terms of service and confirm you have read our Privacy and Cookie Statement",
                           maxLines: null,
@@ -111,7 +111,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       //input
                       Container(
-                        padding: EdgeInsets.only(left: 90, right: 90, top: 50).r,
+                        padding: REdgeInsets.only(left: 90, right: 90, top: 50),
                         alignment: Alignment.center,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -119,11 +119,11 @@ class _SignInScreenState extends State<SignInScreen> {
                           children: [
                             Container(
                               width: ScreenUtil().screenWidth,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 20,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -138,19 +138,19 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Email",
                                               overflow: TextOverflow.ellipsis,
@@ -167,9 +167,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -189,7 +189,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding: const EdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: emailController,
                                       keyboardType: TextInputType.emailAddress,
@@ -219,11 +219,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             Container(
                               width: double.infinity,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -238,20 +238,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         top: 30,
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Password",
                                               overflow: TextOverflow.ellipsis,
@@ -268,9 +268,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -290,7 +290,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: passwordController,
                                       keyboardType: TextInputType.visiblePassword,
@@ -377,11 +377,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Container(
                           width: ScreenUtil().setWidth(1100),
                           height: ScreenUtil().setHeight(190),
-                          margin: EdgeInsets.only(
+                          margin: REdgeInsets.only(
                             left: 19,
                             top: 20,
                             right: 19,
-                          ).r,
+                          ),
                           alignment: Alignment.center,
                           child: Text(
                             'Login',
@@ -392,7 +392,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       Container(
                         alignment: Alignment.center,
-                        margin: EdgeInsets.only(top: 13).r,
+                        margin: REdgeInsets.only(top: 13),
                         child: TextButton(
                           style: ButtonStyle(
                             foregroundColor:
@@ -405,7 +405,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             );
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(50).w,
+                            padding:  REdgeInsets.all(50),
                             child: Container(
                               width: 0.8.sw,
                               child: Column(

@@ -107,7 +107,7 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         ),
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(60).w,
+                          padding: REdgeInsets.all(60),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -146,7 +146,7 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         ),
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(60).w,
+                          padding: REdgeInsets.all(60),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -190,7 +190,7 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         ),
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(60).w,
+                          padding: REdgeInsets.all(60),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -231,12 +231,12 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                         child: Container(
                           alignment: Alignment.center,
                           height: 220.h,
-                          margin: EdgeInsets.only(
+                          margin: REdgeInsets.only(
                             top: 10,
                             bottom: 60,
                             left: 100,
                             right: 100,
-                          ).r,
+                          ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                             color: Colors.blueAccent,

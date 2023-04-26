@@ -55,11 +55,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
+                        padding: REdgeInsets.only(
                           left: 24,
                           top: 70,
                           right: 24,
-                        ).r,
+                        ),
                         child: Image(
                           image: AssetImage('assets/images/logo.png'),
                           height: ScreenUtil().setHeight(600),
@@ -70,11 +70,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: ScreenUtil().setWidth(
                           1000.00,
                         ),
-                        margin: EdgeInsets.only(
+                        margin: REdgeInsets.only(
                           left: 24,
                           top: 30,
                           right: 24,
-                        ).r,
+                        ),
                         child: Text(
                           "Register",
                           maxLines: null,
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //input
                       Container(
                         padding:
-                            EdgeInsets.only(left: 90, right: 90, top: 50).r,
+                        REdgeInsets.only(left: 90, right: 90, top: 50),
                         alignment: Alignment.center,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -102,11 +102,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //full name
                             Container(
                               width: ScreenUtil().screenWidth,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -121,10 +121,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -133,9 +133,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Full Name",
                                               overflow: TextOverflow.ellipsis,
@@ -152,9 +152,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -174,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: fullNameController,
                                       keyboardType: TextInputType.name,
@@ -205,11 +205,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //Phone Number
                             Container(
                               width: ScreenUtil().screenWidth,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -224,10 +224,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -236,9 +236,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Phone Number",
                                               overflow: TextOverflow.ellipsis,
@@ -255,9 +255,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -277,7 +277,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: phoneController,
                                       keyboardType: TextInputType.name,
@@ -308,11 +308,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //email
                             Container(
                               width: ScreenUtil().screenWidth,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -327,10 +327,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -339,9 +339,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Email",
                                               overflow: TextOverflow.ellipsis,
@@ -358,9 +358,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -380,7 +380,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding:  REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: emailController,
                                       keyboardType: TextInputType.emailAddress,
@@ -413,11 +413,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //password
                             Container(
                               width: double.infinity,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -432,11 +432,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         top: 30,
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -445,9 +445,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Password",
                                               overflow: TextOverflow.ellipsis,
@@ -464,9 +464,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -486,7 +486,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       keyboardType:
                                           TextInputType.visiblePassword,
@@ -568,11 +568,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //re-type password
                             Container(
                               width: double.infinity,
-                              margin: EdgeInsets.only(
+                              margin: REdgeInsets.only(
                                 left: 24,
                                 top: 50,
                                 right: 24,
-                              ).r,
+                              ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                   ScreenUtil().setWidth(
@@ -587,11 +587,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: REdgeInsets.only(
                                         top: 30,
                                         left: 20,
                                         right: 20,
-                                      ).r,
+                                      ),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -600,9 +600,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 2,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Re-Type Password",
                                               overflow: TextOverflow.ellipsis,
@@ -619,9 +619,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               bottom: 3,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               " *",
                                               overflow: TextOverflow.ellipsis,
@@ -641,7 +641,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 30).r,
+                                    padding:  REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       keyboardType:
                                           TextInputType.visiblePassword,
@@ -696,7 +696,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.all(60).w,
+                        padding: REdgeInsets.all(60),
                         child: Column(
                           children: [
                             ElevatedButton(
@@ -722,11 +722,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: Container(
                                 width: ScreenUtil().setWidth(1100),
                                 height: ScreenUtil().setHeight(190),
-                                margin: EdgeInsets.only(
+                                margin: REdgeInsets.only(
                                   left: 19,
                                   top: 20,
                                   right: 19,
-                                ).r,
+                                ),
                                 alignment: Alignment.center,
                                 child: Text(
                                   'Register',
@@ -736,7 +736,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             Container(
                               alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: 13).r,
+                              margin: REdgeInsets.only(top: 13),
                               child: TextButton(
                                 style: ButtonStyle(
                                   foregroundColor:
@@ -744,11 +744,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           Colors.black.withOpacity(0.8)),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignInScreen()),
-                                  );
+                                  Navigator.pop(context);
                                 },
                                 child: Container(
                                   width: 0.9.sw,

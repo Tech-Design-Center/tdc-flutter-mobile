@@ -314,7 +314,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           //body
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                            REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -350,7 +350,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -386,7 +386,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -419,7 +419,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -463,7 +463,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -508,7 +508,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -559,7 +559,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -616,7 +616,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 100, bottom: 200).r,
+                            padding:  REdgeInsets.only(top: 100, bottom: 200),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

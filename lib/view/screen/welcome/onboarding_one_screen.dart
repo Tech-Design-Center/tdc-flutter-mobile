@@ -57,7 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20).r,
+                          padding: REdgeInsets.only(left: 20, right: 20) ,
                           child: Image(
                             image: AssetImage('assets/images/onBoarding1.png'),
                             height: ScreenUtil().setHeight(1500),
@@ -69,11 +69,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Align(
                           alignment: Alignment.center,
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 0,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome, Student",
                               maxLines: null,
@@ -94,11 +94,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             width: ScreenUtil().setWidth(
                               1200.00,
                             ),
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 20,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome to Tech Design Center E-Learning\n The Best E-Learning to learn and improve\n your skills.",
                               maxLines: null,
@@ -121,7 +121,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20).r,
+                          padding: REdgeInsets.only(left: 20, right: 20) ,
                           child: Image(
                             image: AssetImage('assets/images/onBoarding2.png'),
                             height: ScreenUtil().setHeight(1500),
@@ -133,11 +133,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Align(
                           alignment: Alignment.center,
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 0,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome, Student",
                               maxLines: null,
@@ -158,11 +158,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             width: ScreenUtil().setWidth(
                               1000.00,
                             ),
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 20,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome to Tech Design Center E-Learning\n The Best E-Learning to learn and improve\n your skills.",
                               maxLines: null,
@@ -185,7 +185,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20).r,
+                          padding: REdgeInsets.only(left: 20, right: 20) ,
                           child: Image(
                             image: AssetImage('assets/images/onBoarding3.png'),
                             height: ScreenUtil().setHeight(1500),
@@ -197,11 +197,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Align(
                           alignment: Alignment.center,
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 0,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome, Student",
                               maxLines: null,
@@ -222,11 +222,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             width: ScreenUtil().setWidth(
                               1000.00,
                             ),
-                            margin: EdgeInsets.only(
+                            margin: REdgeInsets.only(
                               left: 19,
                               top: 20,
                               right: 19,
-                            ).r,
+                            ) ,
                             child: Text(
                               "Welcome to Tech Design Center E-Learning\n The Best E-Learning to learn and improve\n your skills.",
                               maxLines: null,
@@ -249,15 +249,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 20).r,
+                  padding: REdgeInsets.only(bottom: 20) ,
                   height: ScreenUtil().setHeight(
                     150.00,
                   ),
-                  margin: EdgeInsets.only(
+                  margin: REdgeInsets.only(
                     left: 19,
                     top: 10,
                     right: 19,
-                  ).r,
+                  ) ,
                   child: AnimatedSmoothIndicator(
                     activeIndex: currentIndex,
                     count: 3,
@@ -297,11 +297,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Container(
                   width: ScreenUtil().setWidth(1000),
                   height: ScreenUtil().setHeight(190),
-                  margin: EdgeInsets.only(
+                  margin: REdgeInsets.only(
                     left: 19,
                     top: 12,
                     right: 19,
-                  ).r,
+                  ) ,
                   alignment: Alignment.center,
                   child: Text(
                     'Continue',
@@ -312,12 +312,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.only(
+                  padding: REdgeInsets.only(
                     left: 19,
                     top: 17,
                     right: 19,
                     bottom: 20,
-                  ).r,
+                  ) ,
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
@@ -326,9 +326,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           (Route<dynamic> route) => false);
                     },
                     child: Container(
-                      padding: EdgeInsets.only(
+                      padding: REdgeInsets.only(
                               bottom: 80, top: 50, left: 100, right: 100)
-                          .r,
+                           ,
                       alignment: Alignment.center,
                       width: 5.sw,
                       child: Text(

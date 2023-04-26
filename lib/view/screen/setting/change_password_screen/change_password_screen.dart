@@ -159,7 +159,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           //body
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -215,7 +215,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,7 +272,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150).r,
+                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -335,7 +335,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
 
                           Padding(
-                            padding: const EdgeInsets.only(top: 100, bottom: 200).r,
+                            padding:  REdgeInsets.only(top: 100, bottom: 200),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -354,11 +354,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         child: Container(
                                           width: ScreenUtil().setWidth(900),
                                           height: ScreenUtil().setHeight(190),
-                                          margin: EdgeInsets.only(
+                                          margin: REdgeInsets.only(
                                             left: 19,
                                             top: 20,
                                             right: 19,
-                                          ).r,
+                                          ),
                                           alignment: Alignment.center,
                                           child: Text(
                                             'Save',
@@ -384,11 +384,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         child: Container(
                                           width: ScreenUtil().setWidth(900),
                                           height: ScreenUtil().setHeight(190),
-                                          margin: EdgeInsets.only(
+                                          margin: REdgeInsets.only(
                                             left: 19,
                                             top: 20,
                                             right: 19,
-                                          ).r,
+                                          ),
                                           alignment: Alignment.center,
                                           child: Text(
                                             'Save',

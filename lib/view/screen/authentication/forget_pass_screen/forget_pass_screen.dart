@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../sign_in_screen/sign_in_screen.dart';
 
@@ -65,105 +66,53 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                   ),
                   //input
                   Container(
-                    padding: EdgeInsets.only(left: 90, right: 90, top: 50).r,
+                    padding: REdgeInsets.only(left: 90, right: 90, top: 50),
                     alignment: Alignment.center,
-                    child: Column(
+                    child:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //email
-                        Container(
-                          width: ScreenUtil().screenWidth,
-                          margin: EdgeInsets.only(
-                            left: 24,
-                            top: 20,
-                            right: 24,
-                          ).r,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              ScreenUtil().setWidth(
-                                2.00,
+                        Text("Please Contact to Tech Design Center Telegram\nto recover your password",textAlign: TextAlign.center,style: TextStyle(fontSize: 15),),
+                        SizedBox(height: 100.h,),
+                        InkWell(
+                          onTap: () async {
+                            await launch(
+                              "https://t.me/Techdesigncenter",
+                              forceSafariVC: false,
+                              forceWebView: false,
+                              headers: <String, String>{'my_header_key': 'my_header_value'},
+                            );
+                          },
+                          child: Container(
+                            height: ScreenUtil().setHeight(200),
+                            width: ScreenUtil().setWidth(1200),
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 0.8, color: Colors.grey),
+                              borderRadius: BorderRadius.all(Radius.circular(30).w),
+                            ),
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: REdgeInsets.all(60),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.telegram,
+                                    size: 80.h,
+                                    color: Colors.blueAccent,
+                                  ),
+                                  SizedBox(
+                                    width: 50.h,
+                                  ),
+                                  Text(
+                                    "Telegram : @Techdesigncenter ",
+                                    style: TextStyle(
+                                        fontSize: 60.sp, color: Colors.black.withOpacity(0.7)),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 20,
-                                    right: 20,
-                                  ).r,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          top: 2,
-                                        ).r,
-                                        child: Text(
-                                          "Email",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: ScreenUtil().setSp(
-                                              65,
-                                            ),
-                                            fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w500,
-                                            height: 1.00,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          bottom: 3,
-                                        ).r,
-                                        child: Text(
-                                          " *",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontSize: ScreenUtil().setSp(
-                                              60,
-                                            ),
-                                            fontFamily: 'Source Sans Pro',
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 30).r,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(5.0)),
-                                          borderSide:
-                                              BorderSide(color: Colors.grey)),
-                                      hintText: 'Email'),
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ],
@@ -174,29 +123,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
 
                   Column(
                     children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.blue)))),
-                        onPressed: () {},
-                        child: Container(
-                          width: ScreenUtil().setWidth(1100),
-                          height: ScreenUtil().setHeight(190),
-                          margin: EdgeInsets.only(
-                            left: 19,
-                            top: 20,
-                            right: 19,
-                          ).r,
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Register',
-                            style: TextStyle(fontSize: 65.sp),
-                          ),
-                        ),
-                      ),
+
                       Container(
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(top: 13).r,

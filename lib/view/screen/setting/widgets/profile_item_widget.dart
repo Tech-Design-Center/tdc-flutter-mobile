@@ -43,12 +43,12 @@ class ProfileItemWidget extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding:  EdgeInsets.only(
+                padding:  REdgeInsets.only(
                                        
                   left: 12,
                   top: 12,
                   right: 12,
-                ).r,
+                ) ,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(
                     ScreenUtil().setWidth(
@@ -67,12 +67,12 @@ class ProfileItemWidget extends StatelessWidget {
               width: ScreenUtil().setWidth(
                 110.00,
               ),
-              margin: EdgeInsets.only(
+              margin: REdgeInsets.only(
                                  
                 left: 12,
                 top: 17,
                 right: 12,
-              ).r,
+              ) ,
               child: Text(
                 "Illustration: Find your Art Style",
                 maxLines: null,
@@ -89,25 +89,25 @@ class ProfileItemWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.only(
+              padding:  REdgeInsets.only(
                                        
                 left: 12,
                 top: 5,
                 right: 12,
                 bottom: 13,
-              ).r,
+              ) ,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.only(
+                    padding:  REdgeInsets.only(
                                        
                       left: 2,
                       top: 2,
                       bottom: 2,
-                    ).r,
+                    ) ,
                     child: Image(
                       image: AssetImage(ImageConstant.imgThumbsup,),
                       height: ScreenUtil().setHeight(200),
@@ -115,12 +115,12 @@ class ProfileItemWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(
+                    padding:  REdgeInsets.only(
                                        
                       left: 6,
                       top: 1,
                       bottom: 2,
-                    ).r,
+                    ) ,
                     child: Text(
                       "1.000",
                       overflow: TextOverflow.ellipsis,
