@@ -9,7 +9,7 @@ import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:tdc_frontend_mobile/service/push_notification_service.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'firebase_options.dart';
 
 ///create object

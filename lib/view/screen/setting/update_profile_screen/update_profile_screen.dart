@@ -9,7 +9,7 @@ import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 import 'package:flutter/cupertino.dart';
 
