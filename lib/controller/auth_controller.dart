@@ -115,7 +115,6 @@ class AuthController extends GetxController {
       {required String email,
       required String password,
       required String? oldEmail,
-      required String userName,
       required String surName,
       required String name,
       required String phoneNumber,
@@ -142,7 +141,6 @@ class AuthController extends GetxController {
             surName: surName,
             imageURL: imageURL,
             email: email,
-            userName: userName,
             name: name,
             fullName: fullName,
             gender: gender);
