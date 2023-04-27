@@ -21,54 +21,54 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController surNameController = TextEditingController();
-  TextEditingController? nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController birthdayController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  bool _passwordVisible = false;
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _surNameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _birthdayController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
+  bool _passwordVisible = false;
   bool _isTextFieldEmpty = true;
   @override
   void initState() {
     super.initState();
-    fullNameController.addListener(() {
+    _fullNameController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = fullNameController.text.isEmpty;
+        _isTextFieldEmpty = _fullNameController.text.isEmpty;
       });
     });
-    surNameController.addListener(() {
+    _surNameController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = surNameController.text.isEmpty;
+        _isTextFieldEmpty = _surNameController.text.isEmpty;
       });
     });
-    nameController!.addListener(() {
+    _nameController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = nameController!.text.isEmpty;
+        _isTextFieldEmpty = _nameController.text.isEmpty;
       });
     });
-    emailController.addListener(() {
+    _emailController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = emailController.text.isEmpty;
-      });
-    });
-
-    phoneNumberController.addListener(() {
-      setState(() {
-        _isTextFieldEmpty = phoneNumberController.text.isEmpty;
+        _isTextFieldEmpty = _emailController.text.isEmpty;
       });
     });
 
-    birthdayController.addListener(() {
+    _phoneNumberController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = birthdayController.text.isEmpty;
+        _isTextFieldEmpty = _phoneNumberController.text.isEmpty;
       });
     });
-    passwordController.addListener(() {
+
+    _birthdayController.addListener(() {
       setState(() {
-        _isTextFieldEmpty = passwordController.text.isEmpty;
+        _isTextFieldEmpty = _birthdayController.text.isEmpty;
+      });
+    });
+    _passwordController.addListener(() {
+      setState(() {
+        _isTextFieldEmpty = _passwordController.text.isEmpty;
       });
     });
   }
@@ -146,12 +146,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   @override
   void dispose() {
-    fullNameController.dispose();
-    surNameController.dispose();
-    nameController!.dispose();
-    emailController.dispose();
-    phoneNumberController.dispose();
-    birthdayController.dispose();
+    _fullNameController.dispose();
+    _surNameController.dispose();
+    _nameController!.dispose();
+    _emailController.dispose();
+    _phoneNumberController.dispose();
+    _birthdayController.dispose();
     super.dispose();
   }
 
@@ -313,8 +313,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         children: [
                           //body
                           Padding(
-                            padding:
-                            REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,7 +330,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: fullNameController,
+                                  controller: _fullNameController,
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -349,8 +348,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -367,7 +365,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: surNameController,
+                                  controller: _surNameController,
                                   keyboardType: TextInputType.text,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -385,8 +383,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -400,7 +397,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 TextFormField(
-                                  controller: nameController,
+                                  controller: _nameController,
                                   keyboardType: TextInputType.text,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -418,8 +415,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -436,7 +432,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: emailController,
+                                  controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -462,8 +458,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -480,7 +475,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: phoneNumberController,
+                                  controller: _phoneNumberController,
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -507,8 +502,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           ),
 
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -525,7 +519,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: birthdayController,
+                                  controller: _birthdayController,
                                   keyboardType: TextInputType.datetime,
                                   textInputAction: TextInputAction.done,
                                   autocorrect: false,
@@ -558,8 +552,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -576,7 +569,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   height: 40.h,
                                 ),
                                 TextFormField(
-                                  controller: passwordController,
+                                  controller: _passwordController,
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.done,
                                   obscureText: !_passwordVisible,
@@ -616,7 +609,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                           ),
                           Padding(
-                            padding:  REdgeInsets.only(top: 100, bottom: 200),
+                            padding: REdgeInsets.only(top: 100, bottom: 200),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -658,18 +651,40 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           _saveData();
                                           SharedPreferences prefs =
                                               await SharedPreferences.getInstance();
-                                          String? imageURL = prefs.getString('imageURL');
+                                          String? _imageURL = prefs.getString('imageURL');
+
+                                          ///if user not update their info then save current data
+                                          String fullName = _fullNameController.text.isEmpty
+                                              ? authController.user.value!.fullName!
+                                              : _fullNameController.text;
+                                          String email = _emailController.text.isEmpty
+                                              ? authController.user.value!.email!
+                                              : _emailController.text;
+                                          String surName = _surNameController.text.isEmpty
+                                              ? authController.user.value!.surname!
+                                              : _surNameController.text;
+                                          String name = _nameController.text.isEmpty
+                                              ? authController.user.value!.name!
+                                              : _nameController.text;
+                                          String phoneNumber = _phoneNumberController.text.isEmpty
+                                              ? authController.user.value!.phoneNumber.toString()
+                                              : _phoneNumberController.text;
+                                          String image = _imageURL!.isEmpty
+                                              ? authController.user.value!.imageURL!
+                                              : _imageURL;
+                                          String birthday = _birthdayController.text.isEmpty
+                                              ? authController.user.value!.imageURL.toString()
+                                              : _birthdayController.text;
                                           authController.updateUser(
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                            userName: fullNameController.text,
-                                            surName: surNameController.text,
-                                            name: nameController!.text,
-                                            phoneNumber: phoneNumberController.text,
-                                            imageURL: imageURL,
-                                            birthday: birthdayController.text,
+                                            email: email,
+                                            password: _passwordController.text,
+                                            surName: surName,
+                                            name: name,
+                                            phoneNumber: phoneNumber,
+                                            imageURL: image,
+                                            birthday: birthday,
                                             oldEmail: authController.user.value!.email,
-                                            fullName: fullNameController.text,
+                                            fullName: fullName,
                                             gender: '',
                                           );
                                         },

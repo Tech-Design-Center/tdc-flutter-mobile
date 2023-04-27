@@ -63,7 +63,6 @@ class RemoteAuthService {
   Future<dynamic> updateProfile({
     required String? token,
     required String? fullName,
-    required String? userName,
     required String? surName,
     required String? name,
     required String? email,
@@ -74,7 +73,6 @@ class RemoteAuthService {
   }) async {
     var body = {
       "email": email,
-      "userName": userName,
       "fullName": fullName,
       "surName": surName,
       "name": name,
