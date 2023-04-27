@@ -6,7 +6,7 @@ import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 import '../../../../controller/setting_controller.dart';
@@ -158,8 +158,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         children: [
                           //body
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,8 +213,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -271,8 +269,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
 
                           Padding(
-                            padding:
-                                 REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -335,7 +332,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
 
                           Padding(
-                            padding:  REdgeInsets.only(top: 100, bottom: 200),
+                            padding: REdgeInsets.only(top: 100, bottom: 200),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -375,6 +372,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                                         side: BorderSide(color: Colors.blue)))),
                                         onPressed: () {
                                           _saveData();
+
                                           authController.changePassword(
                                               email: authController.user.value!.email!,
                                               currentPassword: currentPasswordController.text,

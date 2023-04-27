@@ -8,7 +8,7 @@ import 'package:tdc_frontend_mobile/view/screen/setting/change_password_screen/c
 import 'package:tdc_frontend_mobile/view/screen/setting/update_profile_screen/update_profile_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/widgets/section_card.dart';
 
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_one_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -158,7 +158,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                       decoration: BoxDecoration(
                           // color: Colors.blue,
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30 ), topRight: Radius.circular(30 ))),
+                              topLeft: Radius.circular(30), topRight: Radius.circular(30))),
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -183,7 +183,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                             SectionSettingCard(name: 'About Us', icon: Icons.people),
                             SectionSettingCard(name: 'Term & Conditions', icon: Icons.task),
                             Padding(
-                              padding: REdgeInsets.only(top: 200, bottom: 400) ,
+                              padding: REdgeInsets.only(top: 200, bottom: 400),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -200,7 +200,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                       ),
                                       decoration: BoxDecoration(
                                         color: ColorConstant.redA700A2,
-                                        borderRadius: BorderRadius.circular(30) ,
+                                        borderRadius: BorderRadius.circular(30),
                                       ),
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,

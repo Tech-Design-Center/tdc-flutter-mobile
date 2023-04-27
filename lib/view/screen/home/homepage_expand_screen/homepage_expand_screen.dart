@@ -28,7 +28,7 @@ import '../../../../controller/controllers.dart';
 
 import '../../../../model/recommend.dart';
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
-import '../../welcome/onboarding_one_screen.dart';
+import '../../welcome/onboarding_screen.dart';
 import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
 
 import 'package:flutter/material.dart';

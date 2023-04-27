@@ -208,10 +208,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                     alignment: Alignment.bottomLeft,
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(
+                        margin: REdgeInsets.only(
                           top: 40,
                           bottom: 10,
-                        ).r,
+                        ),
                         //padding: EdgeInsets.only(top: 20).r,
                         decoration: BoxDecoration(
                           color: ColorConstant.gray50,
@@ -235,12 +235,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(
+                                padding: REdgeInsets.only(
                                   bottom: 40,
                                   left: 24,
                                   top: 0,
                                   right: 24,
-                                ).r,
+                                ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -263,17 +263,17 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.only(
+                                      margin: REdgeInsets.only(
                                         left: 50,
                                         top: 5,
-                                      ).r,
+                                      ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            widget.title!,
+                                            widget.videoTitle!,
                                             overflow: TextOverflow.fade,
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
@@ -286,10 +286,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 10,
                                               right: 10,
-                                            ).r,
+                                            ),
                                             child: SizedBox(
                                               width: MediaQuery.of(context).size.width * 0.6,
                                               child: Text(
