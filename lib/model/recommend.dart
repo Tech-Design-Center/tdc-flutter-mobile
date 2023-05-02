@@ -7,6 +7,9 @@ class Recommend {
   final int? id;
   final String? image;
   final String? title;
+  final String? documentURL;
+  final String? telegramURL;
+  final String? examURL;
   final String? author;
   final String? description;
   final String? about;
@@ -23,6 +26,9 @@ class Recommend {
     required this.id,
     required this.image,
     required this.title,
+    required this.documentURL,
+    required this.examURL,
+    required this.telegramURL,
     required this.author,
     required this.description,
     required this.about,
@@ -41,6 +47,9 @@ class Recommend {
       image: data['attributes']['course']['data']['attributes']['image']['data']['attributes']
           ['url'],
       title: data['attributes']['course']['data']['attributes']['title'],
+      documentURL: data['attributes']['course']['data']['attributes']['documentURL'],
+      examURL: data['attributes']['course']['data']['attributes']['examURL'],
+      telegramURL: data['attributes']['course']['data']['attributes']['telegramURL'],
       author: data['attributes']['course']['data']['attributes']['author'],
       description: data['attributes']['course']['data']['attributes']['description'],
       about: data['attributes']['course']['data']['attributes']['about'],

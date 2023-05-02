@@ -7,6 +7,10 @@ class Course {
   final String? email;
   final List<DateTime>? purchaseDate;
   final List<String>? image;
+  final List<String>? documentURL;
+  final List<String>? examURL;
+  final List<String>? telegramURL;
+
   final List<String>? title;
   final List<String>? author;
   final List<String>? description;
@@ -21,6 +25,9 @@ class Course {
 
   Course({
     required this.email,
+    required this.documentURL,
+    required this.examURL,
+    required this.telegramURL,
     required this.purchaseDate,
     required this.image,
     required this.title,
@@ -42,6 +49,12 @@ class Course {
       purchaseDate: List<DateTime>.from(
           data['course_user_links'].map((data) => DateTime.parse(data['createdAt'].toString()))),
       about: List<String>.from(data['course_user_links'].map((data) => data['course']['about'])),
+      documentURL:
+          List<String>.from(data['course_user_links'].map((data) => data['course']['documentURL'])),
+      examURL:
+          List<String>.from(data['course_user_links'].map((data) => data['course']['examURL'])),
+      telegramURL:
+          List<String>.from(data['course_user_links'].map((data) => data['course']['telegramURL'])),
       image: List<String>.from(
           data['course_user_links'].map((data) => data['course']['image']['url'])),
       title: List<String>.from(data['course_user_links'].map((data) => data['course']['title'])),
