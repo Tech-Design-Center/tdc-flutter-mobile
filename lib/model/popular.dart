@@ -7,6 +7,10 @@ class Popular {
   final int? id;
   final String? image;
   final String? title;
+  final String? documentURL;
+  final String? telegramURL;
+  final String? examURL;
+
   final String? author;
   final String? description;
   final String? about;
@@ -21,6 +25,9 @@ class Popular {
   Popular({
     required this.id,
     required this.image,
+    required this.documentURL,
+    required this.examURL,
+    required this.telegramURL,
     required this.title,
     required this.author,
     required this.description,
@@ -40,6 +47,9 @@ class Popular {
       image: data['attributes']['course']['data']['attributes']['image']['data']['attributes']
           ['url'],
       title: data['attributes']['course']['data']['attributes']['title'],
+      documentURL: data['attributes']['course']['data']['attributes']['documentURL'],
+      examURL: data['attributes']['course']['data']['attributes']['examURL'],
+      telegramURL: data['attributes']['course']['data']['attributes']['telegramURL'],
       author: data['attributes']['course']['data']['attributes']['author'],
       description: data['attributes']['course']['data']['attributes']['description'],
       about: data['attributes']['course']['data']['attributes']['about'],

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-  List<Category> categoryListFromJson(String val) => List<Category>.from(
+List<Category> categoryListFromJson(String val) => List<Category>.from(
     json.decode(val)['data'].map((category) => Category.categoryFromJson(category)));
 
 class Category {
@@ -8,13 +8,17 @@ class Category {
   final String? name;
   final String? image;
   final List<String>? title;
+  final List<String>? documentURL;
+  final List<String>? examURL;
+  final List<String>? telegramURL;
+
   final List<String>? description;
   final List<String>? author;
   final List<String>? about;
   final List<int>? duration;
   final List<int>? price;
   final List<String>? imageCourse;
-  final List<String>? videoTrailerURL;  
+  final List<String>? videoTrailerURL;
   final List<String>? ABAPaymentURL;
 
   final List<List<String>>? playlistTitle;
@@ -23,6 +27,9 @@ class Category {
   Category({
     required this.id,
     required this.name,
+    required this.documentURL,
+    required this.examURL,
+    required this.telegramURL,
     required this.image,
     required this.title,
     required this.description,
@@ -31,9 +38,8 @@ class Category {
     required this.duration,
     required this.price,
     required this.imageCourse,
-    required this.videoTrailerURL,    
+    required this.videoTrailerURL,
     required this.ABAPaymentURL,
-
     required this.playlistTitle,
     required this.videoTitle,
     required this.videoUrl,
@@ -46,6 +52,12 @@ class Category {
       image: data['attributes']['image']['data']['attributes']['url'],
       title: List<String>.from(
           data['attributes']['courses']['data'].map((title) => title['attributes']['title'])),
+      documentURL: List<String>.from(
+          data['attributes']['courses']['data'].map((title) => title['attributes']['documentURL'])),
+      examURL: List<String>.from(
+          data['attributes']['courses']['data'].map((title) => title['attributes']['examURL'])),
+      telegramURL: List<String>.from(
+          data['attributes']['courses']['data'].map((title) => title['attributes']['telegramURL'])),
       description: List<String>.from(data['attributes']['courses']['data']
           .map((description) => description['attributes']['description'])),
       author: List<String>.from(
@@ -60,8 +72,8 @@ class Category {
           .map((imageCourse) => imageCourse['attributes']['image']['data']['attributes']['url'])),
       videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
           .map((videoTrailerURL) => videoTrailerURL['attributes']['videoTrailerURL'])),
-      ABAPaymentURL: List<String>.from(data['attributes']['courses']['data']
-          .map((data) => data['attributes']['ABAPaymentURL'])),
+      ABAPaymentURL: List<String>.from(
+          data['attributes']['courses']['data'].map((data) => data['attributes']['ABAPaymentURL'])),
       playlistTitle: List<List<String>>.from(data['attributes']['courses']['data'].map((data) =>
           List<String>.from(data['attributes']['playlist_video_urls']['data']
               .map((data) => data['attributes']['title'])))),
