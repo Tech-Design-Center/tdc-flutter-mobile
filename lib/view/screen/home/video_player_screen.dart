@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:pod_player/pod_player.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/pdf_view_screen/pdf_view_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../model/recommend.dart';
 import '../../dashboard_screen.dart';
@@ -309,10 +311,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: REdgeInsets.only(
                                               top: 50,
                                               right: 10,
-                                            ).r,
+                                            ),
                                             child: Text(
                                               "Teach by : ${widget.author}",
                                               overflow: TextOverflow.fade,
@@ -353,7 +355,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                 alignment: Alignment.center,
                                 child: Container(
                                     margin:
-                                        EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20).r,
+                                        REdgeInsets.only(top: 0, right: 20, left: 20, bottom: 20),
                                     decoration: BoxDecoration(
                                       color: ColorConstant.gray100,
                                       borderRadius: BorderRadius.circular(
@@ -426,6 +428,102 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                       fontWeight: FontWeight.normal),
                                                 )),
                                           ),
+
+                                          Padding(
+                                            padding: REdgeInsets.only(
+                                                left: 35,
+                                                top: 60,
+                                                right: 35,
+                                                bottom: 40)
+                                            ,
+                                            child: Text(
+                                              'Documents',
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontSize: ScreenUtil().setSp(
+                                                  80,
+                                                ),
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w600,
+                                                height: 1.00,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: TextButton(
+
+                                              onPressed: () {
+                                                deactivate();
+                                                Get.to(PdfViewerPage());
+                                              },
+
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Colors.blueAccent,
+                                                  boxShadow: [
+                                                    BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                  ],
+                                                ),
+                                                width: 1000.w,
+                                                height: 150.h,
+
+                                                child: Center(child: Text("Documents",
+                                                  style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                              ),
+                                            ),
+                                          ),
+
+                                          Padding(
+                                            padding: REdgeInsets.only(
+                                                left: 35,
+                                                top: 60,
+                                                right: 35,
+                                                bottom: 40)
+                                            ,
+                                            child: Text(
+                                              'Telegram Group',
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontSize: ScreenUtil().setSp(
+                                                  80,
+                                                ),
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w600,
+                                                height: 1.00,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: TextButton(
+
+                                              onPressed: () async {
+                                                await launch(
+                                                  "https://t.me/Techdesigncenter",
+                                                  forceSafariVC: false,
+                                                  forceWebView: false,
+                                                  headers: <String, String>{'my_header_key': 'my_header_value'},
+                                                );
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(10),
+                                                  color: Colors.blueAccent,
+                                                  boxShadow: [
+                                                    BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                  ],
+                                                ),
+                                                width: 1000.w,
+                                                height: 150.h,
+
+                                                child: Center(child: Text("Telegram",
+                                                  style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                              ),
+                                            ),
+                                          ),
+
                                           Padding(
                                             padding: EdgeInsets.only(
                                                     left: 24, top: 80, right: 24, bottom: 40)

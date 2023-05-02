@@ -14,6 +14,8 @@ import 'package:tdc_frontend_mobile/view/screen/home/enroll_course_screen/enroll
 
 import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/video_player_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/pdf_view_screen/pdf_view_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -527,12 +529,12 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         .videoTitle![index].length,
                                                                     shrinkWrap: true,
                                                                     scrollDirection: Axis.vertical,
-                                                                    padding: EdgeInsets.only(
+                                                                    padding: REdgeInsets.only(
                                                                             top: 40,
                                                                             left: 20,
                                                                             right: 20,
                                                                             bottom: 20)
-                                                                        .r,
+                                                                        ,
                                                                     itemBuilder: (context, index1) {
                                                                       return GestureDetector(
                                                                         onTap: () {
@@ -582,13 +584,14 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
+
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: REdgeInsets.only(
                                                               left: 35,
                                                               top: 60,
                                                               right: 35,
                                                               bottom: 40)
-                                                          .r,
+                                                          ,
                                                       child: Text(
                                                         'Description',
                                                         overflow: TextOverflow.ellipsis,
@@ -620,13 +623,110 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                 fontWeight: FontWeight.normal),
                                                           )),
                                                     ),
+
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35,
+                                                          top: 60,
+                                                          right: 35,
+                                                          bottom: 40)
+                                                      ,
+                                                      child: Text(
+                                                        'Documents',
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Center(
+                                                      child: TextButton(
+
+                                                        onPressed: () {
+                                                          deactivate();
+                                                          Get.to(PdfViewerPage());
+                                                          },
+
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.blueAccent,
+                                                            boxShadow: [
+                                                              BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+
+                                                          child: Center(child: Text("Documents",
+                                                                        style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35,
+                                                          top: 60,
+                                                          right: 35,
+                                                          bottom: 40)
+                                                      ,
+                                                      child: Text(
+                                                        'Telegram Group',
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Center(
+                                                      child: TextButton(
+
+                                                        onPressed: () async {
+                                                          await launch(
+                                                            "https://t.me/Techdesigncenter",
+                                                            forceSafariVC: false,
+                                                            forceWebView: false,
+                                                            headers: <String, String>{'my_header_key': 'my_header_value'},
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.blueAccent,
+                                                            boxShadow: [
+                                                              BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+
+                                                          child: Center(child: Text("Telegram",
+                                                            style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
                                                               left: 24,
                                                               top: 80,
                                                               right: 24,
                                                               bottom: 40)
-                                                          .r,
+                                                          ,
                                                       child: Text(
                                                         "Information",
                                                         overflow: TextOverflow.ellipsis,
@@ -655,10 +755,10 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           Align(
                                                             alignment: Alignment.center,
                                                             child: Padding(
-                                                              padding: EdgeInsets.only(
+                                                              padding: REdgeInsets.only(
                                                                 left: 1,
                                                                 top: 5,
-                                                              ).r,
+                                                              ),
                                                               child: Row(
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment.start,
@@ -828,6 +928,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ),
                                                           );
                                                         })),
+                                                    SizedBox(height: 100.h,)
                                                   ],
                                                 ),
                                               ),
