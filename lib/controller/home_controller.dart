@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/model/notification.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
@@ -126,5 +130,15 @@ class HomeController extends GetxController {
     } finally {
       isNotificationLoading(false);
     }
+  }
+
+  void postNotification({
+    required String? title,
+    required String? description,
+  }) async {
+    await NotificationService().post(
+      title: title,
+      description: description,
+    );
   }
 }

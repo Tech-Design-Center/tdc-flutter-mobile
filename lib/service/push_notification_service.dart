@@ -2,6 +2,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
 
 class PushNotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
@@ -29,7 +30,12 @@ class PushNotificationService {
         debugPrint('Message title: ${message.notification?.title}');
         debugPrint('Message body: ${message.notification?.body}');
 
+        ///display notification
         triggerNotification(title: message.notification!.title, body: message.notification!.body);
+
+        ///post to notification entry
+        homeController.postNotification(
+            title: message.notification!.title, description: message.notification!.body);
         if (message.notification != null) {
           debugPrint('Message also contained a notification: ${message.notification}');
         }
@@ -41,8 +47,13 @@ class PushNotificationService {
       debugPrint('Message data: ${message.data}');
       debugPrint('Message title: ${message.notification?.title}');
       debugPrint('Message body: ${message.notification?.body}');
+
+      ///display notification
       triggerNotification(title: message.notification!.title, body: message.notification!.body);
 
+      ///post to notification entry
+      homeController.postNotification(
+          title: message.notification!.title, description: message.notification!.body);
       if (message.notification != null) {
         debugPrint('Message also contained a notification: ${message.notification}');
       }
@@ -54,7 +65,13 @@ class PushNotificationService {
     debugPrint('Handling a background message ${message.messageId}');
     debugPrint('Message title: ${message.notification?.title}');
     debugPrint('Message body: ${message.notification?.body}');
+
+    ///display notification
     triggerNotification(title: message.notification!.title, body: message.notification!.body);
+
+    ///post to notification entry
+    homeController.postNotification(
+        title: message.notification!.title, description: message.notification!.body);
   }
 
   Future<String?> getToken() async {
