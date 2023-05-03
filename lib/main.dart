@@ -19,6 +19,17 @@ PushNotificationService pushNotificationService = PushNotificationService();
 var token;
 
 Future<void> main() async {
+  AwesomeNotifications().initialize(
+    'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/assets%2Flogo.png?alt=media&token=a89bbc1d-4716-4d6f-ae20-e67a6219c9a7',
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic notifications',
+        channelDescription: 'Notification for basic test',
+      ),
+    ],
+    debug: true,
+  );
   configLoading();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
@@ -42,8 +53,21 @@ Future<void> main() async {
 }
 
 ///Main widget
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) => {
+          if (!isAllowed) {AwesomeNotifications().requestPermissionToSendNotifications()}
+        });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
