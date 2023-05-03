@@ -7,7 +7,7 @@ class NotificationService {
   var remoteUrl = '$baseUrl/api/notifications';
 
   Future<dynamic> get() async {
-    var response = await client.get(Uri.parse('$remoteUrl?populate=image,poster'));
+    var response = await client.get(Uri.parse('$remoteUrl'));
     return response;
   }
 }

@@ -26,23 +26,14 @@ class NotificationCard extends StatelessWidget {
           children: [
             Padding(
               padding: REdgeInsets.all(30),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    foregroundImage: NetworkImage(''),
-                    radius: 120.r,
-                  ),
-                  SizedBox(
-                    width: 40.w,
-                  ),
-                  SizedBox(
-                    width: ScreenUtil().setWidth(850),
-                    child: Padding(
-                      padding: REdgeInsets.all(30.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+              child: SizedBox(
+                child: Padding(
+                  padding: REdgeInsets.all(30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             notifications.title!,
@@ -56,25 +47,6 @@ class NotificationCard extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               height: 5.h,
                             ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Text(
-                            notifications.description!,
-                            overflow: TextOverflow.fade,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(
-                                40,
-                              ),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w400,
-                              height: 5.h,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30.h,
                           ),
                           Text(
                             timeago.format(notifications.publishedAt!),
@@ -92,12 +64,31 @@ class NotificationCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
+                      SizedBox(
+                        height: 40.h,
+                      ),
+                      Text(
+                        notifications.description!,
+                        overflow: TextOverflow.fade,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: ScreenUtil().setSp(
+                            40,
+                          ),
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          height: 5.h,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-            Image.network(''),
+            Image.network(notifications.imageURL!),
           ],
         ),
       ),
