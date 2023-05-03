@@ -29,7 +29,7 @@ class NotificationCard extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    foregroundImage: NetworkImage(notifications.image!),
+                    foregroundImage: NetworkImage(''),
                     radius: 120.r,
                   ),
                   SizedBox(
@@ -97,7 +97,7 @@ class NotificationCard extends StatelessWidget {
                 ],
               ),
             ),
-            Image.network(notifications.poster!),
+            Image.network(''),
           ],
         ),
       ),
