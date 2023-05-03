@@ -4,8 +4,8 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 
 class User {
   String? id;
-  String? fullName;
-  String? email;
+  String fullName;
+  String email;
   int? phoneNumber;
   DateTime? birthDay;
   String? surname;
