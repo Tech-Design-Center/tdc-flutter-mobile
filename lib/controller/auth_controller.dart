@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/authentication/sign_in_screen/sign_in_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 
 import '../model/user.dart';
@@ -199,7 +200,7 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Update Password Successfully!");
-          Get.back();
+          Get.offAll(() => SignInScreen());
         } else {
           EasyLoading.showError('Something wrong1. Try again!');
         }
