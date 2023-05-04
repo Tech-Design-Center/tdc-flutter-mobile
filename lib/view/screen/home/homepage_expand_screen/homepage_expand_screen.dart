@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +28,7 @@ import '../../../../controller/controllers.dart';
 import '../../../../model/recommend.dart';
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../../welcome/onboarding_screen.dart';
-import '../homepage_expand_screen/widgets/light_settings_language_screen.dart';
+import 'widgets/model_language.dart';
 
 import 'package:flutter/material.dart';
 
@@ -218,7 +217,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 top: Radius.circular(10),
                               )),
                               builder: (context) {
-                                return LightSettingsLanguageScreen();
+                                return ModalLanguage();
                               });
                         },
                         child: Padding(
