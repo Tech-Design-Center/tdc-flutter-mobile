@@ -17,7 +17,7 @@ import '../model/user.dart';
 // ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
   int selectedNavBarIndex;
-  DashboardScreen({super.key, this.selectedNavBarIndex = 0});
+  DashboardScreen( {super.key, this.selectedNavBarIndex = 0});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -25,9 +25,9 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProviderStateMixin {
   List<Widget> screens = [
-    HomepageExpandScreen(),
-    MyCourseScreen(),
-    SettingScreen(),
+     HomepageExpandScreen(),
+     MyCourseScreen(),
+     SettingScreen(),
   ];
 
   final keyThree = GlobalKey();
@@ -67,7 +67,7 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
         child: Image(
-          image: AssetImage('assets/images/fab.png'),
+          image: const AssetImage('assets/images/fab.png'),
           height: ScreenUtil().setHeight(80),
           width: ScreenUtil().setWidth(80),
         ),
@@ -138,11 +138,11 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
                     context: context,
                     builder: (context) => AlertDialog(
                           content: Text(
-                            "Are you sure ?",
+                            "Are you sure ?".tr,
                             style: TextStyle(fontSize: 50.sp, fontFamily: "Poppins"),
                           ),
                           title: Text(
-                            "Do you want to exit the app?",
+                            "Do you want to exit the app?".tr,
                             style: TextStyle(
                                 fontSize: 60.sp,
                                 fontFamily: "Poppins",
@@ -154,7 +154,7 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
                                 Navigator.of(context).pop(false);
                               },
                               child: Text(
-                                "No",
+                                "No".tr,
                                 style: TextStyle(
                                     color: Colors.blue, fontSize: 50.sp, fontFamily: "Poppins"),
                               ),
@@ -164,7 +164,7 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
                                 Navigator.of(context).pop(true);
                               },
                               child: Text(
-                                "Yes",
+                                "Yes".tr,
                                 style: TextStyle(
                                     color: Colors.red, fontSize: 50.sp, fontFamily: "Poppins"),
                               ),

@@ -159,7 +159,7 @@ class PopularCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("View"),
+                              Text("View".tr),
                             ],
                           )),
                     ),

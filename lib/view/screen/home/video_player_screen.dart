@@ -133,7 +133,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen());
+                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
                                 },
                                 icon: const Icon(Icons.home_filled)),
                           ],
@@ -173,7 +173,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen());
+                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
                                 },
                                 icon: Icon(Icons.home_filled)),
                           ],
@@ -316,7 +316,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                               right: 10,
                                             ),
                                             child: Text(
-                                              "Teach by : ${widget.author}",
+                                              "Teach by : ".tr +"${widget.author}",
                                               overflow: TextOverflow.fade,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -338,7 +338,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "${widget.duration} Hours ",
+                                                  "${widget.duration}"+" Hours ".tr,
                                                   style: TextStyle(
                                                       fontSize: 60.sp, color: Colors.blueAccent),
                                                 ),
@@ -378,7 +378,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                       controller: tabController,
                                       tabs: [
                                         Tab(
-                                          text: "About",
+                                          text: "About".tr,
                                         ),
                                       ],
                                     )),
@@ -399,7 +399,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                     left: 35, top: 60, right: 35, bottom: 40)
                                                 .r,
                                             child: Text(
-                                              "Description",
+                                              "Description".tr,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -437,7 +437,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 bottom: 40)
                                             ,
                                             child: Text(
-                                              'Documents',
+                                              'Documents'.tr,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -469,7 +469,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 width: 1000.w,
                                                 height: 150.h,
 
-                                                child: Center(child: Text("Documents",
+                                                child: Center(child: Text("Documents".tr,
                                                   style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
                                               ),
                                             ),
@@ -483,7 +483,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 bottom: 40)
                                             ,
                                             child: Text(
-                                              'Telegram Group',
+                                              'Telegram Group'.tr,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -518,7 +518,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 width: 1000.w,
                                                 height: 150.h,
 
-                                                child: Center(child: Text("Telegram",
+                                                child: Center(child: Text("Telegram".tr,
                                                   style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
                                               ),
                                             ),
@@ -529,7 +529,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                     left: 24, top: 80, right: 24, bottom: 40)
                                                 .r,
                                             child: Text(
-                                              "Details",
+                                              "Details".tr,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -583,7 +583,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                             top: 1,
                                                           ).r,
                                                           child: Text(
-                                                            "Beginner",
+                                                            "Beginner and Advanced".tr,
                                                             overflow: TextOverflow.ellipsis,
                                                             textAlign: TextAlign.start,
                                                             style: TextStyle(
@@ -627,7 +627,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                           top: 1,
                                                         ).r,
                                                         child: Text(
-                                                          "Khmer",
+                                                          "Khmer".tr,
                                                           overflow: TextOverflow.ellipsis,
                                                           textAlign: TextAlign.start,
                                                           style: TextStyle(
@@ -653,7 +653,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                               right: 24,
                                             ).r,
                                             child: Text(
-                                              "Tools you need",
+                                              "Tools you need".tr,
                                               overflow: TextOverflow.ellipsis,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -702,7 +702,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                           bottom: 8,
                                                         ).r,
                                                         child: Text(
-                                                          "Computer",
+                                                          "Computer".tr,
                                                           overflow: TextOverflow.ellipsis,
                                                           textAlign: TextAlign.start,
                                                           style: TextStyle(

@@ -23,7 +23,7 @@ class PopularsScreen extends StatelessWidget {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Populars',
+              name: 'Populars'.tr,
             ),
             //categories data
             Obx(() {

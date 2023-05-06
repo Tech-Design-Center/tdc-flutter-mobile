@@ -26,7 +26,7 @@ class SectionTitleScreen extends StatelessWidget {
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
             Text(
-              name!,
+              name!.tr,
               style: TextStyle(
                 fontSize: ScreenUtil().setSp(
                   100,

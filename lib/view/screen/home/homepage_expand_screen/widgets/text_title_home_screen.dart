@@ -36,7 +36,7 @@ class textTitleHomeScreen extends StatelessWidget {
               Get.to(() => screen);
             },
             child: Text(
-              "See all",
+              "See all".tr,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.start,
               style: TextStyle(

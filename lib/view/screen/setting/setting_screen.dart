@@ -9,8 +9,11 @@ import 'package:tdc_frontend_mobile/view/screen/setting/update_profile_screen/up
 import 'package:tdc_frontend_mobile/view/screen/setting/widgets/section_card.dart';
 
 import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
+import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 class SettingScreen extends StatefulWidget {
+
+
   @override
   State<SettingScreen> createState() => _SettingScreenState();
 }
@@ -24,6 +27,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
       body: SafeArea(
         child: Column(
           children: [
+            SectionTitleScreen(name: 'Setting'.tr,),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -98,7 +102,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                 }
                               },
                               child: Text(
-                                authController.user.value?.fullName ?? "Sign in your account",
+                                authController.user.value?.fullName ?? "Sign in your account".tr,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
@@ -124,7 +128,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                               right: 29,
                             ),
                             child: Text(
-                              "Student ID : # ${authController.user.value?.id ?? 0}",
+                              "Student ID : # ".tr+"${authController.user.value?.id ?? 0}",
                               maxLines: null,
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -168,20 +172,20 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                   Get.to(() => UpdateProfileScreen());
                                 },
                                 child:
-                                    SectionSettingCard(name: 'Update Profile', icon: Icons.person)),
+                                    SectionSettingCard(name: 'Update Profile'.tr, icon: Icons.person)),
                             InkWell(
                                 onTap: () {
                                   Get.to(() => ChangePasswordScreen());
                                 },
                                 child:
-                                    SectionSettingCard(name: 'Change Password', icon: Icons.key)),
+                                    SectionSettingCard(name: 'Change Password'.tr, icon: Icons.key)),
 
                             SizedBox(
                               height: 80.h,
                             ),
-                            SectionSettingCard(name: 'Help & Supports', icon: Icons.warning),
-                            SectionSettingCard(name: 'About Us', icon: Icons.people),
-                            SectionSettingCard(name: 'Term & Conditions', icon: Icons.task),
+                            SectionSettingCard(name: 'Help & Supports'.tr, icon: Icons.warning),
+                            SectionSettingCard(name: 'About Us'.tr, icon: Icons.people),
+                            SectionSettingCard(name: 'Term & Conditions'.tr, icon: Icons.task),
                             Padding(
                               padding: REdgeInsets.only(top: 200, bottom: 400),
                               child: Row(
@@ -207,7 +211,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            "Logout",
+                                            "Logout".tr,
                                             style: TextStyle(
                                                 fontSize: 80.sp,
                                                 fontWeight: FontWeight.bold,

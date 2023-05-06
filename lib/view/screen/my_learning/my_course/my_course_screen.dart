@@ -10,7 +10,7 @@ import 'my_course_card.dart';
 import 'my_course_list_view.dart';
 
 class MyCourseScreen extends StatelessWidget {
-  const MyCourseScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class MyCourseScreen extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                "My learning",
+                "My learning".tr,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
                 style: TextStyle(
@@ -66,7 +66,7 @@ class MyCourseScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'My Courses',
+                      'My Courses'.tr,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
                       style: TextStyle(

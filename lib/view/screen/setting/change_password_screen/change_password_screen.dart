@@ -70,7 +70,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Update Profile',
+              name: 'Change Password'.tr,
             ),
             Stack(
               alignment: Alignment.center,
@@ -115,7 +115,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         height: 60.h,
                       ),
                       Text(
-                        "Student ID : # ${authController.user.value?.id ?? 0}",
+                        "Student ID : # ".tr+" ${authController.user.value?.id ?? 0}",
                         maxLines: null,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -164,7 +164,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Current Password',
+                                  'Current Password'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -181,7 +181,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   obscureText: !_passwordVisible,
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                      return "This field can't be empty".tr;
                                     }
                                     return null;
                                   },
@@ -192,7 +192,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                         borderSide: BorderSide(color: Colors.grey)),
 
-                                    hintText: 'Enter your current password',
+                                    hintText: 'Enter your current password'.tr,
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
@@ -219,7 +219,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'New Password',
+                                  'New Password'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -236,7 +236,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   obscureText: !_passwordVisible,
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                      return "This field can't be empty".tr;
                                     }
                                     return null;
                                   },
@@ -275,7 +275,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Retype Password',
+                                  'Retype Password'.tr  ,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -294,7 +294,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     if (_passwordsMatch = true) {
                                       return "";
                                     }
-                                    return "Passwords do not match";
+                                    return "Passwords do not match".tr;
                                   },
                                   //This will obscure text dynamically
                                   decoration: InputDecoration(
@@ -303,7 +303,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                         borderSide: BorderSide(color: Colors.grey)),
 
-                                    hintText: 'Enter retype your password',
+                                    hintText: 'Enter retype your password'.tr,
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
@@ -324,7 +324,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   height: 40.h,
                                 ),
                                 Text(
-                                  _passwordsMatch ? '' : 'Passwords do not match',
+                                  _passwordsMatch ? '' : "Passwords do not match".tr,
                                   style: TextStyle(color: Colors.red),
                                 ),
                               ],
@@ -358,7 +358,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           ),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            'Save',
+                                            'Save'.tr,
                                             style: TextStyle(fontSize: 65.sp),
                                           ),
                                         ),
@@ -389,7 +389,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           ),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            'Save',
+                                            'Save'.tr,
                                             style: TextStyle(fontSize: 65.sp),
                                           ),
                                         ),

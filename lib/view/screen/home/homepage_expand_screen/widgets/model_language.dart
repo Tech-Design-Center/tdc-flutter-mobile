@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/main.dart';
 import 'package:translator/translator.dart';
 
 class ModalLanguage extends StatefulWidget {
@@ -182,7 +184,11 @@ class _ModalLanguageState extends State<ModalLanguage> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => _translateLanguageEngToKhmer(),
+            // onPressed: () => _translateLanguageEngToKhmer(),
+            onPressed: () {
+              // change the language to the next supported locale
+            Get.updateLocale(locales.elementAt((locales.indexOf(Get.locale!) + 1) % locales.length));
+            },
             child: Text('Translate'),
           ),
         ],

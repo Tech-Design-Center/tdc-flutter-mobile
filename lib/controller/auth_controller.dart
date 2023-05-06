@@ -27,7 +27,7 @@ class AuthController extends GetxController {
     var userResult = await RemoteAuthService().getProfile(token: token);
     if (userResult.statusCode == 200) {
       user.value = userFromJson(userResult.body);
-      Get.offAll(() => DashboardScreen());
+      Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
     } else {
       EasyLoading.showError('Something wrong. Try again!');
     }
@@ -60,7 +60,7 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Get.offAll(() => DashboardScreen());
+          Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
         } else {
           EasyLoading.showError('Something wrong1. Try again!');
         }
@@ -97,7 +97,7 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to TDC!");
-          Get.offAll(() => DashboardScreen());
+          Get.offAll(() => DashboardScreen(selectedNavBarIndex:  0,));
         } else {
           EasyLoading.showError('Something wrong. Try again!');
         }

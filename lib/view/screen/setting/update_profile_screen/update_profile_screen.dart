@@ -119,7 +119,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         builder: (BuildContext context) {
           return AlertDialog(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Please choose media to select'),
+            title: Text('Please choose media to select'.tr),
             content: Container(
               height: ScreenUtil().setHeight(400),
               child: Column(
@@ -133,7 +133,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     child: Row(
                       children: [
                         Icon(Icons.image),
-                        Text('From Gallery'),
+                        Text('From Gallery'.tr),
                       ],
                     ),
                   ),
@@ -166,7 +166,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Update Profile',
+              name: 'Update Profile'.tr,
             ),
             Stack(
               alignment: Alignment.center,
@@ -243,7 +243,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                                     height: 60.h,
                                                   ),
                                                   Text(
-                                                    'Edit',
+                                                    'Edit'.tr,
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         height: 60.h,
                       ),
                       Text(
-                        "Student ID : # ${authController.user.value?.id ?? 0}",
+                        "Student ID : # ".tr +" ${authController.user.value?.id ?? 0}",
                         maxLines: null,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -319,7 +319,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Full Name',
+                                  'Full Name'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -354,7 +354,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Surname',
+                                  'Surname'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -389,7 +389,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Name',
+                                  'Lastname'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -421,7 +421,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Email',
+                                  'Email'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -439,9 +439,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   obscureText: false,
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                      return "This field can't be empty".tr;
                                     } else if (!value.isValidEmail) {
-                                      return "Please enter valid email";
+                                      return "Please enter valid email".tr ;
                                     }
                                     return null;
                                   },
@@ -464,7 +464,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Phone Number',
+                                  'Phone Number'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -482,9 +482,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   obscureText: false,
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                      return "This field can't be empty".tr;
                                     } else if (!value.isValidPhone) {
-                                      return "Please enter valid phone number";
+                                      return "Please enter valid phone number".tr;
                                     }
                                     return null;
                                   },
@@ -508,7 +508,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Date of Birth',
+                                  'Date of Birth'.tr ,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -546,7 +546,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                     _selectDate(context);
                                     _isTextFieldEmpty = false;
                                   },
-                                  child: Text('Select Date'),
+                                  child: Text('Select Date'.tr),
                                 ),
                               ],
                             ),
@@ -558,7 +558,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Enter your password to confirm',
+                                  'Enter your password to confirm'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
@@ -575,7 +575,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   obscureText: !_passwordVisible,
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "This field can't be empty";
+                                      return "This field can't be empty".tr;
                                     }
                                     return null;
                                   },
@@ -588,7 +588,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                         borderSide: BorderSide(color: Colors.grey)),
 
-                                    hintText: 'Password',
+                                    hintText: 'Password'.tr,
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
@@ -635,7 +635,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           ),
                                           alignment: Alignment.center,
                                           child: Text(
-                                            'Save',
+                                            'Save'.tr,
                                             style: TextStyle(fontSize: 65.sp),
                                           ),
                                         ),

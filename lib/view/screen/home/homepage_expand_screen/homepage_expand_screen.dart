@@ -11,6 +11,7 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/model/category.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/service/category_service.dart';
+import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_slider_view.dart';
@@ -22,6 +23,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widg
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/text_title_home_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting/setting_screen.dart';
 
 import '../../../../controller/controllers.dart';
 
@@ -37,13 +39,15 @@ import '../popular_screen/populars_screen.dart';
 import '../recommend_screen/recommends_screen.dart';
 
 class HomepageExpandScreen extends StatefulWidget {
+
+
   @override
   State<HomepageExpandScreen> createState() => _HomepageExpandScreenState();
 }
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  String? profileImage = authController.user.value?.imageURL;
+  String? profileImage = authController.user.value!.imageURL;
   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
       GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
@@ -66,14 +70,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
     });
     return completer.future.then<void>((_) {
       ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
-        SnackBar(
-          content: const Text('Refresh complete'),
-          action: SnackBarAction(
-            label: 'RETRY',
-            onPressed: () {
-              _refreshIndicatorKey.currentState!.show();
-            },
-          ),
+        const SnackBar(
+          content: Text('Refresh complete'),
+
         ),
       );
     });
@@ -92,7 +91,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20, top: 200).r,
+                    padding: REdgeInsets.only(left: 20, right: 20, top: 200),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -129,7 +128,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           Padding(
                             padding: EdgeInsets.only(left: 30).r,
                             child: Text(
-                              authController.user.value?.fullName ?? "Sign in your account",
+                              authController.user.value?.fullName ?? "Sign in your account".tr,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: ScreenUtil().setSp(70),
@@ -143,33 +142,39 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              ImageConstant.settings,
-                              width: ScreenUtil().setWidth(100),
-                              height: ScreenUtil().setHeight(100),
-                            ),
-                            20.horizontalSpace,
-                            Text(
-                              'Setting and Privacy',
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: ScreenUtil().setSp(60),
-                                fontWeight: FontWeight.w500,
+                    child: InkWell(
+                      onTap: (){
+                        Get.to(SettingScreen());
+
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                ImageConstant.settings,
+                                width: ScreenUtil().setWidth(100),
+                                height: ScreenUtil().setHeight(100),
                               ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: ColorConstant.indigoA200,
-                          size: 20,
-                        )
-                      ],
+                              20.horizontalSpace,
+                              Text(
+                                'Setting-and-Privacy'.tr,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: ScreenUtil().setSp(60),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: ColorConstant.indigoA200,
+                            size: 20,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
@@ -186,7 +191,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             ),
                             20.horizontalSpace,
                             Text(
-                              'Help and Support',
+                              'Help-and-Support'.tr,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: ScreenUtil().setSp(60),
@@ -247,7 +252,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                   ),
                                   SizedBox(width: ScreenUtil().setWidth(25)),
                                   Text(
-                                    "Language",
+                                    "Language".tr,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
@@ -261,7 +266,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                               Row(
                                 children: [
                                   Text(
-                                    "English (US)",
+                                    "English(US)".tr,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
@@ -313,7 +318,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              authController.user.value?.fullName != null ? 'Logout' : 'Login',
+                              authController.user.value?.fullName != null ? 'Logout'.tr : 'Login'.tr,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Poppins',
@@ -375,7 +380,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                         right: 0,
                                       ),
                                       child: Text(
-                                        "Welcome Back!",
+                                        "welcomeback".tr,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -404,7 +409,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                         },
                                         child: Text(
                                           authController.user.value?.fullName ??
-                                              "Sign in your account",
+                                              "Sign in your account".tr,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
@@ -529,7 +534,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                         //categories title
                         textTitleHomeScreen(
-                          name: 'Categories',
+                          name: 'Categories'.tr,
                           screen: CategoriesScreen(),
                         ),
 
@@ -547,7 +552,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                         //recommended
                         textTitleHomeScreen(
-                          name: 'Recommends',
+                          name: 'Recommends'.tr,
                           screen: RecommendsScreen(),
                         ),
 
@@ -568,7 +573,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
 
                         //Popular
                         textTitleHomeScreen(
-                          name: 'Populars',
+                          name: 'Populars'.tr,
                           screen: PopularsScreen(),
                         ),
 

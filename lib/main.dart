@@ -5,12 +5,14 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tdc_frontend_mobile/controller/controllers.dart';
+
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:tdc_frontend_mobile/service/push_notification_service.dart';
+import 'package:tdc_frontend_mobile/translations.dart';
+
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
+
 import 'firebase_options.dart';
 
 ///create object
@@ -76,8 +78,10 @@ class _MyAppState extends State<MyApp> {
       minTextAdapt: true,
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
+          translations: TranslationsApp(),
+          locale: locales.first,
           title: 'Tech Design Center',
-          home: token == null ? OnboardingScreen() : DashboardScreen(),
+          home: token == null ? DashboardScreen() : DashboardScreen(),
           navigatorObservers: [routeObserver],
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
@@ -105,3 +109,9 @@ void configLoading() {
     ..maskType = EasyLoadingMaskType.black
     ..dismissOnTap = true;
 }
+
+final locales = [
+  const Locale('en', 'US'),
+  const Locale('km', 'KH'),
+];
+
