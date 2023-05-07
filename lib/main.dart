@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
 
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,7 @@ import 'package:tdc_frontend_mobile/translations.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 
 import 'firebase_options.dart';
+import 'local_constant.dart';
 
 ///create object
 RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
@@ -72,6 +74,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void didChangeDependencies() {
+    getLocale().then((locale) {
+      setState(() {
+        print("Preference Revoked ${locale.languageCode}");
+        Get.updateLocale(locale);
+        print("GET LOCALE Revoked ${Get.locale!.languageCode}");
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(1440, 3120),
@@ -79,7 +93,8 @@ class _MyAppState extends State<MyApp> {
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
           translations: TranslationsApp(),
-          locale: locales.first,
+          locale: Get.deviceLocale,
+          fallbackLocale: const Locale('en', 'US'),
           title: 'Tech Design Center',
           home: token == null ? DashboardScreen() : DashboardScreen(),
           navigatorObservers: [routeObserver],
@@ -109,9 +124,3 @@ void configLoading() {
     ..maskType = EasyLoadingMaskType.black
     ..dismissOnTap = true;
 }
-
-final locales = [
-  const Locale('en', 'US'),
-  const Locale('km', 'KH'),
-];
-

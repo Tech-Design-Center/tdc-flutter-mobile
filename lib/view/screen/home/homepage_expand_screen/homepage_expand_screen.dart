@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/model/category.dart';
@@ -27,10 +28,10 @@ import 'package:tdc_frontend_mobile/view/screen/setting/setting_screen.dart';
 
 import '../../../../controller/controllers.dart';
 
+import '../../../../local_constant.dart';
 import '../../../../model/recommend.dart';
 import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../../welcome/onboarding_screen.dart';
-import 'widgets/model_language.dart';
 
 import 'package:flutter/material.dart';
 
@@ -39,8 +40,6 @@ import '../popular_screen/populars_screen.dart';
 import '../recommend_screen/recommends_screen.dart';
 
 class HomepageExpandScreen extends StatefulWidget {
-
-
   @override
   State<HomepageExpandScreen> createState() => _HomepageExpandScreenState();
 }
@@ -72,7 +71,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
       ScaffoldMessenger.of(_scaffoldKey.currentState!.context).showSnackBar(
         const SnackBar(
           content: Text('Refresh complete'),
-
         ),
       );
     });
@@ -143,9 +141,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                   Padding(
                     padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.to(SettingScreen());
-
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -212,79 +209,82 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: Align(
                       alignment: Alignment.center,
-                      child: InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(10),
-                              )),
-                              builder: (context) {
-                                return ModalLanguage();
-                              });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 0,
-                            top: 0,
-                            bottom: 0,
-                            right: 0,
-                          ).r,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      top: 1,
-                                      bottom: 1,
-                                    ).r,
-                                    child: Image.asset(
-                                      ImageConstant.settings,
-                                      width: ScreenUtil().setWidth(100),
-                                      height: ScreenUtil().setHeight(100),
-                                    ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          right: 0,
+                        ).r,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 1,
+                                    bottom: 1,
+                                  ).r,
+                                  child: Image.asset(
+                                    ImageConstant.settings,
+                                    width: ScreenUtil().setWidth(100),
+                                    height: ScreenUtil().setHeight(100),
                                   ),
-                                  SizedBox(width: ScreenUtil().setWidth(25)),
-                                  Text(
-                                    "Language".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: ScreenUtil().setSp(60),
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                ),
+                                SizedBox(width: ScreenUtil().setWidth(25)),
+                                Text(
+                                  "Language".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: ScreenUtil().setSp(60),
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "English(US)".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.end,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: ScreenUtil().setSp(60),
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "${Get.locale?.languageCode} | ${Get.deviceLocale}",
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: ScreenUtil().setSp(60),
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                  SizedBox(width: ScreenUtil().setWidth(10)),
-                                  Icon(
+                                ),
+                                SizedBox(width: ScreenUtil().setWidth(10)),
+                                PopupMenuButton(
+                                  icon: Icon(
                                     Icons.arrow_forward_ios,
                                     color: ColorConstant.indigoA200,
                                     size: 20,
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                  ),
+                                  itemBuilder: (BuildContext context) => [
+                                    const PopupMenuItem(
+                                      value: Locale('en', 'US'),
+                                      child: Text('English'),
+                                    ),
+                                    const PopupMenuItem(
+                                      value: Locale('km', 'KH'),
+                                      child: Text('Khmer'),
+                                    ),
+                                  ],
+                                  onSelected: (value) async {
+                                    Navigator.of(context).pop();
+                                    setLocale(value.languageCode, value.countryCode!);
+                                    Get.updateLocale(value);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -318,7 +318,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              authController.user.value?.fullName != null ? 'Logout'.tr : 'Login'.tr,
+                              authController.user.value?.fullName != null
+                                  ? 'Logout'.tr
+                                  : 'Login'.tr,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Poppins',

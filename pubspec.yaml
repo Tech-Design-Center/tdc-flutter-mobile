@@ -77,6 +77,7 @@ dependencies:
   path_provider: any
   awesome_notifications: ^0.6.19
   translator: ^0.1.7
+  devicelocale: ^0.6.0
 
 dev_dependencies:
   flutter_test:
