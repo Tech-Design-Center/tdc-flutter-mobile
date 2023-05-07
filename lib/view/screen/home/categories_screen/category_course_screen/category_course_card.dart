@@ -25,7 +25,6 @@ class CategoryCourseCard extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 Get.to(CourseDetailsScreen(
-                  about: categories.about![index],
                   author: categories.author![index],
                   description: categories.description![index],
                   duration: categories.duration![index],

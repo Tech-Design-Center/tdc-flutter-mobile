@@ -15,7 +15,6 @@ class VideoPlayerScreen extends StatefulWidget {
   final String? title;
   final String? author;
   final String? description;
-  final String? about;
   final int? duration;
   final String? videoTitle;
   final String? videoUrl;
@@ -26,7 +25,6 @@ class VideoPlayerScreen extends StatefulWidget {
       required this.title,
       required this.author,
       required this.description,
-      required this.about,
       required this.duration,
       required this.videoTitle,
       required this.videoUrl});
@@ -133,7 +131,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
+                                  Get.offAll(() => DashboardScreen(
+                                        selectedNavBarIndex: 0,
+                                      ));
                                 },
                                 icon: const Icon(Icons.home_filled)),
                           ],
@@ -173,7 +173,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
+                                  Get.offAll(() => DashboardScreen(
+                                        selectedNavBarIndex: 0,
+                                      ));
                                 },
                                 icon: Icon(Icons.home_filled)),
                           ],
@@ -316,7 +318,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                               right: 10,
                                             ),
                                             child: Text(
-                                              "Teach by : ".tr +"${widget.author}",
+                                              "Teach by : ".tr + "${widget.author}",
                                               overflow: TextOverflow.fade,
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
@@ -338,7 +340,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "${widget.duration}"+" Hours ".tr,
+                                                  "${widget.duration}" + " Hours ".tr,
                                                   style: TextStyle(
                                                       fontSize: 60.sp, color: Colors.blueAccent),
                                                 ),
@@ -428,14 +430,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                       fontWeight: FontWeight.normal),
                                                 )),
                                           ),
-
                                           Padding(
                                             padding: REdgeInsets.only(
-                                                left: 35,
-                                                top: 60,
-                                                right: 35,
-                                                bottom: 40)
-                                            ,
+                                                left: 35, top: 60, right: 35, bottom: 40),
                                             child: Text(
                                               'Documents'.tr,
                                               overflow: TextOverflow.ellipsis,
@@ -452,12 +449,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                           ),
                                           Center(
                                             child: TextButton(
-
                                               onPressed: () {
                                                 deactivate();
                                                 Get.to(PdfViewerPage());
                                               },
-
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(10),
@@ -468,20 +463,18 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 ),
                                                 width: 1000.w,
                                                 height: 150.h,
-
-                                                child: Center(child: Text("Documents".tr,
-                                                  style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                child: Center(
+                                                    child: Text(
+                                                  "Documents".tr,
+                                                  style: TextStyle(
+                                                      color: Colors.white, fontSize: 65.sp),
+                                                )),
                                               ),
                                             ),
                                           ),
-
                                           Padding(
                                             padding: REdgeInsets.only(
-                                                left: 35,
-                                                top: 60,
-                                                right: 35,
-                                                bottom: 40)
-                                            ,
+                                                left: 35, top: 60, right: 35, bottom: 40),
                                             child: Text(
                                               'Telegram Group'.tr,
                                               overflow: TextOverflow.ellipsis,
@@ -498,13 +491,14 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                           ),
                                           Center(
                                             child: TextButton(
-
                                               onPressed: () async {
                                                 await launch(
                                                   "https://t.me/Techdesigncenter",
                                                   forceSafariVC: false,
                                                   forceWebView: false,
-                                                  headers: <String, String>{'my_header_key': 'my_header_value'},
+                                                  headers: <String, String>{
+                                                    'my_header_key': 'my_header_value'
+                                                  },
                                                 );
                                               },
                                               child: Container(
@@ -517,13 +511,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                                 ),
                                                 width: 1000.w,
                                                 height: 150.h,
-
-                                                child: Center(child: Text("Telegram".tr,
-                                                  style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                child: Center(
+                                                    child: Text(
+                                                  "Telegram".tr,
+                                                  style: TextStyle(
+                                                      color: Colors.white, fontSize: 65.sp),
+                                                )),
                                               ),
                                             ),
                                           ),
-
                                           Padding(
                                             padding: EdgeInsets.only(
                                                     left: 24, top: 80, right: 24, bottom: 40)

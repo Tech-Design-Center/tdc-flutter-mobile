@@ -28,7 +28,6 @@ class CourseDetailsScreen extends StatefulWidget {
   final String? title;
   final String? author;
   final String? description;
-  final String? about;
   final String? ABAPaymentURL;
 
   final int? duration;
@@ -44,7 +43,6 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.title,
     required this.author,
     required this.description,
-    required this.about,
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
@@ -157,7 +155,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
+                                  Get.offAll(() => DashboardScreen(
+                                        selectedNavBarIndex: 0,
+                                      ));
                                 },
                                 icon: const Icon(Icons.home_filled)),
                           ],
@@ -197,7 +197,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                             IconButton(
                                 onPressed: () {
                                   deactivate();
-                                  Get.offAll(() => DashboardScreen(selectedNavBarIndex: 0,));
+                                  Get.offAll(() => DashboardScreen(
+                                        selectedNavBarIndex: 0,
+                                      ));
                                 },
                                 icon: Icon(Icons.home_filled)),
                           ],
@@ -357,7 +359,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           child: Row(
                                             children: [
                                               Text(
-                                                "${widget.duration}"+" Hours ".tr,
+                                                "${widget.duration}" + " Hours ".tr,
                                                 style: TextStyle(
                                                     fontSize: 60.sp, color: Colors.blueAccent),
                                               ),
@@ -530,11 +532,10 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                     shrinkWrap: true,
                                                                     scrollDirection: Axis.vertical,
                                                                     padding: REdgeInsets.only(
-                                                                            top: 40,
-                                                                            left: 20,
-                                                                            right: 20,
-                                                                            bottom: 20)
-                                                                        ,
+                                                                        top: 40,
+                                                                        left: 20,
+                                                                        right: 20,
+                                                                        bottom: 20),
                                                                     itemBuilder: (context, index1) {
                                                                       return GestureDetector(
                                                                         onTap: () {
@@ -543,7 +544,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                             videoUrl:
                                                                                 widget.videoUrl![
                                                                                     index][index1],
-                                                                            about: widget.about,
                                                                             author: widget.author,
                                                                             description:
                                                                                 widget.description,
@@ -584,14 +584,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-
                                                     Padding(
                                                       padding: REdgeInsets.only(
-                                                              left: 35,
-                                                              top: 60,
-                                                              right: 35,
-                                                              bottom: 40)
-                                                          ,
+                                                          left: 35, top: 60, right: 35, bottom: 40),
                                                       child: Text(
                                                         'Description'.tr,
                                                         overflow: TextOverflow.ellipsis,
@@ -623,16 +618,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                 fontWeight: FontWeight.normal),
                                                           )),
                                                     ),
-
                                                     Padding(
                                                       padding: REdgeInsets.only(
-                                                          left: 35,
-                                                          top: 60,
-                                                          right: 35,
-                                                          bottom: 40)
-                                                      ,
+                                                          left: 35, top: 60, right: 35, bottom: 40),
                                                       child: Text(
-                                                        'Documents'.tr ,
+                                                        'Documents'.tr,
                                                         overflow: TextOverflow.ellipsis,
                                                         textAlign: TextAlign.start,
                                                         style: TextStyle(
@@ -647,36 +637,35 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     ),
                                                     Center(
                                                       child: TextButton(
-
                                                         onPressed: () {
                                                           deactivate();
                                                           Get.to(PdfViewerPage());
-                                                          },
-
+                                                        },
                                                         child: Container(
                                                           decoration: BoxDecoration(
                                                             borderRadius: BorderRadius.circular(10),
                                                             color: Colors.blueAccent,
                                                             boxShadow: [
-                                                              BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                              BoxShadow(
+                                                                  color: Colors.blue,
+                                                                  spreadRadius: 3),
                                                             ],
                                                           ),
                                                           width: 1000.w,
                                                           height: 150.h,
-
-                                                          child: Center(child: Text("Documents".tr,
-                                                                        style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Documents".tr,
+                                                            style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 65.sp),
+                                                          )),
                                                         ),
                                                       ),
                                                     ),
-
                                                     Padding(
                                                       padding: REdgeInsets.only(
-                                                          left: 35,
-                                                          top: 60,
-                                                          right: 35,
-                                                          bottom: 40)
-                                                      ,
+                                                          left: 35, top: 60, right: 35, bottom: 40),
                                                       child: Text(
                                                         'Telegram Group'.tr,
                                                         overflow: TextOverflow.ellipsis,
@@ -693,13 +682,14 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     ),
                                                     Center(
                                                       child: TextButton(
-
                                                         onPressed: () async {
                                                           await launch(
                                                             "https://t.me/Techdesigncenter",
                                                             forceSafariVC: false,
                                                             forceWebView: false,
-                                                            headers: <String, String>{'my_header_key': 'my_header_value'},
+                                                            headers: <String, String>{
+                                                              'my_header_key': 'my_header_value'
+                                                            },
                                                           );
                                                         },
                                                         child: Container(
@@ -707,26 +697,26 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             borderRadius: BorderRadius.circular(10),
                                                             color: Colors.blueAccent,
                                                             boxShadow: [
-                                                              BoxShadow(color: Colors.blue, spreadRadius: 3),
+                                                              BoxShadow(
+                                                                  color: Colors.blue,
+                                                                  spreadRadius: 3),
                                                             ],
                                                           ),
                                                           width: 1000.w,
                                                           height: 150.h,
-
-                                                          child: Center(child: Text("Telegram",
-                                                            style: TextStyle(color: Colors.white,fontSize: 65.sp),)),
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Telegram",
+                                                            style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 65.sp),
+                                                          )),
                                                         ),
                                                       ),
                                                     ),
-
-
                                                     Padding(
                                                       padding: REdgeInsets.only(
-                                                              left: 24,
-                                                              top: 80,
-                                                              right: 24,
-                                                              bottom: 40)
-                                                          ,
+                                                          left: 24, top: 80, right: 24, bottom: 40),
                                                       child: Text(
                                                         "Information".tr,
                                                         overflow: TextOverflow.ellipsis,
@@ -928,7 +918,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ),
                                                           );
                                                         })),
-                                                    SizedBox(height: 100.h,)
+                                                    SizedBox(
+                                                      height: 100.h,
+                                                    )
                                                   ],
                                                 ),
                                               ),
@@ -1064,7 +1056,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                             top: 1,
                                                                           ).r,
                                                                           child: Text(
-                                                                            "Beginner and Advanced".tr,
+                                                                            "Beginner and Advanced"
+                                                                                .tr,
                                                                             overflow: TextOverflow
                                                                                 .ellipsis,
                                                                             textAlign:

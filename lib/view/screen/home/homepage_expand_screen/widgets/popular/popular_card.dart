@@ -17,7 +17,6 @@ class PopularCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(CourseDetailsScreen(
-          about: popular.about,
           author: popular.author,
           description: popular.description,
           duration: popular.duration,
