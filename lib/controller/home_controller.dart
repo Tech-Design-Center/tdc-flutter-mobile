@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/model/notification.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/service/category_service.dart';
