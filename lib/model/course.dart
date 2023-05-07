@@ -10,11 +10,9 @@ class Course {
   final List<String>? documentURL;
   final List<String>? examURL;
   final List<String>? telegramURL;
-
   final List<String>? title;
   final List<String>? author;
   final List<String>? description;
-  final List<String>? about;
   final List<int>? duration;
   final List<int>? price;
   final List<String>? videoTrailerURL;
@@ -33,7 +31,6 @@ class Course {
     required this.title,
     required this.author,
     required this.description,
-    required this.about,
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
@@ -47,8 +44,7 @@ class Course {
     return Course(
       email: data['email'],
       purchaseDate: List<DateTime>.from(
-          data['course_user_links'].map((data) => DateTime.parse(data['createdAt'].toString()))),
-      about: List<String>.from(data['course_user_links'].map((data) => data['course']['about'])),
+          data['course_user_links'].map((data) => DateTime.parse(data['publishedAt'].toString()))),
       documentURL:
           List<String>.from(data['course_user_links'].map((data) => data['course']['documentURL'])),
       examURL:

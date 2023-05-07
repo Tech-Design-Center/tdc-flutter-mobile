@@ -16,7 +16,6 @@ class RecommendsCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(CourseDetailsScreen(
-          about: recommend.about,
           author: recommend.author,
           description: recommend.description,
           duration: recommend.duration,
