@@ -18,6 +18,7 @@ class VideoPlayerScreen extends StatefulWidget {
   final int? duration;
   final String? videoTitle;
   final String? videoUrl;
+  final String? documentURL;
 
   VideoPlayerScreen(
       {super.key,
@@ -27,7 +28,8 @@ class VideoPlayerScreen extends StatefulWidget {
       required this.description,
       required this.duration,
       required this.videoTitle,
-      required this.videoUrl});
+      required this.videoUrl,
+      required this.documentURL});
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -35,7 +37,6 @@ class VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTickerProviderStateMixin {
   TabController? tabController;
-  late var _URL = widget.videoUrl;
   late final PodPlayerController _controller;
   bool isLoading = true;
   bool isVideoPlaying = true;
@@ -451,7 +452,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                             child: TextButton(
                                               onPressed: () {
                                                 deactivate();
-                                                Get.to(PdfViewerPage());
+                                                Get.to(PdfViewerPage(DocumentURL: widget.documentURL!,));
                                               },
                                               child: Container(
                                                 decoration: BoxDecoration(

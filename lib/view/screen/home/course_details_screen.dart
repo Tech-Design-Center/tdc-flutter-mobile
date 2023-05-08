@@ -29,6 +29,7 @@ class CourseDetailsScreen extends StatefulWidget {
   final String? author;
   final String? description;
   final String? ABAPaymentURL;
+  final String? documentsURL;
 
   final int? duration;
   final int? price;
@@ -37,6 +38,8 @@ class CourseDetailsScreen extends StatefulWidget {
   final List<String>? playlistTitle;
   final List<List<String>>? videoTitle;
   final List<List<String>>? videoUrl;
+
+
   CourseDetailsScreen({
     super.key,
     required this.image,
@@ -51,6 +54,7 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.videoTitle,
     required this.videoUrl,
     required this.ABAPaymentURL,
+    required this.documentsURL,
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -541,19 +545,14 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         onTap: () {
                                                                           deactivate();
                                                                           Get.to(VideoPlayerScreen(
-                                                                            videoUrl:
-                                                                                widget.videoUrl![
-                                                                                    index][index1],
+                                                                            videoUrl: widget.videoUrl![index][index1],
                                                                             author: widget.author,
-                                                                            description:
-                                                                                widget.description,
-                                                                            duration:
-                                                                                widget.duration,
+                                                                            description: widget.description,
+                                                                            duration: widget.duration,
                                                                             image: widget.image!,
                                                                             title: widget.title!,
-                                                                            videoTitle:
-                                                                                widget.videoTitle![
-                                                                                    index][index1],
+                                                                            videoTitle: widget.videoTitle![index][index1],
+                                                                            documentURL: widget.documentsURL,
                                                                           ));
                                                                         },
                                                                         child: ListTile(
@@ -639,7 +638,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       child: TextButton(
                                                         onPressed: () {
                                                           deactivate();
-                                                          Get.to(PdfViewerPage());
+                                                          Get.to(PdfViewerPage(DocumentURL: widget.documentsURL!,));
                                                         },
                                                         child: Container(
                                                           decoration: BoxDecoration(

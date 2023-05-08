@@ -70,6 +70,7 @@ class TranslationsApp extends Translations {
           'Retype Password': 'Retype Password',
           "Passwords do not match": "Passwords do not match",
           'Enter retype your password': 'Enter retype your password',
+
         },
         'km_KH': {
           'hello': 'ជំរាបសួរ',
@@ -138,6 +139,7 @@ class TranslationsApp extends Translations {
           'Retype Password': 'វាយពាក្សម្ងាត់ថ្មីឡើងវិញ',
           "Passwords do not match": "ពាក្យសម្ងាត់មិនត្រូវគ្នា",
           'Enter retype your password': 'សូមបញ្ជូលពាក្យសម្ងាត់ថ្មីបស់អ្នក',
+
         },
       };
 }

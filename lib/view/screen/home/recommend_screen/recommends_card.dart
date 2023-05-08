@@ -28,6 +28,7 @@ class RecommendsCard extends StatelessWidget {
           videoTrailerURL: recommend.videoTrailerURL,
           videoUrl: recommend.videoUrl,
           ABAPaymentURL: recommend.ABAPaymentURL,
+          documentsURL: recommend.documentURL,
         ));
       },
       child: Container(

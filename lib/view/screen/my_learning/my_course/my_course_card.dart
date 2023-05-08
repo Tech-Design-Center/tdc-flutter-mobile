@@ -35,6 +35,8 @@ class MyCourseCard extends StatelessWidget {
               videoTrailerURL: course.videoTrailerURL![index],
               videoUrl: course.videoUrl![index],
               ABAPaymentURL: course.ABAPaymentURL![index],
+              documentsURL: course.documentURL![index],
+
             ));
           },
           child: Container(

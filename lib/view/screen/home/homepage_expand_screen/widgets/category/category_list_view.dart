@@ -18,16 +18,22 @@ class CategoryListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: ScreenUtil().setHeight(400),
-      width: MediaQuery.of(context).size.width * 1,
+      width: ScreenUtil().screenWidth,
       child: Expanded(
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 4,
+        child: ListView.separated(
+          controller: scrollController,
+          itemCount: categories.length,
+          shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.only(top: 40).r,
+          padding: REdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
           itemBuilder: (context, index) {
             return CategoryCard(
               category: categories[index],
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(
+              width: 60.h,
             );
           },
         ),
