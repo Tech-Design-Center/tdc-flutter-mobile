@@ -14,7 +14,6 @@ class Category {
 
   final List<String>? description;
   final List<String>? author;
-  final List<String>? about;
   final List<int>? duration;
   final List<int>? price;
   final List<String>? imageCourse;
@@ -34,7 +33,6 @@ class Category {
     required this.title,
     required this.description,
     required this.author,
-    required this.about,
     required this.duration,
     required this.price,
     required this.imageCourse,
@@ -62,8 +60,7 @@ class Category {
           .map((description) => description['attributes']['description'])),
       author: List<String>.from(
           data['attributes']['courses']['data'].map((author) => author['attributes']['author'])),
-      about: List<String>.from(
-          data['attributes']['courses']['data'].map((about) => about['attributes']['about'])),
+      
       duration: List<int>.from(data['attributes']['courses']['data']
           .map((duration) => duration['attributes']['duration'])),
       price: List<int>.from(

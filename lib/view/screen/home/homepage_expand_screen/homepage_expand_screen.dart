@@ -250,7 +250,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             Row(
                               children: [
                                 Text(
-                                  "${Get.locale?.languageCode} | ${Get.deviceLocale}",
+                                  "${Get.locale?.languageCode}",
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
