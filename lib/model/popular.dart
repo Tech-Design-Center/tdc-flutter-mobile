@@ -13,7 +13,6 @@ class Popular {
 
   final String? author;
   final String? description;
-  final String? about;
   final int? duration;
   final int? price;
   final String? videoTrailerURL;
@@ -31,7 +30,6 @@ class Popular {
     required this.title,
     required this.author,
     required this.description,
-    required this.about,
     required this.duration,
     required this.price,
     required this.videoTrailerURL,
@@ -52,7 +50,6 @@ class Popular {
       telegramURL: data['attributes']['course']['data']['attributes']['telegramURL'],
       author: data['attributes']['course']['data']['attributes']['author'],
       description: data['attributes']['course']['data']['attributes']['description'],
-      about: data['attributes']['course']['data']['attributes']['about'],
       duration: data['attributes']['course']['data']['attributes']['duration'],
       price: data['attributes']['course']['data']['attributes']['price'],
       videoTrailerURL: data['attributes']['course']['data']['attributes']['videoTrailerURL'],
