@@ -157,7 +157,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   bool obsecur = true;
 
-  String? profileImage = authController.user.value?.imageURL;
+  String? profileImage = authController.user.value?.imageURL ??
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   @override
   Widget build(BuildContext context) {
@@ -270,7 +271,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         height: 60.h,
                       ),
                       Text(
-                        "Student ID : # ".tr +" ${authController.user.value?.id ?? 0}",
+                        "Student ID : # ".tr + " ${authController.user.value?.id ?? 0}",
                         maxLines: null,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -441,7 +442,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                     if (value == null || value.isEmpty) {
                                       return "This field can't be empty".tr;
                                     } else if (!value.isValidEmail) {
-                                      return "Please enter valid email".tr ;
+                                      return "Please enter valid email".tr;
                                     }
                                     return null;
                                   },
@@ -508,7 +509,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Date of Birth'.tr ,
+                                  'Date of Birth'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),
