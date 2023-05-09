@@ -36,6 +36,7 @@ class MyCourseCard extends StatelessWidget {
               videoUrl: course.videoUrl![index],
               ABAPaymentURL: course.ABAPaymentURL![index],
               documentsURL: course.documentURL![index],
+              isExam: true,
 
             ));
           },
@@ -137,7 +138,7 @@ class MyCourseCard extends StatelessWidget {
                           top: 20,
                         ),
                         child: Text(
-                          "Teach by : '${course.author![index]}",
+                          "Teach by : ".tr +"${course.author![index]}",
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.start,
                           style: TextStyle(

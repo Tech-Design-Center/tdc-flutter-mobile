@@ -3,15 +3,15 @@ import 'dart:convert';
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
 class User {
-  String? id;
+  String id;
   String fullName;
   String email;
-  int? phoneNumber;
-  DateTime? birthDay;
-  String? surname;
-  String? name;
-  String? address;
-  String? imageURL;
+  int phoneNumber;
+  DateTime birthDay;
+  String surname;
+  String name;
+  String address;
+  String imageURL;
 
   User({
     required this.id,
@@ -26,11 +26,11 @@ class User {
   });
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
-        id: data['id'].toString(),
-        fullName: data['fullName'],
-        email: data['email'],
-        phoneNumber: data['phoneNumber'],
-        birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
+        id: data['id'].toString() ?? '1',
+        fullName: data['fullName'] ?? 'Your Name',
+        email: data['email'] ?? 'Your Name',
+        phoneNumber: data['phoneNumber'] ?? 'Your Name',
+        birthDay: DateTime.parse(data['age']) ?? DateTime.parse("2012-02-27"),
         surname: data['surName'] ?? 'Your Surname',
         name: data['name'] ?? 'Your Name',
         address: data['address'] ?? 'Your Address',

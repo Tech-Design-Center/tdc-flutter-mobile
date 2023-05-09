@@ -247,25 +247,12 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 ),
                               ],
                             ),
+
                             Row(
                               children: [
-                                Text(
-                                  "${Get.locale?.languageCode}",
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(60),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(width: ScreenUtil().setWidth(10)),
+
                                 PopupMenuButton(
-                                  icon: Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: ColorConstant.indigoA200,
-                                    size: 20,
-                                  ),
+
                                   itemBuilder: (BuildContext context) => [
                                     const PopupMenuItem(
                                       value: Locale('en', 'US'),
@@ -273,7 +260,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     ),
                                     const PopupMenuItem(
                                       value: Locale('km', 'KH'),
-                                      child: Text('Khmer'),
+                                      child: Text('ភាសាខ្មែរ'),
                                     ),
                                   ],
                                   onSelected: (value) async {
@@ -281,6 +268,11 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     setLocale(value.languageCode, value.countryCode!);
                                     Get.updateLocale(value);
                                   },
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: ColorConstant.indigoA200,
+                                  size: 20,
                                 ),
                               ],
                             ),

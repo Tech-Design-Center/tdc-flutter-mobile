@@ -29,7 +29,7 @@ class TranslationsApp extends Translations {
           'Documents': 'Documents',
           'Telegram Group': 'Telegram Group',
           "Information": "Information",
-          "Beginner and Advanced": "Beginner and Advanced",
+          "Beginner and Medium": "Beginner and Medium",
           "Khmer": "Khmer",
           "Tools you need": "Tools you need",
           "Computer": "Computer",
@@ -70,6 +70,12 @@ class TranslationsApp extends Translations {
           'Retype Password': 'Retype Password',
           "Passwords do not match": "Passwords do not match",
           'Enter retype your password': 'Enter retype your password',
+          'Request for Exam': 'Request for Exam',
+          "Request Now!":"Request Now!",
+          "Exam":"Exam",
+          'Telegram Support':'Telegram Support',
+          "Exam Now!":"Exam Now!",
+          "Please watch video introduction above before exam.":"Please watch video introduction above before exam.",
 
         },
         'km_KH': {
@@ -98,7 +104,7 @@ class TranslationsApp extends Translations {
           'Documents': 'ឯកសារ',
           'Telegram Group': 'ក្រុម តេលេក្រាម',
           "Information": "ព័ត៌មាន",
-          "Beginner and Advanced": "កម្រិតដំបូង និងកម្រិតខ្ពស់",
+          "Beginner and Medium": "កម្រិតដំបូង និងកម្រិតមធ្យម",
           "Khmer": "ភាសាខ្មែរ",
           "Tools you need": "ឧបករណ៍ដែលអ្នកត្រូវការ",
           "Computer": "កុំព្យូទ័រ",
@@ -139,6 +145,12 @@ class TranslationsApp extends Translations {
           'Retype Password': 'វាយពាក្សម្ងាត់ថ្មីឡើងវិញ',
           "Passwords do not match": "ពាក្យសម្ងាត់មិនត្រូវគ្នា",
           'Enter retype your password': 'សូមបញ្ជូលពាក្យសម្ងាត់ថ្មីបស់អ្នក',
+          'Request for Exam':'ស្នើរសុំការប្រឡង',
+          "Request Now!":"ស្នើរសុំឥឡូវនេះ!",
+          "Exam":"ប្រឡង",
+          'Telegram Support':'Telegram ជំនួយ',
+          "Exam Now!":"ប្រឡងឥឡូវនេះ!",
+          "Please watch video introduction above before exam.":"សូមមើលវីឌីអូណែនាំខាងលើនេះមុននឹងប្រឡង."
 
         },
       };

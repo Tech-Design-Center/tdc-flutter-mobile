@@ -14,6 +14,7 @@ import 'package:tdc_frontend_mobile/view/screen/home/enroll_course_screen/enroll
 
 import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/video_player_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/exam_screen/exam_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/pdf_view_screen/pdf_view_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,6 +36,9 @@ class CourseDetailsScreen extends StatefulWidget {
   final int? price;
   final String? videoTrailerURL;
   final bool? isEnroll;
+
+  final bool? isExam;
+
   final List<String>? playlistTitle;
   final List<List<String>>? videoTitle;
   final List<List<String>>? videoUrl;
@@ -55,6 +59,7 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.videoUrl,
     required this.ABAPaymentURL,
     required this.documentsURL,
+    required this.isExam,
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -66,6 +71,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool isLoading = true;
   bool isVideoPlaying = true;
   TabController? tabController;
+  bool Exam = true;
 
   @override
   void initState() {
@@ -81,7 +87,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   }
 
   void loadVideo() async {
-    final urls = await PodPlayerController.getYoutubeUrls(
+    List<VideoQalityUrls>? urls;
+    widget.isExam! ?
+    urls = await PodPlayerController.getYoutubeUrls(
+      widget.videoTrailerURL!,
+    ) : urls = await PodPlayerController.getYoutubeUrls(
       widget.videoTrailerURL!,
     );
 
@@ -389,7 +399,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                       ),
                                     ),
                                     child: widget.isEnroll!
-                                        ? TabBar(
+                                        ? Container(
+                                          child: widget.isExam! ?
+                                          TabBar(
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
                                                 borderRadius: BorderRadius.circular(50),
@@ -397,19 +409,42 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             labelColor: ColorConstant.whiteA700,
                                             unselectedLabelColor: Colors.black,
                                             labelStyle: TextStyle(
-                                                fontFamily: 'Poppins', fontWeight: FontWeight.w500),
+                                                fontSize: 60.sp,
+                                                fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.w500),
                                             unselectedLabelStyle: TextStyle(
                                                 fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                             controller: tabController,
                                             tabs: [
                                               Tab(
-                                                text: "Videos".tr,
-                                              ),
-                                              Tab(
-                                                text: "About".tr,
+                                                text: "Exam".tr,
                                               ),
                                             ],
                                           )
+                                              :
+                                            TabBar(
+                                              indicatorPadding: EdgeInsets.all(5).w,
+                                              indicator: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(50),
+                                                  color: ColorConstant.indigoA200),
+                                              labelColor: ColorConstant.whiteA700,
+                                              unselectedLabelColor: Colors.black,
+                                              labelStyle: TextStyle(
+                                                  fontFamily: 'Poppins', fontWeight: FontWeight.w500),
+                                              unselectedLabelStyle: TextStyle(
+                                                  fontFamily: 'Poppins', fontWeight: FontWeight.w400),
+                                              controller: tabController,
+                                              tabs: [
+                                                Tab(
+                                                  text: "Videos".tr,
+                                                ),
+                                                Tab(
+                                                  text: "About".tr,
+                                                ),
+                                              ],
+                                            )
+
+                                        )
                                         : TabBar(
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
@@ -429,18 +464,175 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 text: "${widget.price}\$",
                                               ),
                                             ],
-                                          )),
+                                          )
+                                ),
                               ),
                               Container(
                                   child: widget.isEnroll!
                                       ? Container(
                                           height: ScreenUtil().setHeight(1450),
-                                          child: TabBarView(
+                                          child: widget.isExam! ?
+                                          TabBarView(
+                                            controller: tabController,
+                                            children: [
+                                              SingleChildScrollView(
+                                                padding: EdgeInsets.only(left: 20, right: 20,bottom: 20).r,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35, top: 60, right: 35, bottom: 40),
+                                                      child: Text(
+                                                        'Description'.tr,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment: Alignment.center,
+                                                      child: Container(
+                                                          margin: EdgeInsets.only(
+                                                                  left: 35, right: 35, top: 20)
+                                                              .r,
+                                                          width: ScreenUtil().screenWidth,
+                                                          child: Text(
+                                                            "Please watch video introduction above before exam.",
+                                                            maxLines: 2,
+                                                            style: TextStyle(
+                                                                fontSize: 50.sp,
+                                                                color: ColorConstant.gray600,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.normal),
+                                                          )),
+                                                    ),
+
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35, top: 60, right: 35, bottom: 40),
+                                                      child: Text(
+                                                        'Telegram Support'.tr,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Center(
+                                                      child: TextButton(
+                                                        onPressed: () async {
+                                                          await launch(
+                                                            "https://t.me/Techdesigncenter",
+                                                            forceSafariVC: false,
+                                                            forceWebView: false,
+                                                            headers: <String, String>{
+                                                              'my_header_key': 'my_header_value'
+                                                            },
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.blueAccent,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                  color: Colors.blue,
+                                                                  spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+                                                          child: Center(
+                                                              child: Text(
+                                                            "Telegram",
+                                                            style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 65.sp),
+                                                          )),
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35, top: 80, right: 35, bottom: 40),
+                                                      child: Text(
+                                                        'Exam'.tr,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Center(
+                                                      child: TextButton(
+                                                        onPressed: () async {
+                                                            deactivate();
+                                                            Get.to(ExamScreen());
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.redAccent,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                  color: Colors.redAccent,
+                                                                  spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+                                                          child: Center(
+                                                              child: Text(
+                                                                "Exam Now!".tr,
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 65.sp),
+                                                              )),
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+
+
+
+
+                                                    SizedBox(
+                                                      height: 500.h,
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ) : TabBarView(
                                             controller: tabController,
                                             children: [
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(left: 14, right: 14, top: 50).r,
+                                                EdgeInsets.only(left: 14, right: 14, top: 50).r,
                                                 child: SingleChildScrollView(
                                                   physics: NeverScrollableScrollPhysics(),
                                                   child: Column(
@@ -452,10 +644,10 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                         shrinkWrap: true,
                                                         scrollDirection: Axis.vertical,
                                                         padding: EdgeInsets.only(
-                                                                top: 40,
-                                                                left: 20,
-                                                                right: 20,
-                                                                bottom: 20)
+                                                            top: 40,
+                                                            left: 20,
+                                                            right: 20,
+                                                            bottom: 20)
                                                             .r,
                                                         itemBuilder: (context, index) {
                                                           return Container(
@@ -475,9 +667,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               boxShadow: [
                                                                 BoxShadow(
                                                                   color:
-                                                                      ColorConstant.bluegray90011,
+                                                                  ColorConstant.bluegray90011,
                                                                   spreadRadius:
-                                                                      ScreenUtil().setWidth(
+                                                                  ScreenUtil().setWidth(
                                                                     2.00,
                                                                   ),
                                                                   blurRadius: ScreenUtil().setWidth(
@@ -501,7 +693,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         color: Colors.grey),
                                                                     color: ColorConstant.gray50,
                                                                     borderRadius:
-                                                                        BorderRadius.circular(
+                                                                    BorderRadius.circular(
                                                                       ScreenUtil().setWidth(
                                                                         20.00,
                                                                       ),
@@ -511,11 +703,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         color: ColorConstant
                                                                             .bluegray90011,
                                                                         spreadRadius:
-                                                                            ScreenUtil().setWidth(
+                                                                        ScreenUtil().setWidth(
                                                                           2.00,
                                                                         ),
                                                                         blurRadius:
-                                                                            ScreenUtil().setWidth(
+                                                                        ScreenUtil().setWidth(
                                                                           2.00,
                                                                         ),
                                                                         offset: Offset(
@@ -526,11 +718,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                     ],
                                                                   ),
                                                                   padding: const EdgeInsets.only(
-                                                                          left: 100)
+                                                                      left: 100)
                                                                       .r,
                                                                   child: ListView.builder(
                                                                     physics:
-                                                                        NeverScrollableScrollPhysics(),
+                                                                    NeverScrollableScrollPhysics(),
                                                                     itemCount: widget
                                                                         .videoTitle![index].length,
                                                                     shrinkWrap: true,
@@ -557,8 +749,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         },
                                                                         child: ListTile(
                                                                             title: Text(widget
-                                                                                    .videoTitle![
-                                                                                index][index1])),
+                                                                                .videoTitle![
+                                                                            index][index1])),
                                                                       );
                                                                     },
                                                                   ),
@@ -579,7 +771,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 ),
                                               ),
                                               SingleChildScrollView(
-                                                padding: EdgeInsets.only(left: 20, right: 20).r,
+                                                padding: EdgeInsets.only(left: 20, right: 20,bottom: 20).r,
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
@@ -604,7 +796,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       alignment: Alignment.center,
                                                       child: Container(
                                                           margin: EdgeInsets.only(
-                                                                  left: 35, right: 35, top: 20)
+                                                              left: 35, right: 35, top: 20)
                                                               .r,
                                                           width: ScreenUtil().screenWidth,
                                                           child: Text(
@@ -654,11 +846,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           height: 150.h,
                                                           child: Center(
                                                               child: Text(
-                                                            "Documents".tr,
-                                                            style: TextStyle(
-                                                                color: Colors.white,
-                                                                fontSize: 65.sp),
-                                                          )),
+                                                                "Documents".tr,
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 65.sp),
+                                                              )),
                                                         ),
                                                       ),
                                                     ),
@@ -705,14 +897,15 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           height: 150.h,
                                                           child: Center(
                                                               child: Text(
-                                                            "Telegram",
-                                                            style: TextStyle(
-                                                                color: Colors.white,
-                                                                fontSize: 65.sp),
-                                                          )),
+                                                                "Telegram",
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 65.sp),
+                                                              )),
                                                         ),
                                                       ),
                                                     ),
+
                                                     Padding(
                                                       padding: REdgeInsets.only(
                                                           left: 24, top: 80, right: 24, bottom: 40),
@@ -738,7 +931,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       child: Column(
                                                         mainAxisSize: MainAxisSize.min,
                                                         crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
+                                                        CrossAxisAlignment.start,
                                                         mainAxisAlignment: MainAxisAlignment.start,
                                                         children: [
                                                           Align(
@@ -750,9 +943,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                               ),
                                                               child: Row(
                                                                 mainAxisAlignment:
-                                                                    MainAxisAlignment.start,
+                                                                MainAxisAlignment.start,
                                                                 crossAxisAlignment:
-                                                                    CrossAxisAlignment.center,
+                                                                CrossAxisAlignment.center,
                                                                 mainAxisSize: MainAxisSize.max,
                                                                 children: [
                                                                   Padding(
@@ -774,13 +967,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                       top: 1,
                                                                     ).r,
                                                                     child: Text(
-                                                                      "Beginner and Advanced".tr,
+                                                                      "Beginner and Medium".tr,
                                                                       overflow:
-                                                                          TextOverflow.ellipsis,
+                                                                      TextOverflow.ellipsis,
                                                                       textAlign: TextAlign.start,
                                                                       style: TextStyle(
                                                                         fontSize:
-                                                                            ScreenUtil().setSp(
+                                                                        ScreenUtil().setSp(
                                                                           60,
                                                                         ),
                                                                         fontFamily: 'Poppins',
@@ -801,9 +994,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ).r,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment.start,
+                                                              MainAxisAlignment.start,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment.center,
+                                                              CrossAxisAlignment.center,
                                                               mainAxisSize: MainAxisSize.max,
                                                               children: [
                                                                 Padding(
@@ -863,7 +1056,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     ),
                                                     ListView.builder(
                                                         physics: BouncingScrollPhysics(),
-                                                        padding: EdgeInsets.only(bottom: 70),
+                                                        //padding: EdgeInsets.only(bottom: 70),
                                                         shrinkWrap: true,
                                                         itemCount: 1,
                                                         itemBuilder: ((context, index) {
@@ -876,14 +1069,14 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ).r,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                                  MainAxisAlignment.start,
+                                                              MainAxisAlignment.start,
                                                               crossAxisAlignment:
-                                                                  CrossAxisAlignment.center,
+                                                              CrossAxisAlignment.center,
                                                               mainAxisSize: MainAxisSize.min,
                                                               children: [
                                                                 ClipRRect(
                                                                     borderRadius:
-                                                                        BorderRadius.circular(
+                                                                    BorderRadius.circular(
                                                                       ScreenUtil().setWidth(
                                                                         16.00,
                                                                       ),
@@ -917,15 +1110,79 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                             ),
                                                           );
                                                         })),
+
+                                                    Padding(
+                                                      padding: REdgeInsets.only(
+                                                          left: 35, top: 80, right: 35, bottom: 40),
+                                                      child: Text(
+                                                        'Request for Exam'.tr,
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                        style: TextStyle(
+                                                          fontSize: ScreenUtil().setSp(
+                                                            80,
+                                                          ),
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight: FontWeight.w600,
+                                                          height: 1.00,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Center(
+                                                      child: TextButton(
+                                                        onPressed: () async {
+                                                          deactivate();
+                                                          Get.to(ExamScreen());
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.redAccent,
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                  color: Colors.redAccent,
+                                                                  spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+                                                          child: Center(
+                                                              child: Text(
+                                                                "Request Now!".tr,
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 65.sp),
+                                                              )),
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+
+
+
+
                                                     SizedBox(
-                                                      height: 100.h,
+                                                      height: 500.h,
                                                     )
                                                   ],
                                                 ),
                                               ),
                                             ],
-                                          ),
+                                          )
                                         )
+
+
+
+
+
+
+
+
+
+
+
+
                                       : Container(
                                           height: ScreenUtil().setHeight(1450),
                                           child: TabBarView(
@@ -1055,7 +1312,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                             top: 1,
                                                                           ).r,
                                                                           child: Text(
-                                                                            "Beginner and Advanced"
+                                                                            "Beginner and Medium"
                                                                                 .tr,
                                                                             overflow: TextOverflow
                                                                                 .ellipsis,
@@ -1218,6 +1475,19 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           ),
                         ),
                       ),
+
+
+
+
+
+
+
+
+
+
+
+
+
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: widget.isEnroll!

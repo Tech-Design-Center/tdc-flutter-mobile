@@ -78,6 +78,9 @@ dependencies:
   awesome_notifications: ^0.6.19
   translator: ^0.1.7
   devicelocale: ^0.6.0
+  googleapis: ^11.0.0
+  googleapis_auth: ^1.4.0
+  flutter_inappwebview: ^5.7.2+3
 
 dev_dependencies:
   flutter_test:
