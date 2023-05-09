@@ -4,22 +4,22 @@ List<Course> courseListFromJson(String val) =>
     List<Course>.from(json.decode(val).map((data) => Course.fromJson(data)));
 
 class Course {
-  final String? email;
-  final List<DateTime>? purchaseDate;
-  final List<String>? image;
-  final List<String>? documentURL;
-  final List<String>? examURL;
-  final List<String>? telegramURL;
-  final List<String>? title;
-  final List<String>? author;
-  final List<String>? description;
-  final List<int>? duration;
-  final List<int>? price;
-  final List<String>? videoTrailerURL;
-  final List<String>? ABAPaymentURL;
-  final List<List<String>>? playlistTitle;
-  final List<List<List<String>>>? videoTitle;
-  final List<List<List<String>>>? videoUrl;
+  final String email;
+  final List<DateTime> purchaseDate;
+  final List<String> image;
+  final List<String> documentURL;
+  final List<String> examURL;
+  final List<String> telegramURL;
+  final List<String> title;
+  final List<String> author;
+  final List<String> description;
+  final List<int> duration;
+  final List<int> price;
+  final List<String> videoTrailerURL;
+  final List<String> ABAPaymentURL;
+  final List<List<String>> playlistTitle;
+  final List<List<List<String>>> videoTitle;
+  final List<List<List<String>>> videoUrl;
 
   Course({
     required this.email,
@@ -42,35 +42,44 @@ class Course {
 
   factory Course.fromJson(Map<String, dynamic> data) {
     return Course(
-      email: data['email'],
+      email: data['email'] ?? 'Not Yet',
       purchaseDate: List<DateTime>.from(
-          data['course_user_links'].map((data) => DateTime.parse(data['publishedAt'].toString()))),
-      documentURL:
-          List<String>.from(data['course_user_links'].map((data) => data['course']['documentURL'])),
-      examURL:
-          List<String>.from(data['course_user_links'].map((data) => data['course']['examURL'])),
-      telegramURL:
-          List<String>.from(data['course_user_links'].map((data) => data['course']['telegramURL'])),
+          data['course_user_links'].map((data) => DateTime.parse(data['publishedAt'].toString())) ??
+              'Not Yet'),
+      documentURL: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['documentURL']) ?? 'Not Yet'),
+      examURL: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['examURL']) ?? 'Not Yet'),
+      telegramURL: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['telegramURL']) ?? 'Not Yet'),
       image: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['image']['url'])),
-      title: List<String>.from(data['course_user_links'].map((data) => data['course']['title'])),
-      author: List<String>.from(data['course_user_links'].map((data) => data['course']['author'])),
-      description:
-          List<String>.from(data['course_user_links'].map((data) => data['course']['description'])),
-      duration: List<int>.from(data['course_user_links'].map((data) => data['course']['duration'])),
-      price: List<int>.from(data['course_user_links'].map((data) => data['course']['price'])),
+          data['course_user_links'].map((data) => data['course']['image']['url']) ?? 'Not Yet'),
+      title: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['title']) ?? 'Not Yet'),
+      author: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['author']) ?? 'Not Yet'),
+      description: List<String>.from(
+          data['course_user_links'].map((data) => data['course']['description']) ?? 'Not Yet'),
+      duration: List<int>.from(
+          data['course_user_links'].map((data) => data['course']['duration']) ?? 'Not Yet'),
+      price: List<int>.from(
+          data['course_user_links'].map((data) => data['course']['price']) ?? 'Not Yet'),
       videoTrailerURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['videoTrailerURL'])),
+          data['course_user_links'].map((data) => data['course']['videoTrailerURL']) ?? 'Not Yet'),
       ABAPaymentURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['ABAPaymentURL'])),
+          data['course_user_links'].map((data) => data['course']['ABAPaymentURL']) ?? 'Not Yet'),
       playlistTitle: List<List<String>>.from(data['course_user_links'].map((data) =>
-          List<String>.from(data['course']['playlist_video_urls'].map((data) => data['title'])))),
+              List<String>.from(
+                  data['course']['playlist_video_urls'].map((data) => data['title']))) ??
+          'Not Yet'),
       videoTitle: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-          List<List<String>>.from(data['course']['playlist_video_urls']
-              .map((data) => List<String>.from(data['video_urls'].map((data) => data['title'])))))),
+              List<List<String>>.from(data['course']['playlist_video_urls'].map(
+                  (data) => List<String>.from(data['video_urls'].map((data) => data['title']))))) ??
+          'Not Yet'),
       videoUrl: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-          List<List<String>>.from(data['course']['playlist_video_urls'].map(
-              (data) => List<String>.from(data['video_urls'].map((data) => data['videoURL'])))))),
+              List<List<String>>.from(data['course']['playlist_video_urls'].map((data) =>
+                  List<String>.from(data['video_urls'].map((data) => data['videoURL']))))) ??
+          'Not Yet'),
     );
   }
 }

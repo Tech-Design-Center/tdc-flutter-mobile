@@ -25,7 +25,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   TextEditingController currentPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  String? profileImage = authController.user.value?.imageURL;
+  String? profileImage = authController.user.value?.imageURL ??
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   bool _isTextFieldEmpty = true;
 
@@ -115,7 +116,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         height: 60.h,
                       ),
                       Text(
-                        "Student ID : # ".tr+" ${authController.user.value?.id ?? 0}",
+                        "Student ID : # ".tr + " ${authController.user.value?.id ?? 0}",
                         maxLines: null,
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -275,7 +276,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Retype Password'.tr  ,
+                                  'Retype Password'.tr,
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: ScreenUtil().setSp(65),

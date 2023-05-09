@@ -4,12 +4,12 @@ List<NewsFeed> newsFeedListFromJson(String val) =>
     List<NewsFeed>.from(json.decode(val)['data'].map((newsFeed) => NewsFeed.fromJson(newsFeed)));
 
 class NewsFeed {
-  final int? id;
-  final String? image;
-  final String? title;
-  final String? description;
-  final String? poster;
-  final DateTime? publishedAt;
+  final int id;
+  final String image;
+  final String title;
+  final String description;
+  final String poster;
+  final DateTime publishedAt;
 
   NewsFeed({
     required this.id,
@@ -22,10 +22,10 @@ class NewsFeed {
 
   factory NewsFeed.fromJson(Map<String, dynamic> data) => NewsFeed(
         id: data['id'],
-        image: data['attributes']['image']['data']['attributes']['url'],
-        title: data['attributes']['title'],
-        description: data['attributes']['description'],
-        poster: data['attributes']['poster']['data']['attributes']['url'],
-        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString()),
+        image: data['attributes']['image']['data']['attributes']['url'] ?? 'Not Yet',
+        title: data['attributes']['title'] ?? 'Not Yet',
+        description: data['attributes']['description'] ?? 'Not Yet',
+        poster: data['attributes']['poster']['data']['attributes']['url'] ?? 'Not Yet',
+        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString() ?? 'Not Yet'),
       );
 }

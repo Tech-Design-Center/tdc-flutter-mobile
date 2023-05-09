@@ -4,10 +4,10 @@ List<Notifications> notificationListFromJson(String val) =>
     List<Notifications>.from(json.decode(val)['data'].map((data) => Notifications.fromJson(data)));
 
 class Notifications {
-  final int? id;
-  final String? title;
-  final String? description;
-  final DateTime? publishedAt;
+  final int id;
+  final String title;
+  final String description;
+  final DateTime publishedAt;
 
   Notifications({
     required this.id,
@@ -20,6 +20,6 @@ class Notifications {
         id: data['id'],
         title: data['attributes']['title'] ?? 'Empty',
         description: data['attributes']['description'] ?? 'Empty',
-        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString()),
+        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString() ?? 'Not Yet'),
       );
 }

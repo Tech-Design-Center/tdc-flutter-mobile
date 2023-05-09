@@ -46,7 +46,8 @@ class HomepageExpandScreen extends StatefulWidget {
 
 class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  String? profileImage = authController.user.value!.imageURL;
+  String profileImage = authController.user.value?.imageURL ??
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
       GlobalKey<LiquidPullToRefreshState>();
   static int refreshNum = 10; // number that changes when refreshed
@@ -247,12 +248,9 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 ),
                               ],
                             ),
-
                             Row(
                               children: [
-
                                 PopupMenuButton(
-
                                   itemBuilder: (BuildContext context) => [
                                     const PopupMenuItem(
                                       value: Locale('en', 'US'),

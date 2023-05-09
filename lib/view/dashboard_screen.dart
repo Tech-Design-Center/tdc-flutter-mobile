@@ -17,7 +17,7 @@ import '../model/user.dart';
 // ignore: must_be_immutable
 class DashboardScreen extends StatefulWidget {
   int selectedNavBarIndex;
-  DashboardScreen( {super.key, this.selectedNavBarIndex = 0});
+  DashboardScreen({super.key, this.selectedNavBarIndex = 0});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -25,9 +25,9 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProviderStateMixin {
   List<Widget> screens = [
-     HomepageExpandScreen(),
-     MyCourseScreen(),
-     SettingScreen(),
+    HomepageExpandScreen(),
+    MyCourseScreen(),
+    SettingScreen(),
   ];
 
   final keyThree = GlobalKey();

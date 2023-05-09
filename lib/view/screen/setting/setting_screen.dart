@@ -12,14 +12,13 @@ import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
 class SettingScreen extends StatefulWidget {
-
-
   @override
   State<SettingScreen> createState() => _SettingScreenState();
 }
 
 class _SettingScreenState extends State<SettingScreen> with SingleTickerProviderStateMixin {
-  String? profileImage = authController.user.value?.imageURL;
+  String profileImage = authController.user.value?.imageURL ??
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,9 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
       body: SafeArea(
         child: Column(
           children: [
-            SectionTitleScreen(name: 'Setting'.tr,),
+            SectionTitleScreen(
+              name: 'Setting'.tr,
+            ),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -128,7 +129,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                               right: 29,
                             ),
                             child: Text(
-                              "Student ID : # ".tr+"${authController.user.value?.id ?? 0}",
+                              "Student ID : # ".tr + "${authController.user.value?.id ?? 0}",
                               maxLines: null,
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -171,14 +172,14 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                                 onTap: () {
                                   Get.to(() => UpdateProfileScreen());
                                 },
-                                child:
-                                    SectionSettingCard(name: 'Update Profile'.tr, icon: Icons.person)),
+                                child: SectionSettingCard(
+                                    name: 'Update Profile'.tr, icon: Icons.person)),
                             InkWell(
                                 onTap: () {
                                   Get.to(() => ChangePasswordScreen());
                                 },
-                                child:
-                                    SectionSettingCard(name: 'Change Password'.tr, icon: Icons.key)),
+                                child: SectionSettingCard(
+                                    name: 'Change Password'.tr, icon: Icons.key)),
 
                             SizedBox(
                               height: 80.h,
