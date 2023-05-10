@@ -44,6 +44,7 @@ class CourseDetailsScreen extends StatefulWidget {
   final List<List<String>>? videoTitle;
   final List<List<String>>? videoUrl;
   final DateTime purchaseDate;
+  final String? telegramURL;
 
 
   CourseDetailsScreen({
@@ -62,6 +63,7 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.ABAPaymentURL,
     required this.documentsURL,
     required this.purchaseDate,
+    required this.telegramURL,
 
 
   });
@@ -580,9 +582,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     ),
                                                     Center(
                                                       child: TextButton(
+
                                                         onPressed: () async {
+                                                          deactivate();
                                                           await launch(
-                                                            "https://t.me/Techdesigncenter",
+                                                            widget.telegramURL!,
                                                             forceSafariVC: false,
                                                             forceWebView: false,
                                                             headers: <String, String>{
@@ -945,8 +949,9 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     Center(
                                                       child: TextButton(
                                                         onPressed: () async {
+                                                          deactivate();
                                                           await launch(
-                                                            "https://t.me/Techdesigncenter",
+                                                            widget.telegramURL!,
                                                             forceSafariVC: false,
                                                             forceWebView: false,
                                                             headers: <String, String>{

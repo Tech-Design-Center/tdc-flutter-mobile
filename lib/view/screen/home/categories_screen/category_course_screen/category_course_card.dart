@@ -39,6 +39,7 @@ class CategoryCourseCard extends StatelessWidget {
                   ABAPaymentURL: categories.ABAPaymentURL![index],
                   documentsURL: categories.documentURL![index],
                   purchaseDate: DateTime(2023,1,1),
+                  telegramURL: '',
 
                 ));
               },

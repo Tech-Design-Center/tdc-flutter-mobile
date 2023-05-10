@@ -37,6 +37,7 @@ class MyCourseCard extends StatelessWidget {
               ABAPaymentURL: course.ABAPaymentURL![index],
               documentsURL: course.documentURL![index],
               purchaseDate: course.purchaseDate![index],
+              telegramURL: course.telegramURL![index],
 
 
             ));
