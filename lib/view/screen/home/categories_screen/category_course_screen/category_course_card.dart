@@ -38,7 +38,8 @@ class CategoryCourseCard extends StatelessWidget {
                   videoUrl: categories.videoUrl![index],
                   ABAPaymentURL: categories.ABAPaymentURL![index],
                   documentsURL: categories.documentURL![index],
-                  isExam: false,
+                  purchaseDate: DateTime(2023,1,1),
+
                 ));
               },
               child: Container(

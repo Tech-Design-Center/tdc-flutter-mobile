@@ -35,7 +35,7 @@ class RecommendCard extends StatelessWidget {
             videoUrl: recommend.videoUrl,
             ABAPaymentURL: recommend.ABAPaymentURL,
             documentsURL: recommend.documentURL,
-            isExam: false,
+            purchaseDate: DateTime(2023,1,1),
           ));
         },
         child: Align(

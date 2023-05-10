@@ -165,7 +165,70 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30), topRight: Radius.circular(30))),
                       child: SingleChildScrollView(
-                        child: Column(
+                        child: authController.user.value?.fullName == null ?
+                        Column(
+                          children: [
+                            //body
+                            InkWell(
+                                onTap: () {
+
+                                },
+                                child: SectionSettingCard(
+                                    name: 'Update Profile'.tr, icon: Icons.person)),
+                            InkWell(
+                                onTap: () {
+
+                                },
+                                child: SectionSettingCard(
+                                    name: 'Change Password'.tr, icon: Icons.key)),
+
+                            SizedBox(
+                              height: 80.h,
+                            ),
+                            SectionSettingCard(name: 'Help & Supports'.tr, icon: Icons.warning),
+                            SectionSettingCard(name: 'About Us'.tr, icon: Icons.people),
+                            SectionSettingCard(name: 'Term & Conditions'.tr, icon: Icons.task),
+                            Padding(
+                              padding: REdgeInsets.only(top: 200, bottom: 400),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Get.offAll(() => OnboardingScreen());
+                                    },
+                                    child: Container(
+                                      height: ScreenUtil().setHeight(200),
+                                      width: ScreenUtil().setWidth(1000),
+                                      margin: REdgeInsets.only(
+                                        right: 24,
+                                        left: 24,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: ColorConstant.redA700A2,
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Login".tr,
+                                            style: TextStyle(
+                                                fontSize: 80.sp,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ) :
+                        Column(
                           children: [
                             //body
                             InkWell(

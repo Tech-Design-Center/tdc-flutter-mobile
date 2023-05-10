@@ -76,7 +76,10 @@ class TranslationsApp extends Translations {
           'Telegram Support':'Telegram Support',
           "Exam Now!":"Exam Now!",
           "Please watch video introduction above before exam.":"Please watch video introduction above before exam.",
-
+          'Login':'Login',
+          " Day Left ":" Day Left ",
+          'News Feed':'News Feed',
+          "Exam on Computer Only !":"Exam on Computer Only !",
         },
         'km_KH': {
           'hello': 'ជំរាបសួរ',
@@ -150,8 +153,11 @@ class TranslationsApp extends Translations {
           "Exam":"ប្រឡង",
           'Telegram Support':'Telegram ជំនួយ',
           "Exam Now!":"ប្រឡងឥឡូវនេះ!",
-          "Please watch video introduction above before exam.":"សូមមើលវីឌីអូណែនាំខាងលើនេះមុននឹងប្រឡង."
-
+          "Please watch video introduction above before exam.":"សូមមើលវីឌីអូណែនាំខាងលើនេះមុននឹងប្រឡង.",
+          'Login':'ចូលគណនី',
+          " Day Left ":" ថ្ងៃទៀត",
+          'News Feed':'ព័ត៌មាន',
+          "Exam on Computer Only !":"ប្រឡងបានតែនៅលើកុំព្យូទ័រតែប៉ុណ្ណោះ!",
         },
       };
 }

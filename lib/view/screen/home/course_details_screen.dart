@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/scheduler.dart';
@@ -6,9 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:pod_player/pod_player.dart';
+import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
+import 'package:tdc_frontend_mobile/model/course.dart';
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/enroll_course_screen/enroll_course_screen.dart';
 
@@ -16,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/video_player_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/my_learning/exam_screen/exam_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/pdf_view_screen/pdf_view_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -31,17 +36,14 @@ class CourseDetailsScreen extends StatefulWidget {
   final String? description;
   final String? ABAPaymentURL;
   final String? documentsURL;
-
   final int? duration;
   final int? price;
   final String? videoTrailerURL;
   final bool? isEnroll;
-
-  final bool? isExam;
-
   final List<String>? playlistTitle;
   final List<List<String>>? videoTitle;
   final List<List<String>>? videoUrl;
+  final DateTime purchaseDate;
 
 
   CourseDetailsScreen({
@@ -59,7 +61,9 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.videoUrl,
     required this.ABAPaymentURL,
     required this.documentsURL,
-    required this.isExam,
+    required this.purchaseDate,
+
+
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -71,14 +75,38 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool isLoading = true;
   bool isVideoPlaying = true;
   TabController? tabController;
-  bool Exam = true;
-
+  bool isExam = false;
+  List<Course> course = myCourseController.courseList ;
+  String daynow = '0' ;
+  int expDate = 0;
   @override
   void initState() {
     tabController = tabController = TabController(length: 3, vsync: this);
     super.initState();
     loadVideo();
+    String APIDate = DateFormat('yyyy, MM, dd').format(widget.purchaseDate);
+    List<String> dateParts = APIDate.split(", ");
+    int year = int.parse(dateParts[0]);
+    int month = int.parse(dateParts[1]);
+    int day = int.parse(dateParts[2]);
+    DateTime date = DateTime(year, month, day);
+    DateTime givenDate = DateTime(date.year, date.month, date.day).toLocal();
+
+    DateTime now = DateTime.now();
+
+    int differenceInDays = now.difference(givenDate).inDays;
+    daynow = differenceInDays.toString();
+
+    //EasyLoading.showError(daynow);
+
+    if(differenceInDays.toInt() > 30){
+      isExam = true;
+    }
+
+    expDate = 30 - differenceInDays;
+    //EasyLoading.showError(expDate.toString());
   }
+
 
   @override
   void dispose() {
@@ -88,7 +116,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
   void loadVideo() async {
     List<VideoQalityUrls>? urls;
-    widget.isExam! ?
+    isExam ?
     urls = await PodPlayerController.getYoutubeUrls(
       widget.videoTrailerURL!,
     ) : urls = await PodPlayerController.getYoutubeUrls(
@@ -367,19 +395,37 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(
+                                            left: 10,
                                             top: 30,
                                             right: 10,
                                           ).r,
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                "${widget.duration}" + " Hours ".tr,
-                                                style: TextStyle(
-                                                    fontSize: 60.sp, color: Colors.blueAccent),
-                                              ),
-                                            ],
+                                          child: Text(
+                                            "Duration : "+"${widget.duration}" + " Hours ".tr,
+                                            style: TextStyle(
+                                                fontSize: 60.sp, color: Colors.blueAccent),
                                           ),
                                         ),
+                                         Container(
+                                           child: widget.isEnroll! ? Padding(
+                                              padding: EdgeInsets.only(
+                                                left: 10,
+                                                top: 30,
+                                                right: 10,
+                                              ).r,
+                                             child: Text(
+                                               "$expDate" + " Day Left ".tr,
+                                               style: TextStyle(
+                                                   fontSize: 60.sp, color: Colors.redAccent),
+                                             ),
+                                            ) : Padding(
+                                             padding: EdgeInsets.only(
+                                               left: 10,
+                                               top: 30,
+                                               right: 10,
+                                             ).r,
+                                           )
+                                         )
+
                                       ],
                                     ),
                                   ],
@@ -400,7 +446,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                     ),
                                     child: widget.isEnroll!
                                         ? Container(
-                                          child: widget.isExam! ?
+                                          child: isExam ?
                                           TabBar(
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
@@ -471,7 +517,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                   child: widget.isEnroll!
                                       ? Container(
                                           height: ScreenUtil().setHeight(1450),
-                                          child: widget.isExam! ?
+                                          child: isExam ?
                                           TabBarView(
                                             controller: tabController,
                                             children: [
@@ -587,7 +633,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                       ),
                                                     ),
                                                     Center(
-                                                      child: TextButton(
+                                                      child: Platform.isAndroid && Platform.isIOS ?
+                                                      TextButton(
                                                         onPressed: () async {
                                                             deactivate();
                                                             Get.to(ExamScreen());
@@ -612,7 +659,31 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                     fontSize: 65.sp),
                                                               )),
                                                         ),
-                                                      ),
+                                                      ):TextButton(
+                                                        onPressed: () async {
+                                                          deactivate();
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            color: Colors.redAccent.withOpacity(0.5),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                  color: Colors.redAccent.withOpacity(0.5),
+                                                                  spreadRadius: 3),
+                                                            ],
+                                                          ),
+                                                          width: 1000.w,
+                                                          height: 150.h,
+                                                          child: Center(
+                                                              child: Text(
+                                                                "Exam on Computer Only !".tr,
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 65.sp),
+                                                              )),
+                                                        ),
+                                                      )
                                                     ),
 
 
@@ -1111,55 +1182,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                           );
                                                         })),
 
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 80, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Request for Exam'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      child: TextButton(
-                                                        onPressed: () async {
-                                                          deactivate();
-                                                          Get.to(ExamScreen());
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.redAccent,
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.redAccent,
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                                "Request Now!".tr,
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 65.sp),
-                                                              )),
-                                                        ),
-                                                      ),
-                                                    ),
-
-
-
-
 
 
                                                     SizedBox(
@@ -1171,12 +1193,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             ],
                                           )
                                         )
-
-
-
-
-
-
 
 
 
@@ -1488,21 +1504,85 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
 
 
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: widget.isEnroll!
-                            ? Container()
-                            : Container(
-                                width: ScreenUtil().screenWidth,
-                                color: Colors.white,
-                                child: InkWell(
+                      Container(
+                        child:authController.user.value?.fullName == null ?
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: isVideoPlaying ?
+                          Container(
+                              child: widget.isEnroll!
+                                  ?
+                              Container():
+                              InkWell(
+                                onTap: () {
+                                  deactivate();
+                                  Get.offAll(() => OnboardingScreen());
+                                  },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 220.h,
+                                  margin: EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 60,
+                                    left: 100,
+                                    right: 100,
+                                  ).r,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                                    color: Colors.blueAccent,
+                                  ),
+                                  child: Text(
+                                    "Enroll Now!".tr,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 70.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              )
+                          ) :
+                          Container(
+                            child: widget.isEnroll!
+                                ?
+                            Container() :
+                            InkWell(
+                              onTap: () {
+                                deactivate();
+                                Get.offAll(() => OnboardingScreen());},
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 220.h,
+                                margin: EdgeInsets.only(
+                                  top: 10,
+                                  bottom: 60,
+                                  left: 100,
+                                  right: 100,
+                                ).r,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                                  color: Colors.blueAccent,
+                                ),
+                                child: Text(
+                                  "Enroll Now!".tr,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 70.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            )
+                            )
+                          ) : Align(
+                            alignment: Alignment.bottomCenter,
+                            child: isVideoPlaying ?
+                            Container(
+                                child: widget.isEnroll!
+                                    ?
+                                Container():
+                                InkWell(
                                   onTap: () {
                                     deactivate();
-                                    Get.to(EnrollCourseScreen(
-                                      price: widget.price!,
-                                      ABAPaymentURL: widget.ABAPaymentURL!,
-                                      title: widget.title!,
-                                    ));
+                                    Get.to(EnrollCourseScreen(price: widget.price, ABAPaymentURL: widget.ABAPaymentURL, title: widget.title));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -1525,9 +1605,43 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                ),
-                              ),
-                      ),
+                                )
+                            ) :
+                            Container(
+                                child: widget.isEnroll!
+                                    ?
+                                Container() :
+                                InkWell(
+                                  onTap: () {
+                                    deactivate();
+                                    Get.to(EnrollCourseScreen(price: widget.price, ABAPaymentURL: widget.ABAPaymentURL, title: widget.title));
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 220.h,
+                                    margin: EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 60,
+                                      left: 100,
+                                      right: 100,
+                                    ).r,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                                      color: Colors.blueAccent,
+                                    ),
+                                    child: Text(
+                                      "Enroll Now!".tr,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 70.sp,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                            )
+                        )
+                      )
+
                     ],
                   ),
                 ),

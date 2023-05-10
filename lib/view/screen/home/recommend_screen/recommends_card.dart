@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,7 +31,8 @@ class RecommendsCard extends StatelessWidget {
           videoUrl: recommend.videoUrl,
           ABAPaymentURL: recommend.ABAPaymentURL,
           documentsURL: recommend.documentURL,
-          isExam: false,
+          purchaseDate: DateTime(2023,1,1),
+
         ));
       },
       child: Container(

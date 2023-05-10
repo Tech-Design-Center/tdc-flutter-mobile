@@ -29,7 +29,8 @@ class PopularsCard extends StatelessWidget {
           videoUrl: popular.videoUrl,
           ABAPaymentURL: popular.ABAPaymentURL,
           documentsURL: popular.documentURL,
-          isExam: false,
+          purchaseDate: DateTime(2023,1,1),
+
         ));
       },
       child: Container(

@@ -177,6 +177,43 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    child: InkWell(
+                      onTap: () {
+                        Get.to(NewsFeedScreen());
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.feed,
+                                size: ScreenUtil().setWidth(100),
+
+
+                              ),
+                              20.horizontalSpace,
+                              Text(
+                                'News Feed'.tr,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: ScreenUtil().setSp(60),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: ColorConstant.indigoA200,
+                            size: 20,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -351,7 +388,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                 GestureDetector(
                                   onTap: () {
                                     if (authController.user.value?.fullName == null) {
-                                      Get.offAll(() => OnboardingScreen());
+                                      _scaffoldKey.currentState!.openDrawer();
                                     } else {
                                       _scaffoldKey.currentState!.openDrawer();
                                     }
@@ -394,7 +431,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                       child: GestureDetector(
                                         onTap: () {
                                           if (authController.user.value?.fullName == null) {
-                                            Get.offAll(() => OnboardingScreen());
+                                            _scaffoldKey.currentState!.openDrawer();
                                           } else {
                                             _scaffoldKey.currentState!.openDrawer();
                                           }
