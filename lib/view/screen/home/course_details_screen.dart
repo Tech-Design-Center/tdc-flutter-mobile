@@ -1,10 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -46,7 +42,6 @@ class CourseDetailsScreen extends StatefulWidget {
   final DateTime purchaseDate;
   final String? telegramURL;
 
-
   CourseDetailsScreen({
     super.key,
     required this.image,
@@ -64,8 +59,6 @@ class CourseDetailsScreen extends StatefulWidget {
     required this.documentsURL,
     required this.purchaseDate,
     required this.telegramURL,
-
-
   });
   @override
   State<CourseDetailsScreen> createState() => _CourseDetailsScreenState();
@@ -78,8 +71,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
   bool isVideoPlaying = true;
   TabController? tabController;
   bool isExam = false;
-  List<Course> course = myCourseController.courseList ;
-  String daynow = '0' ;
+  List<Course> course = myCourseController.courseList;
+  String daynow = '0';
   int expDate = 0;
   @override
   void initState() {
@@ -101,14 +94,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
     //EasyLoading.showError(daynow);
 
-    if(differenceInDays.toInt() > 30){
+    if (differenceInDays.toInt() > 30) {
       isExam = true;
     }
 
     expDate = 30 - differenceInDays;
     //EasyLoading.showError(expDate.toString());
   }
-
 
   @override
   void dispose() {
@@ -118,12 +110,13 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
 
   void loadVideo() async {
     List<VideoQalityUrls>? urls;
-    isExam ?
-    urls = await PodPlayerController.getYoutubeUrls(
-      widget.videoTrailerURL!,
-    ) : urls = await PodPlayerController.getYoutubeUrls(
-      widget.videoTrailerURL!,
-    );
+    isExam
+        ? urls = await PodPlayerController.getYoutubeUrls(
+            widget.videoTrailerURL!,
+          )
+        : urls = await PodPlayerController.getYoutubeUrls(
+            widget.videoTrailerURL!,
+          );
 
     setState(() => isLoading = false);
     _controller = PodPlayerController(
@@ -402,32 +395,32 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                             right: 10,
                                           ).r,
                                           child: Text(
-                                            "Duration : "+"${widget.duration}" + " Hours ".tr,
+                                            "Duration : " + "${widget.duration}" + " Hours ".tr,
                                             style: TextStyle(
                                                 fontSize: 60.sp, color: Colors.blueAccent),
                                           ),
                                         ),
-                                         Container(
-                                           child: widget.isEnroll! ? Padding(
-                                              padding: EdgeInsets.only(
-                                                left: 10,
-                                                top: 30,
-                                                right: 10,
-                                              ).r,
-                                             child: Text(
-                                               "$expDate" + " Day Left ".tr,
-                                               style: TextStyle(
-                                                   fontSize: 60.sp, color: Colors.redAccent),
-                                             ),
-                                            ) : Padding(
-                                             padding: EdgeInsets.only(
-                                               left: 10,
-                                               top: 30,
-                                               right: 10,
-                                             ).r,
-                                           )
-                                         )
-
+                                        Container(
+                                            child: widget.isEnroll!
+                                                ? Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 10,
+                                                      top: 30,
+                                                      right: 10,
+                                                    ).r,
+                                                    child: Text(
+                                                      "$expDate" + " Day Left ".tr,
+                                                      style: TextStyle(
+                                                          fontSize: 60.sp, color: Colors.redAccent),
+                                                    ),
+                                                  )
+                                                : Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 10,
+                                                      top: 30,
+                                                      right: 10,
+                                                    ).r,
+                                                  ))
                                       ],
                                     ),
                                   ],
@@ -448,51 +441,51 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                     ),
                                     child: widget.isEnroll!
                                         ? Container(
-                                          child: isExam ?
-                                          TabBar(
-                                            indicatorPadding: EdgeInsets.all(5).w,
-                                            indicator: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(50),
-                                                color: ColorConstant.indigoA200),
-                                            labelColor: ColorConstant.whiteA700,
-                                            unselectedLabelColor: Colors.black,
-                                            labelStyle: TextStyle(
-                                                fontSize: 60.sp,
-                                                fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.w500),
-                                            unselectedLabelStyle: TextStyle(
-                                                fontFamily: 'Poppins', fontWeight: FontWeight.w400),
-                                            controller: tabController,
-                                            tabs: [
-                                              Tab(
-                                                text: "Exam".tr,
-                                              ),
-                                            ],
-                                          )
-                                              :
-                                            TabBar(
-                                              indicatorPadding: EdgeInsets.all(5).w,
-                                              indicator: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(50),
-                                                  color: ColorConstant.indigoA200),
-                                              labelColor: ColorConstant.whiteA700,
-                                              unselectedLabelColor: Colors.black,
-                                              labelStyle: TextStyle(
-                                                  fontFamily: 'Poppins', fontWeight: FontWeight.w500),
-                                              unselectedLabelStyle: TextStyle(
-                                                  fontFamily: 'Poppins', fontWeight: FontWeight.w400),
-                                              controller: tabController,
-                                              tabs: [
-                                                Tab(
-                                                  text: "Videos".tr,
-                                                ),
-                                                Tab(
-                                                  text: "About".tr,
-                                                ),
-                                              ],
-                                            )
-
-                                        )
+                                            child: isExam
+                                                ? TabBar(
+                                                    indicatorPadding: EdgeInsets.all(5).w,
+                                                    indicator: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(50),
+                                                        color: ColorConstant.indigoA200),
+                                                    labelColor: ColorConstant.whiteA700,
+                                                    unselectedLabelColor: Colors.black,
+                                                    labelStyle: TextStyle(
+                                                        fontSize: 60.sp,
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight: FontWeight.w500),
+                                                    unselectedLabelStyle: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight: FontWeight.w400),
+                                                    controller: tabController,
+                                                    tabs: [
+                                                      Tab(
+                                                        text: "Exam".tr,
+                                                      ),
+                                                    ],
+                                                  )
+                                                : TabBar(
+                                                    indicatorPadding: EdgeInsets.all(5).w,
+                                                    indicator: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(50),
+                                                        color: ColorConstant.indigoA200),
+                                                    labelColor: ColorConstant.whiteA700,
+                                                    unselectedLabelColor: Colors.black,
+                                                    labelStyle: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight: FontWeight.w500),
+                                                    unselectedLabelStyle: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight: FontWeight.w400),
+                                                    controller: tabController,
+                                                    tabs: [
+                                                      Tab(
+                                                        text: "Videos".tr,
+                                                      ),
+                                                      Tab(
+                                                        text: "About".tr,
+                                                      ),
+                                                    ],
+                                                  ))
                                         : TabBar(
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
@@ -512,265 +505,252 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 text: "${widget.price}\$",
                                               ),
                                             ],
-                                          )
-                                ),
+                                          )),
                               ),
                               Container(
                                   child: widget.isEnroll!
                                       ? Container(
                                           height: ScreenUtil().setHeight(1450),
-                                          child: isExam ?
-                                          TabBarView(
-                                            controller: tabController,
-                                            children: [
-                                              SingleChildScrollView(
-                                                padding: EdgeInsets.only(left: 20, right: 20,bottom: 20).r,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                          child: isExam
+                                              ? TabBarView(
+                                                  controller: tabController,
+                                                  children: [
+                                                    SingleChildScrollView(
+                                                      padding: EdgeInsets.only(
+                                                              left: 20, right: 20, bottom: 20)
+                                                          .r,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment.start,
+                                                        children: [
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 60,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Description'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Container(
+                                                                margin: EdgeInsets.only(
+                                                                        left: 35,
+                                                                        right: 35,
+                                                                        top: 20)
+                                                                    .r,
+                                                                width: ScreenUtil().screenWidth,
+                                                                child: Text(
+                                                                  "Please watch video introduction above before exam.",
+                                                                  maxLines: 2,
+                                                                  style: TextStyle(
+                                                                      fontSize: 50.sp,
+                                                                      color: ColorConstant.gray600,
+                                                                      fontFamily: 'Poppins',
+                                                                      fontWeight:
+                                                                          FontWeight.normal),
+                                                                )),
+                                                          ),
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 60,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Telegram Support'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                            child: TextButton(
+                                                              onPressed: () async {
+                                                                deactivate();
+                                                                await launch(
+                                                                  widget.telegramURL!,
+                                                                  forceSafariVC: false,
+                                                                  forceWebView: false,
+                                                                  headers: <String, String>{
+                                                                    'my_header_key':
+                                                                        'my_header_value'
+                                                                  },
+                                                                );
+                                                              },
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(10),
+                                                                  color: Colors.blueAccent,
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors.blue,
+                                                                        spreadRadius: 3),
+                                                                  ],
+                                                                ),
+                                                                width: 1000.w,
+                                                                height: 150.h,
+                                                                child: Center(
+                                                                    child: Text(
+                                                                  "Telegram",
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 65.sp),
+                                                                )),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 80,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Exam'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                              child: Platform.isAndroid &&
+                                                                      Platform.isIOS
+                                                                  ? TextButton(
+                                                                      onPressed: () async {
+                                                                        deactivate();
+                                                                        Get.to(ExamScreen());
+                                                                      },
+                                                                      child: Container(
+                                                                        decoration: BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(
+                                                                                  10),
+                                                                          color: Colors.redAccent,
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                                color: Colors
+                                                                                    .redAccent,
+                                                                                spreadRadius: 3),
+                                                                          ],
+                                                                        ),
+                                                                        width: 1000.w,
+                                                                        height: 150.h,
+                                                                        child: Center(
+                                                                            child: Text(
+                                                                          "Exam Now!".tr,
+                                                                          style: TextStyle(
+                                                                              color: Colors.white,
+                                                                              fontSize: 65.sp),
+                                                                        )),
+                                                                      ),
+                                                                    )
+                                                                  : TextButton(
+                                                                      onPressed: () async {
+                                                                        deactivate();
+                                                                      },
+                                                                      child: Container(
+                                                                        decoration: BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(
+                                                                                  10),
+                                                                          color: Colors.redAccent
+                                                                              .withOpacity(0.5),
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                                color: Colors
+                                                                                    .redAccent
+                                                                                    .withOpacity(
+                                                                                        0.5),
+                                                                                spreadRadius: 3),
+                                                                          ],
+                                                                        ),
+                                                                        width: 1000.w,
+                                                                        height: 150.h,
+                                                                        child: Center(
+                                                                            child: Text(
+                                                                          "Exam on Computer Only !"
+                                                                              .tr,
+                                                                          style: TextStyle(
+                                                                              color: Colors.white,
+                                                                              fontSize: 65.sp),
+                                                                        )),
+                                                                      ),
+                                                                    )),
+                                                          SizedBox(
+                                                            height: 500.h,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              : TabBarView(
+                                                  controller: tabController,
                                                   children: [
                                                     Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 60, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Description'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.center,
-                                                      child: Container(
-                                                          margin: EdgeInsets.only(
-                                                                  left: 35, right: 35, top: 20)
-                                                              .r,
-                                                          width: ScreenUtil().screenWidth,
-                                                          child: Text(
-                                                            "Please watch video introduction above before exam.",
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                fontSize: 50.sp,
-                                                                color: ColorConstant.gray600,
-                                                                fontFamily: 'Poppins',
-                                                                fontWeight: FontWeight.normal),
-                                                          )),
-                                                    ),
-
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 60, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Telegram Support'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      child: TextButton(
-
-                                                        onPressed: () async {
-                                                          deactivate();
-                                                          await launch(
-                                                            widget.telegramURL!,
-                                                            forceSafariVC: false,
-                                                            forceWebView: false,
-                                                            headers: <String, String>{
-                                                              'my_header_key': 'my_header_value'
-                                                            },
-                                                          );
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.blueAccent,
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.blue,
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                            "Telegram",
-                                                            style: TextStyle(
-                                                                color: Colors.white,
-                                                                fontSize: 65.sp),
-                                                          )),
-                                                        ),
-                                                      ),
-                                                    ),
-
-
-
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 80, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Exam'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      child: Platform.isAndroid && Platform.isIOS ?
-                                                      TextButton(
-                                                        onPressed: () async {
-                                                            deactivate();
-                                                            Get.to(ExamScreen());
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.redAccent,
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.redAccent,
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                                "Exam Now!".tr,
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 65.sp),
-                                                              )),
-                                                        ),
-                                                      ):TextButton(
-                                                        onPressed: () async {
-                                                          deactivate();
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.redAccent.withOpacity(0.5),
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.redAccent.withOpacity(0.5),
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                                "Exam on Computer Only !".tr,
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 65.sp),
-                                                              )),
-                                                        ),
-                                                      )
-                                                    ),
-
-
-
-
-
-
-                                                    SizedBox(
-                                                      height: 500.h,
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ) : TabBarView(
-                                            controller: tabController,
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                EdgeInsets.only(left: 14, right: 14, top: 50).r,
-                                                child: SingleChildScrollView(
-                                                  physics: NeverScrollableScrollPhysics(),
-                                                  child: Column(
-                                                    children: [
-                                                      //playlist card
-                                                      ListView.separated(
-                                                        physics: BouncingScrollPhysics(),
-                                                        itemCount: widget.playlistTitle!.length,
-                                                        shrinkWrap: true,
-                                                        scrollDirection: Axis.vertical,
-                                                        padding: EdgeInsets.only(
-                                                            top: 40,
-                                                            left: 20,
-                                                            right: 20,
-                                                            bottom: 20)
-                                                            .r,
-                                                        itemBuilder: (context, index) {
-                                                          return Container(
-                                                            margin: EdgeInsets.only(
-                                                              top: 12.0,
-                                                              bottom: 12.0,
-                                                            ).r,
-                                                            decoration: BoxDecoration(
-                                                              border: Border.all(
-                                                                  width: 0.8, color: Colors.grey),
-                                                              color: ColorConstant.gray50,
-                                                              borderRadius: BorderRadius.circular(
-                                                                ScreenUtil().setWidth(
-                                                                  60.00,
-                                                                ),
-                                                              ),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  color:
-                                                                  ColorConstant.bluegray90011,
-                                                                  spreadRadius:
-                                                                  ScreenUtil().setWidth(
-                                                                    2.00,
-                                                                  ),
-                                                                  blurRadius: ScreenUtil().setWidth(
-                                                                    2.00,
-                                                                  ),
-                                                                  offset: Offset(
-                                                                    3,
-                                                                    3,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            child: ExpansionTile(
-                                                              title: Text(
-                                                                  widget.playlistTitle![index]),
-                                                              children: [
-                                                                Container(
+                                                      padding: EdgeInsets.only(
+                                                              left: 14, right: 14, top: 50)
+                                                          .r,
+                                                      child: SingleChildScrollView(
+                                                        physics: NeverScrollableScrollPhysics(),
+                                                        child: Column(
+                                                          children: [
+                                                            //playlist card
+                                                            ListView.separated(
+                                                              physics: BouncingScrollPhysics(),
+                                                              itemCount:
+                                                                  widget.playlistTitle!.length,
+                                                              shrinkWrap: true,
+                                                              scrollDirection: Axis.vertical,
+                                                              padding: EdgeInsets.only(
+                                                                      top: 40,
+                                                                      left: 20,
+                                                                      right: 20,
+                                                                      bottom: 20)
+                                                                  .r,
+                                                              itemBuilder: (context, index) {
+                                                                return Container(
+                                                                  margin: EdgeInsets.only(
+                                                                    top: 12.0,
+                                                                    bottom: 12.0,
+                                                                  ).r,
                                                                   decoration: BoxDecoration(
                                                                     border: Border.all(
-                                                                        width: 0.4,
+                                                                        width: 0.8,
                                                                         color: Colors.grey),
                                                                     color: ColorConstant.gray50,
                                                                     borderRadius:
-                                                                    BorderRadius.circular(
+                                                                        BorderRadius.circular(
                                                                       ScreenUtil().setWidth(
-                                                                        20.00,
+                                                                        60.00,
                                                                       ),
                                                                     ),
                                                                     boxShadow: [
@@ -778,432 +758,515 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                                         color: ColorConstant
                                                                             .bluegray90011,
                                                                         spreadRadius:
-                                                                        ScreenUtil().setWidth(
+                                                                            ScreenUtil().setWidth(
                                                                           2.00,
                                                                         ),
                                                                         blurRadius:
-                                                                        ScreenUtil().setWidth(
+                                                                            ScreenUtil().setWidth(
                                                                           2.00,
                                                                         ),
                                                                         offset: Offset(
-                                                                          3.r,
-                                                                          3.r,
+                                                                          3,
+                                                                          3,
                                                                         ),
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  padding: const EdgeInsets.only(
-                                                                      left: 100)
-                                                                      .r,
-                                                                  child: ListView.builder(
-                                                                    physics:
-                                                                    NeverScrollableScrollPhysics(),
-                                                                    itemCount: widget
-                                                                        .videoTitle![index].length,
-                                                                    shrinkWrap: true,
-                                                                    scrollDirection: Axis.vertical,
-                                                                    padding: REdgeInsets.only(
-                                                                        top: 40,
-                                                                        left: 20,
-                                                                        right: 20,
-                                                                        bottom: 20),
-                                                                    itemBuilder: (context, index1) {
-                                                                      return GestureDetector(
-                                                                        onTap: () {
-                                                                          deactivate();
-                                                                          Get.to(VideoPlayerScreen(
-                                                                            videoUrl: widget.videoUrl![index][index1],
-                                                                            author: widget.author,
-                                                                            description: widget.description,
-                                                                            duration: widget.duration,
-                                                                            image: widget.image!,
-                                                                            title: widget.title!,
-                                                                            videoTitle: widget.videoTitle![index][index1],
-                                                                            documentURL: widget.documentsURL,
-                                                                          ));
-                                                                        },
-                                                                        child: ListTile(
-                                                                            title: Text(widget
-                                                                                .videoTitle![
-                                                                            index][index1])),
-                                                                      );
-                                                                    },
+                                                                  child: ExpansionTile(
+                                                                    title: Text(widget
+                                                                        .playlistTitle![index]),
+                                                                    children: [
+                                                                      Container(
+                                                                        decoration: BoxDecoration(
+                                                                          border: Border.all(
+                                                                              width: 0.4,
+                                                                              color: Colors.grey),
+                                                                          color:
+                                                                              ColorConstant.gray50,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(
+                                                                            ScreenUtil().setWidth(
+                                                                              20.00,
+                                                                            ),
+                                                                          ),
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                              color: ColorConstant
+                                                                                  .bluegray90011,
+                                                                              spreadRadius:
+                                                                                  ScreenUtil()
+                                                                                      .setWidth(
+                                                                                2.00,
+                                                                              ),
+                                                                              blurRadius:
+                                                                                  ScreenUtil()
+                                                                                      .setWidth(
+                                                                                2.00,
+                                                                              ),
+                                                                              offset: Offset(
+                                                                                3.r,
+                                                                                3.r,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        padding:
+                                                                            const EdgeInsets.only(
+                                                                                    left: 100)
+                                                                                .r,
+                                                                        child: ListView.builder(
+                                                                          physics:
+                                                                              NeverScrollableScrollPhysics(),
+                                                                          itemCount: widget
+                                                                              .videoTitle![index]
+                                                                              .length,
+                                                                          shrinkWrap: true,
+                                                                          scrollDirection:
+                                                                              Axis.vertical,
+                                                                          padding: REdgeInsets.only(
+                                                                              top: 40,
+                                                                              left: 20,
+                                                                              right: 20,
+                                                                              bottom: 20),
+                                                                          itemBuilder:
+                                                                              (context, index1) {
+                                                                            return GestureDetector(
+                                                                              onTap: () {
+                                                                                deactivate();
+                                                                                Get.to(
+                                                                                    VideoPlayerScreen(
+                                                                                  videoUrl: widget
+                                                                                          .videoUrl![
+                                                                                      index][index1],
+                                                                                  author:
+                                                                                      widget.author,
+                                                                                  description: widget
+                                                                                      .description,
+                                                                                  duration: widget
+                                                                                      .duration,
+                                                                                  image:
+                                                                                      widget.image!,
+                                                                                  title:
+                                                                                      widget.title!,
+                                                                                  videoTitle: widget
+                                                                                          .videoTitle![
+                                                                                      index][index1],
+                                                                                  documentURL: widget
+                                                                                      .documentsURL,
+                                                                                ));
+                                                                              },
+                                                                              child: ListTile(
+                                                                                  title: Text(
+                                                                                      widget.videoTitle![
+                                                                                              index]
+                                                                                          [
+                                                                                          index1])),
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ),
-                                                              ],
+                                                                );
+                                                              },
+                                                              separatorBuilder:
+                                                                  (BuildContext context,
+                                                                      int index) {
+                                                                return SizedBox(
+                                                                  width: 60.h,
+                                                                );
+                                                              },
                                                             ),
-                                                          );
-                                                        },
-                                                        separatorBuilder:
-                                                            (BuildContext context, int index) {
-                                                          return SizedBox(
-                                                            width: 60.h,
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              SingleChildScrollView(
-                                                padding: EdgeInsets.only(left: 20, right: 20,bottom: 20).r,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 60, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Description'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
+                                                          ],
                                                         ),
                                                       ),
                                                     ),
-                                                    Align(
-                                                      alignment: Alignment.center,
-                                                      child: Container(
-                                                          margin: EdgeInsets.only(
-                                                              left: 35, right: 35, top: 20)
-                                                              .r,
-                                                          width: ScreenUtil().screenWidth,
-                                                          child: Text(
-                                                            widget.description!,
-                                                            maxLines: 2,
-                                                            style: TextStyle(
-                                                                fontSize: 50.sp,
-                                                                color: ColorConstant.gray600,
-                                                                fontFamily: 'Poppins',
-                                                                fontWeight: FontWeight.normal),
-                                                          )),
-                                                    ),
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 60, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Documents'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      child: TextButton(
-                                                        onPressed: () {
-                                                          deactivate();
-                                                          Get.to(PdfViewerPage(DocumentURL: widget.documentsURL!,));
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.blueAccent,
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.blue,
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                                "Documents".tr,
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 65.sp),
-                                                              )),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 35, top: 60, right: 35, bottom: 40),
-                                                      child: Text(
-                                                        'Telegram Group'.tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Center(
-                                                      child: TextButton(
-                                                        onPressed: () async {
-                                                          deactivate();
-                                                          await launch(
-                                                            widget.telegramURL!,
-                                                            forceSafariVC: false,
-                                                            forceWebView: false,
-                                                            headers: <String, String>{
-                                                              'my_header_key': 'my_header_value'
-                                                            },
-                                                          );
-                                                        },
-                                                        child: Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(10),
-                                                            color: Colors.blueAccent,
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors.blue,
-                                                                  spreadRadius: 3),
-                                                            ],
-                                                          ),
-                                                          width: 1000.w,
-                                                          height: 150.h,
-                                                          child: Center(
-                                                              child: Text(
-                                                                "Telegram",
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 65.sp),
-                                                              )),
-                                                        ),
-                                                      ),
-                                                    ),
-
-                                                    Padding(
-                                                      padding: REdgeInsets.only(
-                                                          left: 24, top: 80, right: 24, bottom: 40),
-                                                      child: Text(
-                                                        "Information".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: ScreenUtil().setHeight(
-                                                        300.00,
-                                                      ),
-                                                      width: ScreenUtil().screenWidth,
+                                                    SingleChildScrollView(
+                                                      padding: EdgeInsets.only(
+                                                              left: 20, right: 20, bottom: 20)
+                                                          .r,
                                                       child: Column(
-                                                        mainAxisSize: MainAxisSize.min,
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
-                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                            CrossAxisAlignment.start,
                                                         children: [
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 60,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Description'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
                                                           Align(
                                                             alignment: Alignment.center,
-                                                            child: Padding(
-                                                              padding: REdgeInsets.only(
-                                                                left: 1,
-                                                                top: 5,
+                                                            child: Container(
+                                                                margin: EdgeInsets.only(
+                                                                        left: 35,
+                                                                        right: 35,
+                                                                        top: 20)
+                                                                    .r,
+                                                                width: ScreenUtil().screenWidth,
+                                                                child: Text(
+                                                                  widget.description!,
+                                                                  maxLines: 2,
+                                                                  style: TextStyle(
+                                                                      fontSize: 50.sp,
+                                                                      color: ColorConstant.gray600,
+                                                                      fontFamily: 'Poppins',
+                                                                      fontWeight:
+                                                                          FontWeight.normal),
+                                                                )),
+                                                          ),
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 60,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Documents'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
                                                               ),
-                                                              child: Row(
-                                                                mainAxisAlignment:
-                                                                MainAxisAlignment.start,
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment.center,
-                                                                mainAxisSize: MainAxisSize.max,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                      left: 50,
-                                                                      top: 12,
-                                                                      right: 10,
-                                                                      bottom: 20,
-                                                                    ).r,
-                                                                    child: Icon(
-                                                                      Icons.person,
-                                                                      color: Colors.blueAccent,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                      left: 5,
-                                                                      right: 5,
-                                                                      top: 1,
-                                                                    ).r,
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                deactivate();
+                                                                Get.to(PdfViewerPage(
+                                                                  DocumentURL: widget.documentsURL!,
+                                                                ));
+                                                              },
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(10),
+                                                                  color: Colors.blueAccent,
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors.blue,
+                                                                        spreadRadius: 3),
+                                                                  ],
+                                                                ),
+                                                                width: 1000.w,
+                                                                height: 150.h,
+                                                                child: Center(
                                                                     child: Text(
-                                                                      "Beginner and Medium".tr,
-                                                                      overflow:
-                                                                      TextOverflow.ellipsis,
-                                                                      textAlign: TextAlign.start,
-                                                                      style: TextStyle(
-                                                                        fontSize:
-                                                                        ScreenUtil().setSp(
-                                                                          60,
-                                                                        ),
-                                                                        fontFamily: 'Poppins',
-                                                                        fontWeight: FontWeight.w500,
-                                                                        height: 1.00,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
+                                                                  "Documents".tr,
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 65.sp),
+                                                                )),
                                                               ),
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding: EdgeInsets.only(
-                                                              left: 50,
-                                                              top: 12,
-                                                              right: 10,
-                                                            ).r,
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                              MainAxisAlignment.start,
+                                                            padding: REdgeInsets.only(
+                                                                left: 35,
+                                                                top: 60,
+                                                                right: 35,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              'Telegram Group'.tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                            child: TextButton(
+                                                              onPressed: () async {
+                                                                deactivate();
+                                                                await launch(
+                                                                  widget.telegramURL!,
+                                                                  forceSafariVC: false,
+                                                                  forceWebView: false,
+                                                                  headers: <String, String>{
+                                                                    'my_header_key':
+                                                                        'my_header_value'
+                                                                  },
+                                                                );
+                                                              },
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(10),
+                                                                  color: Colors.blueAccent,
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors.blue,
+                                                                        spreadRadius: 3),
+                                                                  ],
+                                                                ),
+                                                                width: 1000.w,
+                                                                height: 150.h,
+                                                                child: Center(
+                                                                    child: Text(
+                                                                  "Telegram",
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 65.sp),
+                                                                )),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding: REdgeInsets.only(
+                                                                left: 24,
+                                                                top: 80,
+                                                                right: 24,
+                                                                bottom: 40),
+                                                            child: Text(
+                                                              "Information".tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: ScreenUtil().setHeight(
+                                                              300.00,
+                                                            ),
+                                                            width: ScreenUtil().screenWidth,
+                                                            child: Column(
+                                                              mainAxisSize: MainAxisSize.min,
                                                               crossAxisAlignment:
-                                                              CrossAxisAlignment.center,
-                                                              mainAxisSize: MainAxisSize.max,
+                                                                  CrossAxisAlignment.start,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment.start,
                                                               children: [
-                                                                Padding(
-                                                                  padding: EdgeInsets.only(
-                                                                    bottom: 4,
-                                                                  ).r,
-                                                                  child: Icon(
-                                                                    Icons.mic,
-                                                                    color: Colors.blueAccent,
+                                                                Align(
+                                                                  alignment: Alignment.center,
+                                                                  child: Padding(
+                                                                    padding: REdgeInsets.only(
+                                                                      left: 1,
+                                                                      top: 5,
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment.start,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment.center,
+                                                                      mainAxisSize:
+                                                                          MainAxisSize.max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsets.only(
+                                                                            left: 50,
+                                                                            top: 12,
+                                                                            right: 10,
+                                                                            bottom: 20,
+                                                                          ).r,
+                                                                          child: Icon(
+                                                                            Icons.person,
+                                                                            color:
+                                                                                Colors.blueAccent,
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.only(
+                                                                            left: 5,
+                                                                            right: 5,
+                                                                            top: 1,
+                                                                          ).r,
+                                                                          child: Text(
+                                                                            "Beginner and Medium"
+                                                                                .tr,
+                                                                            overflow: TextOverflow
+                                                                                .ellipsis,
+                                                                            textAlign:
+                                                                                TextAlign.start,
+                                                                            style: TextStyle(
+                                                                              fontSize: ScreenUtil()
+                                                                                  .setSp(
+                                                                                60,
+                                                                              ),
+                                                                              fontFamily: 'Poppins',
+                                                                              fontWeight:
+                                                                                  FontWeight.w500,
+                                                                              height: 1.00,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ),
                                                                 Padding(
                                                                   padding: EdgeInsets.only(
-                                                                    left: 10,
-                                                                    right: 6,
-                                                                    top: 1,
+                                                                    left: 50,
+                                                                    top: 12,
+                                                                    right: 10,
                                                                   ).r,
-                                                                  child: Text(
-                                                                    "Khmer".tr,
-                                                                    overflow: TextOverflow.ellipsis,
-                                                                    textAlign: TextAlign.start,
-                                                                    style: TextStyle(
-                                                                      fontSize: ScreenUtil().setSp(
-                                                                        60,
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment.start,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment.center,
+                                                                    mainAxisSize: MainAxisSize.max,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsets.only(
+                                                                          bottom: 4,
+                                                                        ).r,
+                                                                        child: Icon(
+                                                                          Icons.mic,
+                                                                          color: Colors.blueAccent,
+                                                                        ),
                                                                       ),
-                                                                      fontFamily: 'Poppins',
-                                                                      fontWeight: FontWeight.w500,
-                                                                      height: 1.00,
-                                                                    ),
+                                                                      Padding(
+                                                                        padding: EdgeInsets.only(
+                                                                          left: 10,
+                                                                          right: 6,
+                                                                          top: 1,
+                                                                        ).r,
+                                                                        child: Text(
+                                                                          "Khmer".tr,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          textAlign:
+                                                                              TextAlign.start,
+                                                                          style: TextStyle(
+                                                                            fontSize:
+                                                                                ScreenUtil().setSp(
+                                                                              60,
+                                                                            ),
+                                                                            fontFamily: 'Poppins',
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            height: 1.00,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
                                                               ],
                                                             ),
                                                           ),
+                                                          Padding(
+                                                            padding: EdgeInsets.only(
+                                                              left: 24,
+                                                              top: 32,
+                                                              right: 24,
+                                                            ).r,
+                                                            child: Text(
+                                                              "Tools you need".tr,
+                                                              overflow: TextOverflow.ellipsis,
+                                                              textAlign: TextAlign.start,
+                                                              style: TextStyle(
+                                                                fontSize: ScreenUtil().setSp(
+                                                                  80,
+                                                                ),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w600,
+                                                                height: 1.00,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          ListView.builder(
+                                                              physics: BouncingScrollPhysics(),
+                                                              //padding: EdgeInsets.only(bottom: 70),
+                                                              shrinkWrap: true,
+                                                              itemCount: 1,
+                                                              itemBuilder: ((context, index) {
+                                                                return Padding(
+                                                                  padding: EdgeInsets.only(
+                                                                    left: 90,
+                                                                    top: 60,
+                                                                    right: 24,
+                                                                    bottom: 8,
+                                                                  ).r,
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment.start,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment.center,
+                                                                    mainAxisSize: MainAxisSize.min,
+                                                                    children: [
+                                                                      ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(
+                                                                            ScreenUtil().setWidth(
+                                                                              16.00,
+                                                                            ),
+                                                                          ),
+                                                                          child: Icon(
+                                                                            Icons.computer,
+                                                                            color:
+                                                                                Colors.blueAccent,
+                                                                          )),
+                                                                      Padding(
+                                                                        padding: EdgeInsets.only(
+                                                                          left: 30,
+                                                                          right: 8,
+                                                                          top: 9,
+                                                                          bottom: 8,
+                                                                        ).r,
+                                                                        child: Text(
+                                                                          "Computer".tr,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          textAlign:
+                                                                              TextAlign.start,
+                                                                          style: TextStyle(
+                                                                            fontSize:
+                                                                                ScreenUtil().setSp(
+                                                                              60,
+                                                                            ),
+                                                                            fontFamily: 'Poppins',
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            height: 1.00,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              })),
+                                                          SizedBox(
+                                                            height: 500.h,
+                                                          )
                                                         ],
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                        left: 24,
-                                                        top: 32,
-                                                        right: 24,
-                                                      ).r,
-                                                      child: Text(
-                                                        "Tools you need".tr,
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                        style: TextStyle(
-                                                          fontSize: ScreenUtil().setSp(
-                                                            80,
-                                                          ),
-                                                          fontFamily: 'Poppins',
-                                                          fontWeight: FontWeight.w600,
-                                                          height: 1.00,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    ListView.builder(
-                                                        physics: BouncingScrollPhysics(),
-                                                        //padding: EdgeInsets.only(bottom: 70),
-                                                        shrinkWrap: true,
-                                                        itemCount: 1,
-                                                        itemBuilder: ((context, index) {
-                                                          return Padding(
-                                                            padding: EdgeInsets.only(
-                                                              left: 90,
-                                                              top: 60,
-                                                              right: 24,
-                                                              bottom: 8,
-                                                            ).r,
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                              MainAxisAlignment.start,
-                                                              crossAxisAlignment:
-                                                              CrossAxisAlignment.center,
-                                                              mainAxisSize: MainAxisSize.min,
-                                                              children: [
-                                                                ClipRRect(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                      ScreenUtil().setWidth(
-                                                                        16.00,
-                                                                      ),
-                                                                    ),
-                                                                    child: Icon(
-                                                                      Icons.computer,
-                                                                      color: Colors.blueAccent,
-                                                                    )),
-                                                                Padding(
-                                                                  padding: EdgeInsets.only(
-                                                                    left: 30,
-                                                                    right: 8,
-                                                                    top: 9,
-                                                                    bottom: 8,
-                                                                  ).r,
-                                                                  child: Text(
-                                                                    "Computer".tr,
-                                                                    overflow: TextOverflow.ellipsis,
-                                                                    textAlign: TextAlign.start,
-                                                                    style: TextStyle(
-                                                                      fontSize: ScreenUtil().setSp(
-                                                                        60,
-                                                                      ),
-                                                                      fontFamily: 'Poppins',
-                                                                      fontWeight: FontWeight.w500,
-                                                                      height: 1.00,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        })),
-
-
-
-                                                    SizedBox(
-                                                      height: 500.h,
-                                                    )
                                                   ],
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        )
-
-
-
-
-
-
+                                                ))
                                       : Container(
                                           height: ScreenUtil().setHeight(1450),
                                           child: TabBarView(
@@ -1496,157 +1559,144 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                           ),
                         ),
                       ),
-
-
-
-
-
-
-
-
-
-
-
-
-
                       Container(
-                        child:authController.user.value?.fullName == null ?
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: isVideoPlaying ?
-                          Container(
-                              child: widget.isEnroll!
-                                  ?
-                              Container():
-                              InkWell(
-                                onTap: () {
-                                  deactivate();
-                                  Get.offAll(() => OnboardingScreen());
-                                  },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: 220.h,
-                                  margin: EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 60,
-                                    left: 100,
-                                    right: 100,
-                                  ).r,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(50)),
-                                    color: Colors.blueAccent,
-                                  ),
-                                  child: Text(
-                                    "Enroll Now!".tr,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 70.sp,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              )
-                          ) :
-                          Container(
-                            child: widget.isEnroll!
-                                ?
-                            Container() :
-                            InkWell(
-                              onTap: () {
-                                deactivate();
-                                Get.offAll(() => OnboardingScreen());},
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 220.h,
-                                margin: EdgeInsets.only(
-                                  top: 10,
-                                  bottom: 60,
-                                  left: 100,
-                                  right: 100,
-                                ).r,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                                  color: Colors.blueAccent,
-                                ),
-                                child: Text(
-                                  "Enroll Now!".tr,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 70.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            )
-                            )
-                          ) : Align(
-                            alignment: Alignment.bottomCenter,
-                            child: isVideoPlaying ?
-                            Container(
-                                child: widget.isEnroll!
-                                    ?
-                                Container():
-                                InkWell(
-                                  onTap: () {
-                                    deactivate();
-                                    Get.to(EnrollCourseScreen(price: widget.price, ABAPaymentURL: widget.ABAPaymentURL, title: widget.title));
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 220.h,
-                                    margin: EdgeInsets.only(
-                                      top: 10,
-                                      bottom: 60,
-                                      left: 100,
-                                      right: 100,
-                                    ).r,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                                      color: Colors.blueAccent,
-                                    ),
-                                    child: Text(
-                                      "Enroll Now!".tr,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 70.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                            ) :
-                            Container(
-                                child: widget.isEnroll!
-                                    ?
-                                Container() :
-                                InkWell(
-                                  onTap: () {
-                                    deactivate();
-                                    Get.to(EnrollCourseScreen(price: widget.price, ABAPaymentURL: widget.ABAPaymentURL, title: widget.title));
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 220.h,
-                                    margin: EdgeInsets.only(
-                                      top: 10,
-                                      bottom: 60,
-                                      left: 100,
-                                      right: 100,
-                                    ).r,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                                      color: Colors.blueAccent,
-                                    ),
-                                    child: Text(
-                                      "Enroll Now!".tr,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 70.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
-                            )
-                        )
-                      )
-
+                          child: authController.user.value?.fullName == null
+                              ? Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: isVideoPlaying
+                                      ? Container(
+                                          child: widget.isEnroll!
+                                              ? Container()
+                                              : InkWell(
+                                                  onTap: () {
+                                                    deactivate();
+                                                    Get.offAll(() => OnboardingScreen());
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 220.h,
+                                                    margin: EdgeInsets.only(
+                                                      top: 10,
+                                                      bottom: 60,
+                                                      left: 100,
+                                                      right: 100,
+                                                    ).r,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(Radius.circular(50)),
+                                                      color: Colors.blueAccent,
+                                                    ),
+                                                    child: Text(
+                                                      "Enroll Now!".tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 70.sp,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ))
+                                      : Container(
+                                          child: widget.isEnroll!
+                                              ? Container()
+                                              : InkWell(
+                                                  onTap: () {
+                                                    deactivate();
+                                                    Get.offAll(() => OnboardingScreen());
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 220.h,
+                                                    margin: EdgeInsets.only(
+                                                      top: 10,
+                                                      bottom: 60,
+                                                      left: 100,
+                                                      right: 100,
+                                                    ).r,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(Radius.circular(50)),
+                                                      color: Colors.blueAccent,
+                                                    ),
+                                                    child: Text(
+                                                      "Enroll Now!".tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 70.sp,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                )))
+                              : Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: isVideoPlaying
+                                      ? Container(
+                                          child: widget.isEnroll!
+                                              ? Container()
+                                              : InkWell(
+                                                  onTap: () {
+                                                    deactivate();
+                                                    Get.to(EnrollCourseScreen(
+                                                        price: widget.price,
+                                                        ABAPaymentURL: widget.ABAPaymentURL,
+                                                        title: widget.title));
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 220.h,
+                                                    margin: EdgeInsets.only(
+                                                      top: 10,
+                                                      bottom: 60,
+                                                      left: 100,
+                                                      right: 100,
+                                                    ).r,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(Radius.circular(50)),
+                                                      color: Colors.blueAccent,
+                                                    ),
+                                                    child: Text(
+                                                      "Enroll Now!".tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 70.sp,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ))
+                                      : Container(
+                                          child: widget.isEnroll!
+                                              ? Container()
+                                              : InkWell(
+                                                  onTap: () {
+                                                    deactivate();
+                                                    Get.to(EnrollCourseScreen(
+                                                        price: widget.price,
+                                                        ABAPaymentURL: widget.ABAPaymentURL,
+                                                        title: widget.title));
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    height: 220.h,
+                                                    margin: EdgeInsets.only(
+                                                      top: 10,
+                                                      bottom: 60,
+                                                      left: 100,
+                                                      right: 100,
+                                                    ).r,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(Radius.circular(50)),
+                                                      color: Colors.blueAccent,
+                                                    ),
+                                                    child: Text(
+                                                      "Enroll Now!".tr,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 70.sp,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ))))
                     ],
                   ),
                 ),
