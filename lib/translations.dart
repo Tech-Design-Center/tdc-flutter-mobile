@@ -80,6 +80,18 @@ class TranslationsApp extends Translations {
           " Day Left ":" Day Left ",
           'News Feed':'News Feed',
           "Exam on Computer Only !":"Exam on Computer Only !",
+          'Enroll Course':'Enroll Course',
+          "Students Name":"Students Name",
+          "Student ID":"Student ID",
+          "Price":"Price",
+          "Course Duration":"Course Duration",
+          "30 Days":"30 Days",
+          "Enroll Date & Time":"Enroll Date & Time",
+          "Teach Design Center Contacts :":"Teach Design Center Contacts :",
+          "Pay Now":"Pay Now",
+          "Note :":"Note :",
+          "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.":
+          "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.",
         },
         'km_KH': {
           'hello': 'ជំរាបសួរ',
@@ -158,6 +170,18 @@ class TranslationsApp extends Translations {
           " Day Left ":" ថ្ងៃទៀត",
           'News Feed':'ព័ត៌មាន',
           "Exam on Computer Only !":"ប្រឡងបានតែនៅលើកុំព្យូទ័រតែប៉ុណ្ណោះ!",
+          'Enroll Course':'ចុះឈ្មោះវគ្គសិក្សា',
+          "Students Name":"ឈ្មោះសិស្ស",
+          "Student ID":"លេខសម្គាល់សិស្ស",
+          "Price":"តម្លៃ",
+          "Course Duration":"រយៈពេលនៃវគ្គសិក្សា",
+          "30 Days":"30 ថ្ងៃ",
+          "Enroll Date & Time":"កាលបរិច្ឆេទនៃការចុះឈ្មោះ",
+          "Teach Design Center Contacts :":"ទំនាក់ទំនងសាលាតិចឌីសាញសេនធ័រ :",
+          "Pay Now":"បង់ប្រាក់ឥឡូវនេះ",
+          "Note :":"ចំណាំ :",
+          "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.":
+          "សូមថតរូបអេក្រង់នេះ និងវិក័យប័ត្រ ABA ផ្ញើទៅប្រអប់សាររបស់ សាលាតិចឌីសាញសេនធ័រ ដែលមានដូចខាងក្រោម",
         },
       };
 }

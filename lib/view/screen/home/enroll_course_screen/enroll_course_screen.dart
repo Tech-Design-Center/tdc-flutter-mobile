@@ -79,7 +79,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                 ),
               ),
               Container(
-                height: ScreenUtil().setHeight(1330),
+                height: ScreenUtil().setHeight(1705),
                 width: ScreenUtil().setWidth(1200),
                 decoration: BoxDecoration(
                   border: Border.all(width: 0.8, color: Colors.grey),
@@ -93,7 +93,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                     children: [
                       Padding(
                         padding: REdgeInsets.all(0),
-                        child: Text("Students Name"),
+                        child: Text("Students Name".tr),
                       ),
                       Padding(
                         padding: REdgeInsets.only(top: 60, bottom: 40),
@@ -108,7 +108,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60).r,
-                        child: Text("Student ID"),
+                        child: Text("Student ID".tr),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60, bottom: 40).r,
@@ -123,7 +123,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60).r,
-                        child: Text("Price"),
+                        child: Text("Price".tr),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60, bottom: 40).r,
@@ -138,7 +138,22 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60).r,
-                        child: Text("Enroll Date & Time"),
+                        child: Text("Course Duration".tr),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60, bottom: 40).r,
+                        child: Text(
+                          "30 Days".tr,
+                          style: TextStyle(fontSize: 65.sp, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Divider(
+                        height: 20.h,
+                        color: Colors.black,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60).r,
+                        child: Text("Enroll Date & Time".tr),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 60, bottom: 40).r,
@@ -155,11 +170,44 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                 height: 80.h,
               ),
               Container(
+                width: ScreenUtil().setWidth(1200),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 0.8, color: Colors.grey),
+                  borderRadius: BorderRadius.all(Radius.circular(30).w),
+                ),
+                padding: REdgeInsets.only(
+                  top: 60,
+                  bottom: 60,
+                  left: 100,
+                  right: 100,
+                ),
                 child: Column(
                   children: [
                     Text(
-                      "Teach Design Center Contacts :",
-                      style: TextStyle(fontSize: 60.sp, color: Colors.black),
+                      "Note :".tr,
+                      style: TextStyle(fontSize: 60.sp, color: Colors.black,fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 80.h,
+                    ),
+                    Text("Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.".tr,
+                      textAlign: TextAlign.center,
+
+                      style: TextStyle(fontSize: 60.sp, color: Colors.black,height: 1.5),
+                    )
+
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 80.h,
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    Text(
+                      "Teach Design Center Contacts :".tr,
+                      style: TextStyle(fontSize: 60.sp, color: Colors.black,fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 80.h,
@@ -288,6 +336,8 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                 ),
               ),
 
+
+
               Container(
                 padding: REdgeInsets.only(top: 70),
                 width: ScreenUtil().screenWidth,
@@ -319,7 +369,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                           color: Colors.blueAccent,
                         ),
                         child: Text(
-                          "Pay Now",
+                          "Pay Now".tr,
                           style: TextStyle(
                               color: Colors.white, fontSize: 70.sp, fontWeight: FontWeight.bold),
                         ),
