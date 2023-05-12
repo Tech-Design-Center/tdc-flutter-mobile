@@ -3,15 +3,15 @@ import 'dart:convert';
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
 class User {
-  String id;
-  String fullName;
-  String email;
-  int phoneNumber;
-  DateTime birthDay;
-  String surname;
-  String name;
-  String address;
-  String imageURL;
+  String? id;
+  String? fullName;
+  String? email;
+  int? phoneNumber;
+  DateTime? birthDay;
+  String? surname;
+  String? name;
+  String? address;
+  String? imageURL;
 
   User({
     required this.id,
@@ -26,14 +26,14 @@ class User {
   });
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
-        id: data['id'].toString() ?? 'Not Yet',
-        fullName: data['fullName'] ?? 'Not Yet',
-        email: data['email'] ?? 'Not Yet',
-        phoneNumber: data['phoneNumber'] ?? 'Not Yet',
-        birthDay: DateTime.parse(data['age']) ?? DateTime.parse("2012-02-27"),
-        surname: data['surName'] ?? 'Not Yet',
-        name: data['name'] ?? 'Not Yet',
-        address: data['address'] ?? 'Not Yet',
+        id: data['id'].toString(),
+        fullName: data['fullName'],
+        email: data['email'],
+        phoneNumber: data['phoneNumber'],
+        birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
+        surname: data['surName'] ?? 'Your Surname',
+        name: data['name'] ?? 'Your Name',
+        address: data['address'] ?? 'Your Address',
         imageURL: data['imageURL'] ??
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       );
