@@ -27,9 +27,9 @@ class User {
 
   factory User.fromJson(Map<dynamic, dynamic> data) => User(
         id: data['id'].toString(),
-        fullName: data['fullName'],
-        email: data['email'],
-        phoneNumber: data['phoneNumber'],
+        fullName: data['fullName'] ?? 'Not Yet',
+        email: data['email'] ?? 'Not Yet',
+        phoneNumber: data['phoneNumber'] ?? 'Not Yet',
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
         surname: data['surName'] ?? 'Your Surname',
         name: data['name'] ?? 'Your Name',

@@ -78,7 +78,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 
   DateTime? _selectedDate;
-  final DateTime? _userBirthday = authController.user.value?.birthDay;
+  final DateTime _userBirthday = authController.user.value?.birthDay ?? DateTime(0, 0, 0);
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -157,7 +157,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   bool obsecur = true;
 
-  String? profileImage = authController.user.value?.imageURL ??
+  String profileImage = authController.user.value?.imageURL ??
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
   @override
@@ -219,7 +219,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           Positioned(
                                             child: CircleAvatar(
                                               radius: 280.r,
-                                              foregroundImage: NetworkImage(profileImage!),
+                                              foregroundImage: NetworkImage(profileImage),
                                             ),
                                           ),
 
@@ -538,7 +538,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                         borderSide: BorderSide(color: Colors.grey)),
                                     hintText: _selectedDate == null
-                                        ? DateFormat('dd / MMMM / yyyy').format(_userBirthday!)
+                                        ? DateFormat('dd / MMMM / yyyy').format(_userBirthday)
                                         : DateFormat('dd / MMMM / yyyy').format(_selectedDate!),
                                   ),
                                 ),
