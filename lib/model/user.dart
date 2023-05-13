@@ -6,7 +6,7 @@ class User {
   String? id;
   String? fullName;
   String? email;
-  int? phoneNumber;
+  String? phoneNumber;
   DateTime? birthDay;
   String? surname;
   String? name;
@@ -29,7 +29,7 @@ class User {
         id: data['id'].toString(),
         fullName: data['fullName'] ?? 'Not Yet',
         email: data['email'] ?? 'Not Yet',
-        phoneNumber: data['phoneNumber'] ?? 'Not Yet',
+        phoneNumber: data['phoneNumber'].toString(),
         birthDay: data['age'] == null ? null : DateTime.parse(data['age']),
         surname: data['surName'] ?? 'Your Surname',
         name: data['name'] ?? 'Your Name',

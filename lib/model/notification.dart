@@ -18,8 +18,8 @@ class Notifications {
 
   factory Notifications.fromJson(Map<String, dynamic> data) => Notifications(
         id: data['id'],
-        title: data['attributes']['title'] ?? 'Empty',
-        description: data['attributes']['description'] ?? 'Empty',
-        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString() ?? 'Not Yet'),
+        title: data['attributes']['title'] ?? 'Not Yet',
+        description: data['attributes']['description'] ?? 'Not Yet',
+        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString()),
       );
 }
