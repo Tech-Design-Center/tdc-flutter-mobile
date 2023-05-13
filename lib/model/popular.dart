@@ -58,19 +58,16 @@ class Popular {
       ABAPaymentURL:
           data['attributes']['course']['data']['attributes']['ABAPaymentURL'] ?? 'Not Yet',
       playlistTitle: List<String>.from(data['attributes']['course']['data']['attributes']
-                  ['playlist_video_urls']['data']
-              .map((data) => data['attributes']['title']) ??
-          'Not Yet'),
+              ['playlist_video_urls']['data']
+          .map((data) => data['attributes']['title'] ?? 'Not Yet')),
       videoTitle: List<List<String>>.from(data['attributes']['course']['data']['attributes']
-                  ['playlist_video_urls']['data']
-              .map((e) => List<String>.from(
-                  e['attributes']['video_urls']['data'].map((e) => (e['attributes']['title'])))) ??
-          'Not Yet'),
+              ['playlist_video_urls']['data']
+          .map((e) => List<String>.from(e['attributes']['video_urls']['data']
+              .map((e) => (e['attributes']['title'] ?? 'Not Yet'))))),
       videoUrl: List<List<String>>.from(data['attributes']['course']['data']['attributes']
-                  ['playlist_video_urls']['data']
-              .map((e) => List<String>.from(e['attributes']['video_urls']['data']
-                  .map((e) => (e['attributes']['videoURL'])))) ??
-          'Not Yet'),
+              ['playlist_video_urls']['data']
+          .map((e) => List<String>.from(e['attributes']['video_urls']['data']
+              .map((e) => (e['attributes']['videoURL'] ?? 'Not Yet'))))),
     );
   }
 }
