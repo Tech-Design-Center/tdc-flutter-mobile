@@ -78,7 +78,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 
   DateTime? _selectedDate;
-  final DateTime _userBirthday = authController.user.value?.birthDay ?? DateTime(0, 0, 0);
+  final DateTime _userBirthday = authController.user.value?.birthDay ?? DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
