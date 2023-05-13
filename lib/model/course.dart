@@ -5,7 +5,7 @@ List<Course> courseListFromJson(String val) =>
 
 class Course {
   final String email;
-  final List<DateTime> purchaseDate;
+  final List<DateTime>? purchaseDate;
   final List<String> image;
   final List<String> documentURL;
   final List<String> examURL;
@@ -43,9 +43,8 @@ class Course {
   factory Course.fromJson(Map<String, dynamic> data) {
     return Course(
       email: data['email'] ?? 'Not Yet',
-      purchaseDate: List<DateTime>.from(
-          data['course_user_links'].map((data) => DateTime.parse(data['publishedAt'].toString())) ??
-              'Not Yet'),
+      purchaseDate: List<DateTime>.from(data['course_user_links']
+          .map((data) => data['publishedAt'] == null ? null : DateTime.parse(data['publishedAt']))),
       documentURL: List<String>.from(
           data['course_user_links'].map((data) => data['course']['documentURL']) ?? 'Not Yet'),
       examURL: List<String>.from(
