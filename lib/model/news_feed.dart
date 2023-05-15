@@ -26,6 +26,6 @@ class NewsFeed {
         title: data['attributes']['title'] ?? 'Not Yet',
         description: data['attributes']['description'] ?? 'Not Yet',
         poster: data['attributes']['poster']['data']['attributes']['url'] ?? 'Not Yet',
-        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString() ?? 'Not Yet'),
+        publishedAt: DateTime.parse(data['attributes']['publishedAt'].toString()),
       );
 }

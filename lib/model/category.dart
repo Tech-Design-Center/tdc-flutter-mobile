@@ -42,7 +42,6 @@ class Category {
     required this.videoTitle,
     required this.videoUrl,
   });
-
   factory Category.categoryFromJson(Map<String, dynamic> data) {
     return Category(
       id: data['id'],
@@ -58,13 +57,13 @@ class Category {
       telegramURL: List<String>.from(data['attributes']['courses']['data']
           .map((title) => title['attributes']['telegramURL'] ?? 'Not Yet')),
       description: List<String>.from(data['attributes']['courses']['data']
-          .map((description) => description['attributes']['description']) ??
+              .map((description) => description['attributes']['description']) ??
           'Not Yet'),
       author: List<String>.from(
           data['attributes']['courses']['data'].map((author) => author['attributes']['author']) ??
               'Not Yet'),
       duration: List<int>.from(data['attributes']['courses']['data']
-          .map((duration) => duration['attributes']['duration']) ??
+              .map((duration) => duration['attributes']['duration']) ??
           'Not Yet'),
       price: List<int>.from(
           data['attributes']['courses']['data'].map((price) => price['attributes']['price']) ??
@@ -73,23 +72,23 @@ class Category {
               (imageCourse) => imageCourse['attributes']['image']['data']['attributes']['url']) ??
           'Not Yet'),
       videoTrailerURL: List<String>.from(data['attributes']['courses']['data']
-          .map((videoTrailerURL) => videoTrailerURL['attributes']['videoTrailerURL']) ??
+              .map((videoTrailerURL) => videoTrailerURL['attributes']['videoTrailerURL']) ??
           'Not Yet'),
       ABAPaymentURL: List<String>.from(data['attributes']['courses']['data']
           .map((data) => data['attributes']['ABAPaymentURL'] ?? 'Not Yet')),
       playlistTitle: List<List<String>>.from(data['attributes']['courses']['data'].map((data) =>
-      List<String>.from(data['attributes']['playlist_video_urls']['data']
-          .map((data) => data['attributes']['title']))) ??
+              List<String>.from(data['attributes']['playlist_video_urls']['data']
+                  .map((data) => data['attributes']['title']))) ??
           'Not Yet'),
       videoTitle: List<List<List<String>>>.from(data['attributes']['courses']['data'].map((data) =>
-      List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map(
-              (data) => List<String>.from(data['attributes']['video_urls']['data']
-              .map((data) => data['attributes']['title']))))) ??
+              List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map(
+                  (data) => List<String>.from(data['attributes']['video_urls']['data']
+                      .map((data) => data['attributes']['title']))))) ??
           'Not Yet'),
       videoUrl: List<List<List<String>>>.from(data['attributes']['courses']['data'].map((data) =>
-      List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map(
-              (data) => List<String>.from(data['attributes']['video_urls']['data']
-              .map((data) => data['attributes']['videoURL']))))) ??
+              List<List<String>>.from(data['attributes']['playlist_video_urls']['data'].map(
+                  (data) => List<String>.from(data['attributes']['video_urls']['data']
+                      .map((data) => data['attributes']['videoURL']))))) ??
           'Not Yet'),
     );
   }

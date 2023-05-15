@@ -68,16 +68,16 @@ class Course {
       ABAPaymentURL: List<String>.from(
           data['course_user_links'].map((data) => data['course']['ABAPaymentURL'] ?? 'Not Yet')),
       playlistTitle: List<List<String>>.from(data['course_user_links'].map((data) =>
-      List<String>.from(
-          data['course']['playlist_video_urls'].map((data) => data['title']))) ??
+              List<String>.from(
+                  data['course']['playlist_video_urls'].map((data) => data['title']))) ??
           'Not Yet'),
       videoTitle: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-      List<List<String>>.from(data['course']['playlist_video_urls'].map(
-              (data) => List<String>.from(data['video_urls'].map((data) => data['title']))))) ??
+              List<List<String>>.from(data['course']['playlist_video_urls'].map(
+                  (data) => List<String>.from(data['video_urls'].map((data) => data['title']))))) ??
           'Not Yet'),
       videoUrl: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-      List<List<String>>.from(data['course']['playlist_video_urls'].map((data) =>
-      List<String>.from(data['video_urls'].map((data) => data['videoURL']))))) ??
+              List<List<String>>.from(data['course']['playlist_video_urls'].map((data) =>
+                  List<String>.from(data['video_urls'].map((data) => data['videoURL']))))) ??
           'Not Yet'),
     );
   }
