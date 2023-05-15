@@ -19,13 +19,13 @@ class RecommendListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ScreenUtil().setHeight(1100),
+      height: ScreenUtil().setHeight(800),
       child: ListView.separated(
         controller: scrollController,
         itemCount: recommendList.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: REdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
+        padding: REdgeInsets.only(top: 0, left: 20, right: 20, bottom: 20),
         itemBuilder: (context, index) {
           return RecommendCard(
             recommend: recommendList[index],

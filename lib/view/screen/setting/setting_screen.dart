@@ -4,7 +4,9 @@ import 'package:tdc_frontend_mobile/controller/controllers.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:tdc_frontend_mobile/view/screen/my_learning/my_course/pdf_view_screen/pdf_view_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/change_password_screen/change_password_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/setting/pdf_viewer/pdf_viewer_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/update_profile_screen/update_profile_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/widgets/section_card.dart';
 
@@ -247,9 +249,23 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
                             SizedBox(
                               height: 80.h,
                             ),
-                            SectionSettingCard(name: 'Help & Supports'.tr, icon: Icons.warning),
-                            SectionSettingCard(name: 'About Us'.tr, icon: Icons.people),
-                            SectionSettingCard(name: 'Term & Conditions'.tr, icon: Icons.task),
+                            InkWell(
+                                onTap: () {
+                                  Get.to(() => PdfviewerScreen(DocumentURL: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/how_to_use%2FHow%20to%20Use%20TDC%20App.pdf?alt=media&token=bc9fce2c-db77-4578-b8bf-aa956b1e749a', title: 'How To Use App'));
+                                },
+                                child: SectionSettingCard(name: 'How To Use App'.tr, icon: Icons.warning)),
+                            InkWell(
+                                onTap: () {
+                                  Get.to(() => PdfviewerScreen(DocumentURL: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/how_to_use%2FHow%20to%20Use%20TDC%20App.pdf?alt=media&token=bc9fce2c-db77-4578-b8bf-aa956b1e749a',
+                                      title: 'About Us'));
+                                },
+                                child: SectionSettingCard(name: 'About Us'.tr, icon: Icons.people)),
+                            InkWell(
+                                onTap: () {
+                                  Get.to(() => PdfviewerScreen(DocumentURL: 'https://firebasestorage.googleapis.com/v0/b/techdesigncenter-84455.appspot.com/o/how_to_use%2FHow%20to%20Use%20TDC%20App.pdf?alt=media&token=bc9fce2c-db77-4578-b8bf-aa956b1e749a',
+                                      title: 'Term & Conditions'));
+                                },
+                                child: SectionSettingCard(name: 'Term & Conditions'.tr, icon: Icons.task)),
                             Padding(
                               padding: REdgeInsets.only(top: 200, bottom: 400),
                               child: Row(

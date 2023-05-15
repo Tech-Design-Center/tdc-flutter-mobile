@@ -80,6 +80,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.withOpacity(0.1),
       key: _scaffoldKey,
       drawer: ClipRRect(
         borderRadius:
@@ -372,174 +373,193 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
             child: Column(
               children: [
                 //profile and notification
-                Padding(
-                  padding: REdgeInsets.all(30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              _scaffoldKey.currentState!.openDrawer();
-                            },
-                            child: Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    if (authController.user.value?.fullName == null) {
-                                      _scaffoldKey.currentState!.openDrawer();
-                                    } else {
-                                      _scaffoldKey.currentState!.openDrawer();
-                                    }
-                                  },
-                                  child: CircleAvatar(
-                                    radius: 100.r,
-                                    foregroundImage: NetworkImage(profileImage!),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: REdgeInsets.only(
-                                        left: 30,
-                                        right: 0,
-                                      ),
-                                      child: Text(
-                                        "welcomeback".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          color: ColorConstant.gray600,
-                                          fontSize: ScreenUtil().setSp(
-                                            50,
-                                          ),
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w500,
-                                          height: 1.00,
-                                        ),
-                                      ),
+                Container(
+
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                          boxShadow:[
+                              BoxShadow(
+                              color: Colors.grey.withOpacity(0.3), //color of shadow
+                          spreadRadius: 5, //spread radius
+                          blurRadius: 7, // blur radius
+                          offset: Offset(0, 15), // changes position of shadow
+                          //first paramerter of offset is left-right
+                          //second parameter is top to down
+                        ),
+                        //you can set more BoxShadow() here
+                        ],
+
+                  ),
+                  child: Padding(
+                    padding: REdgeInsets.all(30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                _scaffoldKey.currentState!.openDrawer();
+                              },
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (authController.user.value?.fullName == null) {
+                                        _scaffoldKey.currentState!.openDrawer();
+                                      } else {
+                                        _scaffoldKey.currentState!.openDrawer();
+                                      }
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 100.r,
+                                      foregroundImage: NetworkImage(profileImage!),
                                     ),
-                                    Padding(
-                                      padding: REdgeInsets.only(
-                                        left: 30,
-                                        top: 7,
-                                      ),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          if (authController.user.value?.fullName == null) {
-                                            _scaffoldKey.currentState!.openDrawer();
-                                          } else {
-                                            _scaffoldKey.currentState!.openDrawer();
-                                          }
-                                        },
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: REdgeInsets.only(
+                                          left: 30,
+                                          right: 0,
+                                        ),
                                         child: Text(
-                                          authController.user.value?.fullName ??
-                                              "Sign in your account".tr,
+                                          "welcomeback".tr,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
+                                            color: ColorConstant.gray600,
                                             fontSize: ScreenUtil().setSp(
-                                              60,
+                                              50,
                                             ),
                                             fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w700,
-                                            letterSpacing: 0.36,
+                                            fontWeight: FontWeight.w500,
                                             height: 1.00,
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      //notification
-                      InkWell(
-                        onTap: () {
-                          Get.to(() => NotificationScreen());
-                        },
-                        child: Container(
-                          height: ScreenUtil().setHeight(
-                            120.00,
-                          ),
-                          width: ScreenUtil().setWidth(
-                            120.00,
-                          ),
-                          margin: REdgeInsets.only(
-                            top: 4,
-                            bottom: 4,
-                          ),
-                          child: Card(
-                            clipBehavior: Clip.antiAlias,
-                            elevation: 0,
-                            margin: REdgeInsets.all(0),
-                            color: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                ScreenUtil().setWidth(
-                                  8.00,
-                                ),
+                                      Padding(
+                                        padding: REdgeInsets.only(
+                                          left: 30,
+                                          top: 7,
+                                        ),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            if (authController.user.value?.fullName == null) {
+                                              _scaffoldKey.currentState!.openDrawer();
+                                            } else {
+                                              _scaffoldKey.currentState!.openDrawer();
+                                            }
+                                          },
+                                          child: Text(
+                                            authController.user.value?.fullName ??
+                                                "Sign in your account".tr,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                              fontSize: ScreenUtil().setSp(
+                                                60,
+                                              ),
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w700,
+                                              letterSpacing: 0.36,
+                                              height: 1.00,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                            child: Stack(
-                              alignment: Alignment.topRight,
-                              children: [
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Padding(
-                                    padding: REdgeInsets.only(
-                                      left: 11,
-                                      top: 10,
-                                      right: 11,
-                                      bottom: 10,
-                                    ),
-                                    child: Image(
-                                      image: AssetImage(
-                                        ImageConstant.imgNotification,
-                                      ),
-                                      height: ScreenUtil().setHeight(400),
-                                      width: ScreenUtil().setWidth(400),
-                                    ),
+                          ],
+                        ),
+                        //notification
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => NotificationScreen());
+                          },
+                          child: Container(
+                            height: ScreenUtil().setHeight(
+                              120.00,
+                            ),
+                            width: ScreenUtil().setWidth(
+                              120.00,
+                            ),
+                            margin: REdgeInsets.only(
+                              top: 4,
+                              bottom: 4,
+                            ),
+                            child: Card(
+                              clipBehavior: Clip.antiAlias,
+                              elevation: 0,
+                              margin: REdgeInsets.all(0),
+                              color: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  ScreenUtil().setWidth(
+                                    8.00,
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Container(
-                                    height: ScreenUtil().setHeight(
-                                      40.00,
+                              ),
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Padding(
+                                      padding: REdgeInsets.only(
+                                        left: 11,
+                                        top: 10,
+                                        right: 11,
+                                        bottom: 10,
+                                      ),
+                                      child: Image(
+                                        image: AssetImage(
+                                          ImageConstant.imgNotification,
+                                        ),
+                                        height: ScreenUtil().setHeight(400),
+                                        width: ScreenUtil().setWidth(400),
+                                      ),
                                     ),
-                                    width: ScreenUtil().setWidth(
-                                      40.00,
-                                    ),
-                                    margin: REdgeInsets.only(
-                                      left: 10,
-                                      top: 9,
-                                      right: 9,
-                                      bottom: 10,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: ColorConstant.deepOrange400,
-                                      borderRadius: BorderRadius.circular(
-                                        ScreenUtil().setWidth(
-                                          30.00,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Container(
+                                      height: ScreenUtil().setHeight(
+                                        40.00,
+                                      ),
+                                      width: ScreenUtil().setWidth(
+                                        40.00,
+                                      ),
+                                      margin: REdgeInsets.only(
+                                        left: 10,
+                                        top: 9,
+                                        right: 9,
+                                        bottom: 10,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: ColorConstant.deepOrange400,
+                                        borderRadius: BorderRadius.circular(
+                                          ScreenUtil().setWidth(
+                                            30.00,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
 
@@ -596,9 +616,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             return const RecommendLoading();
                           }
                         }),
-                        SizedBox(
-                          height: ScreenUtil().setHeight(100),
-                        ),
+
 
                         //Popular
                         textTitleHomeScreen(

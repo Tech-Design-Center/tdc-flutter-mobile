@@ -24,7 +24,7 @@ class CategoryListView extends StatelessWidget {
         itemCount: categories.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        padding: REdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
+        padding: REdgeInsets.only(top: 40, left: 0, right: 0, bottom: 20),
         itemBuilder: (context, index) {
           return CategoryCard(
             category: categories[index],
@@ -32,7 +32,7 @@ class CategoryListView extends StatelessWidget {
         },
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(
-            width: 60.h,
+            width: 50.h,
           );
         },
       ),

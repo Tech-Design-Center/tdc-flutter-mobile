@@ -18,7 +18,7 @@ class PopularListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ScreenUtil().setHeight(1100),
+      height: ScreenUtil().setHeight(800),
       child: ListView.separated(
         itemCount: popularList.length,
         shrinkWrap: true,

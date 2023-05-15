@@ -34,8 +34,8 @@ class PopularCard extends StatelessWidget {
         ));
       },
       child: Container(
-        width: ScreenUtil().setWidth(850),
-        height: ScreenUtil().setHeight(1200),
+        width: ScreenUtil().setWidth(620),
+        height: ScreenUtil().setHeight(700),
         decoration: BoxDecoration(
           color: ColorConstant.whiteA700,
           borderRadius: BorderRadius.circular(
@@ -82,8 +82,8 @@ class PopularCard extends StatelessWidget {
                     image: NetworkImage(
                       popular.image!,
                     ),
-                    height: ScreenUtil().setHeight(600),
-                    width: ScreenUtil().setWidth(1400),
+                    height: ScreenUtil().setHeight(300),
+                    width: ScreenUtil().setWidth(700),
                   ),
                 ),
               ),
@@ -150,7 +150,7 @@ class PopularCard extends StatelessWidget {
                         bottom: 1,
                       ).r,
                       child: Container(
-                          width: ScreenUtil().setWidth(800),
+                          width: ScreenUtil().setWidth(400),
                           height: ScreenUtil().setHeight(120),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)).w,

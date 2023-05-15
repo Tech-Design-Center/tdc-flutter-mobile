@@ -12,7 +12,7 @@ class textTitleHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: REdgeInsets.all(30),
+      padding: REdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

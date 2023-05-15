@@ -12,9 +12,25 @@ class SectionTitleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow:[
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3), //color of shadow
+            spreadRadius: 5, //spread radius
+            blurRadius: 7, // blur radius
+            offset: Offset(0, 10), // changes position of shadow
+            //first paramerter of offset is left-right
+            //second parameter is top to down
+          ),
+          //you can set more BoxShadow() here
+        ],
+
+      ),
       height: ScreenUtil().setHeight(300),
-      width: double.infinity,
-      color: Colors.grey.shade200,
+      width: ScreenUtil().screenWidth,
+
       child: Padding(
         padding: REdgeInsets.only(left: 30, right: 30),
         child: Row(

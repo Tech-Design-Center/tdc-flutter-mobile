@@ -7,7 +7,7 @@ class Course {
   final String email;
   final List<DateTime>? purchaseDate;
   final List<String> image;
-  final List<String> documentURL;
+  final List<String>? documentURL;
   final List<String> examURL;
   final List<String> telegramURL;
   final List<String> title;
@@ -46,13 +46,13 @@ class Course {
       purchaseDate: List<DateTime>.from(data['course_user_links']
           .map((data) => data['publishedAt'] == null ? null : DateTime.parse(data['publishedAt']))),
       documentURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['documentURL']) ?? 'Not Yet'),
+          data['course_user_links'].map((data) => data['course']['documentURL'] ?? 'Not Yet')),
       examURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['examURL']) ?? 'Not Yet'),
+          data['course_user_links'].map((data) => data['course']['examURL'] ?? 'Not Yet')),
       telegramURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['telegramURL']) ?? 'Not Yet'),
+          data['course_user_links'].map((data) => data['course']['telegramURL'] ?? 'Not Yet')),
       image: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['image']['url']) ?? 'Not Yet'),
+          data['course_user_links'].map((data) => data['course']['image']['url'] ?? 'Not Yet')),
       title: List<String>.from(
           data['course_user_links'].map((data) => data['course']['title']) ?? 'Not Yet'),
       author: List<String>.from(
@@ -66,18 +66,18 @@ class Course {
       videoTrailerURL: List<String>.from(
           data['course_user_links'].map((data) => data['course']['videoTrailerURL']) ?? 'Not Yet'),
       ABAPaymentURL: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['ABAPaymentURL']) ?? 'Not Yet'),
+          data['course_user_links'].map((data) => data['course']['ABAPaymentURL'] ?? 'Not Yet')),
       playlistTitle: List<List<String>>.from(data['course_user_links'].map((data) =>
-              List<String>.from(
-                  data['course']['playlist_video_urls'].map((data) => data['title']))) ??
+      List<String>.from(
+          data['course']['playlist_video_urls'].map((data) => data['title']))) ??
           'Not Yet'),
       videoTitle: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-              List<List<String>>.from(data['course']['playlist_video_urls'].map(
-                  (data) => List<String>.from(data['video_urls'].map((data) => data['title']))))) ??
+      List<List<String>>.from(data['course']['playlist_video_urls'].map(
+              (data) => List<String>.from(data['video_urls'].map((data) => data['title']))))) ??
           'Not Yet'),
       videoUrl: List<List<List<String>>>.from(data['course_user_links'].map((data) =>
-              List<List<String>>.from(data['course']['playlist_video_urls'].map((data) =>
-                  List<String>.from(data['video_urls'].map((data) => data['videoURL']))))) ??
+      List<List<String>>.from(data['course']['playlist_video_urls'].map((data) =>
+      List<String>.from(data['video_urls'].map((data) => data['videoURL']))))) ??
           'Not Yet'),
     );
   }

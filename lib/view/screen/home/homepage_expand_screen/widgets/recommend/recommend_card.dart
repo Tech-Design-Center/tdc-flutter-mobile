@@ -41,8 +41,8 @@ class RecommendCard extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerRight,
           child: Container(
-            width: ScreenUtil().setWidth(850),
-            height: ScreenUtil().setHeight(1400),
+            width: ScreenUtil().setWidth(620),
+            height: ScreenUtil().setHeight(700),
             decoration: BoxDecoration(
               color: ColorConstant.whiteA700,
               borderRadius: BorderRadius.circular(
@@ -87,8 +87,8 @@ class RecommendCard extends StatelessWidget {
                       ),
                       child: Image(
                         image: NetworkImage(recommend.image!),
-                        height: ScreenUtil().setHeight(600),
-                        width: ScreenUtil().setWidth(1400),
+                        height: ScreenUtil().setHeight(300),
+                        width: ScreenUtil().setWidth(700),
                       ),
                     ),
                   ),
@@ -105,7 +105,7 @@ class RecommendCard extends StatelessWidget {
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: ScreenUtil().setSp(
-                        60,
+                        50,
                       ),
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w600,
@@ -154,29 +154,20 @@ class RecommendCard extends StatelessWidget {
                             top: 50,
                             bottom: 1,
                           ).r,
-                          child: InkWell(
-                            onTap: () {
-                              // Get.to(CourseDetailsScreen(
-                              //   isEnrolled: true,
-                              //   initURL: 'https://youtu.be/A3ltMaM6noM',
-                              //   recommend: recommend,
-                              // ));
-                            },
-                            child: Container(
-                                width: ScreenUtil().setWidth(800),
-                                height: ScreenUtil().setHeight(120),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(50)).w,
-                                  color: Colors.grey.shade300,
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("View".tr),
-                                  ],
-                                )),
-                          ),
+                          child: Container(
+                              width: ScreenUtil().setWidth(400),
+                              height: ScreenUtil().setHeight(120),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(50)).w,
+                                color: Colors.grey.shade300,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("View".tr),
+                                ],
+                              )),
                         ),
                       ],
                     ),

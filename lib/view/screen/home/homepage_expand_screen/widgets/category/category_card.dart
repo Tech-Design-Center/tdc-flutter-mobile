@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
         children: [
           Image.network(
             category.image!,
-            width: ScreenUtil().setWidth(340),
+            width: ScreenUtil().setWidth(240),
             height: ScreenUtil().setHeight(200),
           ),
           Padding(

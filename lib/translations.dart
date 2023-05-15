@@ -92,6 +92,8 @@ class TranslationsApp extends Translations {
           "Note :":"Note :",
           "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.":
           "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.",
+          "Duration : ":"Duration : ",
+          'How To Use App':'How To Use App',
         },
         'km_KH': {
           'hello': 'ជំរាបសួរ',
@@ -182,6 +184,8 @@ class TranslationsApp extends Translations {
           "Note :":"ចំណាំ :",
           "Please take a screenshot of this screen and ABA Receipt to the Tech Design Center inbox below.":
           "សូមថតរូបអេក្រង់នេះ និងវិក័យប័ត្រ ABA ផ្ញើទៅប្រអប់សាររបស់ សាលាតិចឌីសាញសេនធ័រ ដែលមានដូចខាងក្រោម",
+          "Duration : ":"រយៈពេល : ",
+          'How To Use App':'របៀបប្រើប្រាស់កម្មវិធី',
         },
       };
 }
