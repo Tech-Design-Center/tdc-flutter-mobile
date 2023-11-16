@@ -41,7 +41,7 @@ dependencies:
   flutter_screenutil: ^5.6.0
   flutter_snake_navigationbar: ^0.6.1
   badges: ^3.0.2
-  http: ^0.13.4
+  http: ^1.1.0
   shimmer: ^2.0.0
   cached_network_image: ^3.2.0
   carousel_slider: ^4.1.1
@@ -53,7 +53,7 @@ dependencies:
   flutter_switch: ^0.3.2
   pin_code_fields: ^7.4.0
   firebase_core: ^2.6.1
-  firebase_messaging: ^14.2.4
+  firebase_messaging: ^14.7.3
   firebase_analytics: ^10.1.3
   flutter_image_slideshow: ^0.1.4
   animate_do: ^3.0.2
@@ -68,19 +68,19 @@ dependencies:
   shared_preferences: ^2.0.20
   flutter_native_splash: ^2.2.19
   timeago: ^3.4.0
-  pod_player: ^0.1.0
+  pod_player: ^0.2.1
   liquid_pull_to_refresh: ^3.0.1
   image_picker: ^0.8.7+3
   firebase_storage: ^11.1.1
-  syncfusion_flutter_pdfviewer: ^21.1.41
+  syncfusion_flutter_pdfviewer: ^23.1.43
   flutter_pdfview: ^1.3.0
   path_provider: any
   awesome_notifications: ^0.6.19
-  translator: ^0.1.7
   devicelocale: ^0.6.0
   googleapis: ^11.0.0
   googleapis_auth: ^1.4.0
   flutter_launcher_icons: ^0.13.1
+  package_info_plus: ^4.2.0
 
 dev_dependencies:
   flutter_test:

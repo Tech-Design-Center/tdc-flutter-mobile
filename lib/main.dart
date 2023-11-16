@@ -52,7 +52,6 @@ Future<void> main() async {
 
   SharedPreferences pref = await SharedPreferences.getInstance();
   token = pref.getString('token');
-  debugPrint('Token: $token');
 
   ///run app
   runApp(const MyApp());
