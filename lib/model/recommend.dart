@@ -42,9 +42,11 @@ class Recommend {
   factory Recommend.fromJson(Map<String, dynamic> data) {
     return Recommend(
       id: data['attributes']['course']['data']['id'] ?? 'Not Yet',
-      image: data['attributes']['course']['data']['attributes']['image']['data']['attributes']
-              ['url'] ??
-          'Not Yet',
+      image: data['attributes']['course']['data']['attributes']['image']['data'] == null
+          ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
+          : data['attributes']['course']['data']['attributes']['image']['data']['attributes']
+                  ['url'] ??
+              'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg',
       title: data['attributes']['course']['data']['attributes']['title'] ?? 'Not Yet',
       documentURL: data['attributes']['course']['data']['attributes']['documentURL'] ?? 'Not Yet',
       examURL: data['attributes']['course']['data']['attributes']['examURL'] ?? 'Not Yet',
@@ -65,9 +67,9 @@ class Recommend {
           .map((e) => List<String>.from(e['attributes']['video_urls']['data']
               .map((e) => (e['attributes']['title'] ?? 'Not Yet'))))),
       videoUrl: List<List<String>>.from(data['attributes']['course']['data']['attributes']
-                  ['playlist_video_urls']['data']
-              .map((e) => List<String>.from(e['attributes']['video_urls']['data']
-                  .map((e) => (e['attributes']['videoURL'] ?? 'Not Yet'))))),
+              ['playlist_video_urls']['data']
+          .map((e) => List<String>.from(e['attributes']['video_urls']['data']
+              .map((e) => (e['attributes']['videoURL'] ?? 'Not Yet'))))),
     );
   }
 }
