@@ -51,8 +51,10 @@ class Course {
           data['course_user_links'].map((data) => data['course']['examURL'] ?? 'Not Yet')),
       telegramURL: List<String>.from(
           data['course_user_links'].map((data) => data['course']['telegramURL'] ?? 'Not Yet')),
-      image: List<String>.from(
-          data['course_user_links'].map((data) => data['course']['image']['url'] ?? 'Not Yet')),
+      image: List<String>.from(data['course_user_links'].map((data) => data['course']['image'] ==
+              null
+          ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
+          : ['url'])),
       title: List<String>.from(
           data['course_user_links'].map((data) => data['course']['title']) ?? 'Not Yet'),
       author: List<String>.from(

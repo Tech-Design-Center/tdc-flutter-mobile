@@ -670,9 +670,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           String phoneNumber = _phoneNumberController.text.isEmpty
                                               ? authController.user.value!.phoneNumber.toString()
                                               : _phoneNumberController.text;
-                                          String image = _imageURL!.isEmpty
-                                              ? authController.user.value!.imageURL!
-                                              : _imageURL;
+                                          String image = _imageURL == null
+                                              ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
+                                              : authController.user.value!.imageURL!;
                                           String birthday = _birthdayController.text.isEmpty
                                               ? authController.user.value!.imageURL.toString()
                                               : _birthdayController.text;
