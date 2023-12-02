@@ -70,7 +70,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SectionTitleScreen(name: 'Enroll Course'),
+              const SectionTitleScreen(name: 'Enroll Course', isBackButton: true,),
               Container(
                 padding: REdgeInsets.only(top: 50, bottom: 80),
                 child: Text(

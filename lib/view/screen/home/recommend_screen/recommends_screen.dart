@@ -17,7 +17,7 @@ class RecommendsScreen extends StatelessWidget {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Recommend',
+              name: 'Recommend', isBackButton: true,
             ),
             //categories data
             Obx(() {

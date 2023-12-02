@@ -165,554 +165,560 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+
           children: [
             SectionTitleScreen(
-              name: 'Update Profile'.tr,
+              name: 'Update Profile'.tr, isBackButton: true,
             ),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                //default
-                Positioned(
-                    child: Container(
-                  width: ScreenUtil().screenWidth,
-                  height: 1000.h,
-                  // decoration: BoxDecoration(color: Colors.red),
-                )),
-
-                //background
-                Positioned(
-                  top: 0,
-                  child: Container(
-                    width: ScreenUtil().screenWidth,
-                    height: 500.h,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
-                    ),
-                  ),
-                ),
-
-                //Avatar
-                Positioned(
-                  bottom: 20,
-                  child: Column(
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
                     children: [
-                      //profile image
-                      GestureDetector(
-                        onTap: () {
-                          settingController.pickImage();
-                        },
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            //avatar
-                            Positioned(
-                              child: GetBuilder(
-                                  init: SettingController(),
-                                  builder: (state) {
-                                    if (settingController.profile == null) {
-                                      return Stack(
-                                        alignment: Alignment.bottomCenter,
-                                        children: [
-                                          //avatar
-                                          Positioned(
-                                            child: CircleAvatar(
-                                              radius: 280.r,
-                                              foregroundImage: NetworkImage(profileImage),
-                                            ),
-                                          ),
+                      //default
+                      Positioned(
+                          child: Container(
+                        width: ScreenUtil().screenWidth,
+                        height: 1000.h,
+                        // decoration: BoxDecoration(color: Colors.red),
+                      )),
+                      //background
+                      Positioned(
+                        top: 0,
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: 500.h,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
 
-                                          //icon and text
-                                          Positioned(
-                                            child: Container(
-                                              width: 560.w,
-                                              height: 560.h,
-                                              decoration: BoxDecoration(
-                                                color: Colors.black.withOpacity(1.r),
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    Icons.camera_alt,
-                                                    color: Colors.white,
-                                                    size: 160.r,
+                      //Avatar
+                      Positioned(
+                        bottom: 20,
+                        child: Column(
+                          children: [
+                            //profile image
+                            GestureDetector(
+                              onTap: () {
+                                settingController.pickImage();
+                              },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  //avatar
+                                  Positioned(
+                                    child: GetBuilder(
+                                        init: SettingController(),
+                                        builder: (state) {
+                                          if (settingController.profile == null) {
+                                            return Stack(
+                                              alignment: Alignment.bottomCenter,
+                                              children: [
+                                                //avatar
+                                                Positioned(
+                                                  child: CircleAvatar(
+                                                    radius: 280.r,
+                                                    foregroundImage: NetworkImage(profileImage),
                                                   ),
-                                                  SizedBox(
-                                                    height: 60.h,
+                                                ),
+
+                                                //icon and text
+                                                Positioned(
+                                                  child: Container(
+                                                    width: 560.w,
+                                                    height: 560.h,
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.black.withOpacity(1.r),
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.camera_alt,
+                                                          color: Colors.white,
+                                                          size: 160.r,
+                                                        ),
+                                                        SizedBox(
+                                                          height: 60.h,
+                                                        ),
+                                                        Text(
+                                                          'Edit'.tr,
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontWeight: FontWeight.w500,
+                                                              fontSize: 80.sp),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                  Text(
-                                                    'Edit'.tr,
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight: FontWeight.w500,
-                                                        fontSize: 80.sp),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    } else {
-                                      return CircleAvatar(
-                                          backgroundColor: Colors.white70,
-                                          radius: 280.r,
-                                          backgroundImage: FileImage(settingController.profile!));
-                                    }
-                                  }),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return CircleAvatar(
+                                                backgroundColor: Colors.white70,
+                                                radius: 280.r,
+                                                backgroundImage: FileImage(settingController.profile!));
+                                          }
+                                        }),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 60.h,
+                            ),
+                            Text(
+                              "Student ID : # ".tr + " ${authController.user.value?.id ?? 0}",
+                              maxLines: null,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: ColorConstant.bluegray700,
+                                fontSize: ScreenUtil().setSp(
+                                  50,
+                                ),
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                                height: 1.50,
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 60.h,
-                      ),
-                      Text(
-                        "Student ID : # ".tr + " ${authController.user.value?.id ?? 0}",
-                        maxLines: null,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: ColorConstant.bluegray700,
-                          fontSize: ScreenUtil().setSp(
-                            50,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          height: 1.50,
-                        ),
-                      ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(
-                    top: 0,
-                    child: Container(
-                      width: ScreenUtil().screenWidth,
-                      height: ScreenUtil().screenHeight,
-                      // decoration: BoxDecoration(color: Colors.yellow),
-                    )),
-                Positioned(
-                  child: Container(
-                    width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().setHeight(1700),
-                    decoration: BoxDecoration(
-                        // color: Colors.blue,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //body
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                          top: 0,
+                          child: Container(
+                            width: ScreenUtil().screenWidth,
+                            height: ScreenUtil().screenHeight,
+                            // decoration: BoxDecoration(color: Colors.yellow),
+                          )),
+                      Positioned(
+                        child: Container(
+                          width: ScreenUtil().screenWidth,
+                          height: ScreenUtil().setHeight(1700),
+                          decoration: BoxDecoration(
+                              // color: Colors.blue,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
+                          child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Full Name'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _fullNameController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                          borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.fullName}'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Surname'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _surNameController,
-                                  keyboardType: TextInputType.text,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                          borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.surname}'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Lastname'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                TextFormField(
-                                  controller: _nameController,
-                                  keyboardType: TextInputType.text,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                          borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.name}'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Email'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _emailController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  validator: (String? value) {
-                                    if (value == null || value.isEmpty) {
-                                      return "This field can't be empty".tr;
-                                    } else if (!value.isValidEmail) {
-                                      return "Please enter valid email".tr;
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                          borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '${authController.user.value?.email}'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Phone Number'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _phoneNumberController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  validator: (String? value) {
-                                    if (value == null || value.isEmpty) {
-                                      return "This field can't be empty".tr;
-                                    } else if (!value.isValidPhone) {
-                                      return "Please enter valid phone number".tr;
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                      border: OutlineInputBorder(),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                          borderSide: BorderSide(color: Colors.grey)),
-                                      hintText: '0${authController.user.value?.phoneNumber}'),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Date of Birth'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _birthdayController,
-                                  keyboardType: TextInputType.datetime,
-                                  textInputAction: TextInputAction.done,
-                                  autocorrect: false,
-                                  obscureText: false,
-                                  readOnly: true,
-                                  onTap: () async {
-                                    _selectDate(context);
-                                    _isTextFieldEmpty = false;
-                                  },
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                    border: OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        borderSide: BorderSide(color: Colors.grey)),
-                                    hintText: _selectedDate == null
-                                        ? DateFormat('dd / MMMM / yyyy').format(_userBirthday)
-                                        : DateFormat('dd / MMMM / yyyy').format(_selectedDate!),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    _selectDate(context);
-                                    _isTextFieldEmpty = false;
-                                  },
-                                  child: Text('Select Date'.tr),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Enter your password to confirm'.tr,
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: ScreenUtil().setSp(65),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                                TextFormField(
-                                  controller: _passwordController,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  textInputAction: TextInputAction.done,
-                                  obscureText: !_passwordVisible,
-                                  validator: (String? value) {
-                                    if (value == null || value.isEmpty) {
-                                      return "This field can't be empty".tr;
-                                    }
-                                    return null;
-                                  },
-                                  //This will obscure text dynamically
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                    border: OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        borderSide: BorderSide(color: Colors.grey)),
-
-                                    hintText: 'Password'.tr,
-                                    // Here is key idea
-                                    suffixIcon: IconButton(
-                                      icon: Icon(
-                                        // Based on passwordVisible state choose the icon
-                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                      onPressed: () {
-                                        // Update the state i.e. toogle the state of passwordVisible variable
-                                        setState(() {
-                                          _passwordVisible = !_passwordVisible;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: REdgeInsets.only(top: 100, bottom: 200),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                _isTextFieldEmpty
-                                    ? ElevatedButton(
-                                        style: ButtonStyle(
-                                            backgroundColor: MaterialStatePropertyAll<Color>(
-                                                ColorConstant.blue51),
-                                            shape:
-                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(18.0),
-                                                        side: BorderSide(
-                                                            color: ColorConstant.blue51)))),
-                                        onPressed: () {},
-                                        child: Container(
-                                          width: ScreenUtil().setWidth(900),
-                                          height: ScreenUtil().setHeight(190),
-                                          margin: REdgeInsets.only(
-                                            left: 19,
-                                            top: 20,
-                                            right: 19,
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            'Save'.tr,
-                                            style: TextStyle(fontSize: 65.sp),
-                                          ),
+                                //body
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Full Name'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
                                         ),
-                                      )
-                                    : ElevatedButton(
-                                        style: ButtonStyle(
-                                            shape:
-                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(18.0).r,
-                                                        side: BorderSide(color: Colors.blue)))),
-                                        onPressed: () async {
-                                          _saveData();
-                                          SharedPreferences prefs =
-                                              await SharedPreferences.getInstance();
-                                          String? _imageURL = prefs.getString('imageURL');
-
-                                          ///if user not update their info then save current data
-                                          String fullName = _fullNameController.text.isEmpty
-                                              ? authController.user.value!.fullName!
-                                              : _fullNameController.text;
-                                          String email = _emailController.text.isEmpty
-                                              ? authController.user.value!.email!
-                                              : _emailController.text;
-                                          String surName = _surNameController.text.isEmpty
-                                              ? authController.user.value!.surname!
-                                              : _surNameController.text;
-                                          String name = _nameController.text.isEmpty
-                                              ? authController.user.value!.name!
-                                              : _nameController.text;
-                                          String phoneNumber = _phoneNumberController.text.isEmpty
-                                              ? authController.user.value!.phoneNumber.toString()
-                                              : _phoneNumberController.text;
-                                          String image = _imageURL == null
-                                              ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
-                                              : authController.user.value!.imageURL!;
-                                          String birthday = _birthdayController.text.isEmpty
-                                              ? authController.user.value!.imageURL.toString()
-                                              : _birthdayController.text;
-                                          authController.updateUser(
-                                            email: email,
-                                            password: _passwordController.text,
-                                            surName: surName,
-                                            name: name,
-                                            phoneNumber: phoneNumber,
-                                            imageURL: image,
-                                            birthday: birthday,
-                                            oldEmail: authController.user.value!.email,
-                                            fullName: fullName,
-                                            gender: '',
-                                          );
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _fullNameController,
+                                        keyboardType: TextInputType.emailAddress,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderSide: BorderSide(color: Colors.grey)),
+                                            hintText: '${authController.user.value?.fullName}'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Surname'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _surNameController,
+                                        keyboardType: TextInputType.text,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderSide: BorderSide(color: Colors.grey)),
+                                            hintText: '${authController.user.value?.surname}'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Lastname'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      TextFormField(
+                                        controller: _nameController,
+                                        keyboardType: TextInputType.text,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderSide: BorderSide(color: Colors.grey)),
+                                            hintText: '${authController.user.value?.name}'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Email'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _emailController,
+                                        keyboardType: TextInputType.emailAddress,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        validator: (String? value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field can't be empty".tr;
+                                          } else if (!value.isValidEmail) {
+                                            return "Please enter valid email".tr;
+                                          }
+                                          return null;
                                         },
-                                        child: Container(
-                                          width: ScreenUtil().setWidth(900),
-                                          height: ScreenUtil().setHeight(190),
-                                          margin: REdgeInsets.only(
-                                            left: 19,
-                                            top: 20,
-                                            right: 19,
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            'Save',
-                                            style: TextStyle(fontSize: 65.sp),
+                                        decoration: InputDecoration(
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderSide: BorderSide(color: Colors.grey)),
+                                            hintText: '${authController.user.value?.email}'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Phone Number'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _phoneNumberController,
+                                        keyboardType: TextInputType.emailAddress,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        validator: (String? value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field can't be empty".tr;
+                                          } else if (!value.isValidPhone) {
+                                            return "Please enter valid phone number".tr;
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(),
+                                            focusedBorder: OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderSide: BorderSide(color: Colors.grey)),
+                                            hintText: '0${authController.user.value?.phoneNumber}'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Date of Birth'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _birthdayController,
+                                        keyboardType: TextInputType.datetime,
+                                        textInputAction: TextInputAction.done,
+                                        autocorrect: false,
+                                        obscureText: false,
+                                        readOnly: true,
+                                        onTap: () async {
+                                          _selectDate(context);
+                                          _isTextFieldEmpty = false;
+                                        },
+                                        decoration: InputDecoration(
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
+                                          hintText: _selectedDate == null
+                                              ? DateFormat('dd / MMMM / yyyy').format(_userBirthday)
+                                              : DateFormat('dd / MMMM / yyyy').format(_selectedDate!),
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _selectDate(context);
+                                          _isTextFieldEmpty = false;
+                                        },
+                                        child: Text('Select Date'.tr),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Enter your password to confirm'.tr,
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: ScreenUtil().setSp(65),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40.h,
+                                      ),
+                                      TextFormField(
+                                        controller: _passwordController,
+                                        keyboardType: TextInputType.visiblePassword,
+                                        textInputAction: TextInputAction.done,
+                                        obscureText: !_passwordVisible,
+                                        validator: (String? value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "This field can't be empty".tr;
+                                          }
+                                          return null;
+                                        },
+                                        //This will obscure text dynamically
+                                        decoration: InputDecoration(
+                                          fillColor: Colors.white,
+                                          filled: true,
+                                          border: OutlineInputBorder(),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
+
+                                          hintText: 'Password'.tr,
+                                          // Here is key idea
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              // Based on passwordVisible state choose the icon
+                                              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                              color: Theme.of(context).primaryColor,
+                                            ),
+                                            onPressed: () {
+                                              // Update the state i.e. toogle the state of passwordVisible variable
+                                              setState(() {
+                                                _passwordVisible = !_passwordVisible;
+                                              });
+                                            },
                                           ),
                                         ),
                                       ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.only(top: 100, bottom: 200),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      _isTextFieldEmpty
+                                          ? ElevatedButton(
+                                              style: ButtonStyle(
+                                                  backgroundColor: MaterialStatePropertyAll<Color>(
+                                                      ColorConstant.blue51),
+                                                  shape:
+                                                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius.circular(18.0),
+                                                              side: BorderSide(
+                                                                  color: ColorConstant.blue51)))),
+                                              onPressed: () {},
+                                              child: Container(
+                                                width: ScreenUtil().setWidth(900),
+                                                height: ScreenUtil().setHeight(190),
+                                                margin: REdgeInsets.only(
+                                                  left: 19,
+                                                  top: 20,
+                                                  right: 19,
+                                                ),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Save'.tr,
+                                                  style: TextStyle(fontSize: 65.sp),
+                                                ),
+                                              ),
+                                            )
+                                          : ElevatedButton(
+                                              style: ButtonStyle(
+                                                  shape:
+                                                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius.circular(18.0).r,
+                                                              side: BorderSide(color: Colors.blue)))),
+                                              onPressed: () async {
+                                                _saveData();
+                                                SharedPreferences prefs =
+                                                    await SharedPreferences.getInstance();
+                                                String? _imageURL = prefs.getString('imageURL');
+
+                                                ///if user not update their info then save current data
+                                                String fullName = _fullNameController.text.isEmpty
+                                                    ? authController.user.value!.fullName!
+                                                    : _fullNameController.text;
+                                                String email = _emailController.text.isEmpty
+                                                    ? authController.user.value!.email!
+                                                    : _emailController.text;
+                                                String surName = _surNameController.text.isEmpty
+                                                    ? authController.user.value!.surname!
+                                                    : _surNameController.text;
+                                                String name = _nameController.text.isEmpty
+                                                    ? authController.user.value!.name!
+                                                    : _nameController.text;
+                                                String phoneNumber = _phoneNumberController.text.isEmpty
+                                                    ? authController.user.value!.phoneNumber.toString()
+                                                    : _phoneNumberController.text;
+                                                String image = _imageURL == null
+                                                    ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
+                                                    : authController.user.value!.imageURL!;
+                                                String birthday = _birthdayController.text.isEmpty
+                                                    ? authController.user.value!.imageURL.toString()
+                                                    : _birthdayController.text;
+                                                authController.updateUser(
+                                                  email: email,
+                                                  password: _passwordController.text,
+                                                  surName: surName,
+                                                  name: name,
+                                                  phoneNumber: phoneNumber,
+                                                  imageURL: image,
+                                                  birthday: birthday,
+                                                  oldEmail: authController.user.value!.email,
+                                                  fullName: fullName,
+                                                  gender: '',
+                                                );
+                                              },
+                                              child: Container(
+                                                width: ScreenUtil().setWidth(900),
+                                                height: ScreenUtil().setHeight(190),
+                                                margin: REdgeInsets.only(
+                                                  left: 19,
+                                                  top: 20,
+                                                  right: 19,
+                                                ),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Save',
+                                                  style: TextStyle(fontSize: 65.sp),
+                                                ),
+                                              ),
+                                            ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
+                ],
+              ),
             ),
           ],
         ),

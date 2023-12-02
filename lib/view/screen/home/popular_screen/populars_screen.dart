@@ -24,6 +24,7 @@ class PopularsScreen extends StatelessWidget {
           children: [
             SectionTitleScreen(
               name: 'Populars'.tr,
+              isBackButton: true,
             ),
             //categories data
             Obx(() {

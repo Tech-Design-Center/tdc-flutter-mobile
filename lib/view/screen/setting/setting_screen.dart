@@ -29,7 +29,7 @@ class _SettingScreenState extends State<SettingScreen> with SingleTickerProvider
         child: Column(
           children: [
             SectionTitleScreen(
-              name: 'Setting'.tr,
+              name: 'Setting'.tr, isBackButton: false,
             ),
             Stack(
               alignment: Alignment.center,

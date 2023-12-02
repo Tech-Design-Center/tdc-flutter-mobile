@@ -21,7 +21,7 @@ class CategoriesScreen extends StatelessWidget {
         child: Column(
           children: [
             const SectionTitleScreen(
-              name: 'Categories',
+              name: 'Categories', isBackButton: true,
             ),
             //categories data
             Obx(() {

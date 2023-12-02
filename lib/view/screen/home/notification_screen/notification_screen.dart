@@ -18,7 +18,7 @@ class NotificationScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SectionTitleScreen(name: 'Notification'),
+            const SectionTitleScreen(name: 'Notification', isBackButton: true,),
             Obx(() {
               if (homeController.notificationList.isNotEmpty) {
                 return NotificationList(

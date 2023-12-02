@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 
 class SectionTitleScreen extends StatelessWidget {
   final String? name;
+  final bool isBackButton;
+
   const SectionTitleScreen({
     super.key,
     required this.name,
+    required this.isBackButton,
   });
 
   @override
@@ -33,7 +36,7 @@ class SectionTitleScreen extends StatelessWidget {
 
       child: Padding(
         padding: REdgeInsets.only(left: 30, right: 30),
-        child: Row(
+        child: isBackButton ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
@@ -52,6 +55,20 @@ class SectionTitleScreen extends StatelessWidget {
               ),
             ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.help_outline)),
+          ],
+        ) : Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              name!.tr,
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(
+                  100,
+                ),
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       ),

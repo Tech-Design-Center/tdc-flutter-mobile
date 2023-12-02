@@ -17,7 +17,7 @@ class NewsFeedScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SectionTitleScreen(name: 'News Feed'),
+            const SectionTitleScreen(name: 'News Feed', isBackButton: true,),
             Obx(() {
               if (homeController.newsFeedList.isNotEmpty) {
                 return NewsFeedList(

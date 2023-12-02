@@ -54,7 +54,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   void _verifyPasswords() {
     setState(() {
-      _passwordsMatch = passwordController.text == confirmPasswordController.text;
+      _passwordsMatch =
+          passwordController.text == confirmPasswordController.text;
     });
   }
 
@@ -68,98 +69,104 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            SectionTitleScreen(
-              name: 'Change Password'.tr,
-            ),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                //default
-                Positioned(
-                    child: Container(
-                  width: ScreenUtil().screenWidth,
-                  height: 1000.h,
-                  // decoration: BoxDecoration(color: Colors.red),
-                )),
-
-                //background
-                Positioned(
-                  top: 0,
-                  child: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SectionTitleScreen(
+                name: 'Change Password'.tr, isBackButton: true,
+              ),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  //default
+                  Positioned(
+                      child: Container(
                     width: ScreenUtil().screenWidth,
-                    height: 500.h,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
-                    ),
-                  ),
-                ),
+                    height: 1000.h,
+                    // decoration: BoxDecoration(color: Colors.red),
+                  )),
 
-                //Avatar
-                Positioned(
-                  bottom: 20,
-                  child: Column(
-                    children: [
-                      //profile image
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          //avatar
-                          Positioned(
-                              child: CircleAvatar(
-                                  radius: 280.r, foregroundImage: NetworkImage(profileImage!))),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 60.h,
-                      ),
-                      Text(
-                        "Student ID : # ".tr + " ${authController.user.value?.id ?? 0}",
-                        maxLines: null,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: ColorConstant.bluegray700,
-                          fontSize: ScreenUtil().setSp(
-                            50,
-                          ),
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
-                          height: 1.50,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(
+                  //background
+                  Positioned(
                     top: 0,
                     child: Container(
                       width: ScreenUtil().screenWidth,
-                      height: ScreenUtil().screenHeight,
-                      // decoration: BoxDecoration(color: Colors.yellow),
-                    )),
-                Positioned(
-                  child: Container(
-                    width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().setHeight(1700),
-                    decoration: BoxDecoration(
-                        // color: Colors.blue,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.r), topRight: Radius.circular(30.r))),
-                    child: SingleChildScrollView(
+                      height: 500.h,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(ImageConstant.imgRectangle792),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+
+                  //Avatar
+                  Positioned(
+                    bottom: 20,
+                    child: Column(
+                      children: [
+                        //profile image
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            //avatar
+                            Positioned(
+                                child: CircleAvatar(
+                                    radius: 280.r,
+                                    foregroundImage:
+                                        NetworkImage(profileImage!))),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        Text(
+                          "Student ID : # ".tr +
+                              " ${authController.user.value?.id ?? 0}",
+                          maxLines: null,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: ColorConstant.bluegray700,
+                            fontSize: ScreenUtil().setSp(
+                              50,
+                            ),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            height: 1.50,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                      top: 0,
+                      child: Container(
+                        width: ScreenUtil().screenWidth,
+                        height: ScreenUtil().screenHeight,
+                        // decoration: BoxDecoration(color: Colors.yellow),
+                      )),
+                  Positioned(
+                    child: Container(
+                      width: ScreenUtil().screenWidth,
+                      height: ScreenUtil().setHeight(1700),
+                      decoration: BoxDecoration(
+                          // color: Colors.blue,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30.r),
+                              topRight: Radius.circular(30.r))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //body
                           Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(
+                                top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,15 +197,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        borderSide: BorderSide(color: Colors.grey)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5.0)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
 
                                     hintText: 'Enter your current password'.tr,
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -214,7 +225,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             ),
                           ),
                           Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(
+                                top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,15 +257,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        borderSide: BorderSide(color: Colors.grey)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5.0)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
 
                                     hintText: 'Enter your new password',
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -270,7 +286,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
 
                           Padding(
-                            padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                            padding: REdgeInsets.only(
+                                top: 40, bottom: 20, left: 150, right: 150),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -301,15 +318,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                                        borderSide: BorderSide(color: Colors.grey)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5.0)),
+                                        borderSide:
+                                            BorderSide(color: Colors.grey)),
 
                                     hintText: 'Enter retype your password'.tr,
                                     // Here is key idea
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         // Based on passwordVisible state choose the icon
-                                        _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                        _passwordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
                                         color: Theme.of(context).primaryColor,
                                       ),
                                       onPressed: () {
@@ -325,7 +346,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   height: 40.h,
                                 ),
                                 Text(
-                                  _passwordsMatch ? '' : "Passwords do not match".tr,
+                                  _passwordsMatch
+                                      ? ''
+                                      : "Passwords do not match".tr,
                                   style: TextStyle(color: Colors.red),
                                 ),
                               ],
@@ -333,21 +356,25 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
 
                           Padding(
-                            padding: REdgeInsets.only(top: 100, bottom: 200),
+                            padding: REdgeInsets.only(top: 25),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 _isTextFieldEmpty
                                     ? ElevatedButton(
                                         style: ButtonStyle(
-                                            backgroundColor: MaterialStatePropertyAll<Color>(
-                                                ColorConstant.blue51),
-                                            shape:
-                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(18.0),
-                                                        side: BorderSide(
-                                                            color: ColorConstant.blue51)))),
+                                            backgroundColor:
+                                                MaterialStatePropertyAll<Color>(
+                                                    ColorConstant.blue51),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                    side: BorderSide(
+                                                        color: ColorConstant
+                                                            .blue51)))),
                                         onPressed: () {},
                                         child: Container(
                                           width: ScreenUtil().setWidth(900),
@@ -366,19 +393,27 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                       )
                                     : ElevatedButton(
                                         style: ButtonStyle(
-                                            shape:
-                                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(18.0),
-                                                        side: BorderSide(color: Colors.blue)))),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                    side: BorderSide(
+                                                        color: Colors.blue)))),
                                         onPressed: () {
                                           _saveData();
 
                                           authController.changePassword(
-                                              email: authController.user.value!.email!,
-                                              currentPassword: currentPasswordController.text,
+                                              email: authController
+                                                  .user.value!.email!,
+                                              currentPassword:
+                                                  currentPasswordController
+                                                      .text,
                                               password: passwordController.text,
-                                              passwordConfirmation: confirmPasswordController.text);
+                                              passwordConfirmation:
+                                                  confirmPasswordController
+                                                      .text);
                                         },
                                         child: Container(
                                           width: ScreenUtil().setWidth(900),
@@ -402,10 +437,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                     ),
                   ),
-                )
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -25,7 +25,7 @@ class _CategoryCourseListScreenState extends State<CategoryCourseListScreen> {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: widget.name,
+              name: widget.name, isBackButton: true,
             ),
             CategoryCourseCard(
               categories: widget.categories,
