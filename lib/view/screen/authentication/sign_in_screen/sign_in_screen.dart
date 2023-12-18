@@ -361,10 +361,11 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       ElevatedButton(
                         style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.grey),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.blue)))),
+                                    side: BorderSide(color: Colors.grey)))),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             authController.signIn(
@@ -378,14 +379,12 @@ class _SignInScreenState extends State<SignInScreen> {
                           width: ScreenUtil().setWidth(1100),
                           height: ScreenUtil().setHeight(190),
                           margin: REdgeInsets.only(
-                            left: 19,
                             top: 20,
-                            right: 19,
                           ),
                           alignment: Alignment.center,
                           child: Text(
                             'Login',
-                            style: TextStyle(fontSize: 65.sp),
+                            style: TextStyle(fontSize: 65.sp,color: Colors.black),
                           ),
                         ),
                       ),

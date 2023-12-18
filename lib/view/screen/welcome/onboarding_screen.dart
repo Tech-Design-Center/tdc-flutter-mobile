@@ -96,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             margin: REdgeInsets.only(
                               left: 19,
-                              top: 20,
+                              top: 100,
                               right: 19,
                             ) ,
                             child: Text(
@@ -160,7 +160,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             margin: REdgeInsets.only(
                               left: 19,
-                              top: 20,
+                              top: 100,
                               right: 19,
                             ) ,
                             child: Text(
@@ -224,7 +224,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             margin: REdgeInsets.only(
                               left: 19,
-                              top: 20,
+                              top: 100,
                               right: 19,
                             ) ,
                             child: Text(
@@ -279,10 +279,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               ElevatedButton(
                 style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.grey),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.blue)))),
+                            side: BorderSide(color: Colors.grey)))),
                 onPressed: () {
                   if (currentIndex < 2) {
                     _pageController!.animateToPage(currentIndex + 1,
@@ -305,7 +306,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   alignment: Alignment.center,
                   child: Text(
                     'Continue',
-                    style: TextStyle(fontSize: 65.sp),
+                    style: TextStyle(fontSize: 65.sp,color: Colors.black),
                   ),
                 ),
               ),
