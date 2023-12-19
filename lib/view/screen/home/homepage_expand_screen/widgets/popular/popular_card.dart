@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:tdc_frontend_mobile/model/popular.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/course_details_screen.dart';
 
@@ -30,7 +28,8 @@ class PopularCard extends StatelessWidget {
           videoUrl: popular.videoUrl,
           ABAPaymentURL: popular.ABAPaymentURL,
           documentsURL: popular.documentURL,
-          purchaseDate: DateTime(2023,1,1), telegramURL: '',
+          purchaseDate: DateTime(2023, 1, 1),
+          telegramURL: '',
         ));
       },
       child: Container(

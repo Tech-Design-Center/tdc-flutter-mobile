@@ -1,10 +1,5 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
-import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_list_view.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
 
@@ -21,14 +16,15 @@ class CategoriesScreen extends StatelessWidget {
         child: Column(
           children: [
             const SectionTitleScreen(
-              name: 'Categories', isBackButton: true,
+              name: 'Categories',
+              isBackButton: true,
             ),
             //categories data
             Obx(() {
               if (homeController.categoryList.isNotEmpty) {
                 return CategoriesListView(categories: homeController.categoryList);
               } else {
-                return CategoriesLoading();
+                return const CategoriesLoading();
               }
             }),
           ],

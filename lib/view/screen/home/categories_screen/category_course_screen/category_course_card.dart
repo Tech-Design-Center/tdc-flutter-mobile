@@ -38,14 +38,13 @@ class CategoryCourseCard extends StatelessWidget {
                   videoUrl: categories.videoUrl![index],
                   ABAPaymentURL: categories.ABAPaymentURL![index],
                   documentsURL: categories.documentURL![index],
-                  purchaseDate: DateTime(2023,1,1),
+                  purchaseDate: DateTime(2023, 1, 1),
                   telegramURL: '',
-
                 ));
               },
               child: Container(
                 width: ScreenUtil().screenWidth,
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 12.0,
                   bottom: 12.0,
                 ).r,
@@ -65,7 +64,7 @@ class CategoryCourseCard extends StatelessWidget {
                       blurRadius: ScreenUtil().setWidth(
                         10.00,
                       ),
-                      offset: Offset(
+                      offset: const Offset(
                         0,
                         4,
                       ),
@@ -77,7 +76,7 @@ class CategoryCourseCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 16,
                         top: 16,
                         bottom: 16,
@@ -100,7 +99,7 @@ class CategoryCourseCard extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         left: 50,
                         top: 22,
                         right: 16,
@@ -112,7 +111,7 @@ class CategoryCourseCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               right: 10,
                             ).r,
                             child: Text(
@@ -130,7 +129,7 @@ class CategoryCourseCard extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 40,
                               right: 10,
                             ).r,
@@ -150,7 +149,7 @@ class CategoryCourseCard extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 60,
                             ).r,
                             child: Row(
@@ -159,17 +158,17 @@ class CategoryCourseCard extends StatelessWidget {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                       left: 14,
                                       top: 15,
                                       bottom: 4,
                                     ).r,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.video_collection,
                                       color: Colors.grey,
                                     )),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 10,
                                     top: 15,
                                     bottom: 4,
@@ -189,7 +188,7 @@ class CategoryCourseCard extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 10,
                                     top: 15,
                                     bottom: 4,
@@ -209,7 +208,7 @@ class CategoryCourseCard extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: 300,
                                     top: 15,
                                     bottom: 2,

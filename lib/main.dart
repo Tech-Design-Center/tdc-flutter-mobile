@@ -4,9 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:googleapis/content/v2_1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tdc_frontend_mobile/controller/controllers.dart';
 
 import 'package:tdc_frontend_mobile/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,7 +12,6 @@ import 'package:tdc_frontend_mobile/service/push_notification_service.dart';
 import 'package:tdc_frontend_mobile/translations.dart';
 
 import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 
 import 'firebase_options.dart';
 import 'local_constant.dart';
@@ -78,9 +75,7 @@ class _MyAppState extends State<MyApp> {
   void didChangeDependencies() {
     getLocale().then((locale) {
       setState(() {
-        print("Preference Revoked ${locale.languageCode}");
         Get.updateLocale(locale);
-        print("GET LOCALE Revoked ${Get.locale!.languageCode}");
       });
     });
     super.didChangeDependencies();

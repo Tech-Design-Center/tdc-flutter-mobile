@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tdc_frontend_mobile/controller/auth_controller.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
 
 import '../../../../controller/controllers.dart';
-import '../sign_in_screen/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -42,10 +40,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 14.w),
-              child: Container(
+              child: SizedBox(
                 width: ScreenUtil().screenWidth,
                 child: Form(
                   key: _formKey,
@@ -61,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           right: 24,
                         ),
                         child: Image(
-                          image: AssetImage('assets/images/logo.png'),
+                          image: const AssetImage('assets/images/logo.png'),
                           height: ScreenUtil().setHeight(600),
                           width: ScreenUtil().setWidth(600),
                         ),
@@ -92,8 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       //input
                       Container(
-                        padding:
-                        REdgeInsets.only(left: 90, right: 90, top: 50),
+                        padding: REdgeInsets.only(left: 90, right: 90, top: 50),
                         alignment: Alignment.center,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -126,10 +123,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -187,15 +182,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         }
                                         return null;
                                       },
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                           fillColor: Colors.white,
                                           filled: true,
                                           border: OutlineInputBorder(),
                                           focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                              borderSide: BorderSide(
-                                                  color: Colors.grey)),
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
                                           hintText: 'Full Name'),
                                     ),
                                   ),
@@ -229,10 +222,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -290,15 +281,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         }
                                         return null;
                                       },
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                           fillColor: Colors.white,
                                           filled: true,
                                           border: OutlineInputBorder(),
                                           focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                              borderSide: BorderSide(
-                                                  color: Colors.grey)),
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
                                           hintText: 'Phone Number'),
                                     ),
                                   ),
@@ -332,10 +321,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -380,7 +367,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding:  REdgeInsets.only(top: 30),
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
                                       controller: emailController,
                                       keyboardType: TextInputType.emailAddress,
@@ -395,15 +382,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         }
                                         return null;
                                       },
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                           fillColor: Colors.white,
                                           filled: true,
                                           border: OutlineInputBorder(),
                                           focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5.0)),
-                                              borderSide: BorderSide(
-                                                  color: Colors.grey)),
+                                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                              borderSide: BorderSide(color: Colors.grey)),
                                           hintText: 'Email'),
                                     ),
                                   ),
@@ -438,10 +423,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -488,8 +471,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
+                                      keyboardType: TextInputType.visiblePassword,
                                       textInputAction: TextInputAction.next,
                                       controller: passwordController,
                                       obscureText: !_passwordVisible,
@@ -499,30 +481,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           return "This field can't be empty";
                                         } else {
                                           if (!value.isValidPasswordHasNumber) {
-                                            _validation
-                                                .add("Must contain 1 number");
+                                            _validation.add("Must contain 1 number");
                                           }
-                                          if (!value
-                                              .isValidPasswordHasCapitalLetter) {
-                                            _validation.add(
-                                                "Must contain 1 capital letter");
+                                          if (!value.isValidPasswordHasCapitalLetter) {
+                                            _validation.add("Must contain 1 capital letter");
                                           }
-                                          if (!value
-                                              .isValidPasswordHasLowerCaseLetter) {
-                                            _validation.add(
-                                                "Must contain 1 simple letter");
+                                          if (!value.isValidPasswordHasLowerCaseLetter) {
+                                            _validation.add("Must contain 1 simple letter");
                                           }
-                                          if (!value
-                                              .isValidPasswordHasSpecialCharacter) {
+                                          if (!value.isValidPasswordHasSpecialCharacter) {
                                             _validation.add(
                                                 "Must contain 1 special character[! @ # \$ %]");
                                           }
                                         }
                                         String msg = '';
                                         if (_validation.isNotEmpty) {
-                                          for (var i = 0;
-                                              i < _validation.length;
-                                              i++) {
+                                          for (var i = 0; i < _validation.length; i++) {
                                             msg = msg + _validation[i];
                                             if ((i + 1) != _validation.length) {
                                               msg = msg + "\n";
@@ -533,12 +507,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       },
                                       //This will obscure text dynamically
                                       decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.grey)),
+                                        border: const OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                            borderSide: BorderSide(color: Colors.grey)),
 
                                         hintText: 'Enter your password',
                                         // Here is key idea
@@ -548,14 +520,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             _passwordVisible
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: Theme.of(context).primaryColor,
                                           ),
                                           onPressed: () {
                                             // Update the state i.e. toogle the state of passwordVisible variable
                                             setState(() {
-                                              _passwordVisible =
-                                                  !_passwordVisible;
+                                              _passwordVisible = !_passwordVisible;
                                             });
                                           },
                                         ),
@@ -593,10 +563,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         right: 20,
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
@@ -641,30 +609,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   Padding(
-                                    padding:  REdgeInsets.only(top: 30),
+                                    padding: REdgeInsets.only(top: 30),
                                     child: TextFormField(
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
+                                      keyboardType: TextInputType.visiblePassword,
                                       textInputAction: TextInputAction.next,
                                       controller: confirmController,
                                       obscureText: !_passwordVisible,
                                       validator: (String? value) {
                                         if (value == null || value.isEmpty) {
                                           return "This field can't be empty";
-                                        } else if (passwordController.text !=
-                                            value) {
+                                        } else if (passwordController.text != value) {
                                           return "Confirm password not match";
                                         }
                                         return null;
                                       },
                                       //This will obscure text dynamically
                                       decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.grey)),
+                                        border: const OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                            borderSide: BorderSide(color: Colors.grey)),
 
                                         hintText: 'Enter your password',
                                         // Here is key idea
@@ -674,14 +638,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             _passwordVisible
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
-                                            color:
-                                                Theme.of(context).primaryColor,
+                                            color: Theme.of(context).primaryColor,
                                           ),
                                           onPressed: () {
                                             // Update the state i.e. toogle the state of passwordVisible variable
                                             setState(() {
-                                              _passwordVisible =
-                                                  !_passwordVisible;
+                                              _passwordVisible = !_passwordVisible;
                                             });
                                           },
                                         ),
@@ -702,19 +664,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(18.0),
-                                          side:
-                                              BorderSide(color: Colors.grey)))),
+                                          borderRadius: BorderRadius.circular(18.0),
+                                          side: const BorderSide(color: Colors.grey)))),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   authController.signUp(
                                     fullName: fullNameController.text,
-                                    phoneNumber:
-                                        int.parse(phoneController.text),
+                                    phoneNumber: int.parse(phoneController.text),
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
@@ -729,7 +687,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 alignment: Alignment.center,
                                 child: Text(
                                   'Register',
-                                  style: TextStyle(fontSize: 65.sp,color: Colors.black),
+                                  style: TextStyle(fontSize: 65.sp, color: Colors.black),
                                 ),
                               ),
                             ),
@@ -738,16 +696,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               margin: REdgeInsets.only(top: 13),
                               child: TextButton(
                                 style: ButtonStyle(
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.black.withOpacity(0.8)),
+                                  foregroundColor: MaterialStateProperty.all<Color>(
+                                      Colors.black.withOpacity(0.8)),
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: Container(
+                                child: SizedBox(
                                   width: 0.9.sw,
-                                  child: Column(
+                                  child: const Column(
                                     children: [
                                       Text(
                                         'Already have an account ?',
@@ -760,8 +717,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'Login Now',
                                         style: TextStyle(
                                             fontSize: 18,
-                                            decoration:
-                                                TextDecoration.underline,
+                                            decoration: TextDecoration.underline,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'PoppinsMedium16'),
                                       ),
