@@ -15,15 +15,15 @@ class AppTheme {
   static final lightTheme = ThemeData(
       brightness: Brightness.light,
       primaryColor: lightPrimaryColor,
-      backgroundColor: lightBackgroundColor,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       appBarTheme: AppBarTheme(backgroundColor: lightPrimaryColor),
-      colorScheme: ColorScheme.light(secondary: lightSecondaryColor),
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(primary: lightBackgroundColor)));
+      textButtonTheme:
+          TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)),
+      colorScheme: ColorScheme.light(secondary: lightSecondaryColor)
+          .copyWith(background: lightBackgroundColor));
 
   static Brightness get currentSystemBrightness =>
-      SchedulerBinding.instance!.window.platformBrightness;
+      SchedulerBinding.instance.window.platformBrightness;
 
   static setStatusBarAndNavigationBarColors(ThemeMode themeMode) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -33,5 +33,5 @@ class AppTheme {
       systemNavigationBarColor: lightBackgroundColor,
       systemNavigationBarDividerColor: Colors.transparent,
     ));
-  } 
+  }
 }

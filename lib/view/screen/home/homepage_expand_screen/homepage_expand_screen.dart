@@ -1,18 +1,10 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
-import 'package:tdc_frontend_mobile/model/category.dart';
-import 'package:tdc_frontend_mobile/model/popular.dart';
-import 'package:tdc_frontend_mobile/service/category_service.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_slider_view.dart';
@@ -29,8 +21,6 @@ import 'package:tdc_frontend_mobile/view/screen/setting/setting_screen.dart';
 import '../../../../controller/controllers.dart';
 
 import '../../../../local_constant.dart';
-import '../../../../model/recommend.dart';
-import '../../authentication/sign_in_screen/sign_in_screen.dart';
 import '../../welcome/onboarding_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -40,6 +30,8 @@ import '../popular_screen/populars_screen.dart';
 import '../recommend_screen/recommends_screen.dart';
 
 class HomepageExpandScreen extends StatefulWidget {
+  const HomepageExpandScreen({super.key});
+
   @override
   State<HomepageExpandScreen> createState() => _HomepageExpandScreenState();
 }
@@ -83,8 +75,8 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
       backgroundColor: Colors.grey.withOpacity(0.1),
       key: _scaffoldKey,
       drawer: ClipRRect(
-        borderRadius:
-            BorderRadius.only(topRight: Radius.circular(35).w, bottomRight: Radius.circular(35).w),
+        borderRadius: BorderRadius.only(
+            topRight: const Radius.circular(35).w, bottomRight: const Radius.circular(35).w),
         child: Drawer(
             backgroundColor: ColorConstant.whiteA700,
             child: SafeArea(
@@ -99,7 +91,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.close,
                             color: Colors.black,
                           ),
@@ -108,7 +100,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 24, left: 50, right: 20).r,
+                    padding: const EdgeInsets.only(top: 24, left: 50, right: 20).r,
                     child: GestureDetector(
                       onTap: () {
                         if (authController.user.value?.fullName == null) {
@@ -120,13 +112,13 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(300),
                             child: CircleAvatar(
-                              foregroundImage: NetworkImage(profileImage!),
+                              foregroundImage: NetworkImage(profileImage),
                               radius: 100.r,
                             ),
                           ),
                           20.horizontalSpace,
                           Padding(
-                            padding: EdgeInsets.only(left: 30).r,
+                            padding: const EdgeInsets.only(left: 30).r,
                             child: Text(
                               authController.user.value?.fullName ?? "Sign in your account".tr,
                               style: TextStyle(
@@ -141,7 +133,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    padding: const EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: InkWell(
                       onTap: () {
                         Get.to(SettingScreen());
@@ -177,10 +169,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    padding: const EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: InkWell(
                       onTap: () {
-                        Get.to(NewsFeedScreen());
+                        Get.to(const NewsFeedScreen());
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,8 +182,6 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                               Icon(
                                 Icons.feed,
                                 size: ScreenUtil().setWidth(100),
-
-
                               ),
                               20.horizontalSpace,
                               Text(
@@ -214,7 +204,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    padding: const EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -245,11 +235,11 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 80, left: 50, right: 50).r,
+                    padding: const EdgeInsets.only(top: 80, left: 50, right: 50).r,
                     child: Align(
                       alignment: Alignment.center,
                       child: Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           left: 0,
                           top: 0,
                           bottom: 0,
@@ -263,7 +253,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                             Row(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     top: 1,
                                     bottom: 1,
                                   ).r,
@@ -336,7 +326,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         child: Container(
                           height: ScreenUtil().setHeight(180),
                           width: ScreenUtil().setWidth(550),
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             left: 24,
                           ),
                           decoration: BoxDecoration(
@@ -349,7 +339,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                               authController.user.value?.fullName != null
                                   ? 'Logout'.tr
                                   : 'Login'.tr,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
@@ -374,22 +364,20 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
               children: [
                 //profile and notification
                 Container(
-
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
-                          boxShadow:[
-                              BoxShadow(
-                              color: Colors.grey.withOpacity(0.3), //color of shadow
-                          spreadRadius: 5, //spread radius
-                          blurRadius: 7, // blur radius
-                          offset: Offset(0, 15), // changes position of shadow
-                          //first paramerter of offset is left-right
-                          //second parameter is top to down
-                        ),
-                        //you can set more BoxShadow() here
-                        ],
-
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3), //color of shadow
+                        spreadRadius: 5, //spread radius
+                        blurRadius: 7, // blur radius
+                        offset: const Offset(0, 15), // changes position of shadow
+                        //first paramerter of offset is left-right
+                        //second parameter is top to down
+                      ),
+                      //you can set more BoxShadow() here
+                    ],
                   ),
                   child: Padding(
                     padding: REdgeInsets.all(30),
@@ -414,7 +402,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                                     },
                                     child: CircleAvatar(
                                       radius: 100.r,
-                                      foregroundImage: NetworkImage(profileImage!),
+                                      foregroundImage: NetworkImage(profileImage),
                                     ),
                                   ),
                                   Column(
@@ -482,7 +470,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //notification
                         InkWell(
                           onTap: () {
-                            Get.to(() => NotificationScreen());
+                            Get.to(() => const NotificationScreen());
                           },
                           child: Container(
                             height: ScreenUtil().setHeight(
@@ -584,7 +572,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //categories title
                         textTitleHomeScreen(
                           name: 'Categories'.tr,
-                          screen: CategoriesScreen(),
+                          screen: const CategoriesScreen(),
                         ),
 
                         //categories data
@@ -602,7 +590,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                         //recommended
                         textTitleHomeScreen(
                           name: 'Recommends'.tr,
-                          screen: RecommendsScreen(),
+                          screen: const RecommendsScreen(),
                         ),
 
                         //recommend data
@@ -617,11 +605,10 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                           }
                         }),
 
-
                         //Popular
                         textTitleHomeScreen(
                           name: 'Populars'.tr,
-                          screen: PopularsScreen(),
+                          screen: const PopularsScreen(),
                         ),
 
                         //popular data

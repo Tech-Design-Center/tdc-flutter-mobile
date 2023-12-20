@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 import 'package:tdc_frontend_mobile/model/category.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
 import '../../../../widgets/section_title_screen.dart';
 import 'category_course_card.dart';
 
@@ -25,7 +22,8 @@ class _CategoryCourseListScreenState extends State<CategoryCourseListScreen> {
         child: Column(
           children: [
             SectionTitleScreen(
-              name: widget.name, isBackButton: true,
+              name: widget.name,
+              isBackButton: true,
             ),
             CategoryCourseCard(
               categories: widget.categories,

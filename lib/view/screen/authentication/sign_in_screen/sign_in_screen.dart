@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
-import 'package:tdc_frontend_mobile/view/dashboard_screen.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/homepage_expand_screen.dart';
 
 import '../../../../controller/controllers.dart';
 import '../forget_pass_screen/forget_pass_screen.dart';
@@ -37,10 +34,10 @@ class _SignInScreenState extends State<SignInScreen> {
           resizeToAvoidBottomInset: true,
           body: SingleChildScrollView(
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 14.w),
-              child: Container(
+              child: SizedBox(
                 width: ScreenUtil().screenWidth,
                 child: Form(
                   key: _formKey,
@@ -56,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           right: 24,
                         ),
                         child: Image(
-                          image: AssetImage('assets/images/logo.png'),
+                          image: const AssetImage('assets/images/logo.png'),
                           height: ScreenUtil().setHeight(600),
                           width: ScreenUtil().setWidth(600),
                         ),
@@ -204,7 +201,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                         }
                                         return null;
                                       },
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                           fillColor: Colors.white,
                                           filled: true,
                                           border: OutlineInputBorder(),
@@ -304,8 +301,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                       },
                                       //This will obscure text dynamically
                                       decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        focusedBorder: OutlineInputBorder(
+                                        border: const OutlineInputBorder(),
+                                        focusedBorder: const OutlineInputBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(5.0)),
                                             borderSide: BorderSide(color: Colors.grey)),
 
@@ -340,10 +337,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => ForgetPassScreen()),
+                                              builder: (context) => const ForgetPassScreen()),
                                         );
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Forget Password ?',
                                         style: TextStyle(
                                             fontSize: 15,
@@ -365,7 +362,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.grey)))),
+                                    side: const BorderSide(color: Colors.grey)))),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             authController.signIn(
@@ -384,7 +381,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           alignment: Alignment.center,
                           child: Text(
                             'Login',
-                            style: TextStyle(fontSize: 65.sp,color: Colors.black),
+                            style: TextStyle(fontSize: 65.sp, color: Colors.black),
                           ),
                         ),
                       ),
@@ -400,14 +397,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignUpScreen()),
+                              MaterialPageRoute(builder: (context) => const SignUpScreen()),
                             );
                           },
                           child: Padding(
-                            padding:  REdgeInsets.all(50),
-                            child: Container(
+                            padding: REdgeInsets.all(50),
+                            child: SizedBox(
                               width: 0.8.sw,
-                              child: Column(
+                              child: const Column(
                                 children: [
                                   Text(
                                     'Dont have an account yet ?',

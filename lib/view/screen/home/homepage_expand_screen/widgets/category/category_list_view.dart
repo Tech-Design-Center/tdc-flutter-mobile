@@ -1,11 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 import '../../../../../../model/category.dart';
-import '../../../categories_screen/category_course_screen/category_course_list_screen.dart';
 import 'category_card.dart';
 
 class CategoryListView extends StatelessWidget {

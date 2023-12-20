@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../../core/constants/base_url.dart';
-
 class BannerCard extends StatelessWidget {
   final String imageUrl;
   const BannerCard({Key? key, required this.imageUrl}) : super(key: key);
@@ -15,15 +13,13 @@ class BannerCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: CachedNetworkImage(
-          imageUrl: '$imageUrl',
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              Shimmer.fromColors(
+          imageUrl: imageUrl,
+          progressIndicatorBuilder: (context, url, downloadProgress) => Shimmer.fromColors(
             highlightColor: Colors.white,
             baseColor: Colors.grey.shade300,
             child: Container(
               decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  color: Colors.grey, borderRadius: BorderRadius.all(Radius.circular(10))),
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 child: AspectRatio(
