@@ -10,6 +10,7 @@ class RemoteBannerService {
     var response = await client.get(
       Uri.parse('$remoteUrl?populate=image')
     );
+    print('banner $response');
     return response;
   }
 }

@@ -370,7 +370,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                     child: TabBar(
                                       indicatorPadding: EdgeInsets.all(5).w,
                                       indicator: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(50),
+                                          borderRadius: BorderRadius.circular(0),
                                           color: ColorConstant.indigoA200),
                                       labelColor: ColorConstant.whiteA700,
                                       unselectedLabelColor: Colors.black,
@@ -380,8 +380,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> with SingleTicker
                                           fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                       controller: tabController,
                                       tabs: [
-                                        Tab(
-                                          text: "About".tr,
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Tab(
+                                            text: "About".tr,
+                                          ),
                                         ),
                                       ],
                                     )),

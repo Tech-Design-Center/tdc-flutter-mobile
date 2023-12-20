@@ -490,15 +490,18 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                         fontWeight: FontWeight.w400),
                                                     controller: tabController,
                                                     tabs: [
-                                                      Tab(
-                                                        text: "Exam".tr,
+                                                      Padding(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        child: Tab(
+                                                          text: "Exam".tr,
+                                                        ),
                                                       ),
                                                     ],
                                                   )
                                                 : TabBar(
                                                     indicatorPadding: EdgeInsets.all(5).w,
                                                     indicator: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(50),
+                                                        borderRadius: BorderRadius.circular(0),
                                                         color: ColorConstant.indigoA200),
                                                     labelColor: ColorConstant.whiteA700,
                                                     unselectedLabelColor: Colors.black,
@@ -510,19 +513,27 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                         fontWeight: FontWeight.w400),
                                                     controller: tabController,
                                                     tabs: [
-                                                      Tab(
-                                                        text: "Videos".tr,
+                                                      Padding(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        child: Tab(
+                                                          text: "Videos".tr,
+                                                        ),
                                                       ),
-                                                      Tab(
-                                                        text: "About".tr,
+                                                      Padding(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        child: Tab(
+                                                          text: "About".tr,
+                                                        ),
                                                       ),
                                                     ],
                                                   ))
                                         : TabBar(
+
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(50),
-                                                color: ColorConstant.indigoA200),
+                                                borderRadius: BorderRadius.circular(0),
+                                                color: ColorConstant.indigoA200,
+                                            ),
                                             labelColor: ColorConstant.whiteA700,
                                             unselectedLabelColor: Colors.black,
                                             labelStyle: TextStyle(
@@ -533,8 +544,11 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                             controller: tabController,
                                             tabs: [
-                                              Tab(
-                                                text: "${widget.price}\$",
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Tab(
+                                                  text: "${widget.price}\$",
+                                                ),
                                               ),
                                             ],
                                           )),

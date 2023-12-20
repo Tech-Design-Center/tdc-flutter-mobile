@@ -24,6 +24,7 @@ class AuthController extends GetxController {
   void checkToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token = prefs.getString('token');
+    print('debug: $token');
     var userResult = await RemoteAuthService().getProfile(token: token);
     if (userResult.statusCode == 200) {
       user.value = userFromJson(userResult.body);
