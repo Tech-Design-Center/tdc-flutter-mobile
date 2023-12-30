@@ -8,8 +8,7 @@ class CourseService {
 
   Future<dynamic> get({required String? email}) async {
     var response = await client.get(Uri.parse(
-        '$remoteUrl?populate=course_user_links.course.image,course_user_links.course.playlist_video_urls.video_urls&filter[email][\$eq]=$email'));
-    print('CourseService: ${response.body}');
+        '$remoteUrl?populate=course_user_links.course.image,course_user_links.course.playlist_video_urls.video_urls&filters[email][\$eq]=$email'));
     return response;
   }
 }
