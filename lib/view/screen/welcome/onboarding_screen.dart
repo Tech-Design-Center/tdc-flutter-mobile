@@ -279,7 +279,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.grey),
+                    backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),

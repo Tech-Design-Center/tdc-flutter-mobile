@@ -502,13 +502,18 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                         fontWeight: FontWeight.w400),
                                                     controller: tabController,
                                                     tabs: [
-                                                      Padding(
+                                                      Container(
+                                                        width: ScreenUtil().screenWidth,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(100.0),
+                                                        ),
                                                         padding: const EdgeInsets.all(8.0),
                                                         child: Tab(
                                                           text: "Videos".tr,
                                                         ),
                                                       ),
-                                                      Padding(
+                                                      Container(
+                                                        width: ScreenUtil().screenWidth,
                                                         padding: const EdgeInsets.all(8.0),
                                                         child: Tab(
                                                           text: "About".tr,
@@ -517,7 +522,6 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                     ],
                                                   ))
                                         : TabBar(
-
                                             indicatorPadding: EdgeInsets.all(5).w,
                                             indicator: BoxDecoration(
                                                 borderRadius: BorderRadius.circular(0),
@@ -533,8 +537,8 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen>
                                                 fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                                             controller: tabController,
                                             tabs: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                              Container(
+                                                width: ScreenUtil().screenWidth,
                                                 child: Tab(
                                                   text: "${widget.price}\$",
                                                 ),

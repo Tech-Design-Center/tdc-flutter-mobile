@@ -40,6 +40,42 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417929578745:android:81414423cbfcd670ea7a28",
+        "android_client_info": {
+          "package_name": "com.tdckh.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417929578745-igtvr1at61i7ejbihlpnigcpo4kocj4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCagnZ2dlfT-Iq_OEWSAJ3pj_8aBehoHa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417929578745-igtvr1at61i7ejbihlpnigcpo4kocj4j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "417929578745-coijtok5lng8vau6jrhq1v1g48oegs8s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tdcFrontendMobile"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

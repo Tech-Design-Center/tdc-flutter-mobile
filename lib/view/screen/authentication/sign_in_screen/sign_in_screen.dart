@@ -301,6 +301,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       },
                                       //This will obscure text dynamically
                                       decoration: InputDecoration(
+                                        fillColor: Colors.white,
                                         border: const OutlineInputBorder(),
                                         focusedBorder: const OutlineInputBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -358,11 +359,11 @@ class _SignInScreenState extends State<SignInScreen> {
 
                       ElevatedButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.grey),
+                            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: const BorderSide(color: Colors.grey)))),
+                                    side: const BorderSide(color: Colors.blueAccent)))),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             authController.signIn(
@@ -373,7 +374,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           // Get.to(() => DashboardScreen());
                         },
                         child: Container(
-                          width: ScreenUtil().setWidth(1100),
+                          width: ScreenUtil().setWidth(1050),
                           height: ScreenUtil().setHeight(190),
                           margin: REdgeInsets.only(
                             top: 20,

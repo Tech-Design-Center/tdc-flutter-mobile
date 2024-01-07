@@ -79,7 +79,7 @@ class _EnrollCourseScreenState extends State<EnrollCourseScreen> {
                 ),
               ),
               Container(
-                height: ScreenUtil().setHeight(1705),
+                height: ScreenUtil().setHeight(1850),
                 width: ScreenUtil().setWidth(1200),
                 decoration: BoxDecoration(
                   border: Border.all(width: 0.8, color: Colors.grey),

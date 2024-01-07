@@ -99,11 +99,11 @@ class PopularCard extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: ScreenUtil().setSp(
-                    60,
+                    50,
                   ),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
-                  height: 5.h,
+                  height: 1.57,
                 ),
               ),
             ),
