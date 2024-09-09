@@ -44,6 +44,7 @@ class HomeController extends GetxController {
       isBannerLoading(true);
       //call api
       var result = await RemoteBannerService().get();
+      print('debug banner: $result');
       if (result != null) {
         //assign api result
         bannerList.assignAll(adBannerListFromJson(result.body));

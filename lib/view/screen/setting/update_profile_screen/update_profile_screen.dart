@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdc_frontend_mobile/controller/controllers.dart';
@@ -9,9 +8,7 @@ import 'package:tdc_frontend_mobile/controller/setting_controller.dart';
 import 'package:tdc_frontend_mobile/core/constants/color_constant.dart';
 import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/core/extension/string_extension.dart';
-import 'package:tdc_frontend_mobile/view/screen/welcome/onboarding_screen.dart';
 import 'package:tdc_frontend_mobile/view/widgets/section_title_screen.dart';
-import 'package:flutter/cupertino.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
@@ -92,8 +89,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                primary: Colors.blue, // button text color
-              ),
+                  backgroundColor: Colors.blue, // button text color
+                  foregroundColor: Colors.white),
             ),
           ),
           child: child!,
@@ -165,10 +162,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-
           children: [
             SectionTitleScreen(
-              name: 'Update Profile'.tr, isBackButton: true,
+              name: 'Update Profile'.tr,
+              isBackButton: true,
             ),
             SingleChildScrollView(
               child: Column(
@@ -191,7 +188,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           height: 500.h,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage(ImageConstant.imgRectangle792), fit: BoxFit.cover),
+                                image: AssetImage(ImageConstant.imgRectangle792),
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -263,7 +261,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             return CircleAvatar(
                                                 backgroundColor: Colors.white70,
                                                 radius: 280.r,
-                                                backgroundImage: FileImage(settingController.profile!));
+                                                backgroundImage:
+                                                    FileImage(settingController.profile!));
                                           }
                                         }),
                                   ),
@@ -317,7 +316,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               children: [
                                 //body
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,7 +344,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             filled: true,
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderRadius:
+                                                    BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
                                             hintText: '${authController.user.value?.fullName}'),
                                       ),
@@ -352,7 +353,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,7 +381,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             filled: true,
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderRadius:
+                                                    BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
                                             hintText: '${authController.user.value?.surname}'),
                                       ),
@@ -387,7 +390,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -411,7 +415,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             filled: true,
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderRadius:
+                                                    BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
                                             hintText: '${authController.user.value?.name}'),
                                       ),
@@ -419,7 +424,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -454,7 +460,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             filled: true,
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderRadius:
+                                                    BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
                                             hintText: '${authController.user.value?.email}'),
                                       ),
@@ -462,7 +469,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -497,7 +505,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             filled: true,
                                             border: OutlineInputBorder(),
                                             focusedBorder: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                                borderRadius:
+                                                    BorderRadius.all(Radius.circular(5.0)),
                                                 borderSide: BorderSide(color: Colors.grey)),
                                             hintText: '0${authController.user.value?.phoneNumber}'),
                                       ),
@@ -506,7 +515,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ),
 
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -542,7 +552,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                               borderSide: BorderSide(color: Colors.grey)),
                                           hintText: _selectedDate == null
                                               ? DateFormat('dd / MMMM / yyyy').format(_userBirthday)
-                                              : DateFormat('dd / MMMM / yyyy').format(_selectedDate!),
+                                              : DateFormat('dd / MMMM / yyyy')
+                                                  .format(_selectedDate!),
                                         ),
                                       ),
                                       ElevatedButton(
@@ -556,7 +567,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
+                                  padding:
+                                      REdgeInsets.only(top: 40, bottom: 20, left: 150, right: 150),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -597,7 +609,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           suffixIcon: IconButton(
                                             icon: Icon(
                                               // Based on passwordVisible state choose the icon
-                                              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                                              _passwordVisible
+                                                  ? Icons.visibility
+                                                  : Icons.visibility_off,
                                               color: Theme.of(context).primaryColor,
                                             ),
                                             onPressed: () {
@@ -622,12 +636,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                               style: ButtonStyle(
                                                   backgroundColor: MaterialStatePropertyAll<Color>(
                                                       ColorConstant.blue51),
-                                                  shape:
-                                                      MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                          RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius.circular(18.0),
-                                                              side: BorderSide(
-                                                                  color: ColorConstant.blue51)))),
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.circular(18.0),
+                                                          side: BorderSide(
+                                                              color: ColorConstant.blue51)))),
                                               onPressed: () {},
                                               child: Container(
                                                 width: ScreenUtil().setWidth(900),
@@ -646,11 +660,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             )
                                           : ElevatedButton(
                                               style: ButtonStyle(
-                                                  shape:
-                                                      MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                          RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius.circular(18.0).r,
-                                                              side: BorderSide(color: Colors.blue)))),
+                                                  shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                      RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.circular(18.0).r,
+                                                          side: BorderSide(color: Colors.blue)))),
                                               onPressed: () async {
                                                 _saveData();
                                                 SharedPreferences prefs =
@@ -670,9 +685,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                                 String name = _nameController.text.isEmpty
                                                     ? authController.user.value!.name!
                                                     : _nameController.text;
-                                                String phoneNumber = _phoneNumberController.text.isEmpty
-                                                    ? authController.user.value!.phoneNumber.toString()
-                                                    : _phoneNumberController.text;
+                                                String phoneNumber =
+                                                    _phoneNumberController.text.isEmpty
+                                                        ? authController.user.value!.phoneNumber
+                                                            .toString()
+                                                        : _phoneNumberController.text;
                                                 String image = _imageURL == null
                                                     ? 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg'
                                                     : authController.user.value!.imageURL!;

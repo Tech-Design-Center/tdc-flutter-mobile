@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -8,23 +10,19 @@ import 'package:tdc_frontend_mobile/core/constants/image_constant.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/categories_screen/categories_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/carousel_slider/carousel_slider_view.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/category/category_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/category/category_list_view.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/category/category_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/popular/popular_loading.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_list_view.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/recommend/recommend_loading.dart';
-import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/home/homepage_expand_screen/widgets/text_title_home_screen.dart';
+import 'package:tdc_frontend_mobile/view/screen/home/newsfeed_screen/newsfeed_screen.dart';
 import 'package:tdc_frontend_mobile/view/screen/setting/setting_screen.dart';
 
 import '../../../../controller/controllers.dart';
-
 import '../../../../local_constant.dart';
 import '../../welcome/onboarding_screen.dart';
-
-import 'package:flutter/material.dart';
-
 import '../notification_screen/notification_screen.dart';
 import '../popular_screen/populars_screen.dart';
 import '../recommend_screen/recommends_screen.dart';
@@ -560,6 +558,7 @@ class _HomepageExpandScreenState extends State<HomepageExpandScreen> {
                       children: [
                         //carousel data
                         Obx(() {
+                          print('debug banner: ${homeController.bannerList}');
                           if (homeController.bannerList.isNotEmpty) {
                             return CarouselSliderView(
                               bannerList: homeController.bannerList,
